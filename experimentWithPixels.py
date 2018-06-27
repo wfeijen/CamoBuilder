@@ -26,20 +26,22 @@ def votingWithNabors(colorsIn, minColorDistance):
     for i in range(len(colorsIn)):
         currentCol = colorsIn[i]
         count =  currentCol[0]
-        for j in range(i,len(colorsIn)):
-            if (colorDistance( currentCol[1],colors[j][1]) >= minColorDistance):
-                if  currentCol[0] >= colors[j][0]:
-                    count = count + colors[j][0]
-                elif  currentCol[0] < colors[j][0]:
-                    count = 0
-                    break
-         if count > 0:
+        for j in range(len(colorsIn)):
+            if (i != j):
+                if (colorDistance( currentCol[1],colors[j][1]) <= minColorDistance):
+                    if  currentCol[0] >= colors[j][0]:
+                        count = count + colors[j][0]
+                    elif  currentCol[0] < colors[j][0]:
+                        count = 0
+                        break
+        if count > 0:
              col = (count , currentCol[1])
              newColors.append(col)
+    return newColors
 
 
-for i in range(1,20):
-    colors = votingWithNabors(colors, i*4)
+for i in range(4,255):
+    colors = votingWithNabors(colors, 2**(i/2))
     if len(colors) <10:
         break
 
@@ -47,23 +49,3 @@ for idx, c in enumerate(colors):
     plt.bar(idx, c[0], color=hexencode(c[1]))
 
 plt.show()
-
-if im.mode == '1':
-    value = int(shade >= 127) # Black-and-white (1-bit)
-elif im.mode == 'L':
-    value = shade # Grayscale (Luminosity)
-elif im.mode == 'RGB':
-    value = (shade, shade, shade)
-elif im.mode == 'RGBA':
-    value = (shade, shade, shade, 255)
-elif im.mode == 'P':
-    raise NotImplementedError("TODO: Look up nearest color in palette")
-else:
-    raise ValueError("Unexpected mode for PNG image: %s" % im.mode)
-for x in range(0 , int(im.width/2)):
-    for y in range (50, x):
-        pic = tuple(numpy.subtract(pix[x, y],value))
-        pix[x, y] = pic
-
-
-im.save("foo_new.png")
