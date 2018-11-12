@@ -8,9 +8,9 @@ import numpy
 import datetime
 
 # w, h = 500, 500
-w, h = 1920, 1200
-N = 1000
-minSize = 50
+w, h = 5000, 3000
+N = 10000
+minSize = 20
 maxSize = 200
 startRandom = 400
 
