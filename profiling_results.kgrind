@@ -1,0 +1,587 @@
+event: ns : Nanoseconds
+events: ns
+summary: 3635323444
+fl=<string>
+fn=<module>
+1 4901401
+cfl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\Image.py
+cfn=__del__
+calls=1 599
+1 7301
+cfl=C:\Users\wfeij\PycharmProjects\Camo builder\TweedeTestMetRGBtopoColoringZonderSchaduw.py
+cfn=main
+calls=1 59
+1 3630374393
+
+fl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\_bootlocale.py
+fn=getpreferredencoding
+11 3842
+cfl=~
+cfn=<built-in method _locale._getdefaultlocale>
+calls=1 0
+11 6148
+
+fl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\codecs.py
+fn=__init__
+259 1152
+
+fl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\encodings\cp1252.py
+fn=decode
+22 7685
+cfl=~
+cfn=<built-in method _codecs.charmap_decode>
+calls=3 0
+22 44575
+
+fl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\genericpath.py
+fn=_splitext
+117 7301
+cfl=~
+cfn=<built-in method builtins.max>
+calls=1 0
+117 1537
+cfl=~
+cfn=<method 'rfind' of 'str' objects>
+calls=3 0
+117 2689
+
+fl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\ntpath.py
+fn=splitext
+222 5764
+cfl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\genericpath.py
+cfn=_splitext
+calls=1 117
+222 11528
+cfl=~
+cfn=<built-in method builtins.isinstance>
+calls=1 0
+222 0
+cfl=~
+cfn=<built-in method nt.fspath>
+calls=1 0
+222 384
+
+fl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\Image.py
+fn=preinit
+370 768
+
+fl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\Image.py
+fn=_getencoder
+452 9991
+cfl=~
+cfn=<built-in method PIL._imaging.jpeg_encoder>
+calls=1 0
+452 4995
+cfl=~
+cfn=<built-in method builtins.getattr>
+calls=1 0
+452 1152
+cfl=~
+cfn=<built-in method builtins.isinstance>
+calls=1 0
+452 384
+
+fl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\Image.py
+fn=__init__
+531 8838
+
+fl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\Image.py
+fn=_new
+551 16523
+cfl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\Image.py
+cfn=__init__
+calls=1 531
+551 4611
+cfl=~
+cfn=<method 'copy' of 'dict' objects>
+calls=1 0
+551 1152
+
+fl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\Image.py
+fn=__del__
+599 9222
+cfl=~
+cfn=<built-in method builtins.hasattr>
+calls=2 0
+599 7301
+
+fl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\Image.py
+fn=load
+807 8838
+cfl=~
+cfn=<method 'pixel_access' of 'ImagingCore' objects>
+calls=3 0
+807 3458
+
+fl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\Image.py
+fn=save
+1873 29589
+cfl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\ntpath.py
+cfn=splitext
+calls=1 222
+1873 17676
+cfl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\Image.py
+cfn=preinit
+calls=1 370
+1873 768
+cfl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\Image.py
+cfn=load
+calls=1 807
+1873 4227
+cfl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\JpegImagePlugin.py
+cfn=_save
+calls=1 618
+1873 160402441
+cfl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\_util.py
+cfn=isPath
+calls=1 9
+1873 3458
+cfl=~
+cfn=<built-in method io.open>
+calls=1 0
+1873 907268
+cfl=~
+cfn=<method 'close' of '_io.BufferedRandom' objects>
+calls=1 0
+1873 1149744
+cfl=~
+cfn=<method 'get' of 'dict' objects>
+calls=1 0
+1873 384
+cfl=~
+cfn=<method 'lower' of 'str' objects>
+calls=1 0
+1873 384
+cfl=~
+cfn=<method 'pop' of 'dict' objects>
+calls=1 0
+1873 1152
+cfl=~
+cfn=<method 'upper' of 'str' objects>
+calls=2 0
+1873 1152
+
+fl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\Image.py
+fn=_check_size
+2285 4611
+cfl=~
+cfn=<built-in method builtins.isinstance>
+calls=1 0
+2285 1152
+cfl=~
+cfn=<built-in method builtins.len>
+calls=1 0
+2285 0
+
+fl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\Image.py
+fn=new
+2303 14986
+cfl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\Image.py
+cfn=__init__
+calls=1 531
+2303 4227
+cfl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\Image.py
+cfn=_new
+calls=1 551
+2303 22287
+cfl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\Image.py
+cfn=__del__
+calls=1 599
+2303 9222
+cfl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\Image.py
+cfn=_check_size
+calls=1 2285
+2303 5764
+cfl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\_util.py
+cfn=isStringType
+calls=1 6
+2303 1152
+cfl=~
+cfn=<built-in method PIL._imaging.fill>
+calls=1 0
+2303 6174497
+
+fl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\ImageFile.py
+fn=_tilesort
+66 384
+
+fl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\ImageFile.py
+fn=_save
+459 39195
+cfl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\Image.py
+cfn=_getencoder
+calls=1 452
+459 16523
+cfl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\Image.py
+cfn=load
+calls=1 807
+459 1921
+cfl=~
+cfn=<built-in method builtins.hasattr>
+calls=2 0
+459 2305
+cfl=~
+cfn=<built-in method builtins.max>
+calls=1 0
+459 768
+cfl=~
+cfn=<method 'cleanup' of 'ImagingEncoder' objects>
+calls=1 0
+459 384
+cfl=~
+cfn=<method 'encode_to_file' of 'ImagingEncoder' objects>
+calls=1 0
+459 160278321
+cfl=~
+cfn=<method 'fileno' of '_io.BufferedRandom' objects>
+calls=1 0
+459 768
+cfl=~
+cfn=<method 'flush' of '_io.BufferedRandom' objects>
+calls=2 0
+459 13833
+cfl=~
+cfn=<method 'setimage' of 'ImagingEncoder' objects>
+calls=1 0
+459 2689
+cfl=~
+cfn=<method 'sort' of 'list' objects>
+calls=1 0
+459 8838
+
+fl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\JpegImagePlugin.py
+fn=_save
+618 22287
+cfl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\ImageFile.py
+cfn=_save
+calls=1 459
+618 160365551
+cfl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\JpegImagePlugin.py
+cfn=<listcomp>
+calls=1 627
+618 8454
+cfl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\JpegImagePlugin.py
+cfn=validate_qtables
+calls=1 666
+618 384
+cfl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\_util.py
+cfn=isStringType
+calls=1 6
+618 1152
+cfl=~
+cfn=<built-in method builtins.isinstance>
+calls=1 0
+618 384
+cfl=~
+cfn=<built-in method builtins.len>
+calls=2 0
+618 384
+cfl=~
+cfn=<built-in method builtins.max>
+calls=1 0
+618 768
+cfl=~
+cfn=<method 'get' of 'dict' objects>
+calls=12 0
+618 3074
+
+fl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\JpegImagePlugin.py
+fn=<listcomp>
+627 5379
+cfl=~
+cfn=<built-in method builtins.round>
+calls=2 0
+627 3074
+
+fl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\JpegImagePlugin.py
+fn=validate_qtables
+666 384
+
+fl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\_util.py
+fn=isStringType
+6 1537
+cfl=~
+cfn=<built-in method builtins.isinstance>
+calls=2 0
+6 768
+
+fl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\_util.py
+fn=isPath
+9 1537
+cfl=~
+cfn=<built-in method builtins.isinstance>
+calls=1 0
+9 1921
+
+fl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\numpy\core\fromnumeric.py
+fn=_wrapreduction
+64 20739979
+cfl=~
+cfn=<built-in method builtins.getattr>
+calls=5760 0
+64 5700689
+cfl=~
+cfn=<method 'items' of 'dict' objects>
+calls=5760 0
+64 1383382
+cfl=~
+cfn=<method 'reduce' of 'numpy.ufunc' objects>
+calls=5760 0
+64 63675562
+
+fl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\numpy\core\fromnumeric.py
+fn=prod
+2478 9514213
+cfl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\numpy\core\fromnumeric.py
+cfn=_wrapreduction
+calls=5760 64
+2478 91499613
+
+fl=C:\Users\wfeij\PycharmProjects\Camo builder\TweedeTestMetRGBtopoColoringZonderSchaduw.py
+fn=liftSingle
+16 135368212
+cfl=~
+cfn=<built-in method builtins.len>
+calls=9872 0
+16 2252992
+cfl=~
+cfn=<built-in method builtins.print>
+calls=33 0
+16 310492
+cfl=~
+cfn=<built-in method math.hypot>
+calls=12940 0
+16 8909752
+
+fl=C:\Users\wfeij\PycharmProjects\Camo builder\TweedeTestMetRGBtopoColoringZonderSchaduw.py
+fn=makeTopoForColor
+47 185219
+cfl=C:\Users\wfeij\PycharmProjects\Camo builder\TweedeTestMetRGBtopoColoringZonderSchaduw.py
+cfn=liftSingle
+calls=33 16
+47 146841449
+cfl=C:\Users\wfeij\PycharmProjects\Camo builder\TweedeTestMetRGBtopoColoringZonderSchaduw.py
+cfn=<listcomp>
+calls=3 49
+47 1893837299
+cfl=~
+cfn=<built-in method builtins.print>
+calls=33 0
+47 400796
+cfl=~
+cfn=<method 'random_integers' of 'mtrand.RandomState' objects>
+calls=99 0
+47 1163194
+
+fl=C:\Users\wfeij\PycharmProjects\Camo builder\TweedeTestMetRGBtopoColoringZonderSchaduw.py
+fn=<listcomp>
+49 1622562124
+cfl=~
+cfn=<method 'choice' of 'mtrand.RandomState' objects>
+calls=5760 0
+49 271275175
+
+fl=C:\Users\wfeij\PycharmProjects\Camo builder\TweedeTestMetRGBtopoColoringZonderSchaduw.py
+fn=main
+59 1418858271
+cfl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\encodings\cp1252.py
+cfn=decode
+calls=3 22
+59 52261
+cfl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\Image.py
+cfn=load
+calls=1 807
+59 6148
+cfl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\Image.py
+cfn=save
+calls=1 1873
+59 162518248
+cfl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\Image.py
+cfn=new
+calls=1 2303
+59 6232138
+cfl=C:\Users\wfeij\PycharmProjects\Camo builder\TweedeTestMetRGBtopoColoringZonderSchaduw.py
+cfn=makeTopoForColor
+calls=3 47
+59 2042427959
+cfl=~
+cfn=<built-in method _csv.reader>
+calls=1 0
+59 3842
+cfl=~
+cfn=<built-in method builtins.print>
+calls=3 0
+59 37274
+cfl=~
+cfn=<built-in method io.open>
+calls=1 0
+59 113360
+cfl=~
+cfn=<method 'append' of 'list' objects>
+calls=1001 0
+59 124888
+
+fl=~
+fn=<built-in method PIL._imaging.fill>
+0 6174497
+
+fl=~
+fn=<built-in method PIL._imaging.jpeg_encoder>
+0 4995
+
+fl=~
+fn=<built-in method _codecs.charmap_decode>
+0 44575
+
+fl=~
+fn=<built-in method _csv.reader>
+0 3842
+
+fl=~
+fn=<built-in method _locale._getdefaultlocale>
+0 6148
+
+fl=~
+fn=<built-in method builtins.exec>
+0 40348
+cfl=<string>
+cfn=<module>
+calls=1 1
+0 3635283095
+
+fl=~
+fn=<built-in method builtins.getattr>
+0 5701841
+
+fl=~
+fn=<built-in method builtins.hasattr>
+0 9606
+
+fl=~
+fn=<built-in method builtins.isinstance>
+0 4611
+
+fl=~
+fn=<built-in method builtins.len>
+0 2253376
+
+fl=~
+fn=<built-in method builtins.max>
+0 3074
+
+fl=~
+fn=<built-in method builtins.print>
+0 748563
+
+fl=~
+fn=<built-in method builtins.round>
+0 3074
+
+fl=~
+fn=<built-in method io.open>
+0 1009485
+cfl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\_bootlocale.py
+cfn=getpreferredencoding
+calls=1 11
+0 9991
+cfl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\codecs.py
+cfn=__init__
+calls=1 259
+0 1152
+
+fl=~
+fn=<built-in method math.hypot>
+0 8909752
+
+fl=~
+fn=<built-in method nt.fspath>
+0 384
+
+fl=~
+fn=<method 'append' of 'list' objects>
+0 124888
+
+fl=~
+fn=<method 'choice' of 'mtrand.RandomState' objects>
+0 170261347
+cfl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\numpy\core\fromnumeric.py
+cfn=prod
+calls=5760 2478
+0 101013827
+
+fl=~
+fn=<method 'cleanup' of 'ImagingEncoder' objects>
+0 384
+
+fl=~
+fn=<method 'close' of '_io.BufferedRandom' objects>
+0 1149744
+
+fl=~
+fn=<method 'copy' of 'dict' objects>
+0 1152
+
+fl=~
+fn=<method 'disable' of '_lsprof.Profiler' objects>
+0 384
+
+fl=~
+fn=<method 'encode_to_file' of 'ImagingEncoder' objects>
+0 160278321
+
+fl=~
+fn=<method 'fileno' of '_io.BufferedRandom' objects>
+0 768
+
+fl=~
+fn=<method 'flush' of '_io.BufferedRandom' objects>
+0 13833
+
+fl=~
+fn=<method 'get' of 'dict' objects>
+0 3458
+
+fl=~
+fn=<method 'items' of 'dict' objects>
+0 1383382
+
+fl=~
+fn=<method 'lower' of 'str' objects>
+0 384
+
+fl=~
+fn=<method 'pixel_access' of 'ImagingCore' objects>
+0 3458
+
+fl=~
+fn=<method 'pop' of 'dict' objects>
+0 1152
+
+fl=~
+fn=<method 'random_integers' of 'mtrand.RandomState' objects>
+0 1163194
+
+fl=~
+fn=<method 'reduce' of 'numpy.ufunc' objects>
+0 63675562
+
+fl=~
+fn=<method 'rfind' of 'str' objects>
+0 2689
+
+fl=~
+fn=<method 'setimage' of 'ImagingEncoder' objects>
+0 2689
+
+fl=~
+fn=<method 'sort' of 'list' objects>
+0 8454
+cfl=C:\Users\wfeij\AppData\Local\Programs\Python\Python36\lib\site-packages\PIL\ImageFile.py
+cfn=_tilesort
+calls=1 66
+0 384
+
+fl=~
+fn=<method 'upper' of 'str' objects>
+0 1152
+
