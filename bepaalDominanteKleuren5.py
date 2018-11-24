@@ -13,8 +13,8 @@ from os import listdir
 from array import array
 
 #Parameters
-dir = "C:/Users\wfeij/PycharmProjects/Camo builder/bepaalDominanteKleuren"
-mountainProfileLength = 1000
+dir = "D:\GitHub\CamoBuilder/bepaalDominanteKleuren"
+mountainProfileLength = 10
 
 def bepaalWaardenEnPasAan(dir, name):
     #Inlezen file
@@ -55,14 +55,21 @@ def bepaalWaardenEnPasAan(dir, name):
     for tint, lichtsterkten in labReducedColorsWithTonesDict.items():
         increase = lichtsterkten[0] / mountainProfileLength
         lArray = lichtsterkten[2]
-        mountainProfile = array('i')
+        intfreq = numpy.empty(256, dtype=int)
+        for i in lArray:
+            intfreq[i]+=1
+        mountainProfile = lArray.groupby('receipt').receipt.count()
+
+        mountainProfile = numpy.empty(256, dtype=int) #array('i')
         mpi = 0
         drempel = increase / 2  # measure in the middle
         for i in range(mountainProfileLength):
             if lArray[mpi] >= drempel:
                 drempel += increase
                 mpi += 1
+            print(str(i) + "  " + str(mpi))
             mountainProfile[i] = lArray[mpi]
+            print("   d  ")
 
 
 

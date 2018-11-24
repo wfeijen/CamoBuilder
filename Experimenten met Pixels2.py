@@ -44,11 +44,17 @@ im2.save("WIJMF_180128_085454_00133_AB128.JPG")
 
 lab_im = ImageCms.applyTransform(im, rgb2lab_transform)
 pixLab = lab_im.load()
-for L in range(0, im.width):
-    for A in range(0, 64):
-        for B in range(0, 64):
-            for Y in range(0, 10):
-                pixLab[A+(64*B),L]=(int(L*255/im.width) ,A*8,B*8)
+print("width " + str(im.width))
+print("height" +  str(im.height))
+for L in range(0, im.width-1):
+    #print("L " +  str(L))
+    for A in range(0, 63):
+        #print("A " +  str(A))
+        for B in range(0, 63):
+            #print("B " +  str(B))
+            for Y in range(0, 9):
+                #print("Y " +  str(Y))
+                pixLab[L, A+(64*B)] = (int(L*255/im.width), A*8, B*8)
 lab2rgb_transform = ImageCms.buildTransformFromOpenProfiles(lab_profile, srgb_profile, "LAB", "RGB")
 im2 = ImageCms.applyTransform(lab_im,lab2rgb_transform)
 im2.save("WIJMF_180128_085454_00133_Palet.JPG")
