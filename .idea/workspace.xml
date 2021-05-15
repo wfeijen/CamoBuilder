@@ -5,129 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Camo builder.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Camo builder.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Experimenten met Pixels2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Experimenten met Pixels2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WIJMF_180128_085454_00133_AB128.JPG" beforeDir="false" afterPath="$PROJECT_DIR$/WIJMF_180128_085454_00133_AB128.JPG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WIJMF_180128_085454_00133_L128.JPG" beforeDir="false" afterPath="$PROJECT_DIR$/WIJMF_180128_085454_00133_L128.JPG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WIJMF_180128_085454_00133_Palet.JPG" beforeDir="false" afterPath="$PROJECT_DIR$/WIJMF_180128_085454_00133_Palet.JPG" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20180714 164917 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20180714 173102 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20180714 175230 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20180716 193258 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20180723 080022 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20180723 081331 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20180723 083239 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20180723 083715 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20180723 084049 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20180723 084119 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20180723 084401 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20180723 085314 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20180723 085517 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20180725 112222 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20180725 112753 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20181112 203800 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20181112 203839 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_6597.jpg20180714 164935 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_6597.jpg20180714 173120 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_6597.jpg20180714 175248 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_6597.jpg20180716 193312 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_6597.jpg20180723 080036 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_6597.jpg20180723 081344 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_6597.jpg20181112 203857 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150104_1145-45-03_00124.jpg20180714 164952 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150104_1145-45-03_00124.jpg20180714 173136 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150104_1145-45-03_00124.jpg20180714 175306 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150104_1145-45-03_00124.jpg20180716 193327 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150104_1145-45-03_00124.jpg20180723 080050 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150104_1145-45-03_00124.jpg20180723 081358 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150104_1145-45-03_00124.jpg20181112 203914 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150104_1145-45-56_00128.jpg20180714 165013 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150104_1145-45-56_00128.jpg20180714 173157 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150104_1145-45-56_00128.jpg20180714 175326 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150104_1145-45-56_00128.jpg20180716 193340 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150104_1145-45-56_00128.jpg20180723 080103 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150104_1145-45-56_00128.jpg20181112 203933 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150308_155918_00434.jpg20180714 165048 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150308_155918_00434.jpg20180714 173233 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150308_155918_00434.jpg20180714 175402 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150308_155918_00434.jpg20180723 080117 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150406_193848_00827.jpg20180714 165126 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150406_193848_00827.jpg20180714 173311 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150406_193848_00827.jpg20180714 175441 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150406_193848_00827.jpg20180723 080131 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150505_150635_01217.jpg20180714 165145 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150505_150635_01217.jpg20180714 173330 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150505_150635_01217.jpg20180714 175500 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150505_150635_01217.jpg20180723 080144 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150505_151801_01245.jpg20180714 165200 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150505_151801_01245.jpg20180714 173346 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150505_151801_01245.jpg20180714 175516 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150505_151801_01245.jpg20180723 080157 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150508_104857_00008.jpg20180714 165301 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150508_104857_00008.jpg20180714 173448 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150508_104857_00008.jpg20180714 175618 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150508_104857_00008.jpg20180723 080211 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_160711_195444_00361.jpg20180714 165324 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_160711_195444_00361.jpg20180714 173511 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_160711_195444_00361.jpg20180714 175641 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_160711_195444_00361.jpg20180723 080224 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_160809_062706_01081.jpg20180714 165407 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_160809_062706_01081.jpg20180714 173555 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_160809_062706_01081.jpg20180714 175726 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_160809_062706_01081.jpg20180723 080238 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_160812_132550_01184.jpg20180714 165440 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_160812_132550_01184.jpg20180714 173629 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_160812_132550_01184.jpg20180714 175801 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_160812_132550_01184.jpg20180723 080252 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_170409_065835_00370.jpg20180714 165511 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_170409_065835_00370.jpg20180714 173700 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_170409_065835_00370.jpg20180714 175833 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_170805_171726_00806.jpg20180714 165552 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_170805_171726_00806.jpg20180714 173741 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_170805_171726_00806.jpg20180714 175915 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_170806_160701_00856.jpg20180714 165710 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_170806_160701_00856.jpg20180714 173900 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_170806_160701_00856.jpg20180714 180034 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_180128_093614_00067.jpg20180714 165736 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_180128_093614_00067.jpg20180714 173926 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_180128_093614_00067.jpg20180714 180101 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_180625_175950_00022.jpg20180714 165811 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_180625_175950_00022.jpg20180714 174001 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_180625_175950_00022.jpg20180714 180136 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren4.py" beforeDir="false" afterPath="$PROJECT_DIR$/bepaalDominanteKleuren4.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren5.py" beforeDir="false" afterPath="$PROJECT_DIR$/bepaalDominanteKleuren5.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/bepaalDominanteKleuren5.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="65" column="46" lean-forward="true" selection-start-line="65" selection-start-column="46" selection-end-line="65" selection-end-column="46" />
-              <folding>
-                <element signature="e#185#197#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37/Lib/cProfile.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="101" selection-start-line="101" selection-end-line="101" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
@@ -148,27 +33,21 @@
     <option name="width" value="974" />
     <option name="height" value="1047" />
   </component>
+  <component name="ProjectId" id="1sZCMDYu4Oo0ieQ2yxe8pfb5qgs" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes />
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/AppData/Local/GitHubDesktop/app-1.4.3/resources/app/git/mingw64/bin/git.exe" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Python.bepaalDominanteKleuren5">
     <configuration name="Eerste test met RGB topo coloring zonder schaduw" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -279,9 +158,9 @@
     <list>
       <item itemvalue="Python.Eerste test met RGB topo coloring zonder schaduw" />
       <item itemvalue="Python.Experimenten met Pixels2" />
-      <item itemvalue="Python.experimentWithPixels" />
-      <item itemvalue="Python.bepaalDominanteKleuren5" />
       <item itemvalue="Python.bepaalDominanteKleuren4" />
+      <item itemvalue="Python.bepaalDominanteKleuren5" />
+      <item itemvalue="Python.experimentWithPixels" />
     </list>
     <recent_temporary>
       <list>
@@ -293,6 +172,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -338,6 +218,17 @@
       <window_info anchor="right" id="R Graphics" order="3" />
       <window_info anchor="right" id="R Packages" order="4" />
     </layout>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
