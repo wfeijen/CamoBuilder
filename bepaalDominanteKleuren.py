@@ -12,7 +12,7 @@ import datetime
 from os import listdir
 
 #Parameters
-dir = "C:/Users\wfeij/PycharmProjects/Camo builder/bepaalDominanteKleuren"
+dir = "bepaalDominanteKleuren"
 
 class ColorParameters:
     def __init__(self, a, b, origineel):

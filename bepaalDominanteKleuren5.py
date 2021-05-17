@@ -13,7 +13,7 @@ from os import listdir
 from array import array
 
 #Parameters
-dir = "D:\GitHub\CamoBuilder/bepaalDominanteKleuren"
+dir = "bepaalDominanteKleuren"
 mountainProfileLength = 10
 
 def bepaalWaardenEnPasAan(dir, name):

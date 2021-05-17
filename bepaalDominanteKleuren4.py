@@ -12,7 +12,7 @@ import datetime
 from os import listdir
 
 #Parameters
-dir = "D:\GitHub\CamoBuilder/bepaalDominanteKleuren"
+dir = "bepaalDominanteKleuren"
 
 class ColorParameters:
     def __init__(self, a, b, origineel):
@@ -130,7 +130,7 @@ def profile():
     from cProfile import Profile
     from pyprof2calltree import convert, visualize
     profiler = Profile()
-    profiler.runctx('main()',locals(),globals())
+    profiler.runctx('main()', locals(), globals())
     visualize(profiler.getstats())
     #convert(profiler.getstats(), 'profiling_results.kgrind')
 
