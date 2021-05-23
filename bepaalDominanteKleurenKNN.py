@@ -21,10 +21,11 @@ import os
 from tensorboard.notebook import display
 
 dir = "bepaalDominanteKleuren"
-aantalKleuren = 6
+aantalKleuren = 12
+sampleSize = 1000
 
 
-def bepaalWaardenEnPasAan(dir, name):
+def bepaalWaardenEnPasAan(dir, name, sampleSize):
     # Inlezen file
     im = Image.open(dir + "/" + name)
     if im.mode != "RGB":
@@ -38,19 +39,17 @@ def bepaalWaardenEnPasAan(dir, name):
     w, h = lab_im.size
     labColors = lab_im.getcolors(w * h)
     npImageOrig = np.array(lab_im)
-    npImage = npImageOrig.reshape(w * h, 3, order="C")
+    npImage = npImageOrig.reshape(w * h, 3)
     pdImage = pd.DataFrame(npImage, columns=['L', 'A', 'B'])
-    # print(pdImage.head())
-    # *************************************************
-    # npOrig2 =  pdImage.to_numpy()
-    # npOrig2 =  npOrig2.reshape(h, w, 3, order="C")
-    # **************************************************
+
     kmeans = KMeans(n_clusters=aantalKleuren)
     kmeans.fit(pdImage)
     y_kmeans = kmeans.predict(pdImage)
     npCenters = kmeans.cluster_centers_.astype(int)
 
-    selectie = random.sample(list(range(0, pdImage['L'].size)), 1000)
+    if sampleSize > pdImage['L'].size:
+        sampleSize = pdImage['L'].size
+    selectie = random.sample(list(range(0, pdImage['L'].size)), sampleSize)
     L = pdImage.iloc[selectie, 0]
     A = pdImage.iloc[selectie, 1]
     B = pdImage.iloc[selectie, 2]
@@ -83,23 +82,27 @@ def bepaalWaardenEnPasAan(dir, name):
     pdCenters['groep'] = groepen
     pdImageTransform = pdImage.join(pdCenters.set_index('groep'), on='groep')
     pdImageNieuw = pdImageTransform.iloc[:, 4:7]
-    # Exporteren van tellingen
-    now = datetime.datetime.now().strftime('%Y%m%d %H%M%S')
-    export = pdImageNieuw.groupby(['Ln', 'An', 'Bn'])['Bn'].count()
-    print(export)
-    export.to_csv(name + now + '.csv')
-
     npImageNieuw = pdImageNieuw.to_numpy()
     npImageNieuw = npImageNieuw.reshape(h, w, 3, order="C")
     imageNiew = Image.fromarray(numpy.uint8(npImageNieuw),
                                 mode='LAB')
     lab2rgb_transform = ImageCms.buildTransformFromOpenProfiles(lab_profile, srgb_profile, "LAB", "RGB")
     imgRGB = ImageCms.applyTransform(imageNiew, lab2rgb_transform)
+    now = datetime.datetime.now().strftime('%Y%m%d %H%M%S')
     imgRGB.save(dir + "/" + name + now + " vervangenVolgensMapC.JPG")
+
+    # Exporteren van kleuren en tellingen
+    npImageRGB = np.array(imgRGB)
+    npImageRGB = npImageRGB.reshape(w * h, 3)
+    pdImageRGB = pd.DataFrame(npImageRGB, columns=['R', 'G', 'B'])
+    pdImageRGB['aantal'] = 1
+    export = pdImageRGB.groupby(['R', 'G', 'B'])['aantal'].count().reset_index()
+    print(export)
+    export.to_csv(name + now + '.csv')
 
 
 files = [f for f in os.listdir(dir) if os.path.isfile(os.path.join(dir, f))]
 for name in files:
     if name[-4:] != ".JPG":
         print(name[-4:])
-        bepaalWaardenEnPasAan(dir, name)
+        bepaalWaardenEnPasAan(dir, name, sampleSize)

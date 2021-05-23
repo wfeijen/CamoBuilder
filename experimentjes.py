@@ -2,12 +2,15 @@ import math
 import numpy as np
 import pandas as pd
 import random
+def x(centerX, size):
+    if centerX - size < 0:
+        startX = 0
+    else:
+        startX = centerX - size
+    return startX
 
-xs = random.sample(list(range(0, 5)), 2)
 
-o = np.array(list(range(0, 81)))
-reshape1 = o.reshape(9, 3, 3, order='C')
-reshape2 = reshape1.reshape(27, 3, order='C')
-reshape3 = reshape1.reshape(9, 3, 3, order='C')
+for c in range(-2, 2):
+    for s in range(-2, 2):
+        print(c, "_", s, x(c ,s), max(c-s, 0))
 
-print(round(53, -1))

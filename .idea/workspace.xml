@@ -4,98 +4,30 @@
     <bookmark url="file://$PROJECT_DIR$/Experimenten met Pixels2.py" line="48" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="gitignore aangepast">
-      <change afterPath="$PROJECT_DIR$/bepaalDominanteKleuren6.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bepaalDominanteKleurenKNN.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bepaalDominanteKleurenKNNRGB.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/experimentjes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Camo builder.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Camo builder.iml" afterDir="false" />
+    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="Eerste werkende versie bepaal kleuren">
+      <change afterPath="$PROJECT_DIR$/.idea/csv-plugin.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BepaalDominanteKleuren.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RGBdualTopoColoring.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bepaalDominanteKleurenKNNdubbeleGroepering.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RGB Topo 1.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RGB Topo 2.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RGB Topo 3 20180712 174224.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RGB Topo 3 20180712 175035.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RGB Topo 3 20180712 180337.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RGB Topo 3 20180713 090726.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RGB Topo 3 20180713 090934.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RGB Topo 3 20180713 092133.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RGB Topo 3 20180713 095439.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RGB Topo 3.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RGB trans 111 Waarde20180713 153213.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RGB trans 111 volledig 20180713 153226.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RGB trans 123 Waarde20180713 153147.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RGB trans 123 volledig 20180713 153159.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RGB trans Waarde20180713 131620.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RGB trans Waarde20180713 141738.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RGB trans volledig 20180713 131635.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RGB trans volledig 20180713 141751.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/TweedeTestMetRGBtopoColoringZonderSchaduw.py" beforeDir="false" afterPath="$PROJECT_DIR$/TweedeTestMetRGBtopoColoringZonderSchaduw.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WIJMF_180128_085454_00133.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WIJMF_180128_085454_00133.JPG20180714 162112 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WIJMF_180128_085454_00133_AB128.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WIJMF_180128_085454_00133_L128.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WIJMF_180128_085454_00133_Palet.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren.py" beforeDir="false" afterPath="$PROJECT_DIR$/bepaalDominanteKleuren.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20181112 212644 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20181112 213300 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20181123 201022 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20181123 201408 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20181123 201533 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20181123 201749 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20181123 201851 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20181123 202003 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20181123 203332 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20181123 203529 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20181123 203701 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20181123 203927 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20181123 204119 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20181124 171344 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20181124 173815 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20181124 174913 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20181124 175401 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20181124 180951 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20181124 181055 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_1548.jpg20181124 181432 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_6597.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/ASC_6597.jpg20181112 212654 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150104_1145-45-03_00124.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150104_1145-45-03_00124.jpg20181112 212704 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150104_1145-45-56_00128.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150104_1145-45-56_00128.jpg20181112 212717 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150308_155918_00434.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150308_155918_00434.jpg20181112 212736 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150406_193848_00827.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150406_193848_00827.jpg20181112 212755 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150505_150635_01217.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150505_150635_01217.jpg20181112 212806 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150505_151801_01245.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150505_151801_01245.jpg20181112 212815 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150508_104857_00008.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_150508_104857_00008.jpg20181112 212846 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_160711_195444_00361.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_160711_195444_00361.jpg20181112 212859 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_160809_062706_01081.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_160809_062706_01081.jpg20181112 212922 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_160812_132550_01184.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_160812_132550_01184.jpg20181112 212940 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_170409_065835_00370.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_170409_065835_00370.jpg20181112 212956 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_170805_171726_00806.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_170805_171726_00806.jpg20181112 213018 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_170806_160701_00856.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_170806_160701_00856.jpg20181112 213058 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_180128_093614_00067.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_180128_093614_00067.jpg20181112 213113 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_180625_175950_00022.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren/WIJMF_180625_175950_00022.jpg20181112 213132 vervangenVolgensMap.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren2.py" beforeDir="false" afterPath="$PROJECT_DIR$/bepaalDominanteKleuren2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren3.py" beforeDir="false" afterPath="$PROJECT_DIR$/bepaalDominanteKleuren3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren4.py" beforeDir="false" afterPath="$PROJECT_DIR$/bepaalDominanteKleuren4.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren5.py" beforeDir="false" afterPath="$PROJECT_DIR$/bepaalDominanteKleuren5.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stinkbug.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Experimenten met Pixels2.py" beforeDir="false" afterPath="$PROJECT_DIR$/dump/Experimenten met Pixels2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TweedeTestMetRGBtopoColoringZonderSchaduw.py" beforeDir="false" afterPath="$PROJECT_DIR$/RGBtopoColoring.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren.py" beforeDir="false" afterPath="$PROJECT_DIR$/dump/bepaalDominanteKleuren.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren2.py" beforeDir="false" afterPath="$PROJECT_DIR$/dump/bepaalDominanteKleuren2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren2py" beforeDir="false" afterPath="$PROJECT_DIR$/dump/bepaalDominanteKleuren2py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren3.py" beforeDir="false" afterPath="$PROJECT_DIR$/dump/bepaalDominanteKleuren3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren4.py" beforeDir="false" afterPath="$PROJECT_DIR$/dump/bepaalDominanteKleuren4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren5.py" beforeDir="false" afterPath="$PROJECT_DIR$/dump/bepaalDominanteKleuren5.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren6.py" beforeDir="false" afterPath="$PROJECT_DIR$/dump/bepaalDominanteKleuren6.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleurenKNN.py" beforeDir="false" afterPath="$PROJECT_DIR$/bepaalDominanteKleurenKNN.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleurenKNNRGB.py" beforeDir="false" afterPath="$PROJECT_DIR$/dump/bepaalDominanteKleurenKNNRGB.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experimentWithPixels.py" beforeDir="false" afterPath="$PROJECT_DIR$/dump/experimentWithPixels.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experimentjes.py" beforeDir="false" afterPath="$PROJECT_DIR$/experimentjes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/foo_new.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/profiling_results.kgrind" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,14 +79,16 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/kleurParameters" />
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/dump" />
       <recent name="$PROJECT_DIR$/camoOutput" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.bepaalDominanteKleurenKNN">
-    <configuration name="bepaalDominanteKleuren3" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.RGBtopoColoring">
+    <configuration name="RGBtopoColoring" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Camo builder" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -166,28 +100,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bepaalDominanteKleuren3.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="bepaalDominanteKleuren6" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Camo builder" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bepaalDominanteKleuren6.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RGBtopoColoring.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -229,7 +142,28 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bepaalDominanteKleurenKNNRGB.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dump/bepaalDominanteKleurenKNNRGB.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="bepaalDominanteKleurenKNNdubbeleGroepering" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Camo builder" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bepaalDominanteKleurenKNNdubbeleGroepering.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -260,19 +194,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.bepaalDominanteKleuren3" />
-      <item itemvalue="Python.experimentjes" />
-      <item itemvalue="Python.bepaalDominanteKleuren6" />
-      <item itemvalue="Python.bepaalDominanteKleurenKNN" />
+      <item itemvalue="Python.RGBtopoColoring" />
       <item itemvalue="Python.bepaalDominanteKleurenKNNRGB" />
+      <item itemvalue="Python.bepaalDominanteKleurenKNN" />
+      <item itemvalue="Python.bepaalDominanteKleurenKNNdubbeleGroepering" />
+      <item itemvalue="Python.experimentjes" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.RGBtopoColoring" />
+        <item itemvalue="Python.bepaalDominanteKleurenKNNdubbeleGroepering" />
+        <item itemvalue="Python.experimentjes" />
         <item itemvalue="Python.bepaalDominanteKleurenKNN" />
         <item itemvalue="Python.bepaalDominanteKleurenKNNRGB" />
-        <item itemvalue="Python.experimentjes" />
-        <item itemvalue="Python.bepaalDominanteKleuren6" />
-        <item itemvalue="Python.bepaalDominanteKleuren3" />
       </list>
     </recent_temporary>
   </component>
@@ -295,7 +229,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621071078342</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Eerste werkende versie bepaal kleuren">
+      <created>1621253441951</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1621253441951</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TodoView">
@@ -345,55 +286,56 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="gitignore aangepast" />
-    <option name="LAST_COMMIT_MESSAGE" value="gitignore aangepast" />
+    <MESSAGE value="Eerste werkende versie bepaal kleuren" />
+    <option name="LAST_COMMIT_MESSAGE" value="Eerste werkende versie bepaal kleuren" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Experimenten met Pixels2.py</url>
+          <url>file://$PROJECT_DIR$/dump/Experimenten met Pixels2.py</url>
           <line>47</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bepaalDominanteKleuren4.py</url>
+          <url>file://$PROJECT_DIR$/dump/bepaalDominanteKleuren4.py</url>
           <line>122</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bepaalDominanteKleuren5.py</url>
+          <url>file://$PROJECT_DIR$/dump/bepaalDominanteKleuren5.py</url>
           <line>65</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bepaalDominanteKleuren5.py</url>
+          <url>file://$PROJECT_DIR$/dump/bepaalDominanteKleuren5.py</url>
           <line>63</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bepaalDominanteKleuren5.py</url>
+          <url>file://$PROJECT_DIR$/dump/bepaalDominanteKleuren5.py</url>
           <line>62</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bepaalDominanteKleuren6.py</url>
+          <url>file://$PROJECT_DIR$/dump/bepaalDominanteKleuren6.py</url>
           <line>103</line>
           <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bepaalDominanteKleuren6.py</url>
+          <url>file://$PROJECT_DIR$/dump/bepaalDominanteKleuren6.py</url>
           <line>94</line>
           <option name="timeStamp" value="33" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/experimentjes.py</url>
-          <line>12</line>
-          <option name="timeStamp" value="51" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/bepaalDominanteKleurenKNNRGB.py</url>
+          <url>file://$PROJECT_DIR$/dump/bepaalDominanteKleurenKNNRGB.py</url>
           <line>53</line>
           <option name="timeStamp" value="55" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/RGBtopoColoring.py</url>
+          <line>111</line>
+          <option name="timeStamp" value="63" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
