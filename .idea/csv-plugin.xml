@@ -17,6 +17,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/kleurParameters/lenteAlmer.jpg20210522 121425.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
       </map>
     </option>
   </component>

@@ -121,7 +121,7 @@ aantalKleuren = len(kleurCodes)
 #     topo = makeTopoForColor(W, H, N, MinSize, MaxSize, normaalVerdeling)
 #     topografien.append(topo)
 
-pickleNaam = "saveFiles/W" + str(W) + "H" + str(H) + "N" + str(N) + "MinSize" + str(MinSize) + "MaxSize" + str(
+pickleNaam = "cacheFiles/W" + str(W) + "H" + str(H) + "N" + str(N) + "MinSize" + str(MinSize) + "MaxSize" + str(
     MaxSize) + "StartRandom" + str(StartRandom) + str(aantalKleuren) + ".pkl"
 if exists(pickleNaam):
     print("van cache")

@@ -4,30 +4,18 @@
     <bookmark url="file://$PROJECT_DIR$/Experimenten met Pixels2.py" line="48" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="Eerste werkende versie bepaal kleuren">
-      <change afterPath="$PROJECT_DIR$/.idea/csv-plugin.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BepaalDominanteKleuren.ipynb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/RGBdualTopoColoring.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bepaalDominanteKleurenKNNdubbeleGroepering.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="Kleurbepaling is nu in hoofd en subcategorien uitgevoerd&#10;Pattern voor hoofdstructuren werkt">
+      <change afterPath="$PROJECT_DIR$/RGBdualTopoColoringFout.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projectClasses/ColorPair.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projectClasses/PictureCreator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projectClasses/TopoGeneratieDefinities.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projectClasses/Topografie.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projectClasses/TweeDimentionalClass.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projectClasses/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/csv-plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/csv-plugin.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Experimenten met Pixels2.py" beforeDir="false" afterPath="$PROJECT_DIR$/dump/Experimenten met Pixels2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TweedeTestMetRGBtopoColoringZonderSchaduw.py" beforeDir="false" afterPath="$PROJECT_DIR$/RGBtopoColoring.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren.py" beforeDir="false" afterPath="$PROJECT_DIR$/dump/bepaalDominanteKleuren.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren2.py" beforeDir="false" afterPath="$PROJECT_DIR$/dump/bepaalDominanteKleuren2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren2py" beforeDir="false" afterPath="$PROJECT_DIR$/dump/bepaalDominanteKleuren2py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren3.py" beforeDir="false" afterPath="$PROJECT_DIR$/dump/bepaalDominanteKleuren3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren4.py" beforeDir="false" afterPath="$PROJECT_DIR$/dump/bepaalDominanteKleuren4.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren5.py" beforeDir="false" afterPath="$PROJECT_DIR$/dump/bepaalDominanteKleuren5.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleuren6.py" beforeDir="false" afterPath="$PROJECT_DIR$/dump/bepaalDominanteKleuren6.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleurenKNN.py" beforeDir="false" afterPath="$PROJECT_DIR$/bepaalDominanteKleurenKNN.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bepaalDominanteKleurenKNNRGB.py" beforeDir="false" afterPath="$PROJECT_DIR$/dump/bepaalDominanteKleurenKNNRGB.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experimentWithPixels.py" beforeDir="false" afterPath="$PROJECT_DIR$/dump/experimentWithPixels.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experimentjes.py" beforeDir="false" afterPath="$PROJECT_DIR$/experimentjes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/foo_new.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiling_results.kgrind" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RGBdualTopoColoring.py" beforeDir="false" afterPath="$PROJECT_DIR$/RGBdualTopoColoring.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RGBtopoColoring.py" beforeDir="false" afterPath="$PROJECT_DIR$/RGBtopoColoring.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,15 +67,58 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/kleurParameters" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/kleurParameters" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/projectClasses" />
       <recent name="$PROJECT_DIR$/dump" />
       <recent name="$PROJECT_DIR$/camoOutput" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.RGBtopoColoring">
+  <component name="RunManager" selected="Python.RGBdualTopoColoring">
+    <configuration name="RGBdualTopoColoring" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Camo builder" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RGBdualTopoColoring.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="RGBdualTopoColoringFout" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Camo builder" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RGBdualTopoColoringFout.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="RGBtopoColoring" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Camo builder" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -101,48 +132,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RGBtopoColoring.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="bepaalDominanteKleurenKNN" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Camo builder" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bepaalDominanteKleurenKNN.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="bepaalDominanteKleurenKNNRGB" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Camo builder" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dump/bepaalDominanteKleurenKNNRGB.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -194,19 +183,19 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.RGBdualTopoColoringFout" />
+      <item itemvalue="Python.RGBdualTopoColoring" />
       <item itemvalue="Python.RGBtopoColoring" />
-      <item itemvalue="Python.bepaalDominanteKleurenKNNRGB" />
-      <item itemvalue="Python.bepaalDominanteKleurenKNN" />
       <item itemvalue="Python.bepaalDominanteKleurenKNNdubbeleGroepering" />
       <item itemvalue="Python.experimentjes" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.RGBdualTopoColoring" />
+        <item itemvalue="Python.RGBdualTopoColoringFout" />
         <item itemvalue="Python.RGBtopoColoring" />
         <item itemvalue="Python.bepaalDominanteKleurenKNNdubbeleGroepering" />
         <item itemvalue="Python.experimentjes" />
-        <item itemvalue="Python.bepaalDominanteKleurenKNN" />
-        <item itemvalue="Python.bepaalDominanteKleurenKNNRGB" />
       </list>
     </recent_temporary>
   </component>
@@ -236,7 +225,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621253441951</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Kleurbepaling is nu in hoofd en subcategorien uitgevoerd&#10;Pattern voor hoofdstructuren werkt">
+      <created>1621765650670</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1621765650670</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TodoView">
@@ -287,7 +283,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="gitignore aangepast" />
     <MESSAGE value="Eerste werkende versie bepaal kleuren" />
-    <option name="LAST_COMMIT_MESSAGE" value="Eerste werkende versie bepaal kleuren" />
+    <MESSAGE value="Kleurbepaling is nu in hoofd en subcategorien uitgevoerd&#10;Pattern voor hoofdstructuren werkt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Kleurbepaling is nu in hoofd en subcategorien uitgevoerd&#10;Pattern voor hoofdstructuren werkt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -336,6 +333,16 @@
           <url>file://$PROJECT_DIR$/RGBtopoColoring.py</url>
           <line>111</line>
           <option name="timeStamp" value="63" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/projectClasses/PictureCreator.py</url>
+          <line>37</line>
+          <option name="timeStamp" value="72" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/projectClasses/PictureCreator.py</url>
+          <line>32</line>
+          <option name="timeStamp" value="73" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

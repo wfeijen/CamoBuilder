@@ -8,28 +8,28 @@ from projectClasses.TopoGeneratieDefinities import TopoGeneratieDefinities
 from projectClasses.Topografie import Topografie
 from projectClasses.PictureCreator import PictureCreator
 
-# GlobaleTopoDefinities = TopoGeneratieDefinities(w=50,
-#                                                 h=60,
-#                                                 n=3,
-#                                                 minSize=20,
-#                                                 maxSize=300,
-#                                                 startRandom=3000,
-#                                                 invloedGewichten=700)
-
-GlobaleTopoDefinities = TopoGeneratieDefinities(w=5000,
-                                                h=6000,
-                                                n=10000,
+GlobaleTopoDefinities = TopoGeneratieDefinities(w=50,
+                                                h=60,
+                                                n=30,
                                                 minSize=20,
                                                 maxSize=300,
-                                                startRandom=0,
+                                                startRandom=300,
                                                 invloedGewichten=700)
 
-# GlobaleTopoDefinities = TopoGeneratieDefinities(w=500,
-#                                                 h=600,
+# GlobaleTopoDefinities = TopoGeneratieDefinities(w=5000,
+#                                                 h=6000,
 #                                                 n=300,
 #                                                 minSize=20,
 #                                                 maxSize=300,
-#                                                 startRandom=0,
+#                                                 startRandom=300,
+#                                                 invloedGewichten=700)
+
+# GlobaleTopoDefinities = TopoGeneratieDefinities(w=50,
+#                                                 h=60,
+#                                                 n=3,
+#                                                 minSize=250,
+#                                                 maxSize=1000,
+#                                                 startRandom=1,
 #                                                 invloedGewichten=700)
 Kleurendir = 'kleurParameters/'
 # Kleurenbestand = '2KleurenVoorOnderzoekGroveTekenig.csv'
@@ -58,7 +58,7 @@ if exists(pickleNaam):
     topografien = pickle.load(filehandler)
 else:
     topografien = [Topografie(GlobaleTopoDefinities) for i in range(aantalKleuren + 1)]
-    topografien = Parallel(n_jobs=min(7, aantalKleuren + 1), verbose=10)(
+    Parallel(n_jobs=min(7, aantalKleuren + 1), verbose=10)(
         delayed(topografie.genereer)(normaalVerdeling) for topografie in topografien)
     # for topografie in topografien:
     #     topografie.genereer(verdeling=normaalVerdeling)
@@ -70,7 +70,7 @@ else:
 #     delayed(createPicture)(NaamFilePrefix, kleurCodes, topografien, np.append(kleurGewichten, transparantie))
 #     for transparantie in [-10000, -8000, -6000, -4000, -2000, 0])
 pictureCreator = PictureCreator(GlobaleTopoDefinities)
-for transparantie in [-8000]:
+for transparantie in [100000]:
     pictureCreator.createPicture(NaamFilePrefix, kleurCodes, topografien, np.append(kleurGewichten, transparantie))
     print('klaar met plaatje')
 
