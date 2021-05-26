@@ -5,43 +5,44 @@ from joblib import Parallel, delayed
 import pickle
 from os.path import exists
 from projectClasses.TopoGeneratieDefinities import TopoGeneratieDefinities
-from projectClasses.Topografie import Topografie
+from projectClasses.Topografie import Topografie, genereerToposEnCache
 from projectClasses.PictureCreator import PictureCreator
 
-# GlobaleTopoDefinities = TopoGeneratieDefinities(w=50,
-#                                                 h=60,
-#                                                 n=3,
-#                                                 minSize=20,
-#                                                 maxSize=300,
-#                                                 startRandom=3000,
-#                                                 invloedGewichten=700)
+breedte = 5000
+hoogte = 6000
+sterkteSecundairPatroon = 1.0 # schaal is 0,0 (niet) tot en met 2.0 Secundair patroon maximaal
+transparantie = 1000 # schaal is 0 (niet tot 2000, volledig transparant)
 
-GlobaleTopoDefinities = TopoGeneratieDefinities(w=5000,
-                                                h=6000,
-                                                n=10000,
-                                                minSize=20,
-                                                maxSize=300,
+DetailTopoDefinities = TopoGeneratieDefinities(w=breedte,
+                                               h=hoogte,
+                                               n=max(5, hoogte) ,
+                                               minSize=max(1, hoogte // 300),
+                                               maxSize=max(1, hoogte // 20),
+                                               startRandom=10,
+                                               invloedGewichten=700,
+                                               afplatting=2)
+
+GlobaleTopoDefinities = TopoGeneratieDefinities(w=breedte,
+                                                h=hoogte,
+                                                n=max(1, hoogte // 20),
+                                                minSize=max(1, hoogte // 12),
+                                                maxSize=max(1, hoogte // 4),
                                                 startRandom=0,
-                                                invloedGewichten=700)
-
-# GlobaleTopoDefinities = TopoGeneratieDefinities(w=500,
-#                                                 h=600,
-#                                                 n=300,
-#                                                 minSize=20,
-#                                                 maxSize=300,
-#                                                 startRandom=0,
-#                                                 invloedGewichten=700)
+                                                invloedGewichten=700,
+                                                afplatting=3)
 Kleurendir = 'kleurParameters/'
 # Kleurenbestand = '2KleurenVoorOnderzoekGroveTekenig.csv'
 Kleurenbestand = 'lenteAlmer.jpg20210522 121425.csv'
 
-NaamFilePrefix = "camoOutput/" + GlobaleTopoDefinities.naam() + "kleurBest" + Kleurenbestand[:-4]
+NaamFilePrefix = "camoOutput/kleurBest-" + Kleurenbestand[:-4] + GlobaleTopoDefinities.afmetingen() + \
+                 "_GLOB" + GlobaleTopoDefinities.naam() + "_DET" + DetailTopoDefinities.naam()
 
 kleurInfo = pd.read_csv(Kleurendir + Kleurenbestand, index_col=0)
-kleurCodes = kleurInfo.iloc[:, 0:3].to_numpy()
-kleurGewichten = kleurInfo.iloc[:, 3]
-kleurGewichten = (kleurGewichten * GlobaleTopoDefinities.invloedGewichten) // kleurGewichten.max()
-kleurGewichten = kleurGewichten.to_numpy()
+DetailKleurCodes = kleurInfo.iloc[:, 0:3].to_numpy()
+KleurGewichten = kleurInfo.iloc[:, [3]]
+KleurGewichten = (KleurGewichten * GlobaleTopoDefinities.invloedGewichten) // KleurGewichten.max()
+KleurGewichten = KleurGewichten.to_numpy().flatten()
+KleurNaarHoofdkleurVerwijzing = kleurInfo.iloc[:, [5]].to_numpy().flatten()
 
 with open('normaalVerdeling1000stappen1000naar1.csv', 'r') as f:
     reader = csv.reader(f)
@@ -49,29 +50,32 @@ with open('normaalVerdeling1000stappen1000naar1.csv', 'r') as f:
     normaalVerdeling = []
     for s in dummy: normaalVerdeling.append(int(float((s[0]))))
 
-aantalKleuren = len(kleurCodes)
+aantalKleuren = len(DetailKleurCodes)
 
-pickleNaam = "cacheFiles/" + GlobaleTopoDefinities.naam() + str(aantalKleuren) + ".pkl"
-if exists(pickleNaam):
-    print("van cache")
-    filehandler = open(pickleNaam, 'rb')
-    topografien = pickle.load(filehandler)
-else:
-    topografien = [Topografie(GlobaleTopoDefinities) for i in range(aantalKleuren + 1)]
-    topografien = Parallel(n_jobs=min(7, aantalKleuren + 1), verbose=10)(
-        delayed(topografie.genereer)(normaalVerdeling) for topografie in topografien)
-    # for topografie in topografien:
-    #     topografie.genereer(verdeling=normaalVerdeling)
-    print('klaar met topos')
-    filehandler = open(pickleNaam, 'wb')
-    pickle.dump(topografien, filehandler)
+GlobaleTopografien = genereerToposEnCache(topoDefinities=GlobaleTopoDefinities,
+                                          aantalTopos=2,
+                                          verdeling=normaalVerdeling)
+
+DetailTopografien = genereerToposEnCache(topoDefinities=DetailTopoDefinities,
+                                         aantalTopos=aantalKleuren,
+                                         verdeling=normaalVerdeling)
+
+TranspariantieTopografie = genereerToposEnCache(topoDefinities=DetailTopoDefinities,
+                                                aantalTopos=1,
+                                                verdeling=normaalVerdeling)[0]
 
 # Parallel(n_jobs=7, verbose=10)(
 #     delayed(createPicture)(NaamFilePrefix, kleurCodes, topografien, np.append(kleurGewichten, transparantie))
 #     for transparantie in [-10000, -8000, -6000, -4000, -2000, 0])
 pictureCreator = PictureCreator(GlobaleTopoDefinities)
-for transparantie in [-8000]:
-    pictureCreator.createPicture(NaamFilePrefix, kleurCodes, topografien, np.append(kleurGewichten, transparantie))
-    print('klaar met plaatje')
 
-print('klaar met plaatjes')
+pictureCreator.createPicture(name=NaamFilePrefix,
+                             colorCodes=DetailKleurCodes,
+                             detailTopos=DetailTopografien,
+                             globaleTopos=GlobaleTopografien,
+                             transparantieTopo=TranspariantieTopografie,
+                             transparantie=transparantie,
+                             colorWeights=KleurGewichten,
+                             kleurNaarHoofdkleurVerwijzing=KleurNaarHoofdkleurVerwijzing,
+                             sterkteSecundairPatroon=sterkteSecundairPatroon)
+print('klaar met plaatje')

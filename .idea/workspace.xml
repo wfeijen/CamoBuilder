@@ -4,18 +4,17 @@
     <bookmark url="file://$PROJECT_DIR$/Experimenten met Pixels2.py" line="48" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="Kleurbepaling is nu in hoofd en subcategorien uitgevoerd&#10;Pattern voor hoofdstructuren werkt">
-      <change afterPath="$PROJECT_DIR$/RGBdualTopoColoringFout.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projectClasses/ColorPair.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projectClasses/PictureCreator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projectClasses/TopoGeneratieDefinities.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projectClasses/Topografie.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projectClasses/TweeDimentionalClass.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projectClasses/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/csv-plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/csv-plugin.xml" afterDir="false" />
+    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="RGBdualTopColoring is nu verdeeld in classes en werkt weer">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RGBdualTopoColoring.py" beforeDir="false" afterPath="$PROJECT_DIR$/RGBdualTopoColoring.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RGBtopoColoring.py" beforeDir="false" afterPath="$PROJECT_DIR$/RGBtopoColoring.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RGBdualTopoColoringFout.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RGBtopoColoring.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/experimentjes.py" beforeDir="false" afterPath="$PROJECT_DIR$/experimentjes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectClasses/ColorPair.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/ColorPair.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectClasses/PictureCreator.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/PictureCreator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectClasses/TopoGeneratieDefinities.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/TopoGeneratieDefinities.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectClasses/Topografie.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/Topografie.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectClasses/TweeDimentionalClass.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +31,10 @@
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/anaconda3/envs/DeepLearningWithPythonMEAP/lib/python3.8/multiprocessing/process.py" root0="SKIP_INSPECTION" />
+    <setting file="file://$USER_HOME$/anaconda3/envs/DeepLearningWithPythonMEAP/lib/python3.8/site-packages/joblib/externals/loky/process_executor.py" root0="SKIP_INSPECTION" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -192,10 +195,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.RGBdualTopoColoring" />
+        <item itemvalue="Python.experimentjes" />
         <item itemvalue="Python.RGBdualTopoColoringFout" />
         <item itemvalue="Python.RGBtopoColoring" />
         <item itemvalue="Python.bepaalDominanteKleurenKNNdubbeleGroepering" />
-        <item itemvalue="Python.experimentjes" />
       </list>
     </recent_temporary>
   </component>
@@ -232,7 +235,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621765650670</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="RGBdualTopColoring is nu verdeeld in classes en werkt weer">
+      <created>1621851997932</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1621851997932</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView">
@@ -284,7 +294,8 @@
     <MESSAGE value="gitignore aangepast" />
     <MESSAGE value="Eerste werkende versie bepaal kleuren" />
     <MESSAGE value="Kleurbepaling is nu in hoofd en subcategorien uitgevoerd&#10;Pattern voor hoofdstructuren werkt" />
-    <option name="LAST_COMMIT_MESSAGE" value="Kleurbepaling is nu in hoofd en subcategorien uitgevoerd&#10;Pattern voor hoofdstructuren werkt" />
+    <MESSAGE value="RGBdualTopColoring is nu verdeeld in classes en werkt weer" />
+    <option name="LAST_COMMIT_MESSAGE" value="RGBdualTopColoring is nu verdeeld in classes en werkt weer" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -330,19 +341,19 @@
           <option name="timeStamp" value="55" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/RGBtopoColoring.py</url>
-          <line>111</line>
-          <option name="timeStamp" value="63" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/projectClasses/PictureCreator.py</url>
-          <line>37</line>
+          <line>39</line>
           <option name="timeStamp" value="72" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/projectClasses/PictureCreator.py</url>
-          <line>32</line>
-          <option name="timeStamp" value="73" />
+          <line>25</line>
+          <option name="timeStamp" value="77" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/experimentjes.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="85" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

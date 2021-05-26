@@ -2,15 +2,8 @@ import math
 import numpy as np
 import pandas as pd
 import random
-def x(centerX, size):
-    if centerX - size < 0:
-        startX = 0
-    else:
-        startX = centerX - size
-    return startX
 
-
-for c in range(-2, 2):
-    for s in range(-2, 2):
-        print(c, "_", s, x(c ,s), max(c-s, 0))
-
+x = np.random.choice(2 * 3 , 3 * 5)- 3
+y = x.reshape(3, 5)
+a = y[2,2]
+print(x)

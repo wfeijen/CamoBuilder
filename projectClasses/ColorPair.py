@@ -5,4 +5,5 @@ class ColorPair:
         self.kleurCode = kleurCode
 
     def afgewogen_kleurcode(self, i):
-        return int(self.valueOut * self.kleurCode[i])
+        antwoord = int(self.valueOut * self.kleurCode[i])
+        return antwoord
