@@ -18,7 +18,7 @@ class Topografie:
         endX = int(min(centerX + (size * self.definities.afplatting), self.definities.w))
         startY = max(centerY - size, 0)
         endY = min(centerY + size, self.definities.h)
-        if self.topografie[centerX, centerY] > self.definities.startRandom:
+        if self.topografie[centerX, centerY] > 0:
             factor = -1
         else:
             factor = 1

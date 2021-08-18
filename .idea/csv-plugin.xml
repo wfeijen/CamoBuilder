@@ -24,6 +24,48 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/kleurParameters/lenteOostvaardersplassen.jpg20210527 084004.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/kleurParameters/lenteOostvaardersplassen2.jpg20210527 144803.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/kleurParameters/lenteOostvaardersplassen2.jpg20210527 200721.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/kleurParameters/lenteOostvaardersplassen2.jpg20210528 184038.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/kleurParameters/lenteOostvaardersplassen2.jpg20210529 115913.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/kleurParameters/lenteOostvaardersplassen2.jpg20210611 112418.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
       </map>
     </option>
   </component>

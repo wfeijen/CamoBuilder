@@ -6,16 +6,16 @@ class TopoGeneratieDefinities:
                  minSize,
                  maxSize,
                  startRandom,
-                 invloedGewichten,
-                 afplatting):
+                 afplatting,
+                 versie):
         self.h = h
         self.w = w
         self.n = n
         self.minSize = minSize
         self.maxSize = maxSize
         self.startRandom = startRandom
-        self.invloedGewichten = invloedGewichten
         self.afplatting = afplatting
+        self.versie = versie
         print(self.naam())
 
     def naam(self):
@@ -23,8 +23,9 @@ class TopoGeneratieDefinities:
                "_MinSize" + str(self.minSize) + \
                "_MaxSize" + str(self.maxSize) + \
                "_StartRandom" + str(self.startRandom) + \
-               "_InvloedGew" + str(self.invloedGewichten) +\
-               "_afplatting" + str(self.afplatting)
+               "_afplatting" + str(self.afplatting) +\
+               "_v" + str(self.versie)
+
 
     def afmetingen(self):
         return "_W" + str(self.w) + \
