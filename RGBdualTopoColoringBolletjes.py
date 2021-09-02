@@ -9,11 +9,11 @@ from projectClasses.Topografie import Topografie, genereerToposEnCache
 from projectClasses.PictureCreator import PictureCreator
 
 
-breedte = 5000
-hoogte = 6000
-versie = 5
-sterkteSecundairPatroon = 1.0
-transparantie = 1600#3200
+breedte = 1500
+hoogte = 2000
+versie = 11
+sterkteSecundairPatroon = 0.7
+transparantie = 3#3200
 invloedGewichtenPromile = 2000#400
 
 KleurenPad = 'kleurParameters/graslandZomer3.jpg20210815 172940.csv'
@@ -22,11 +22,11 @@ kleurInfo = pd.read_csv(KleurenPad, index_col=0)
 
 DetailTopoDefinities = TopoGeneratieDefinities(w=breedte,
                                                h=hoogte,
-                                               n=max(5, hoogte * 4 // len(kleurInfo)) ,
+                                               n=max(5, hoogte * 5 // len(kleurInfo)) ,
                                                minSize=max(1, hoogte // 100),
-                                               maxSize=max(1, hoogte // 20),
+                                               maxSize=max(1, hoogte // 15),
                                                startRandom=0,
-                                               afplatting=2,
+                                               afplatting=0.7,
                                                versie=versie)
 
 
@@ -37,7 +37,7 @@ GlobaleTopoDefinities = TopoGeneratieDefinities(w=breedte,
                                                 minSize=max(1, hoogte // 15),
                                                 maxSize=max(1, hoogte // 6),
                                                 startRandom=0,
-                                                afplatting=3,
+                                                afplatting=2,
                                                versie=versie)
 
 Kleurenbestand = os.path.splitext(os.path.basename(KleurenPad))[0]
@@ -77,7 +77,7 @@ else:
     TranspariantieTopografie = 0
 pictureCreator = PictureCreator(GlobaleTopoDefinities)
 
-pictureCreator.createPicture(name=NaamFilePrefix,
+pictureCreator.createBolletjesPicture(name=NaamFilePrefix,
                              colorCodes=DetailKleurCodes,
                              detailTopos=DetailTopografien,
                              globaleTopos=GlobaleTopografien,

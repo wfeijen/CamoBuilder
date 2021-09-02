@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="RGBdualTopColoring goede resultaten">
-      <change beforePath="$PROJECT_DIR$/.idea/csv-plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/csv-plugin.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/RGBdualTopoColoringBolletjes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RGBdualTopoColoring.py" beforeDir="false" afterPath="$PROJECT_DIR$/RGBdualTopoColoring.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projectClasses/PictureCreator.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/PictureCreator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClasses/TopoGeneratieDefinities.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/TopoGeneratieDefinities.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClasses/Topografie.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/Topografie.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +81,7 @@
       <recent name="$PROJECT_DIR$/camoOutput" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.RGBdualTopoColoring">
+  <component name="RunManager" selected="Python.RGBdualTopoColoringBolletjes">
     <configuration name="RGBdualTopoColoring" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Camo builder" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -97,6 +95,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RGBdualTopoColoring.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="RGBdualTopoColoringBolletjes" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Camo builder" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RGBdualTopoColoringBolletjes.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -147,27 +166,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="bepaalDominanteKleurenKNNdubbeleGroepering" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Camo builder" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bepaalDominanteKleurenKNNdubbeleGroepering.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="experimentjes" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Camo builder" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -193,16 +191,16 @@
       <item itemvalue="Python.RGBdualTopoColoringFout" />
       <item itemvalue="Python.RGBdualTopoColoring" />
       <item itemvalue="Python.RGBtopoColoring" />
-      <item itemvalue="Python.bepaalDominanteKleurenKNNdubbeleGroepering" />
       <item itemvalue="Python.experimentjes" />
+      <item itemvalue="Python.RGBdualTopoColoringBolletjes" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.RGBdualTopoColoringBolletjes" />
         <item itemvalue="Python.RGBdualTopoColoring" />
         <item itemvalue="Python.experimentjes" />
         <item itemvalue="Python.RGBdualTopoColoringFout" />
         <item itemvalue="Python.RGBtopoColoring" />
-        <item itemvalue="Python.bepaalDominanteKleurenKNNdubbeleGroepering" />
       </list>
     </recent_temporary>
   </component>
@@ -253,7 +251,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622013724725</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="RGBdualTopColoring goede resultaten">
+      <created>1629293282381</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1629293282381</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView">
@@ -353,11 +358,6 @@
           <option name="timeStamp" value="55" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/projectClasses/PictureCreator.py</url>
-          <line>48</line>
-          <option name="timeStamp" value="72" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/experimentjes.py</url>
           <line>8</line>
           <option name="timeStamp" value="85" />
@@ -365,17 +365,7 @@
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/projectClasses/PictureCreator.py</url>
           <line>18</line>
-          <option name="timeStamp" value="87" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/projectClasses/PictureCreator.py</url>
-          <line>17</line>
-          <option name="timeStamp" value="88" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/RGBdualTopoColoring.py</url>
-          <line>70</line>
-          <option name="timeStamp" value="91" />
+          <option name="timeStamp" value="98" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
