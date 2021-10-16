@@ -7,16 +7,17 @@ import os
 from projectClasses.TopoGeneratieDefinities import TopoGeneratieDefinities
 from projectClasses.Topografie import Topografie, genereerToposEnCache
 from projectClasses.PictureCreator import PictureCreator
+from PerlinTopoGenerator import PerlinTopoGeneratator
 
 
 breedte = 1500
 hoogte = 2000
 versie = 4
-sterkteSecundairPatroon = 0.5
+sterkteSecundairPatroon = 1.0
 transparantie = 800#3200
 invloedGewichtenPromile = 800#400
 
-KleurenPad = 'kleurParameters/graslandZomer3.jpg20211015 144736.csv'
+KleurenPad = 'kleurParameters/graslandZomer3.jpg20210815 172940.csv'
 root_dir = '/mnt/GroteSchijf/machineLearningPictures/camoBuilder/'
 
 kleurInfo = pd.read_csv(KleurenPad, index_col=0)
@@ -76,7 +77,6 @@ if transparantie > 0:
     TranspariantieTopografie = genereerToposEnCache(topoDefinities=GlobaleTopoDefinities,
                                                     aantalTopos=1,
                                                     verdeling=normaalVerdeling,
-
                                                     rootDir=root_dir)[0]
 else:
     TranspariantieTopografie = 0

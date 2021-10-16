@@ -3,13 +3,14 @@ import numpy as np
 import pickle
 from joblib import Parallel, delayed
 from os.path import exists
+from PIL import Image
 
 
 class Topografie:
     def __init__(self, definities):
         self.definities = definities
-        self.minSizeSqrt = math.isqrt(self.definities.minSize)
-        self.maxSizeSqrt = int(math.ceil(math.sqrt(self.definities.maxSize)))
+        self.minSizeSqrt = definities.minSize
+        self.maxSizeSqrt = definities.maxSize
         self.topografie = np.zeros((definities.w, definities.h))
 
     def liftSingle(self, size, centerX, centerY, verdeling):
@@ -36,7 +37,7 @@ class Topografie:
         if self.definities.startRandom == 0:
             self.topografie = np.zeros((self.definities.w, self.definities.h))
         else:
-            initieleVulling = np.random.choice(2 * self.definities.startRandom - self.definities.startRandom,
+            initieleVulling = np.random.choice(self.definities.startRandom,
                                                self.definities.w * self.definities.h)
             self.topografie = initieleVulling.reshape(self.definities.w, self.definities.h)
 
@@ -48,11 +49,21 @@ class Topografie:
             size = size * size
             self.liftSingle(size, cx, cy, verdeling)
         self.topografie = np.absolute(self.topografie) + 1
-        return self
+        min = np.amin(self.topografie)
+        factor = 255 / (np.amax(self.topografie) - min)
+        Image.fromarray(np.uint8((self.topografie - min) * factor)).show()
+        factor = 1000 / (np.amax(self.topografie) - min)
+        return np.uint8((self.topografie - min) * factor)
+
+    def show(self):
+        min = np.amin(self.topografie )
+        factor = 255 / (np.amax(self.topografie ) - min)
+
+        Image.fromarray(np.uint8((self.topografie  - min) * factor)).show()
 
 
-def genereerToposEnCache(topoDefinities, aantalTopos, verdeling):
-    pickleNaam = "cacheFiles/" + topoDefinities.afmetingen() + topoDefinities.naam() + "_aantal" + str(
+def genereerToposEnCache(topoDefinities, aantalTopos, verdeling, rootDir):
+    pickleNaam = rootDir + "cacheFiles/" + topoDefinities.afmetingen() + topoDefinities.naam() + "_aantal" + str(
         aantalTopos) + ".pkl"
     if exists(pickleNaam):
         print("van cache")
@@ -68,4 +79,6 @@ def genereerToposEnCache(topoDefinities, aantalTopos, verdeling):
         print('klaar met topos')
         filehandler = open(pickleNaam, 'wb')
         pickle.dump(topografien, filehandler)
+    # for topografie in topografien:
+    #     topografie.show()
     return topografien
