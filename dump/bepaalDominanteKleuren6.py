@@ -80,7 +80,7 @@ def bepaalWaardenEnPasAan(dir, name):
             else:
                 kleur.afstand = kleur.waardeGecorrigeerd * afstand
         hoofdkleurenLijst.append(hoofdKleur)
-        wegstreeplijst.sort(key=lambda x: x.afstand, reverse=True)
+        wegstreeplijst.sort(key=lambda x: x.afstand_kwadraad, reverse=True)
     print(len(wegstreeplijst))
     print(len(hoofdkleurenLijst))
     i = 1

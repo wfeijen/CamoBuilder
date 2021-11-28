@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import os
 from projectClasses.PictureCreator import PictureCreator
-from PerlinTopoGenerator import PerlinTopoGeneratator
+from projectClasses.PerlinTopoGenerator import PerlinTopoGeneratator
 
 
 breedte = 1500

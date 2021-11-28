@@ -53,7 +53,8 @@ class Topografie:
         factor = 255 / (np.amax(self.topografie) - min)
         Image.fromarray(np.uint8((self.topografie - min) * factor)).show()
         factor = 1000 / (np.amax(self.topografie) - min)
-        return np.uint8((self.topografie - min) * factor)
+        self.topografie = np.uint8((self.topografie - min) * factor)
+        return self
 
     def show(self):
         min = np.amin(self.topografie )

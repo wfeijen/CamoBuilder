@@ -103,7 +103,6 @@ class PictureCreator:
         for ix in range(self.definities.w):
             for iy in range(self.definities.h):
                 coordinatenLijst.append((ix, iy))
-
         random.shuffle(coordinatenLijst)
 
         for ix, iy in coordinatenLijst:

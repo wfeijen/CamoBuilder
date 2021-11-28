@@ -1,32 +1,54 @@
+import math
+
 import noise
 import numpy as np
 from PIL import Image
 
-
-shape = (2000, 1500)
-octaves=7
-persistence=0.2
+base = 2
+max_value_rond = 10000
+size = 1000
+octaves=10
+persistence=0.4
 lacunarity=4.0
-scalex=400
-scaley=200
-binaryLevel = 200.0
+scalex=200
+scaley=400
+binaryLevel = 0.2
 
-world = np.zeros(shape)
-for i in range(shape[0]):
-    for j in range(shape[1]):
-        world[i][j] = noise.pnoise2(i / scaley,
-                                    j / scalex,
-                                    octaves=octaves,
-                                    persistence=persistence,
-                                    lacunarity=lacunarity,
-                                    repeatx=shape[0] / scalex + 1,
-                                    repeaty=shape[1] / scaley +1 ,
-                                    base=54193)
+midden = size / 2
 
-min = np.amin(world)
-factor = 255 / (np.amax(world) - min)
-world2 = (world - min) * factor
-# world3 = np.where(world2 > binaryLevel, 255, 0)
+def show_world(world, grens):
+    min = np.amin(world)
+    print(min)
+    print(np.amax(world))
+    #factor = 255 / (np.amax(world) - min)
+    #world_wolk = (world - min) * factor
+    # Image.fromarray(np.uint8(world_wolk)).show()
+    world_grens = np.where(world > grens, 255, 0)
+    Image.fromarray(np.uint8(world_grens)).show()
 
+for i in range(3):
+    world_vlak = np.zeros((size, size))
+    for x in range(size):
+        for y in range(size):
+            world_vlak[x][y] = noise.pnoise2(x / scalex,
+                                        y / scaley,
+                                        octaves=octaves,
+                                        persistence=persistence,
+                                        lacunarity=lacunarity,
+                                        repeatx=size / scalex + 1,
+                                        repeaty=size / scaley + 1,
+                                        base=base + i)
 
-Image.fromarray(np.uint8(world2)).show()
+    world_rond = (world_vlak - np.amin(world_vlak))
+
+    for x in range(size):
+        for y in range(size):
+            afstand_kwadraad = ((x - midden) ** 2 + (y - midden) ** 2)
+            vermenigvuldinging = max(0,
+                                     1 - (afstand_kwadraad / (midden ** 2)))
+            world_rond[x][y] = vermenigvuldinging * world_rond[x][y]
+
+    #show_world(world_vlak, binaryLevel)
+
+    show_world(world_rond, binaryLevel)
+

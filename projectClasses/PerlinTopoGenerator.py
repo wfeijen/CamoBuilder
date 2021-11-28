@@ -65,7 +65,6 @@ class PerlinTopoGeneratator:
         topografien = [self.generate_topo(i) for i in range(self.n)]
         # topografien = Parallel(n_jobs=min(7, self.n), verbose=10)(
         #     delayed(self.generate_topo)(i) for i in range(self.n))
-
         print('klaar met topos')
         return topografien
 

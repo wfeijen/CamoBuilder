@@ -11,12 +11,12 @@ from projectClasses.PictureCreator import PictureCreator
 
 breedte = 1500
 hoogte = 2000
-versie = 4
+versie = 5
 sterkteSecundairPatroon = 0.5
 transparantie = 800#3200
 invloedGewichtenPromile = 800#400
 
-KleurenPad = 'kleurParameters/graslandZomer3.jpg20211015 144736.csv'
+KleurenPad = 'kleurParameters/graslandZomer3.jpg20210815 172940.csv'
 root_dir = '/mnt/GroteSchijf/machineLearningPictures/camoBuilder/'
 
 kleurInfo = pd.read_csv(KleurenPad, index_col=0)
