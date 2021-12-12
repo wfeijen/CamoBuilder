@@ -1,4 +1,3 @@
-import random
 import noise
 import numpy as np
 from PIL import Image
@@ -50,23 +49,22 @@ class PerlinBlotter:
         self.base = self.base + 1
         return canvas
 
+if __name__ == "__main__":
+    def show_blot(canvas):
+        min = np.amin(canvas)
+        print(min)
+        print(np.amax(canvas))
+        world_grens = canvas * 255
+        Image.fromarray(np.uint8(world_grens)).show()
 
 
-def show_blot(world):
-    min = np.amin(world)
-    print(min)
-    print(np.amax(world))
-    world_grens = world * 255
-    Image.fromarray(np.uint8(world_grens)).show()
+    pb = PerlinBlotter(persistence=0.4,
+                       lacunarity=4.0,
+                       octaves=9,
+                       scaleX=200,
+                       scaleY=400,
+                       startBase=0,
+                       grenswaarde=0.5)
 
-pb = PerlinBlotter(persistence=0.4,
-                   lacunarity=4.0,
-                   octaves=9,
-                   scaleX=200,
-                   scaleY=400,
-                   startBase=0,
-                   grenswaarde=0.5)
-
-for i in range(0, 5):
-    show_blot(pb.blot(blot_sizeX=300,
-                   blot_sizeY=300))
+    for i in range(0, 5):
+        show_blot(pb.blot(blot_sizeX=300, blot_sizeY=300))

@@ -5,22 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="voor verwijderen overbodige files">
-      <change afterPath="$PROJECT_DIR$/RGBstackedPerlinNaarKleurverhouding.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projectClasses/DataFrameToBolletjesPicture.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projectClasses/perlinBlotCreator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/rommel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/csv-plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/csv-plugin.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PerlinTopoGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RGBdualTopoColoringBolletjes.py" beforeDir="false" afterPath="$PROJECT_DIR$/RGBdualTopoColoringBolletjes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RGBdualTopoColoringPerlin.py" beforeDir="false" afterPath="$PROJECT_DIR$/RGBdualTopoColoringPerlin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RGBdualTopoColoringPerlinOvalen.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dump/bepaalDominanteKleuren3.py" beforeDir="false" afterPath="$PROJECT_DIR$/dump/bepaalDominanteKleuren3.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dump/bepaalDominanteKleuren6.py" beforeDir="false" afterPath="$PROJECT_DIR$/dump/bepaalDominanteKleuren6.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kleur_verdeling.py" beforeDir="false" afterPath="$PROJECT_DIR$/kleur_verdeling.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/perlin_noise_experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/perlin_noise_experiment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClasses/PerlinTopoGeneratieDefinities.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClasses/PictureCreator.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/PictureCreator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClasses/Topografie.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/Topografie.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectClasses/perlinBlotCreator.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/perlinBlotCreator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +49,9 @@
       </list>
     </option>
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="953" />
     <option name="width" value="974" />
@@ -95,8 +87,8 @@
       <recent name="$PROJECT_DIR$/camoOutput" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.perlinBlotCreator">
-    <configuration name="RGBstackedPerlinNaarKleurverhouding" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.PerlinTopoGenerator">
+    <configuration name="PerlinTopoGenerator" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Camo builder" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -104,11 +96,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/projectClasses" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RGBstackedPerlinNaarKleurverhouding.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -117,7 +109,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="kleur_verdeling" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="RGBdualTopoColoring" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Camo builder" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -129,7 +121,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/kleur_verdeling.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RGBdualTopoColoring.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -202,19 +194,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.perlin_noise_experiment" />
-      <item itemvalue="Python.kleur_verdeling" />
-      <item itemvalue="Python.RGBstackedPerlinNaarKleurverhouding" />
-      <item itemvalue="Python.rommel" />
       <item itemvalue="Python.perlinBlotCreator" />
+      <item itemvalue="Python.perlin_noise_experiment" />
+      <item itemvalue="Python.rommel" />
+      <item itemvalue="Python.PerlinTopoGenerator" />
+      <item itemvalue="Python.RGBdualTopoColoring" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.PerlinTopoGenerator" />
+        <item itemvalue="Python.RGBdualTopoColoring" />
         <item itemvalue="Python.perlinBlotCreator" />
         <item itemvalue="Python.rommel" />
         <item itemvalue="Python.perlin_noise_experiment" />
-        <item itemvalue="Python.RGBstackedPerlinNaarKleurverhouding" />
-        <item itemvalue="Python.kleur_verdeling" />
       </list>
     </recent_temporary>
   </component>
@@ -343,7 +335,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="gitignore aangepast" />
@@ -434,14 +425,9 @@
           <option name="timeStamp" value="118" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/projectClasses/perlinBlotCreator.py</url>
-          <line>58</line>
-          <option name="timeStamp" value="120" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/projectClasses/perlinBlotCreator.py</url>
-          <line>44</line>
-          <option name="timeStamp" value="124" />
+          <url>file://$PROJECT_DIR$/RGBdualTopoColoring.py</url>
+          <line>22</line>
+          <option name="timeStamp" value="128" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

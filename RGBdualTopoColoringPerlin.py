@@ -29,9 +29,9 @@ aantalKleuren = len(DetailKleurCodes)
 # noise.pnoise3()
 # noise.snoise2()
 
-detailTopoGenerator = PerlinTopoGeneratator(w=breedte,
-                                            h=hoogte,
-                                            n=aantalKleuren,
+detailTopoGenerator = PerlinTopoGeneratator(breedte=breedte,
+                                            hoogte=hoogte,
+                                            aantal=aantalKleuren,
                                             octaves=7,
                                             persistence=0.2,
                                             lacunarity=10.0,
@@ -43,9 +43,9 @@ detailTopos = detailTopoGenerator.generate_all_topos()
 
 
 
-globaleTopoGenerator = PerlinTopoGeneratator(w=breedte,
-                                             h=hoogte,
-                                             n=aantalKleurenSecundair,
+globaleTopoGenerator = PerlinTopoGeneratator(breedte=breedte,
+                                             hoogte=hoogte,
+                                             aantal=aantalKleurenSecundair,
                                              octaves=3,
                                              persistence=0.2,
                                              lacunarity=4.0,
@@ -56,9 +56,9 @@ globaleTopoGenerator = PerlinTopoGeneratator(w=breedte,
 globaleTopos = globaleTopoGenerator.generate_all_topos()
 
 if transparantie > 0:
-    transparantieTopoGenerator = PerlinTopoGeneratator(w=breedte,
-                                                       h=hoogte,
-                                                       n=1,
+    transparantieTopoGenerator = PerlinTopoGeneratator(breedte=breedte,
+                                                       hoogte=hoogte,
+                                                       aantal=1,
                                                        octaves=2,
                                                        persistence=0.2,
                                                        lacunarity=4.0,
