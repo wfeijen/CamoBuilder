@@ -19,6 +19,15 @@ class PerlinBlotter:
         self.base = startBase
         self.grenswaarde = grenswaarde
 
+    def name(self):
+        return "_o" + str(self.octaves) + \
+            "_p" + str(self.persistence) + \
+               "_l" + str(self.lacunarity) + \
+               "_X" + str(self.scaleX) + \
+               "_Y" + str(self.scaleY) + \
+               "_b" + str(self.base) + \
+               "_g" + str(self.grenswaarde)
+
     def blot(self, blot_sizeX, blot_sizeY):
         centerX = blot_sizeX // 2
         centerY = blot_sizeY // 2
@@ -44,9 +53,9 @@ class PerlinBlotter:
                 canvas[x, y] = canvas[x, y] * vermenigvuldinging
         # in plaats van opnieuw normaliseren passen we de grenswaarde aan die uitgaat
         # van range 0-1
-        grenswaarde = self.grenswaarde * (np.amax(canvas) - np.amin(canvas)) - np.amin(canvas)
-        canvas = np.where(canvas > grenswaarde, 1, 0)
-        self.base = self.base + 1
+        canvas = (canvas - np.amin(canvas)) / (np.amax(canvas) - np.amin(canvas))
+        canvas = np.where(canvas > self.grenswaarde, 1, 0)
+        self.base = self.base + np.random.randint(1, 2)
         return canvas
 
 if __name__ == "__main__":
@@ -58,13 +67,14 @@ if __name__ == "__main__":
         Image.fromarray(np.uint8(world_grens)).show()
 
 
-    pb = PerlinBlotter(persistence=0.4,
-                       lacunarity=4.0,
-                       octaves=9,
-                       scaleX=200,
-                       scaleY=400,
+    pb = PerlinBlotter(persistence=0.2,
+                       lacunarity=2.0,
+                       octaves=8,
+                       scaleX=50,
+                       scaleY=100,
                        startBase=0,
-                       grenswaarde=0.5)
+                       grenswaarde=0.3)
 
     for i in range(0, 5):
-        show_blot(pb.blot(blot_sizeX=300, blot_sizeY=300))
+        show_blot(pb.blot(blot_sizeX=750, blot_sizeY=750))
+

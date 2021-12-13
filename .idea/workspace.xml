@@ -4,10 +4,9 @@
     <bookmark url="file://$PROJECT_DIR$/Experimenten met Pixels2.py" line="48" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="voor verwijderen overbodige files">
-      <change beforePath="$PROJECT_DIR$/.idea/csv-plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/csv-plugin.xml" afterDir="false" />
+    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="perlin globaal begint te werken">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RGBdualTopoColoringPerlin.py" beforeDir="false" afterPath="$PROJECT_DIR$/RGBdualTopoColoringPerlin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/perlin_noise_experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/perlin_noise_experiment.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projectClasses/perlinBlotCreator.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/perlinBlotCreator.py" afterDir="false" />
     </list>
@@ -203,10 +202,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.PerlinTopoGenerator" />
-        <item itemvalue="Python.RGBdualTopoColoring" />
-        <item itemvalue="Python.perlinBlotCreator" />
-        <item itemvalue="Python.rommel" />
         <item itemvalue="Python.perlin_noise_experiment" />
+        <item itemvalue="Python.perlinBlotCreator" />
+        <item itemvalue="Python.RGBdualTopoColoring" />
+        <item itemvalue="Python.rommel" />
       </list>
     </recent_temporary>
   </component>
@@ -278,7 +277,14 @@
       <option name="project" value="LOCAL" />
       <updated>1634375510021</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="perlin globaal begint te werken">
+      <created>1639320680421</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1639320680421</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TodoView">
@@ -344,7 +350,8 @@
     <MESSAGE value="RGBdualTopColoring goede resultaten" />
     <MESSAGE value="voor experiment met randomizatie van volgorde punten" />
     <MESSAGE value="voor verwijderen overbodige files" />
-    <option name="LAST_COMMIT_MESSAGE" value="voor verwijderen overbodige files" />
+    <MESSAGE value="perlin globaal begint te werken" />
+    <option name="LAST_COMMIT_MESSAGE" value="perlin globaal begint te werken" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -428,6 +435,11 @@
           <url>file://$PROJECT_DIR$/RGBdualTopoColoring.py</url>
           <line>22</line>
           <option name="timeStamp" value="128" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py</url>
+          <line>58</line>
+          <option name="timeStamp" value="133" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
