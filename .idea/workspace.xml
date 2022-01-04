@@ -4,11 +4,9 @@
     <bookmark url="file://$PROJECT_DIR$/Experimenten met Pixels2.py" line="48" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="perlin globaal begint te werken">
+    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="perlin globaal werkt">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/perlin_noise_experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/perlin_noise_experiment.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClasses/perlinBlotCreator.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/perlinBlotCreator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +69,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/projectClasses" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -284,7 +282,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639320680421</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="perlin globaal werkt">
+      <created>1639393416228</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1639393416228</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TodoView">
@@ -351,7 +356,8 @@
     <MESSAGE value="voor experiment met randomizatie van volgorde punten" />
     <MESSAGE value="voor verwijderen overbodige files" />
     <MESSAGE value="perlin globaal begint te werken" />
-    <option name="LAST_COMMIT_MESSAGE" value="perlin globaal begint te werken" />
+    <MESSAGE value="perlin globaal werkt" />
+    <option name="LAST_COMMIT_MESSAGE" value="perlin globaal werkt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -438,8 +444,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py</url>
-          <line>58</line>
-          <option name="timeStamp" value="133" />
+          <line>35</line>
+          <option name="timeStamp" value="135" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py</url>
+          <line>31</line>
+          <option name="timeStamp" value="136" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
