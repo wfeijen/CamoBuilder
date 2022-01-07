@@ -144,3 +144,5 @@ class PictureCreator:
                 pixelsPerKleur[kleurGewichten_kleurCodes[0][2]] = pixelsPerKleur[kleurGewichten_kleurCodes[0][2]] + 1
             pixelsGedaan = pixelsGedaan + 1
         img.save(rootDir + name + '_tr' + str(transparantie) + "_secPatr" + str(sterkteSecundairPatroon) + ".JPG")
+
+

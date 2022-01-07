@@ -4,7 +4,8 @@ import numpy as np
 import pandas as pd
 from PIL import Image, ImageShow
 from projectClasses.perlinBlotCreator import PerlinBlotter
-
+from projectClasses.camo_picture import createCamoPicture
+from projectClasses.Utilities import replace_with_dict
 
 class PerlinTopoGeneratator:
     def __init__(self,
@@ -29,6 +30,9 @@ class PerlinTopoGeneratator:
         min_kleur_nummer = self.kleurgroepen_globaal[self.kleurgroepen_globaal['aantal'] != 0]['verdeling_in_M'].min()
         self.canvas_globaal = np.full((self.w, self.h), min_kleur_nummer)
         self.naam = "v" + str(self.versie)
+        self.verdeling_in_M_naar_kleur = dict(zip(self.kleur_verhoudingen.verdeling_in_N, zip(self.kleur_verhoudingen.R,
+                                                                                              self.kleur_verhoudingen.G,
+                                                                                              self.kleur_verhoudingen.B)))
 
     def afmetingen(self):
         return "_W" + str(self.w) + \
@@ -105,6 +109,11 @@ class PerlinTopoGeneratator:
         self.kleurgroepen_lokaal['wenselijk_aantal'] = self.kleurgroepen_lokaal['verhouding'] * self.w * self.h
         self.kleurgroepen_lokaal['delta_aantal'] = self.kleurgroepen_lokaal['wenselijk_aantal'] - \
                                                    self.kleurgroepen_lokaal['aantal']
+        # Nu invullen canvaslocaal met echte kleurnummers
+        temp_kleurgroepen = self.kleurgroepen_lokaal[self.kleurgroepen_lokaal['aantal'] > 0]
+        vertaalTabel = dict(zip(temp_kleurgroepen.verdeling_in_M, temp_kleurgroepen.verdeling_in_N))
+        self.canvas_locaal = replace_with_dict(self.canvas_globaal, vertaalTabel)
+
 
     def generate_locale_topo(self,
                              aantal,
@@ -165,78 +174,3 @@ class PerlinTopoGeneratator:
             join(self.kleurgroepen_lokaal.set_index('verdeling_in_M'), on='verdeling_in_M')
 
 
-kleurenPad = '../kleurParameters/graslandZomer3.jpg20210815 172940.csv'
-
-kleurInfo = pd.read_csv(kleurenPad, index_col=0)
-ptg = PerlinTopoGeneratator(
-    breedte=150,
-    hoogte=200,
-    kleur_verhoudingen=kleurInfo,
-    versie=1)
-
-ptg.generate_globale_topo(
-    aantal=150,
-    persistence=0.3,
-    lacunarity=4.0,
-    octaves=8,
-    scaleX=100,
-    scaleY=200,
-    grenswaarde=0.5)
-
-
-# ptg.generate_globale_topo(
-#     aantal = 150,
-#     persistence=0.2,
-#     lacunarity=2.0,
-#     octaves=8,
-#     scaleX=50,
-#     scaleY=100,
-#     grenswaarde=0.5)
-
-# ptg.generate_globale_topo(
-#     aantal = 150,
-#     persistence=0.3,
-#     lacunarity=4.0,
-#     octaves=4,
-#     scaleX=300,
-#     scaleY=300,
-#     grenswaarde=0.5)
-
-# ptg = PerlinTopoGeneratator(
-#     breedte=1500,
-#     hoogte=2000,
-#     aantal_globaal=100,
-#     aantal_detail=3,
-#     kleur_verhoudingen=kleurInfo,
-#     persistence=0.3,
-#     lacunarity=8.0,
-#     octaves=8,
-#     scaleX=200,
-#     scaleY=200,
-#     grenswaarde=0.3,
-#     versie = 1)
-
-# ptg = PerlinTopoGeneratator(
-#     breedte=1500,
-#     hoogte=2000,
-#     aantal_globaal=100,
-#     aantal_detail=3,
-#     kleur_verhoudingen=kleurInfo,
-#     octaves=8,
-#     persistence=0.2,
-#     lacunarity=2.0,
-#     scaleX=100,
-#     scaleY=200,
-#     grenswaarde=0.3,
-#     versie = 1)
-
-def show_general_canvas(canvas):
-    max = np.amax(canvas)
-    print(max)
-    print(np.amax(canvas))
-    canvas_grens = canvas * 255 / max
-    Image.fromarray(np.uint8(canvas_grens)).show()
-
-
-print(ptg.naam)
-show_general_canvas(ptg.canvas_globaal)
