@@ -2,7 +2,7 @@ import pandas as pd
 from projectClasses.PerlinTopoGenerator import PerlinTopoGeneratator
 from projectClasses.camo_picture import createCamoPicture
 
-kleurenPad = '../kleurParameters/graslandZomer3.jpg20210815 172940.csv'
+kleurenPad = '../kleurParameters/lenteOostvaardersplassen2.jpg20210611 112418.csv'
 
 kleurInfo = pd.read_csv(kleurenPad, index_col=0)
 ptg = PerlinTopoGeneratator(
@@ -20,9 +20,18 @@ ptg.generate_globale_topo(
     scaleY=200,
     grenswaarde=0.5)
 
+ptg.generate_locale_topo(
+    aantal=3000,
+    persistence=0.3,
+    lacunarity=4.0,
+    octaves=8,
+    scaleX=100,
+    scaleY=200,
+    grenswaarde=0.5)
+
 
 print(ptg.naam)
-createCamoPicture(ptg.canvas_globaal, ptg.verdeling_in_M_naar_kleur)
+createCamoPicture(ptg.canvas_detail, ptg.verdeling_in_N_naar_kleur)
 
 i = 1
 

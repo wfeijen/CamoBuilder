@@ -30,7 +30,7 @@ class PerlinTopoGeneratator:
         min_kleur_nummer = self.kleurgroepen_globaal[self.kleurgroepen_globaal['aantal'] != 0]['verdeling_in_M'].min()
         self.canvas_globaal = np.full((self.w, self.h), min_kleur_nummer)
         self.naam = "v" + str(self.versie)
-        self.verdeling_in_M_naar_kleur = dict(zip(self.kleur_verhoudingen.verdeling_in_N, zip(self.kleur_verhoudingen.R,
+        self.verdeling_in_N_naar_kleur = dict(zip(self.kleur_verhoudingen.verdeling_in_N, zip(self.kleur_verhoudingen.R,
                                                                                               self.kleur_verhoudingen.G,
                                                                                               self.kleur_verhoudingen.B)))
 
@@ -57,6 +57,7 @@ class PerlinTopoGeneratator:
             self.kleurgroepen_globaal['delta_aantal'] = self.kleurgroepen_globaal['wenselijk_aantal'] - \
                                                         self.kleurgroepen_globaal['aantal']
             max_delta = self.kleurgroepen_globaal['delta_aantal'].max()
+
             max_delta_kleurgroep = self.kleurgroepen_globaal[self.kleurgroepen_globaal['delta_aantal'] == max_delta][
                 'verdeling_in_M'].max()
             # We maken een blot met oppervlakte gelijk aan delta wenselijk aantal en werkelijk aantal
@@ -92,31 +93,33 @@ class PerlinTopoGeneratator:
         self.naam = self.naam + "_glog_" + blotter.name()
         # In gereedheid brengen voor locale topo
         aantal_per_M = self.kleurgroepen_globaal[['verdeling_in_M', 'aantal']]
-        self.kleurgroepen_lokaal = self.kleurgroepen_globaal.drop(
+        self.kleurgroepen_detail = self.kleurgroepen_globaal.drop(
             columns=['verhouding', 'wenselijk_aantal', 'delta_aantal'])
-        self.kleurgroepen_lokaal = self.kleur_verhoudingen \
-            .join(self.kleurgroepen_lokaal.set_index('verdeling_in_M'), on='verdeling_in_M')
+        self.kleurgroepen_detail = self.kleur_verhoudingen.\
+            join(self.kleurgroepen_detail.set_index('verdeling_in_M'), on='verdeling_in_M').\
+            sort_values(by='verdeling_in_N')
 
         # Per globaal kleurnumme het hoogste lokale kleurnummer vinden
-        minKleurAantallen = self.kleurgroepen_lokaal.groupby(['verdeling_in_M'])['wenselijk_aantal'] \
+        minKleurAantallen = self.kleurgroepen_detail.groupby(['verdeling_in_M'])['wenselijk_aantal'] \
             .min() \
             .to_list()
         # We zetten nu de regels zonder minKleurAantallen op 0
-        min_kleur_nummers_lokaal = self.kleurgroepen_lokaal[self.kleurgroepen_lokaal['aantal'] != 0][
+        min_kleur_nummers_lokaal = self.kleurgroepen_detail[self.kleurgroepen_detail['aantal'] != 0][
             'verdeling_in_M'].min()
-        self.kleurgroepen_lokaal.loc[
-            ~self.kleurgroepen_lokaal['wenselijk_aantal'].isin(minKleurAantallen), 'aantal'] = 0
-        self.kleurgroepen_lokaal['wenselijk_aantal'] = self.kleurgroepen_lokaal['verhouding'] * self.w * self.h
-        self.kleurgroepen_lokaal['delta_aantal'] = self.kleurgroepen_lokaal['wenselijk_aantal'] - \
-                                                   self.kleurgroepen_lokaal['aantal']
+        self.kleurgroepen_detail.loc[
+            ~self.kleurgroepen_detail['wenselijk_aantal'].isin(minKleurAantallen), 'aantal'] = 0
+        self.kleurgroepen_detail['wenselijk_aantal'] = self.kleurgroepen_detail['verhouding'] * self.w * self.h
+        self.kleurgroepen_detail['delta_aantal'] = self.kleurgroepen_detail['wenselijk_aantal'] - \
+                                                   self.kleurgroepen_detail['aantal']
         # Nu invullen canvaslocaal met echte kleurnummers
-        temp_kleurgroepen = self.kleurgroepen_lokaal[self.kleurgroepen_lokaal['aantal'] > 0]
+        temp_kleurgroepen = self.kleurgroepen_detail[self.kleurgroepen_detail['aantal'] > 0]
         vertaalTabel = dict(zip(temp_kleurgroepen.verdeling_in_M, temp_kleurgroepen.verdeling_in_N))
-        self.canvas_locaal = replace_with_dict(self.canvas_globaal, vertaalTabel)
-
+        self.canvas_detail = replace_with_dict(self.canvas_globaal, vertaalTabel)
+        i = 1
 
     def generate_locale_topo(self,
                              aantal,
+                             blot_grootte_factor,
                              octaves,
                              persistence,
                              lacunarity,
@@ -127,22 +130,31 @@ class PerlinTopoGeneratator:
         # Eerst van hoofdkl
         for i in range(aantal):
             # Boekhouding op orde
-            for j in self.kleurgroepen_lokaal['verdeling_in_M']:
-                self.canvas_globaal[0, j] = j
-            kleurnummer, aantallen_per_hoofdkleur = np.unique(self.canvas_globaal,
+            for j in self.kleurgroepen_detail['verdeling_in_N']:
+                self.canvas_detail[0, j] = j
+            kleurnummer, aantallen_per_detailkleur = np.unique(self.canvas_detail,
                                                               return_counts=True)
-            self.kleurgroepen_globaal['aantal'] = aantallen_per_hoofdkleur
-            self.kleurgroepen_globaal['delta_aantal'] = self.kleurgroepen_globaal['wenselijk_aantal'] - \
-                                                        self.kleurgroepen_globaal['aantal']
-            max_delta = self.kleurgroepen_globaal['delta_aantal'].max()
-            max_delta_kleurgroep = self.kleurgroepen_globaal[self.kleurgroepen_globaal['delta_aantal'] == max_delta][
-                'verdeling_in_M'].max()
+            self.kleurgroepen_detail['aantal'] = aantallen_per_detailkleur
+            self.kleurgroepen_detail['delta_aantal'] = self.kleurgroepen_detail['wenselijk_aantal'] - \
+                                                       self.kleurgroepen_detail['aantal']
+
+            max_deltas = self.kleurgroepen_detail.groupby(['verdeling_in_M'])['delta_aantal'].max()
+            # transities per groep bepalen
+            dummy = self.kleurgroepen_detail[self.kleurgroepen_detail['delta_aantal'].\
+                isin(max_deltas)].\
+                groupby(['verdeling_in_M'])[['verdeling_in_M', 'verdeling_in_N']].\
+                max().\
+                rename(columns= {'verdeling_in_N':'doel'}).\
+                join(self.kleurgroepen_detail.set_index('verdeling_in_M'), rsuffix ='_r')
+
+            doel_kleurnummers = dict(zip(dummy.verdeling_in_N, dummy.doel))
+
+
             # We maken een blot met oppervlakte gelijk aan delta wenselijk aantal en werkelijk aantal
             # eerst vierkant later kan dat mooier gemaakt
-            blotDiameter = int(max(sqrt(max_delta) * 2, (sqrt(aantal) * 10) // (i + 1)))
+            blotDiameter = int(max(sqrt(max_deltas.max()) * blot_grootte_factor, (sqrt(aantal) * 10) // (i + 1))) + aantal - i
             blotDiameter = random.randint(blotDiameter // 2, blotDiameter)
             blot = blotter.blot(blotDiameter, blotDiameter)
-            print("blotdiameter", blotDiameter)
             # plaatsen van de blot op canvas
             # we werken vanaf linksboven
             x_verschuiving = np.random.randint(blotDiameter + self.w) - blotDiameter
@@ -152,13 +164,13 @@ class PerlinTopoGeneratator:
             yEind = min(y_verschuiving + blotDiameter, self.h)
             yStart = max(0, y_verschuiving)
 
-            print("")
-            print(self.kleurgroepen_globaal)
             print('i', i)
-            print('kleur', max_delta_kleurgroep)
-            print('blotDiam', blotDiameter)
+            print(self.kleurgroepen_detail)
+            print(doel_kleurnummers)
             print('x ', xStart, '-', xEind, 'displacementX', x_verschuiving)
             print('y ', yStart, '-', yEind, 'displacementY', y_verschuiving)
+            print("blotdiameter", blotDiameter)
+            print("")
 
             if blotDiameter <= 10:
                 break
@@ -166,11 +178,7 @@ class PerlinTopoGeneratator:
             for x in range(xStart, xEind):
                 for y in range(yStart, yEind):
                     if blot[x - x_verschuiving, y - y_verschuiving] == 1:
-                        self.canvas_globaal[x, y] = max_delta_kleurgroep
+                        self.canvas_detail[x, y] = doel_kleurnummers.get(self.canvas_detail[x, y])
         self.naam = self.naam + "_glog_" + blotter.name()
-        self.kleurgroepen_lokaal = self.kleurgroepen_globaal.drop(
-            columns=['verhouding', 'wenselijk_aantal', 'delta_aantal'])
-        self.kleurgroepen_lokaal = self.kleur_verhoudingen. \
-            join(self.kleurgroepen_lokaal.set_index('verdeling_in_M'), on='verdeling_in_M')
 
 
