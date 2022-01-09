@@ -14,7 +14,7 @@ ptg = PerlinTopoGeneratator(
     hoogte=2000,
     kleur_verhoudingen=kleurInfo,
     versie=5,
-    naam_basis = kleuren_naam)
+    naam_basis=kleuren_naam)
 
 ptg.generate_globale_topo(
     aantal=150,
@@ -36,14 +36,12 @@ ptg.generate_locale_topo(
     scaleY=200,
     grenswaarde=0.5)
 
-
 print(ptg.naam)
 picture = CamoPicture(ptg.canvas_detail, ptg.verdeling_in_N_naar_kleur)
-#picture.show()
+# picture.show()
 picture.save(root_dir, ptg.naam)
 
 i = 1
-
 
 # ptg.generate_globale_topo(
 #     aantal = 150,

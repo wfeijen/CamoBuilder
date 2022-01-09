@@ -1,5 +1,5 @@
 import camoVergelijkingsTestScherm as cvs
-from fileHandling import give_list_of_images
+from projectClasses.fileHandling import give_list_of_images
 
 base_dir = '/mnt/GroteSchijf/machineLearningPictures/camoBuilder'
 schenes_sub_dir = 'scenesVoorTest'

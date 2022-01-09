@@ -3,7 +3,7 @@ from math import sqrt
 import numpy as np
 import pandas as pd
 from PIL import Image, ImageShow
-from projectClasses.perlinBlotCreator import PerlinBlotter
+from projectClasses.PerlinBlotter import PerlinBlotter
 from projectClasses.Utilities import replace_with_dict
 
 class PerlinTopoGeneratator:
