@@ -18,10 +18,8 @@ class PerlinBlotter:
         self.scaleY = scaleY
         self.base = startBase
         self.grenswaarde = grenswaarde
-
-    def name(self):
-        return "_o" + str(self.octaves) + \
-            "_p" + str(self.persistence) + \
+        self.naam = "_o" + str(self.octaves) + \
+               "_p" + str(self.persistence) + \
                "_l" + str(self.lacunarity) + \
                "_X" + str(self.scaleX) + \
                "_Y" + str(self.scaleY) + \

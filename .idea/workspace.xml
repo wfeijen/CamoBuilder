@@ -4,9 +4,12 @@
     <bookmark url="file://$PROJECT_DIR$/Experimenten met Pixels2.py" line="48" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="perlin globaal werkt met bolletjes">
+    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="perlin werkt. Nu fine tuning">
+      <change beforePath="$PROJECT_DIR$/.idea/csv-plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/csv-plugin.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectClasses/camo_picture.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/Camo_picture.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectClasses/perlinBlotCreator.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/perlinBlotCreator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projectClasses/perlin_camo.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/perlin_camo.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -297,7 +300,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641567990092</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="perlin werkt. Nu fine tuning">
+      <created>1641627288782</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1641627288782</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TodoView">
@@ -366,7 +376,8 @@
     <MESSAGE value="perlin globaal begint te werken" />
     <MESSAGE value="perlin globaal werkt" />
     <MESSAGE value="perlin globaal werkt met bolletjes" />
-    <option name="LAST_COMMIT_MESSAGE" value="perlin globaal werkt met bolletjes" />
+    <MESSAGE value="perlin werkt. Nu fine tuning" />
+    <option name="LAST_COMMIT_MESSAGE" value="perlin werkt. Nu fine tuning" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -450,16 +461,6 @@
           <url>file://$PROJECT_DIR$/RGBdualTopoColoring.py</url>
           <line>22</line>
           <option name="timeStamp" value="128" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py</url>
-          <line>127</line>
-          <option name="timeStamp" value="162" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py</url>
-          <line>117</line>
-          <option name="timeStamp" value="166" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

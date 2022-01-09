@@ -4,7 +4,6 @@ import numpy as np
 import pandas as pd
 from PIL import Image, ImageShow
 from projectClasses.perlinBlotCreator import PerlinBlotter
-from projectClasses.camo_picture import createCamoPicture
 from projectClasses.Utilities import replace_with_dict
 
 class PerlinTopoGeneratator:
@@ -12,7 +11,8 @@ class PerlinTopoGeneratator:
                  breedte,
                  hoogte,
                  kleur_verhoudingen,
-                 versie):
+                 versie,
+                 naam_basis):
         self.h = hoogte
         self.w = breedte
         self.kleur_verhoudingen = kleur_verhoudingen.rename(columns={'aantal': 'wenselijk_aantal'})
@@ -29,7 +29,7 @@ class PerlinTopoGeneratator:
                   aantal_pixels, 0)
         min_kleur_nummer = self.kleurgroepen_globaal[self.kleurgroepen_globaal['aantal'] != 0]['verdeling_in_M'].min()
         self.canvas_globaal = np.full((self.w, self.h), min_kleur_nummer)
-        self.naam = "v" + str(self.versie)
+        self.naam = naam_basis + "v" + str(self.versie) + "b" + str(breedte) + "h" + str(hoogte)
         self.verdeling_in_N_naar_kleur = dict(zip(self.kleur_verhoudingen.verdeling_in_N, zip(self.kleur_verhoudingen.R,
                                                                                               self.kleur_verhoudingen.G,
                                                                                               self.kleur_verhoudingen.B)))
@@ -40,6 +40,7 @@ class PerlinTopoGeneratator:
 
     def generate_globale_topo(self,
                               aantal,
+                              blot_grootte_factor,
                               octaves,
                               persistence,
                               lacunarity,
@@ -47,6 +48,7 @@ class PerlinTopoGeneratator:
                               scaleY,
                               grenswaarde):
         blotter = PerlinBlotter(persistence, lacunarity, octaves, scaleX, scaleY, self.versie, grenswaarde)
+        self.naam = self.naam + "_glob_a" + str(aantal) + "_gf" + str(blot_grootte_factor) + blotter.naam
         for i in range(aantal):
             # Boekhouding op orde
             for j in self.kleurgroepen_globaal['verdeling_in_M']:
@@ -62,7 +64,8 @@ class PerlinTopoGeneratator:
                 'verdeling_in_M'].max()
             # We maken een blot met oppervlakte gelijk aan delta wenselijk aantal en werkelijk aantal
             # eerst vierkant later kan dat mooier gemaakt
-            blotDiameter = int(max(sqrt(max_delta) * 2, (sqrt(aantal) * 10) // (i + 1)))
+            #blotDiameter = int(max(sqrt(max_delta) * 2, (sqrt(aantal) * 10) // (i + 1)))
+            blotDiameter = int(sqrt(max_delta + aantal - i) * blot_grootte_factor)
             blotDiameter = random.randint(blotDiameter // 2, blotDiameter)
             blot = blotter.blot(blotDiameter, blotDiameter)
             print("blotdiameter", blotDiameter)
@@ -90,7 +93,6 @@ class PerlinTopoGeneratator:
                 for y in range(yStart, yEind):
                     if blot[x - x_verschuiving, y - y_verschuiving] == 1:
                         self.canvas_globaal[x, y] = max_delta_kleurgroep
-        self.naam = self.naam + "_glog_" + blotter.name()
         # In gereedheid brengen voor locale topo
         aantal_per_M = self.kleurgroepen_globaal[['verdeling_in_M', 'aantal']]
         self.kleurgroepen_detail = self.kleurgroepen_globaal.drop(
@@ -127,6 +129,7 @@ class PerlinTopoGeneratator:
                              scaleY,
                              grenswaarde):
         blotter = PerlinBlotter(persistence, lacunarity, octaves, scaleX, scaleY, self.versie, grenswaarde)
+        self.naam = self.naam + "_det_a" + str(aantal) + "_gf" + str(blot_grootte_factor) + blotter.naam
         # Eerst van hoofdkl
         for i in range(aantal):
             # Boekhouding op orde
@@ -148,11 +151,10 @@ class PerlinTopoGeneratator:
                 join(self.kleurgroepen_detail.set_index('verdeling_in_M'), rsuffix ='_r')
 
             doel_kleurnummers = dict(zip(dummy.verdeling_in_N, dummy.doel))
-
-
             # We maken een blot met oppervlakte gelijk aan delta wenselijk aantal en werkelijk aantal
             # eerst vierkant later kan dat mooier gemaakt
-            blotDiameter = int(max(sqrt(max_deltas.max()) * blot_grootte_factor, (sqrt(aantal) * 10) // (i + 1))) + aantal - i
+            #blotDiameter = int(max(sqrt(max_deltas.max()) * blot_grootte_factor, (sqrt(aantal) * 10) // (i + 1)))
+            blotDiameter = int(sqrt(max_deltas.max() + aantal - i) * blot_grootte_factor )
             blotDiameter = random.randint(blotDiameter // 2, blotDiameter)
             blot = blotter.blot(blotDiameter, blotDiameter)
             # plaatsen van de blot op canvas
@@ -179,6 +181,5 @@ class PerlinTopoGeneratator:
                 for y in range(yStart, yEind):
                     if blot[x - x_verschuiving, y - y_verschuiving] == 1:
                         self.canvas_detail[x, y] = doel_kleurnummers.get(self.canvas_detail[x, y])
-        self.naam = self.naam + "_glog_" + blotter.name()
 
 

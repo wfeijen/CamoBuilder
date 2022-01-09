@@ -23,14 +23,18 @@ def vul_bolletje(canvas, kleur_waarde, x, y):
     canvas[xbase + 3, ybase + 1] = kleur_waarde
     canvas[xbase + 3, ybase + 2] = kleur_waarde
 
+class CamoPicture:
+    def __init__(self, canvas, getal_naar_kleur):
+        w, h = canvas.shape
+        groot_canvas = np.zeros((w * 4 + 2, h * 3 + 1))
+        for ix in range(w):
+            for iy in range(h):
+                vul_bolletje(canvas=groot_canvas, kleur_waarde=canvas[ix, iy], x=ix, y=iy)
+        image_array = np.uint8(replace_with_dict(groot_canvas, getal_naar_kleur))
+        self.img = Image.fromarray(image_array)
 
-def createCamoPicture(canvas, getal_naar_kleur):
-    w, h = canvas.shape
-    groot_canvas = np.zeros((w * 4 + 2, h * 3 + 1))
-    for ix in range(w):
-        for iy in range(h):
-            vul_bolletje(canvas=groot_canvas, kleur_waarde=canvas[ix, iy], x=ix, y=iy)
-    image_array = np.uint8(replace_with_dict(groot_canvas, getal_naar_kleur))
-    img = Image.fromarray(image_array)
-    img.show()
-    return(img)
+    def show(self):
+        self.img.show()
+
+    def save(self, rootDir, name):
+        self.img.save(rootDir + name + ".jpg")
