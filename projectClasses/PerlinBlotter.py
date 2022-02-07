@@ -18,12 +18,12 @@ class PerlinBlotter:
         self.scaleY = scaleY
         self.base = startBase
         self.grenswaarde = grenswaarde
-        self.naam = "_o" + str(self.octaves) + \
+        self.naam = "_o" + str("{:02d}".format(self.octaves)) + \
                "_p" + str(self.persistence) + \
                "_l" + str(self.lacunarity) + \
-               "_X" + str(self.scaleX) + \
-               "_Y" + str(self.scaleY) + \
-               "_b" + str(self.base) + \
+               "_X" + str("{:03d}".format(self.scaleX)) + \
+               "_Y" + str("{:03d}".format(self.scaleY)) + \
+               "_b" + str("{:02d}".format(self.base)) + \
                "_g" + str(self.grenswaarde)
 
     def blot(self, blot_sizeX, blot_sizeY):
@@ -38,8 +38,8 @@ class PerlinBlotter:
                                              octaves=self.octaves,
                                              persistence=self.persistence,
                                              lacunarity=self.lacunarity,
-                                             repeatx=blot_sizeX / self.scaleX + 1,
-                                             repeaty=blot_sizeY / self.scaleY + 1,
+                                             repeatx=blot_sizeX / self.scaleX,
+                                             repeaty=blot_sizeY / self.scaleY,
                                              base=self.base)
                 canvas[x, y] = noiseWaarde
         canvas = (canvas - np.amin(canvas)) / (np.amax(canvas) - np.amin(canvas))
