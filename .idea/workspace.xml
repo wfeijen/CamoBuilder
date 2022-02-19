@@ -4,11 +4,9 @@
     <bookmark url="file://$PROJECT_DIR$/Experimenten met Pixels2.py" line="48" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="Oude zooi weggegooid">
+    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="Oude klaar voor streepjes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/perlin_camo.py" beforeDir="false" afterPath="$PROJECT_DIR$/perlin_camo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/perlin_noise_experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/perlin_noise_experiment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClasses/PerlinBlotter.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/PerlinBlotter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +88,7 @@
       <recent name="$PROJECT_DIR$/camoOutput" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.camoVergelijkingControler">
+  <component name="RunManager" selected="Python.perlin_camo">
     <configuration name="PerlinTopoGenerator" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Camo builder" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -205,8 +203,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.camoVergelijkingControler" />
         <item itemvalue="Python.perlin_camo" />
+        <item itemvalue="Python.camoVergelijkingControler" />
         <item itemvalue="Python.perlin_noise_experiment" />
         <item itemvalue="Python.kleur_verdeling" />
         <item itemvalue="Python.PerlinTopoGenerator" />
@@ -323,7 +321,14 @@
       <option name="project" value="LOCAL" />
       <updated>1641716269907</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Oude klaar voor streepjes">
+      <created>1644251396285</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1644251396285</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TodoView">
@@ -395,7 +400,8 @@
     <MESSAGE value="perlin werkt. Nu fine tuning" />
     <MESSAGE value="perlin werkt. Weggooien oude zooi" />
     <MESSAGE value="Oude zooi weggegooid" />
-    <option name="LAST_COMMIT_MESSAGE" value="Oude zooi weggegooid" />
+    <MESSAGE value="Oude klaar voor streepjes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Oude klaar voor streepjes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -449,11 +455,6 @@
           <url>file://$PROJECT_DIR$/rommel.py</url>
           <line>12</line>
           <option name="timeStamp" value="118" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/camoVergelijkingControler.py</url>
-          <line>9</line>
-          <option name="timeStamp" value="119" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
