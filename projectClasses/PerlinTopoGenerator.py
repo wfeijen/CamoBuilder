@@ -1,10 +1,16 @@
 import random
 from math import sqrt
 import numpy as np
-import pandas as pd
-from PIL import Image, ImageShow
 from projectClasses.PerlinBlotter import PerlinBlotter
 from projectClasses.Utilities import replace_with_dict
+from projectClasses.RichtingGenerator import RichtingGenerator
+
+MIN_BLOT_DIAMETER = 5
+LICHT_DONKER_VERSCHUIVINGSFACTOR = 0.5
+LICHT_DONKER_MINIMALE_VERSCHUIVING = 3
+LICHT_DONKER_MAXIMALE_VERSCHUIVING = 10
+AFKAP_MAX_MIN_DELTA_AANTAL_FACTOR = 0.1
+AFKAP_MAX_MIN_DELTA_AANTAL_FACTOR_DETAIL = 0.3
 
 
 class PerlinTopoGeneratator:
@@ -18,6 +24,7 @@ class PerlinTopoGeneratator:
                  naam_basis):
         self.h = hoogte
         self.w = breedte
+        self.afkap_max_min_delta_aantal = int(sqrt(hoogte * breedte) * AFKAP_MAX_MIN_DELTA_AANTAL_FACTOR)
         self.kleur_verhoudingen = kleur_verhoudingen.rename(columns={'aantal': 'wenselijk_aantal'})
         self.versie = versie
         # Licht en donker aantallen berekenen
@@ -25,7 +32,7 @@ class PerlinTopoGeneratator:
         self.totaal_percentage_donker_licht = sum(percentages_donker_licht) / 100
         totaal_absoluut_donker_licht = self.totaal_percentage_donker_licht * self.aantal_pixels
         # aanpassen wenselijke aantal omdat we een deel aan licht en donker hebben vergeven
-        self.donker_licht_verdeling = donker_licht_kleurcodes
+        self.donker_licht_verdeling = donker_licht_kleurcodes  # pd.DataFrame({'R':[0, 255], 'G':[0, 0], 'B':[0,0]})#
         self.donker_licht_verdeling['wenselijk_aantal'] = [
             p / self.totaal_percentage_donker_licht / 100 * totaal_absoluut_donker_licht
             for p in percentages_donker_licht]
@@ -37,17 +44,15 @@ class PerlinTopoGeneratator:
         self.kleurgroepen_globaal = self.kleur_verhoudingen.groupby(['verdeling_in_M'])[
             'verhouding'].sum().reset_index()
         self.kleurgroepen_globaal['wenselijk_aantal'] = self.kleurgroepen_globaal['verhouding'] * self.aantal_pixels * (
-                    1 - self.totaal_percentage_donker_licht)
+                1 - self.totaal_percentage_donker_licht)
         self.kleurgroepen_globaal['wenselijk_aantal'] = self.kleurgroepen_globaal['wenselijk_aantal']
         self.kleurgroepen_globaal['aantal'] = np. \
             where(self.kleurgroepen_globaal['verhouding'] == self.kleurgroepen_globaal['verhouding'].min(),
                   self.aantal_pixels, 0)
         min_kleur_nummer = self.kleurgroepen_globaal[self.kleurgroepen_globaal['aantal'] != 0]['verdeling_in_M'].min()
         self.canvas_globaal = np.full((self.w, self.h), min_kleur_nummer)
-        self.naam = naam_basis + "b" + str(breedte) + "h" + str(hoogte) + "d" + str(percentages_donker_licht[0]) + "l" + str(percentages_donker_licht[1])
-        self.verdeling_in_N_naar_kleur = dict(zip(self.kleur_verhoudingen.verdeling_in_N, zip(self.kleur_verhoudingen.R,
-                                                                                              self.kleur_verhoudingen.G,
-                                                                                              self.kleur_verhoudingen.B)))
+        self.naam = naam_basis + "b" + str(breedte) + "h" + str(hoogte) + "d" + str(
+            percentages_donker_licht[0]) + "l" + str(percentages_donker_licht[1])
 
     def afmetingen(self):
         return "_W" + str(self.w) + \
@@ -62,12 +67,60 @@ class PerlinTopoGeneratator:
         print("")
         print('kleur', kleurcode)
         print('blotDiam', blotDiameter)
-        print('x ', xStart, '-', xEind, 'displacementX', x_verschuiving)
-        print('y ', yStart, '-', yEind, 'displacementY', y_verschuiving)
+        # print('x ', xStart, '-', xEind, 'displacementX', x_verschuiving)
+        # print('y ', yStart, '-', yEind, 'displacementY', y_verschuiving)
         for x in range(xStart, xEind):
             for y in range(yStart, yEind):
                 if blot[x - x_verschuiving, y - y_verschuiving] == 1:
                     self.canvas_globaal[x, y] = kleurcode
+
+    def plaats_ring_blot_op_canvas(self, blot, blotDiameter, kleurcode, x_verschuiving, y_verschuiving,
+                                   licht_verplaatsing_x, licht_verplaatsing_y):
+        xEind = min(x_verschuiving + blotDiameter + licht_verplaatsing_x, self.w)
+        xStart = max(0, x_verschuiving + licht_verplaatsing_x)
+        yEind = min(y_verschuiving + blotDiameter + licht_verplaatsing_y, self.h)
+        yStart = max(0, y_verschuiving + licht_verplaatsing_y)
+
+        print("")
+        print("ring")
+        print('kleur', kleurcode)
+        print('blotDiam', blotDiameter)
+        # print('x ', xStart, '-', xEind, 'displacementX', x_verschuiving)
+        # print('y ', yStart, '-', yEind, 'displacementY', y_verschuiving)
+        print('licht verpl ', str(licht_verplaatsing_x), ', ', str(licht_verplaatsing_y))
+        max_index = blotDiameter - 1
+        for x in range(xStart, xEind):
+            for y in range(yStart, yEind):
+                # we maken gebruik van het feit dat bij de randen toch geen inkt zit
+                # met min en max voorkomen we zo complexe if the else constructies
+                if blot[min(x - x_verschuiving, max_index),
+                        min(y - y_verschuiving, max_index)] == 0:  # Alleen als er geen vlek overheen hoort
+                    if blot[
+                        x - x_verschuiving - licht_verplaatsing_x, y - y_verschuiving - licht_verplaatsing_y]:  # En we wel een randje zien
+                        self.canvas_globaal[x, y] = kleurcode
+
+    def doe_boekhouding_hoofdkleuren(self):
+        for j in self.kleurgroepen_globaal['verdeling_in_M']:
+            self.canvas_globaal[0, j] = j
+        self.canvas_globaal[0, -1] = -1
+        self.canvas_globaal[0, -2] = -2
+        kleurnummer, aantallen_per_hoofdkleur = np.unique(self.canvas_globaal,
+                                                          return_counts=True)
+        self.kleurgroepen_globaal['aantal'] = aantallen_per_hoofdkleur[2:]
+        self.kleurgroepen_globaal['delta_aantal'] = self.kleurgroepen_globaal['wenselijk_aantal'] - \
+                                                    self.kleurgroepen_globaal['aantal']
+        min_delta_kleurgroepen = self.kleurgroepen_globaal['delta_aantal'].min()
+        max_delta_kleurgroepen = self.kleurgroepen_globaal['delta_aantal'].max()
+        max_delta_kleurgroep = self.kleurgroepen_globaal[self.kleurgroepen_globaal['delta_aantal'] ==
+                                                         max_delta_kleurgroepen]['verdeling_in_M'].max()
+        self.donker_licht_verdeling['aantal'] = aantallen_per_hoofdkleur[0:2]
+        self.donker_licht_verdeling['delta_aantal'] = self.donker_licht_verdeling['wenselijk_aantal'] - \
+                                                      self.donker_licht_verdeling['aantal']
+        self.donker_licht_verdeling['delta_percentage'] = self.donker_licht_verdeling[
+                                                              'delta_aantal'] / self.aantal_pixels
+        min_delta_donker_licht = self.donker_licht_verdeling.delta_aantal.min()
+        max_delta_donker_licht = self.donker_licht_verdeling.delta_aantal.max()
+        return min_delta_kleurgroepen, max_delta_kleurgroepen, max_delta_kleurgroep, min_delta_donker_licht, max_delta_donker_licht
 
     def generate_globale_topo(self,
                               aantal,
@@ -79,74 +132,85 @@ class PerlinTopoGeneratator:
                               scaleY,
                               grenswaarde,
                               richting_kans_verdeling_lb_ro):
+        richting_generator = RichtingGenerator(richting_kans_verdeling_lb_ro)
         blotter = PerlinBlotter(persistence, lacunarity, octaves, scaleX, scaleY, self.versie, grenswaarde)
         self.naam = self.naam + "_glob_a" + str(aantal) + "bg" + str(blot_grootte_factor) + blotter.naam
         for i in range(aantal):
             # Boekhouding op orde
-            for j in self.kleurgroepen_globaal['verdeling_in_M']:
-                self.canvas_globaal[0, j] = j
-            self.canvas_globaal[0, -1] = -1
-            self.canvas_globaal[0, -2] = -2
-            kleurnummer, aantallen_per_hoofdkleur = np.unique(self.canvas_globaal,
-                                                              return_counts=True)
-            self.kleurgroepen_globaal['aantal'] = aantallen_per_hoofdkleur[2:]
-            self.kleurgroepen_globaal['delta_aantal'] = self.kleurgroepen_globaal['wenselijk_aantal'] - \
-                                                        self.kleurgroepen_globaal['aantal']
-            max_delta = self.kleurgroepen_globaal['delta_aantal'].max()
-            achterstand_donker_licht_percentage = self.kleurgroepen_globaal['delta_aantal'].sum()
-            self.donker_licht_verdeling['aantal'] = aantallen_per_hoofdkleur[0:2]
-            self.donker_licht_verdeling['delta_aantal'] = self.donker_licht_verdeling['wenselijk_aantal'] - \
-                                                   self.donker_licht_verdeling['aantal']
-            self.donker_licht_verdeling['delta_percentage'] = self.donker_licht_verdeling[
-                                                                  'delta_aantal'] / self.aantal_pixels
+            min_delta_kleurgroepen, max_delta_kleurgroepen, max_delta_kleurgroep, min_delta_donker_licht, max_delta_donker_licht = self.doe_boekhouding_hoofdkleuren()
 
-            max_delta_kleurgroep = self.kleurgroepen_globaal[self.kleurgroepen_globaal['delta_aantal'] == max_delta][
-                'verdeling_in_M'].max()
             # We maken een blot met oppervlakte gelijk aan delta wenselijk aantal en werkelijk aantal
             # eerst vierkant later kan dat mooier gemaakt
-            # blotDiameter = int(max(sqrt(max_delta) * 2, (sqrt(aantal) * 10) // (i + 1)))
-            blotDiameter = int(sqrt(max_delta + aantal - i) * blot_grootte_factor)
+            # blotDiameter = int(max(sqrt(max_delta_kleurgroepen) * 2, (sqrt(aantal) * 10) // (i + 1)))
+            blotDiameter = int(
+                sqrt(max(max_delta_kleurgroepen, max_delta_donker_licht) + aantal - i) * blot_grootte_factor)
             blotDiameter = random.randint(blotDiameter // 2, blotDiameter)
+            if blotDiameter < MIN_BLOT_DIAMETER:
+                blotDiameter = MIN_BLOT_DIAMETER
             print("blotdiameter", blotDiameter)
-            if blotDiameter <= 10:
-                break
-            blot = blotter.blot(blotDiameter, blotDiameter)
 
-            # plaatsen van de blot op canvas
+            # positioneren van de blot op canvas
             # we werken vanaf linksboven
             x_verschuiving = np.random.randint(blotDiameter + self.w) - blotDiameter
             y_verschuiving = np.random.randint(blotDiameter + self.h) - blotDiameter
-            licht_delta, donker_delta = [x * blotDiameter for x in
+            donker_delta, licht_delta = [x * blotDiameter for x in
                                          self.donker_licht_verdeling.delta_percentage.tolist()]
-            richting = (1, 1)
+            richting = richting_generator.geef_richting()
             print("")
             print('i', i)
-            print(self.kleurgroepen_globaal)
+            print(self.kleurgroepen_globaal[['wenselijk_aantal', 'aantal', 'delta_aantal']])
             # We plaatsen eerst de lichte kleur met een kleine extra verplaatsing
             print("licht_donker ")
-            print(self.donker_licht_verdeling)
+            print(self.donker_licht_verdeling[['wenselijk_aantal', 'aantal', 'delta_aantal']])
+            if max(-min_delta_kleurgroepen, max_delta_kleurgroepen, -min_delta_donker_licht,
+                   max_delta_donker_licht) <= self.afkap_max_min_delta_aantal:
+                break
+            # Maken blotsjabloon
+            blot = blotter.blot(blotDiameter, blotDiameter)
+            # Strepen.
+
+            # Eigenlijke vlek
+            if max_delta_kleurgroepen > 0:
+                self.plaats_blot_op_canvas(blot=blot,
+                                           blotDiameter=blotDiameter,
+                                           kleurcode=max_delta_kleurgroep,
+                                           x_verschuiving=x_verschuiving,
+                                           y_verschuiving=y_verschuiving)
+            else:  # Er word geen kleurvlek geplaatst
+                print('############################# geen vlek #####################################')
+
+            # Lichte streep eerst als het de grootste (positieve) delta heeft
             if licht_delta > 0:
-                licht_verplaatsing_x, licht_verplaatsing_y = [x * licht_delta for x in richting]
-                self.plaats_blot_op_canvas(blot=blot,
-                                           blotDiameter=blotDiameter,
-                                           kleurcode=-1,
-                                           x_verschuiving=x_verschuiving + int(licht_verplaatsing_x),
-                                           y_verschuiving=y_verschuiving + int(licht_verplaatsing_y))
-            if donker_delta>0:
-                donker_verplaatsing_x, donker_verplaatsing_y = [x * -donker_delta for x in richting]
-                self.plaats_blot_op_canvas(blot=blot,
-                                           blotDiameter=blotDiameter,
-                                           kleurcode=-2,
-                                           x_verschuiving=x_verschuiving + int(donker_verplaatsing_x),
-                                           y_verschuiving=y_verschuiving + int(donker_verplaatsing_y))
-            self.plaats_blot_op_canvas(blot=blot,
-                                       blotDiameter=blotDiameter,
-                                       kleurcode=max_delta_kleurgroep,
-                                       x_verschuiving=x_verschuiving,
-                                       y_verschuiving=y_verschuiving)
+                licht_verplaatsing_x, licht_verplaatsing_y = [
+                    x * min(LICHT_DONKER_MAXIMALE_VERSCHUIVING,
+                            max(int(licht_delta * LICHT_DONKER_VERSCHUIVINGSFACTOR), LICHT_DONKER_MINIMALE_VERSCHUIVING)) for
+                    x
+                    in richting]
+                self.plaats_ring_blot_op_canvas(blot=blot,
+                                                blotDiameter=blotDiameter,
+                                                kleurcode=-1,
+                                                x_verschuiving=x_verschuiving,
+                                                y_verschuiving=y_verschuiving,
+                                                licht_verplaatsing_x=licht_verplaatsing_x,
+                                                licht_verplaatsing_y=licht_verplaatsing_y)
+            # Donkere streep op canvas
+            if donker_delta > 0:
+                donker_verplaatsing_x, donker_verplaatsing_y = [
+                    x * min(LICHT_DONKER_MAXIMALE_VERSCHUIVING,
+                            -1 * max(int(donker_delta * LICHT_DONKER_VERSCHUIVINGSFACTOR), LICHT_DONKER_MINIMALE_VERSCHUIVING)) for
+                    x in richting]
+                self.plaats_ring_blot_op_canvas(blot=blot,
+                                                blotDiameter=blotDiameter,
+                                                kleurcode=-2,
+                                                x_verschuiving=x_verschuiving,
+                                                y_verschuiving=y_verschuiving,
+                                                licht_verplaatsing_x=donker_verplaatsing_x,
+                                                licht_verplaatsing_y=donker_verplaatsing_y)
+
 
         # In gereedheid brengen voor locale topo
-        aantal_per_M = self.kleurgroepen_globaal[['verdeling_in_M', 'aantal']]
+        # Boekhouding op orde
+        self.doe_boekhouding_hoofdkleuren()
         self.kleurgroepen_detail = self.kleurgroepen_globaal.drop(
             columns=['verhouding', 'wenselijk_aantal', 'delta_aantal'])
         self.kleurgroepen_detail = self.kleur_verhoudingen. \
@@ -158,20 +222,27 @@ class PerlinTopoGeneratator:
             .min() \
             .to_list()
         # We zetten nu de regels zonder minKleurAantallen op 0
-        min_kleur_nummers_lokaal = self.kleurgroepen_detail[self.kleurgroepen_detail['aantal'] != 0][
-            'verdeling_in_M'].min()
         self.kleurgroepen_detail.loc[
             ~self.kleurgroepen_detail['wenselijk_aantal'].isin(minKleurAantallen), 'aantal'] = 0
-        self.kleurgroepen_detail['wenselijk_aantal'] = self.kleurgroepen_detail['verhouding'] * self.aantal_pixels * (1-self.totaal_percentage_donker_licht)
+        self.kleurgroepen_detail['wenselijk_aantal'] = self.kleurgroepen_detail['verhouding'] * self.aantal_pixels * (
+                1 - self.totaal_percentage_donker_licht)
         self.kleurgroepen_detail['delta_aantal'] = self.kleurgroepen_detail['wenselijk_aantal'] - \
                                                    self.kleurgroepen_detail['aantal']
+        # We moeten nu zorgen dat eventuele pixels die licht en donker te veel of te weinig genomen hebben geen probleem op gaan leveren
+        # in het bepalen van de detail verdeling. We verdelen naar verhouding
+        donker_licht_delta = self.donker_licht_verdeling.delta_aantal.sum()
+        self.kleurgroepen_detail[
+            'wenselijk_aantal'] = self.kleurgroepen_detail.wenselijk_aantal + self.kleurgroepen_detail.verhouding * donker_licht_delta
         # Nu gaan we licht en donker er in faken
         self.donker_licht_verdeling['verdeling_in_N'] = [-2, -1]
         self.donker_licht_verdeling['verdeling_in_M'] = [-2, -1]
+        # We zetten het gewensta aantal op aantal omdat de rol van licht en donker eigenlijk uitgespeeld is
+        self.donker_licht_verdeling['wenselijk_aantal'] = self.donker_licht_verdeling['aantal']
+        self.donker_licht_verdeling['delta_aantal'] = [0.0, 0.0]
         donker_licht_verdeling = self.donker_licht_verdeling.drop(
             columns=['delta_percentage'])
 
-        self.kleurgroepen_detail = donker_licht_verdeling.append(self.kleurgroepen_detail, ignore_index = True, )
+        self.kleurgroepen_detail = donker_licht_verdeling.append(self.kleurgroepen_detail, ignore_index=True, )
         # Nu invullen canvaslocaal met echte kleurnummers
         temp_kleurgroepen = self.kleurgroepen_detail[self.kleurgroepen_detail['aantal'] > 0]
         vertaalTabel = dict(zip(temp_kleurgroepen.verdeling_in_M, temp_kleurgroepen.verdeling_in_N))
@@ -231,17 +302,24 @@ class PerlinTopoGeneratator:
             yStart = max(0, y_verschuiving)
 
             print('i', i)
-            print(self.kleurgroepen_detail)
+            print(self.kleurgroepen_detail[['verdeling_in_N', 'wenselijk_aantal', 'aantal', 'delta_aantal']])
             print(doel_kleurnummers)
             print('x ', xStart, '-', xEind, 'displacementX', x_verschuiving)
             print('y ', yStart, '-', yEind, 'displacementY', y_verschuiving)
             print("blotdiameter", blotDiameter)
             print("")
 
-            if blotDiameter <= 10:
+            minDelta = self.kleurgroepen_detail['delta_aantal'].min()
+            maxkDelta = self.kleurgroepen_detail['delta_aantal'].max()
+            if max(-minDelta, maxkDelta) <= self.afkap_max_min_delta_aantal * AFKAP_MAX_MIN_DELTA_AANTAL_FACTOR_DETAIL:
                 break
 
             for x in range(xStart, xEind):
                 for y in range(yStart, yEind):
                     if blot[x - x_verschuiving, y - y_verschuiving] == 1:
                         self.canvas_detail[x, y] = doel_kleurnummers.get(self.canvas_detail[x, y])
+
+        i = 1
+        self.dict_kleurnummer_kleur = dict(zip(self.kleurgroepen_detail.verdeling_in_N, zip(self.kleurgroepen_detail.R,
+                                                                                            self.kleurgroepen_detail.G,
+                                                                                            self.kleurgroepen_detail.B)))

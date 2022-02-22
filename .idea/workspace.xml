@@ -4,7 +4,12 @@
     <bookmark url="file://$PROJECT_DIR$/Experimenten met Pixels2.py" line="48" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="Oude klaar voor streepjes">
+    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="Streepjes beginnen te werken. Nog maar 1 richting.">
+      <change afterPath="$PROJECT_DIR$/kleurParameters/graslandZomer3.jpg20220206 134526.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kleurParameters/graslandZomer3.jpg20220206 134526lichtDonker.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kleurParameters/lenteOostvaardersplassen2.jpg20220222 122407.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kleurParameters/lenteOostvaardersplassen2.jpg20220222 122407lichtDonker.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/projectClasses/RichtingGenerator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/perlin_camo.py" beforeDir="false" afterPath="$PROJECT_DIR$/perlin_camo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py" afterDir="false" />
@@ -328,7 +333,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644251396285</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Streepjes beginnen te werken. Nog maar 1 richting.">
+      <created>1645313207072</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1645313207072</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TodoView">
@@ -401,7 +413,8 @@
     <MESSAGE value="perlin werkt. Weggooien oude zooi" />
     <MESSAGE value="Oude zooi weggegooid" />
     <MESSAGE value="Oude klaar voor streepjes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Oude klaar voor streepjes" />
+    <MESSAGE value="Streepjes beginnen te werken. Nog maar 1 richting." />
+    <option name="LAST_COMMIT_MESSAGE" value="Streepjes beginnen te werken. Nog maar 1 richting." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

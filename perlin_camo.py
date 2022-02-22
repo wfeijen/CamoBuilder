@@ -2,7 +2,7 @@ import pandas as pd
 from projectClasses.PerlinTopoGenerator import PerlinTopoGeneratator
 from projectClasses.Camo_picture import CamoPicture
 
-kleuren_naam = 'graslandZomer3.jpg20220206 134526'
+kleuren_naam = 'lenteOostvaardersplassen2.jpg20220222 131911'
 # kleuren_naam = 'graslandZomer3.jpg20220108 134624.csv'
 
 root_dir = '/mnt/GroteSchijf/machineLearningPictures/camoBuilder/camoOutput/'
@@ -12,24 +12,26 @@ kleurenpad_donker_licht = '../kleurParameters/' + kleuren_naam + 'lichtDonker.cs
 kleurInfo = pd.read_csv(kleurenPad, index_col=0)
 donker_licht_info = pd.read_csv(kleurenpad_donker_licht, index_col=0)
 ptg = PerlinTopoGeneratator(
-    breedte=150,
-    hoogte=150,
+    breedte=1500,
+    hoogte=1500,
     kleur_verhoudingen=kleurInfo,
     donker_licht_kleurcodes=donker_licht_info,
     percentages_donker_licht=(5,5),
-    versie=3,
+    versie=6,
     naam_basis=kleuren_naam)
 
 ptg.generate_globale_topo(
-    aantal=150,
-    blot_grootte_factor=2,
+    aantal=300,
+    blot_grootte_factor=1,
     octaves=8,
-    persistence=0.3,
-    lacunarity=4.0,
+    persistence=0.4,
+    lacunarity=9.0,
     scaleX=100,
-    scaleY=200,
+    scaleY=600,
     grenswaarde=0.5,
-    richting_kans_verdeling_lb_ro=(0,1,2,3,4,5,6,7))
+    richting_kans_verdeling_lb_ro=(3,5,3,
+                                   1,1,
+                                   1,0,1))
 
 ptg.generate_locale_topo(
     aantal=6000,
@@ -37,12 +39,12 @@ ptg.generate_locale_topo(
     octaves=8,
     persistence=0.3,
     lacunarity=4.0,
-    scaleX=100,
-    scaleY=200,
+    scaleX=50,
+    scaleY=300,
     grenswaarde=0.5)
 
 print(ptg.naam)
-picture = CamoPicture(ptg.canvas_detail, ptg.verdeling_in_N_naar_kleur)
+picture = CamoPicture(ptg.canvas_detail, ptg.dict_kleurnummer_kleur)
 # picture.show()
 picture.save(root_dir, ptg.naam)
 
