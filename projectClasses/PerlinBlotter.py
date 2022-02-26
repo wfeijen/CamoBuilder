@@ -29,7 +29,7 @@ class PerlinBlotter:
     def blot(self, blot_sizeX, blot_sizeY):
         centerX = blot_sizeX // 2
         centerY = blot_sizeY // 2
-        middenKwadraat = min(centerX ** 2, centerY ** 2)
+        #middenKwadraat = min(centerX ** 2, centerY ** 2)
         canvas = np.zeros((blot_sizeX, blot_sizeY))
         for x in range(0, blot_sizeX):
             for y in range(0, blot_sizeY):
@@ -45,9 +45,9 @@ class PerlinBlotter:
         canvas = (canvas - np.amin(canvas)) / (np.amax(canvas) - np.amin(canvas))
         for x in range(0, blot_sizeX):
             for y in range(0, blot_sizeY):
-                afstand_kwadraad = ((x - centerX) ** 2 + (y - centerY) ** 2)
+                afstand_kwadraad = (((x - centerX) / centerX) ** 2 + ((y - centerY) / centerY) ** 2)
                 vermenigvuldinging = max(0,
-                                         1 - (afstand_kwadraad / (middenKwadraat)))
+                                         1 - afstand_kwadraad)
                 canvas[x, y] = canvas[x, y] * vermenigvuldinging
         # in plaats van opnieuw normaliseren passen we de grenswaarde aan die uitgaat
         # van range 0-1

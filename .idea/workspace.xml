@@ -4,14 +4,11 @@
     <bookmark url="file://$PROJECT_DIR$/Experimenten met Pixels2.py" line="48" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="Streepjes beginnen te werken. Nog maar 1 richting.">
-      <change afterPath="$PROJECT_DIR$/kleurParameters/graslandZomer3.jpg20220206 134526.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/graslandZomer3.jpg20220206 134526lichtDonker.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/lenteOostvaardersplassen2.jpg20220222 122407.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/lenteOostvaardersplassen2.jpg20220222 122407lichtDonker.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projectClasses/RichtingGenerator.py" afterDir="false" />
+    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="Streepjes werkt, maar gemiddelde voor licht kleur werkt niet echt goed. Nu klaar maken voor grote hoeveelheid clusters en daar de lichtste en de donkerste uitpakken en ook het percentage">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/perlin_camo.py" beforeDir="false" afterPath="$PROJECT_DIR$/perlin_camo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/perlin_noise_experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/perlin_noise_experiment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectClasses/PerlinBlotter.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/PerlinBlotter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,7 +53,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="953" />
@@ -209,8 +206,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.perlin_camo" />
-        <item itemvalue="Python.camoVergelijkingControler" />
         <item itemvalue="Python.perlin_noise_experiment" />
+        <item itemvalue="Python.camoVergelijkingControler" />
         <item itemvalue="Python.kleur_verdeling" />
         <item itemvalue="Python.PerlinTopoGenerator" />
       </list>
@@ -340,7 +337,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645313207072</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Streepjes werkt, maar gemiddelde voor licht kleur werkt niet echt goed. Nu klaar maken voor grote hoeveelheid clusters en daar de lichtste en de donkerste uitpakken en ook het percentage">
+      <created>1645535734657</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1645535734657</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TodoView">
@@ -414,7 +418,8 @@
     <MESSAGE value="Oude zooi weggegooid" />
     <MESSAGE value="Oude klaar voor streepjes" />
     <MESSAGE value="Streepjes beginnen te werken. Nog maar 1 richting." />
-    <option name="LAST_COMMIT_MESSAGE" value="Streepjes beginnen te werken. Nog maar 1 richting." />
+    <MESSAGE value="Streepjes werkt, maar gemiddelde voor licht kleur werkt niet echt goed. Nu klaar maken voor grote hoeveelheid clusters en daar de lichtste en de donkerste uitpakken en ook het percentage" />
+    <option name="LAST_COMMIT_MESSAGE" value="Streepjes werkt, maar gemiddelde voor licht kleur werkt niet echt goed. Nu klaar maken voor grote hoeveelheid clusters en daar de lichtste en de donkerste uitpakken en ook het percentage" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -468,6 +473,21 @@
           <url>file://$PROJECT_DIR$/rommel.py</url>
           <line>12</line>
           <option name="timeStamp" value="118" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py</url>
+          <line>283</line>
+          <option name="timeStamp" value="129" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/projectClasses/PerlinBlotter.py</url>
+          <line>48</line>
+          <option name="timeStamp" value="130" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/perlin_camo.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="131" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
