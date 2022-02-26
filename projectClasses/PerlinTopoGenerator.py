@@ -346,11 +346,12 @@ def splits_hoogste_en_laagste_lichtheid_af(df_kleuren, grens_factor):
     totaal_aantal = kleuren_sorted.aantal.sum()
     grens = totaal_aantal * grens_factor
     kleuren_sorted = kleuren_sorted[kleuren_sorted.aantal > grens]
+    kleuren_antwoord = kleuren_sorted.iloc[1:-1]
     kleuren_sorted = kleuren_sorted.iloc[[0, -1]]
     licht_donker_antwoord = kleuren_sorted.loc[:, ['R', 'G', 'B']]
-    kleuren_antwoord = pd.merge(df_kleuren, kleuren_sorted.verdeling_in_N, how='outer', left_on='verdeling_in_N',
-                                right_on='verdeling_in_N', indicator=True)
-    kleuren_antwoord = kleuren_antwoord.loc[kleuren_antwoord['_merge'] == 'left_only']
+    # kleuren_antwoord = pd.merge(df_kleuren, kleuren_sorted.verdeling_in_N, how='outer', left_on='verdeling_in_N',
+    #                             right_on='verdeling_in_N', indicator=True)
+    # kleuren_antwoord = kleuren_antwoord.loc[kleuren_antwoord['_merge'] == 'left_only']
     percentage_donker_licht = tuple((kleuren_sorted.aantal.tolist() / totaal_aantal) * 100)
-    kleuren_antwoord = kleuren_antwoord.drop(['_merge'], axis=1)
+    # kleuren_antwoord = kleuren_antwoord.drop(['_merge'], axis=1)
     return kleuren_antwoord, licht_donker_antwoord, percentage_donker_licht

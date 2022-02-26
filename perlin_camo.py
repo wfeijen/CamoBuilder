@@ -17,7 +17,7 @@ ptg = PerlinTopoGeneratator(
     hoogte=1500,
     kleur_verhoudingen=kleurInfo,
     ondergrens_donker_licht=0.02,
-    versie=1,
+    versie=2,
     naam_basis=kleuren_naam)
 
 ptg.generate_globale_topo(

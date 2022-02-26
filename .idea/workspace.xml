@@ -4,11 +4,9 @@
     <bookmark url="file://$PROJECT_DIR$/Experimenten met Pixels2.py" line="48" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="Streepjes werkt, maar gemiddelde voor licht kleur werkt niet echt goed. Nu klaar maken voor grote hoeveelheid clusters en daar de lichtste en de donkerste uitpakken en ook het percentage">
+    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="voor alle kleuren onder ondergrens verwijderen">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/perlin_camo.py" beforeDir="false" afterPath="$PROJECT_DIR$/perlin_camo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/perlin_noise_experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/perlin_noise_experiment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClasses/PerlinBlotter.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/PerlinBlotter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -344,7 +342,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645535734657</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="voor alle kleuren onder ondergrens verwijderen">
+      <created>1645862197695</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1645862197695</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TodoView">
@@ -419,7 +424,8 @@
     <MESSAGE value="Oude klaar voor streepjes" />
     <MESSAGE value="Streepjes beginnen te werken. Nog maar 1 richting." />
     <MESSAGE value="Streepjes werkt, maar gemiddelde voor licht kleur werkt niet echt goed. Nu klaar maken voor grote hoeveelheid clusters en daar de lichtste en de donkerste uitpakken en ook het percentage" />
-    <option name="LAST_COMMIT_MESSAGE" value="Streepjes werkt, maar gemiddelde voor licht kleur werkt niet echt goed. Nu klaar maken voor grote hoeveelheid clusters en daar de lichtste en de donkerste uitpakken en ook het percentage" />
+    <MESSAGE value="voor alle kleuren onder ondergrens verwijderen" />
+    <option name="LAST_COMMIT_MESSAGE" value="voor alle kleuren onder ondergrens verwijderen" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -483,11 +489,6 @@
           <url>file://$PROJECT_DIR$/projectClasses/PerlinBlotter.py</url>
           <line>48</line>
           <option name="timeStamp" value="130" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/perlin_camo.py</url>
-          <line>12</line>
-          <option name="timeStamp" value="131" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
