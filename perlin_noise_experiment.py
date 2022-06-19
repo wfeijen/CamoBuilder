@@ -70,11 +70,21 @@ def show_world(world, grens):
     Image.fromarray(np.uint8(world_grens)).show()
 
 voer_experiment_uit(
-    persistence=0.0,
-    lacunarity=1.0,
-    octaves=1,
-    scaleX=300,
-    scaleY=100,
-    grenswaarde=0.1,
-    aantal = 3
+    aantal = 1,
+    octaves=8,
+    persistence=0.4,
+    lacunarity=3.0,
+    scaleX=80,
+    scaleY=80,
+    grenswaarde=0.4
 )
+
+# voer_experiment_uit(
+#     aantal = 1,
+#     octaves=8,
+#     persistence=0.5,
+#     lacunarity=3.0,
+#     scaleX=100,
+#     scaleY=100,
+#     grenswaarde=0.5
+# )

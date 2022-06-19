@@ -1,7 +1,6 @@
 import random
 from math import sqrt
 import numpy as np
-import pandas as pd
 
 from projectClasses.PerlinBlotter import PerlinBlotter
 from projectClasses.Utilities import replace_with_dict
@@ -10,7 +9,7 @@ from projectClasses.RichtingGenerator import RichtingGenerator
 MIN_BLOT_DIAMETER = 5
 LICHT_DONKER_VERSCHUIVINGSFACTOR = 0.5
 LICHT_DONKER_MINIMALE_VERSCHUIVING = 3
-LICHT_DONKER_MAXIMALE_VERSCHUIVING = 10
+LICHT_DONKER_MAXIMALE_VERSCHUIVING = 20
 AFKAP_MAX_MIN_DELTA_AANTAL_FACTOR = 0.1
 AFKAP_MAX_MIN_DELTA_AANTAL_FACTOR_DETAIL = 0.3
 
@@ -20,25 +19,22 @@ class PerlinTopoGeneratator:
                  breedte,
                  hoogte,
                  kleur_verhoudingen,
-                 ondergrens_donker_licht,
+                 percentage_donker_licht,
                  versie,
                  naam_basis):
-        kleurInfo, donker_licht_info, donker_licht_percentage = splits_hoogste_en_laagste_lichtheid_af(kleur_verhoudingen, ondergrens_donker_licht)
         self.h = hoogte
         self.w = breedte
+        self.aantal_pixels = self.w * self.h
+        self.percentage_donker_licht = percentage_donker_licht
+        kleurInfo, donker_licht_info = self.splits_hoogste_en_laagste_lichtheid_af(kleur_verhoudingen, percentage_donker_licht)
         self.afkap_max_min_delta_aantal = int(sqrt(hoogte * breedte) * AFKAP_MAX_MIN_DELTA_AANTAL_FACTOR)
         self.kleur_verhoudingen = kleurInfo.rename(columns={'aantal': 'wenselijk_aantal'})
         self.versie = versie
         # Licht en donker aantallen berekenen
-        self.aantal_pixels = self.w * self.h
-        self.totaal_percentage_donker_licht = sum(donker_licht_percentage) / 100
-        totaal_absoluut_donker_licht = self.totaal_percentage_donker_licht * self.aantal_pixels
-        # aanpassen wenselijke aantal omdat we een deel aan licht en donker hebben vergeven
+        self.totaal_absoluut_donker_licht = percentage_donker_licht * self.aantal_pixels
         self.donker_licht_verdeling = donker_licht_info  # pd.DataFrame({'R':[0, 255], 'G':[0, 0], 'B':[0,0]})#
-        self.donker_licht_verdeling['wenselijk_aantal'] = [
-            p / self.totaal_percentage_donker_licht / 100 * totaal_absoluut_donker_licht
-            for p in donker_licht_percentage]
-        self.donker_licht_verdeling['verhouding'] = [x / 100 for x in donker_licht_percentage]
+        self.donker_licht_verdeling['wenselijk_aantal'] = self.totaal_absoluut_donker_licht
+        self.donker_licht_verdeling['verhouding'] = percentage_donker_licht
 
         # We gaan nu eerst de tellingen per kleurgroep op orde maken en canvas uitvullen met het meest voorkomende kleurgroep nummer
         aantal_kleurmetingen = self.kleur_verhoudingen['wenselijk_aantal'].sum()
@@ -46,14 +42,14 @@ class PerlinTopoGeneratator:
         self.kleurgroepen_globaal = self.kleur_verhoudingen.groupby(['verdeling_in_M'])[
             'verhouding'].sum().reset_index()
         self.kleurgroepen_globaal['wenselijk_aantal'] = self.kleurgroepen_globaal['verhouding'] * self.aantal_pixels * (
-                1 - self.totaal_percentage_donker_licht)
+                1 - (2 * percentage_donker_licht))
         self.kleurgroepen_globaal['wenselijk_aantal'] = self.kleurgroepen_globaal['wenselijk_aantal']
         self.kleurgroepen_globaal['aantal'] = np. \
             where(self.kleurgroepen_globaal['verhouding'] == self.kleurgroepen_globaal['verhouding'].min(),
                   self.aantal_pixels, 0)
         min_kleur_nummer = self.kleurgroepen_globaal[self.kleurgroepen_globaal['aantal'] != 0]['verdeling_in_M'].min()
         self.canvas_globaal = np.full((self.w, self.h), min_kleur_nummer)
-        self.naam = naam_basis + "b" + str(breedte) + "h" + str(hoogte) + "odl" + str(ondergrens_donker_licht)
+        self.naam = naam_basis + "b" + str(breedte) + "h" + str(hoogte) + "odl" + str(percentage_donker_licht)
 
     def generate_globale_topo(self,
                               aantal,
@@ -166,11 +162,12 @@ class PerlinTopoGeneratator:
         self.kleurgroepen_detail.loc[
             ~self.kleurgroepen_detail['wenselijk_aantal'].isin(minKleurAantallen), 'aantal'] = 0
         self.kleurgroepen_detail['wenselijk_aantal'] = self.kleurgroepen_detail['verhouding'] * self.aantal_pixels * (
-                1 - self.totaal_percentage_donker_licht)
+                1 - (2 * self.percentage_donker_licht))
         self.kleurgroepen_detail['delta_aantal'] = self.kleurgroepen_detail['wenselijk_aantal'] - \
                                                    self.kleurgroepen_detail['aantal']
         # We moeten nu zorgen dat eventuele pixels die licht en donker te veel of te weinig genomen hebben geen probleem op gaan leveren
         # in het bepalen van de detail verdeling. We verdelen naar verhouding
+        self.donker_licht_verdeling_delta = self.donker_licht_verdeling.delta_aantal
         donker_licht_delta = self.donker_licht_verdeling.delta_aantal.sum()
         self.kleurgroepen_detail[
             'wenselijk_aantal'] = self.kleurgroepen_detail.wenselijk_aantal + self.kleurgroepen_detail.verhouding * donker_licht_delta
@@ -269,6 +266,8 @@ class PerlinTopoGeneratator:
                                                                                             self.kleurgroepen_detail.G,
                                                                                             self.kleurgroepen_detail.B)))
 
+        print("donker licht deltas", str(self.donker_licht_verdeling_delta))
+
     def afmetingen(self):
         return "_W" + str(self.w) + \
                "_H" + str(self.h)
@@ -338,20 +337,23 @@ class PerlinTopoGeneratator:
         max_delta_donker_licht = self.donker_licht_verdeling.delta_aantal.max()
         return min_delta_kleurgroepen, max_delta_kleurgroepen, max_delta_kleurgroep, min_delta_donker_licht, max_delta_donker_licht
 
-
-def splits_hoogste_en_laagste_lichtheid_af(df_kleuren, grens_factor):
-    kleuren_sorted = df_kleuren.copy()
-    kleuren_sorted['lichtheid'] = kleuren_sorted.R + kleuren_sorted.G + kleuren_sorted.B
-    kleuren_sorted = kleuren_sorted.sort_values(by='lichtheid')
-    totaal_aantal = kleuren_sorted.aantal.sum()
-    grens = totaal_aantal * grens_factor
-    kleuren_sorted = kleuren_sorted[kleuren_sorted.aantal > grens]
-    kleuren_antwoord = kleuren_sorted.iloc[1:-1]
-    kleuren_sorted = kleuren_sorted.iloc[[0, -1]]
-    licht_donker_antwoord = kleuren_sorted.loc[:, ['R', 'G', 'B']]
-    # kleuren_antwoord = pd.merge(df_kleuren, kleuren_sorted.verdeling_in_N, how='outer', left_on='verdeling_in_N',
-    #                             right_on='verdeling_in_N', indicator=True)
-    # kleuren_antwoord = kleuren_antwoord.loc[kleuren_antwoord['_merge'] == 'left_only']
-    percentage_donker_licht = tuple((kleuren_sorted.aantal.tolist() / totaal_aantal) * 100)
-    # kleuren_antwoord = kleuren_antwoord.drop(['_merge'], axis=1)
-    return kleuren_antwoord, licht_donker_antwoord, percentage_donker_licht
+    # Geeft aparte lichte en donkere kleuren terug
+    # Brengt die kleuren in mindering op de oorspronkelijke kleurenboekhouding
+    # Verwijderd weinig voorkomende kleuren
+    def splits_hoogste_en_laagste_lichtheid_af(self, df_kleuren, factor_licht_donker):
+        aantal_kleur_metingen = df_kleuren['aantal'].sum()
+        aantal_licht_donker = aantal_kleur_metingen * factor_licht_donker
+        kleuren_sorted = df_kleuren.copy()
+        kleuren_sorted['lichtheid'] = kleuren_sorted.R + kleuren_sorted.G + kleuren_sorted.B
+        kleuren_sorted = kleuren_sorted.sort_values(by='lichtheid')
+        # We kunnen nu de donkerste en lichtste kleur selecteren
+        kleuren_licht_donker = kleuren_sorted.iloc[[0, -1]]
+        # Kijken of de kleuren genoeg pixels beslaan
+        if kleuren_licht_donker['aantal'].min() < aantal_licht_donker:
+            raise ValueError("De lichtste of de donkerste kleur heeft niet genoeg pixels.")
+        # We brengen de aantallen in mindering bij de lichtste en donkerste kleur
+        kleuren_sorted.at[0, 'aantal'] = kleuren_sorted.at[0, 'aantal'] - aantal_licht_donker
+        laatste_regel = len(kleuren_sorted) - 1
+        kleuren_sorted.at[laatste_regel, 'aantal'] = kleuren_sorted.at[laatste_regel, 'aantal'] - aantal_licht_donker
+        licht_donker_antwoord = kleuren_licht_donker.loc[:, ['R', 'G', 'B']]
+        return kleuren_sorted, licht_donker_antwoord

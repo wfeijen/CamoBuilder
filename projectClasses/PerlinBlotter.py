@@ -23,7 +23,6 @@ class PerlinBlotter:
                "_l" + str(self.lacunarity) + \
                "_X" + str("{:03d}".format(self.scaleX)) + \
                "_Y" + str("{:03d}".format(self.scaleY)) + \
-               "_b" + str("{:02d}".format(self.base)) + \
                "_g" + str(self.grenswaarde)
 
     def blot(self, blot_sizeX, blot_sizeY):
