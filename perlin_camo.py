@@ -11,17 +11,17 @@ kleurenPad = '../kleurParameters/' + kleuren_naam
 kleurInfo = pd.read_csv(kleurenPad, index_col=0)
 ptg = PerlinTopoGeneratator(
     breedte=1500,
-    hoogte=2000,
+    hoogte=1500,
     kleur_verhoudingen=kleurInfo,
-    versie=5,
+    versie=3,
     naam_basis=kleuren_naam)
 
 ptg.generate_globale_topo(
     aantal=150,
     blot_grootte_factor=2,
+    octaves=8,
     persistence=0.3,
     lacunarity=4.0,
-    octaves=8,
     scaleX=100,
     scaleY=200,
     grenswaarde=0.5)
@@ -29,9 +29,9 @@ ptg.generate_globale_topo(
 ptg.generate_locale_topo(
     aantal=6000,
     blot_grootte_factor=2,
+    octaves=8,
     persistence=0.3,
     lacunarity=4.0,
-    octaves=8,
     scaleX=100,
     scaleY=200,
     grenswaarde=0.5)

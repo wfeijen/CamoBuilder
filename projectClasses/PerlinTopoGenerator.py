@@ -29,7 +29,7 @@ class PerlinTopoGeneratator:
                   aantal_pixels, 0)
         min_kleur_nummer = self.kleurgroepen_globaal[self.kleurgroepen_globaal['aantal'] != 0]['verdeling_in_M'].min()
         self.canvas_globaal = np.full((self.w, self.h), min_kleur_nummer)
-        self.naam = naam_basis + "v" + str(self.versie) + "b" + str(breedte) + "h" + str(hoogte)
+        self.naam = naam_basis + "b" + str(breedte) + "h" + str(hoogte)
         self.verdeling_in_N_naar_kleur = dict(zip(self.kleur_verhoudingen.verdeling_in_N, zip(self.kleur_verhoudingen.R,
                                                                                               self.kleur_verhoudingen.G,
                                                                                               self.kleur_verhoudingen.B)))
@@ -48,7 +48,7 @@ class PerlinTopoGeneratator:
                               scaleY,
                               grenswaarde):
         blotter = PerlinBlotter(persistence, lacunarity, octaves, scaleX, scaleY, self.versie, grenswaarde)
-        self.naam = self.naam + "_glob_a" + str(aantal) + "_gf" + str(blot_grootte_factor) + blotter.naam
+        self.naam = self.naam + "_glob_a" + str(aantal) + "bg" + str(blot_grootte_factor) + blotter.naam
         for i in range(aantal):
             # Boekhouding op orde
             for j in self.kleurgroepen_globaal['verdeling_in_M']:
@@ -129,7 +129,8 @@ class PerlinTopoGeneratator:
                              scaleY,
                              grenswaarde):
         blotter = PerlinBlotter(persistence, lacunarity, octaves, scaleX, scaleY, self.versie, grenswaarde)
-        self.naam = self.naam + "_det_a" + str(aantal) + "_gf" + str(blot_grootte_factor) + blotter.naam
+        self.naam = self.naam + "_det_a" + str("{:02d}".format(aantal)) + "_bg" + str("{:02d}".format(blot_grootte_factor)) + blotter.naam + "v" + str("{:02d}".format(self.versie))
+
         # Eerst van hoofdkl
         for i in range(aantal):
             # Boekhouding op orde
