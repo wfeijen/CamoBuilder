@@ -19,6 +19,10 @@ class PerlinTopoGeneratator:
         aantal_kleurmetingen = self.kleur_verhoudingen['wenselijk_aantal'].sum()
         self.kleur_verhoudingen['verhouding'] = self.kleur_verhoudingen['wenselijk_aantal'] / aantal_kleurmetingen
         self.versie = versie
+        self.lichte_kleur = self.kleur_verhoudingen.tail(1)
+        self.donkere_kleur = self.kleur_verhoudingen.head(1)
+        self.kleur_verhoudingen.drop(self.lichte_kleur.index, inplace=True)
+        self.kleur_verhoudingen.drop(self.donkere_kleur.index, inplace=True)
         # We gaan nu eerst de tellingen per kleurgroep op orde maken en canvas uitvullen met het meest voorkomende kleurgroep nummer
         self.kleurgroepen_globaal = self.kleur_verhoudingen.groupby(['verdeling_in_M'])[
             'verhouding'].sum().reset_index()
@@ -71,11 +75,12 @@ class PerlinTopoGeneratator:
             print("blotdiameter", blotDiameter)
             # plaatsen van de blot op canvas
             # we werken vanaf linksboven
+            # We doen dit 3 keer. Eerst licht met negatieve extra vershuiving. Dan donker met extra verschuiving. Dan kleur zonder extra verschuiving.
             x_verschuiving = np.random.randint(blotDiameter + self.w) - blotDiameter
-            xEind = min(x_verschuiving + blotDiameter, self.w)
-            xStart = max(0, x_verschuiving)
             y_verschuiving = np.random.randint(blotDiameter + self.h) - blotDiameter
+            xEind = min(x_verschuiving + blotDiameter, self.w)
             yEind = min(y_verschuiving + blotDiameter, self.h)
+            xStart = max(0, x_verschuiving)
             yStart = max(0, y_verschuiving)
 
             print("")
