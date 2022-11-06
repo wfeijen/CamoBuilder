@@ -6,23 +6,22 @@ from PIL import Image, ImageShow
 from projectClasses.PerlinBlotter import PerlinBlotter
 from projectClasses.Utilities import replace_with_dict
 
+
 class PerlinTopoGeneratator:
     def __init__(self,
                  breedte,
                  hoogte,
                  kleur_verhoudingen,
                  versie,
-                 naam_basis):
+                 naam_basis,
+                 richtingGenerator):
         self.h = hoogte
         self.w = breedte
         self.kleur_verhoudingen = kleur_verhoudingen.rename(columns={'aantal': 'wenselijk_aantal'})
         aantal_kleurmetingen = self.kleur_verhoudingen['wenselijk_aantal'].sum()
         self.kleur_verhoudingen['verhouding'] = self.kleur_verhoudingen['wenselijk_aantal'] / aantal_kleurmetingen
         self.versie = versie
-        self.lichte_kleur = self.kleur_verhoudingen.tail(1)
-        self.donkere_kleur = self.kleur_verhoudingen.head(1)
-        self.kleur_verhoudingen.drop(self.lichte_kleur.index, inplace=True)
-        self.kleur_verhoudingen.drop(self.donkere_kleur.index, inplace=True)
+
         # We gaan nu eerst de tellingen per kleurgroep op orde maken en canvas uitvullen met het meest voorkomende kleurgroep nummer
         self.kleurgroepen_globaal = self.kleur_verhoudingen.groupby(['verdeling_in_M'])[
             'verhouding'].sum().reset_index()
@@ -31,12 +30,18 @@ class PerlinTopoGeneratator:
         self.kleurgroepen_globaal['aantal'] = np. \
             where(self.kleurgroepen_globaal['verhouding'] == self.kleurgroepen_globaal['verhouding'].min(),
                   aantal_pixels, 0)
-        min_kleur_nummer = self.kleurgroepen_globaal[self.kleurgroepen_globaal['aantal'] != 0]['verdeling_in_M'].min()
+
+        # Afscheiden licht en donkere kleuren
+        # min_kleur_nummer = self.kleurgroepen_globaal[self.kleurgroepen_globaal['aantal'] != 0]['verdeling_in_M'].min()
+        kleurnummers_zonder_licht_en_donker = self.kleurgroepen_globaal[1: len(self.kleurgroepen_globaal.index) - 1]
+        min_kleur_nummer = int(kleurnummers_zonder_licht_en_donker.loc[kleurnummers_zonder_licht_en_donker['wenselijk_aantal'].idxmin()]['verdeling_in_M'])
+
         self.canvas_globaal = np.full((self.w, self.h), min_kleur_nummer)
         self.naam = naam_basis + "b" + str(breedte) + "h" + str(hoogte)
         self.verdeling_in_N_naar_kleur = dict(zip(self.kleur_verhoudingen.verdeling_in_N, zip(self.kleur_verhoudingen.R,
                                                                                               self.kleur_verhoudingen.G,
                                                                                               self.kleur_verhoudingen.B)))
+        self.richtingGenerator = richtingGenerator
 
     def afmetingen(self):
         return "_W" + str(self.w) + \
@@ -53,6 +58,8 @@ class PerlinTopoGeneratator:
                               grenswaarde):
         blotter = PerlinBlotter(persistence, lacunarity, octaves, scaleX, scaleY, self.versie, grenswaarde)
         self.naam = self.naam + "_glob_a" + str(aantal) + "bg" + str(blot_grootte_factor) + blotter.naam
+        indexWit = len(self.kleurgroepen_globaal.index) - 1
+        indexZwart = 0
         for i in range(aantal):
             # Boekhouding op orde
             for j in self.kleurgroepen_globaal['verdeling_in_M']:
@@ -62,7 +69,7 @@ class PerlinTopoGeneratator:
             self.kleurgroepen_globaal['aantal'] = aantallen_per_hoofdkleur
             self.kleurgroepen_globaal['delta_aantal'] = self.kleurgroepen_globaal['wenselijk_aantal'] - \
                                                         self.kleurgroepen_globaal['aantal']
-            max_delta = self.kleurgroepen_globaal['delta_aantal'].max()
+            max_delta = self.kleurgroepen_globaal.iloc[indexZwart+1:indexWit]['delta_aantal'].max()
 
             max_delta_kleurgroep = self.kleurgroepen_globaal[self.kleurgroepen_globaal['delta_aantal'] == max_delta][
                 'verdeling_in_M'].max()
@@ -78,6 +85,33 @@ class PerlinTopoGeneratator:
             # We doen dit 3 keer. Eerst licht met negatieve extra vershuiving. Dan donker met extra verschuiving. Dan kleur zonder extra verschuiving.
             x_verschuiving = np.random.randint(blotDiameter + self.w) - blotDiameter
             y_verschuiving = np.random.randint(blotDiameter + self.h) - blotDiameter
+
+            if blotDiameter <= 10:
+                break
+
+            # Eerst wit
+            deltaX, deltaY = self.richtingGenerator.geef_richting(max_afstand=int(self.kleurgroepen_globaal.iloc[indexWit]['delta_aantal']))
+            xStart = max(0, x_verschuiving + deltaX)
+            yStart = max(0, y_verschuiving + deltaY)
+            xEind = min(x_verschuiving + blotDiameter + deltaX, self.w)
+            yEind = min(y_verschuiving + blotDiameter + deltaY, self.h)
+            for x in range(xStart, xEind):
+                for y in range(yStart, yEind):
+                    if blot[x - x_verschuiving - deltaX, y - y_verschuiving - deltaY] == 1:
+                        self.canvas_globaal[x, y] = indexWit
+
+            # Nu zwart
+            deltaX, deltaY = self.richtingGenerator.geef_richting(max_afstand=int(self.kleurgroepen_globaal.iloc[indexZwart]['delta_aantal']))
+            xStart = max(0, x_verschuiving - deltaX)
+            yStart = max(0, y_verschuiving - deltaY)
+            xEind = min(x_verschuiving + blotDiameter - deltaX, self.w)
+            yEind = min(y_verschuiving + blotDiameter - deltaY, self.h)
+            for x in range(xStart, xEind):
+                for y in range(yStart, yEind):
+                    if blot[x - x_verschuiving + deltaX, y - y_verschuiving + deltaY] == 1:
+                        self.canvas_globaal[x, y] = indexZwart
+
+            # Nu de reguliere kleur
             xEind = min(x_verschuiving + blotDiameter, self.w)
             yEind = min(y_verschuiving + blotDiameter, self.h)
             xStart = max(0, x_verschuiving)
@@ -85,14 +119,11 @@ class PerlinTopoGeneratator:
 
             print("")
             print(self.kleurgroepen_globaal)
-            print('i', i)
+            print('i', i, ' globaal')
             print('kleur', max_delta_kleurgroep)
             print('blotDiam', blotDiameter)
             print('x ', xStart, '-', xEind, 'displacementX', x_verschuiving)
             print('y ', yStart, '-', yEind, 'displacementY', y_verschuiving)
-
-            if blotDiameter <= 10:
-                break
 
             for x in range(xStart, xEind):
                 for y in range(yStart, yEind):
@@ -172,7 +203,7 @@ class PerlinTopoGeneratator:
             yEind = min(y_verschuiving + blotDiameter, self.h)
             yStart = max(0, y_verschuiving)
 
-            print('i', i)
+            print('i', i, ' detail')
             print(self.kleurgroepen_detail)
             print(doel_kleurnummers)
             print('x ', xStart, '-', xEind, 'displacementX', x_verschuiving)

@@ -1,6 +1,7 @@
 import pandas as pd
 from projectClasses.PerlinTopoGenerator import PerlinTopoGeneratator
 from projectClasses.Camo_picture import CamoPicture
+from projectClasses.RichtingGenerator import RichtingGenerator
 
 kleuren_naam = 'lenteOostvaardersplassen_1.3.jpg20221106 134914.csv'
 # kleuren_naam = 'graslandZomer3.jpg20220108 134624.csv'
@@ -12,14 +13,18 @@ kleurInfo = pd.read_csv(kleurenPad, index_col=0)
 
 
 ptg = PerlinTopoGeneratator(
-    breedte=150,
-    hoogte=150,
+    breedte=1500,
+    hoogte=1500,
     kleur_verhoudingen=kleurInfo,
     versie=3,
-    naam_basis=kleuren_naam)
+    naam_basis=kleuren_naam,
+    richtingGenerator = RichtingGenerator([1,2,1,
+                                           1,  1,
+                                           0, 0, 0],
+                        overall_max = 5))
 
 ptg.generate_globale_topo(
-    aantal=150,
+    aantal=1500,
     blot_grootte_factor=2,
     octaves=8,
     persistence=0.3,
@@ -29,7 +34,7 @@ ptg.generate_globale_topo(
     grenswaarde=0.5)
 
 ptg.generate_locale_topo(
-    aantal=600,
+    aantal=6000,
     blot_grootte_factor=2,
     octaves=8,
     persistence=0.3,
