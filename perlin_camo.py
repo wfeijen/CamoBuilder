@@ -21,25 +21,25 @@ ptg = PerlinTopoGeneratator(
     richtingGenerator = RichtingGenerator([1,2,1,
                                            1,  1,
                                            0, 0, 0],
-                        overall_max = 5))
+                        overall_max = 10))
 
 ptg.generate_globale_topo(
-    aantal=1500,
-    blot_grootte_factor=2,
+    aantal=400,
+    blot_grootte_factor=0.8,
     octaves=8,
-    persistence=0.3,
+    persistence=0.6,
     lacunarity=4.0,
-    scaleX=100,
-    scaleY=200,
+    scaleX=80,
+    scaleY=800,
     grenswaarde=0.5)
 
 ptg.generate_locale_topo(
     aantal=6000,
-    blot_grootte_factor=2,
+    blot_grootte_factor=0.9,
     octaves=8,
     persistence=0.3,
-    lacunarity=4.0,
-    scaleX=100,
+    lacunarity=5.0,
+    scaleX=50,
     scaleY=200,
     grenswaarde=0.5)
 

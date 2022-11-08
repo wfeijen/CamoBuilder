@@ -73,7 +73,7 @@ voer_experiment_uit(
     persistence=0.3,
     lacunarity=4.0,
     octaves=8,
-    scaleX=300,
+    scaleX=100,
     scaleY=100,
     grenswaarde=0.6,
     aantal = 3

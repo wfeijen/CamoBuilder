@@ -4,12 +4,8 @@
     <bookmark url="file://$PROJECT_DIR$/Experimenten met Pixels2.py" line="48" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="Nieuwe Bepaal dominante kleuren.">
-      <change afterPath="$PROJECT_DIR$/BepaalDominanteKleurenSplitKNN.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Camo builder.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Camo builder.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="lichtstreepjes werken">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BepaalDominanteKleuren.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/BepaalDominanteKleuren.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/perlin_camo.py" beforeDir="false" afterPath="$PROJECT_DIR$/perlin_camo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/perlin_noise_experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/perlin_noise_experiment.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projectClasses/PerlinBlotter.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/PerlinBlotter.py" afterDir="false" />
@@ -53,7 +49,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="953" />
@@ -86,13 +82,14 @@
       <recent name="$PROJECT_DIR$/kleurParameters" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/kleurParameters/Oud" />
+      <recent name="$PROJECT_DIR$/dump" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/projectClasses" />
-      <recent name="$PROJECT_DIR$/dump" />
       <recent name="$PROJECT_DIR$/camoOutput" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.BepaalDominanteKleurenSplitKNN">
+  <component name="RunManager" selected="Python.perlin_camo">
     <configuration name="BepaalDominanteKleurenSplitKNN" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Camo builder" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -135,7 +132,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="kleur_verdeling" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="camoVergelijkingControler" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Camo builder" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -147,7 +144,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/kleur_verdeling.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/camoVergelijkingControler.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -199,19 +196,19 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.camoVergelijkingControler" />
       <item itemvalue="Python.BepaalDominanteKleurenSplitKNN" />
       <item itemvalue="Python.perlin_noise_experiment" />
       <item itemvalue="Python.PerlinTopoGenerator" />
       <item itemvalue="Python.perlin_camo" />
-      <item itemvalue="Python.kleur_verdeling" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.BepaalDominanteKleurenSplitKNN" />
         <item itemvalue="Python.perlin_camo" />
         <item itemvalue="Python.perlin_noise_experiment" />
-        <item itemvalue="Python.kleur_verdeling" />
         <item itemvalue="Python.PerlinTopoGenerator" />
+        <item itemvalue="Python.camoVergelijkingControler" />
+        <item itemvalue="Python.BepaalDominanteKleurenSplitKNN" />
       </list>
     </recent_temporary>
   </component>
@@ -332,7 +329,28 @@
       <option name="project" value="LOCAL" />
       <updated>1667727825812</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Nieuwe Bepaal dominante kleuren.">
+      <created>1667728084358</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1667728084358</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Klaar voor toevoegen schaduw en lichtstreepjes">
+      <created>1667741134603</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1667741134603</updated>
+    </task>
+    <task id="LOCAL-00018" summary="lichtstreepjes werken">
+      <created>1667762590155</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1667762590155</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TodoView">
@@ -405,7 +423,9 @@
     <MESSAGE value="perlin werkt. Weggooien oude zooi" />
     <MESSAGE value="Oude zooi weggegooid" />
     <MESSAGE value="Nieuwe Bepaal dominante kleuren." />
-    <option name="LAST_COMMIT_MESSAGE" value="Nieuwe Bepaal dominante kleuren." />
+    <MESSAGE value="Klaar voor toevoegen schaduw en lichtstreepjes" />
+    <MESSAGE value="lichtstreepjes werken" />
+    <option name="LAST_COMMIT_MESSAGE" value="lichtstreepjes werken" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -462,8 +482,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/BepaalDominanteKleurenSplitKNN.py</url>
-          <line>83</line>
-          <option name="timeStamp" value="119" />
+          <line>130</line>
+          <option name="timeStamp" value="166" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py</url>
+          <line>166</line>
+          <option name="timeStamp" value="183" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

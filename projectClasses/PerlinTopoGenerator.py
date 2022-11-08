@@ -76,15 +76,14 @@ class PerlinTopoGeneratator:
             # We maken een blot met oppervlakte gelijk aan delta wenselijk aantal en werkelijk aantal
             # eerst vierkant later kan dat mooier gemaakt
             #blotDiameter = int(max(sqrt(max_delta) * 2, (sqrt(aantal) * 10) // (i + 1)))
-            blotDiameter = int(sqrt(max_delta + aantal - i) * blot_grootte_factor)
-            blotDiameter = random.randint(blotDiameter // 2, blotDiameter)
+            blotDiameter = int(sqrt(max(10, max_delta + aantal - i)) * blot_grootte_factor)
             blot = blotter.blot(blotDiameter, blotDiameter)
             print("blotdiameter", blotDiameter)
             # plaatsen van de blot op canvas
             # we werken vanaf linksboven
             # We doen dit 3 keer. Eerst licht met negatieve extra vershuiving. Dan donker met extra verschuiving. Dan kleur zonder extra verschuiving.
-            x_verschuiving = np.random.randint(blotDiameter + self.w) - blotDiameter
-            y_verschuiving = np.random.randint(blotDiameter + self.h) - blotDiameter
+            x_verschuiving = np.random.randint(blotDiameter + self.w) - blotDiameter // 2
+            y_verschuiving = np.random.randint(blotDiameter + self.h) - blotDiameter // 2
 
             if blotDiameter <= 10:
                 break
@@ -165,7 +164,7 @@ class PerlinTopoGeneratator:
                              scaleY,
                              grenswaarde):
         blotter = PerlinBlotter(persistence, lacunarity, octaves, scaleX, scaleY, self.versie, grenswaarde)
-        self.naam = self.naam + "_det_a" + str("{:02d}".format(aantal)) + "_bg" + str("{:02d}".format(blot_grootte_factor)) + blotter.naam + "v" + str("{:02d}".format(self.versie))
+        self.naam = self.naam + "_det_a" + str("{:02d}".format(aantal)) + "bg" + str(blot_grootte_factor) + blotter.naam + "v" + str("{:02d}".format(self.versie))
 
         # Eerst van hoofdkl
         for i in range(aantal):
@@ -191,15 +190,14 @@ class PerlinTopoGeneratator:
             # We maken een blot met oppervlakte gelijk aan delta wenselijk aantal en werkelijk aantal
             # eerst vierkant later kan dat mooier gemaakt
             #blotDiameter = int(max(sqrt(max_deltas.max()) * blot_grootte_factor, (sqrt(aantal) * 10) // (i + 1)))
-            blotDiameter = int(sqrt(max_deltas.max() + aantal - i) * blot_grootte_factor )
-            blotDiameter = random.randint(blotDiameter // 2, blotDiameter)
+            blotDiameter = int(sqrt(max(4, max_deltas.max() + aantal - i)) * blot_grootte_factor)
             blot = blotter.blot(blotDiameter, blotDiameter)
             # plaatsen van de blot op canvas
             # we werken vanaf linksboven
-            x_verschuiving = np.random.randint(blotDiameter + self.w) - blotDiameter
+            x_verschuiving = np.random.randint(blotDiameter + self.w) - (blotDiameter // 2)
             xEind = min(x_verschuiving + blotDiameter, self.w)
             xStart = max(0, x_verschuiving)
-            y_verschuiving = np.random.randint(blotDiameter + self.h) - blotDiameter
+            y_verschuiving = np.random.randint(blotDiameter + self.h) - (blotDiameter // 2)
             yEind = min(y_verschuiving + blotDiameter, self.h)
             yStart = max(0, y_verschuiving)
 

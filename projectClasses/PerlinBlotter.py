@@ -53,6 +53,7 @@ class PerlinBlotter:
         # van range 0-1
         canvas = (canvas - np.amin(canvas)) / (np.amax(canvas) - np.amin(canvas))
         canvas = np.where(canvas > self.grenswaarde, 1, 0)
+        # Image.fromarray(np.uint8(canvas * 255)).show()
         self.base = self.base + np.random.randint(1, 2)
         return canvas
 
