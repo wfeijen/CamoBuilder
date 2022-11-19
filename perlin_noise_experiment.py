@@ -39,7 +39,7 @@ def voer_experiment_uit(
                                                  repeatx=size / scaleX + 1,
                                                  repeaty=size / scaleY + 1,
                                                  base=base)
-
+        print(str(np.amax(world_vlak)), " ", str(np.amin(world_vlak)))
         world_rond = (world_vlak - np.amin(world_vlak)) / (np.amax(world_vlak) - np.amin(world_vlak))
         print(np.amin(world_vlak), np.amax(world_vlak))
         print(np.amin(world_rond), np.amax(world_rond))
@@ -48,9 +48,9 @@ def voer_experiment_uit(
         for x in range(size - i):
             for y in range(size - i):
                 midden = (size - i) // 2
-                afstand_kwadraad = ((x - midden) ** 2 + (y - midden) ** 2)
+                afstand_kwadraad = ((x /midden - 1) ** 2 + (y / midden - 1) ** 2)
                 vermenigvuldinging = max(0,
-                                         1 - (afstand_kwadraad / (midden ** 2)))
+                                         1 - (afstand_kwadraad ))
                 world_rond[x][y] = vermenigvuldinging * world_rond[x][y]
 
         world_rond = (world_rond - np.amin(world_rond)) / (np.amax(world_rond) - np.amin(world_rond))
@@ -70,11 +70,11 @@ def show_world(world, grens):
     Image.fromarray(np.uint8(world_grens)).show()
 
 voer_experiment_uit(
-    persistence=0.3,
-    lacunarity=4.0,
-    octaves=8,
-    scaleX=100,
-    scaleY=100,
-    grenswaarde=0.6,
-    aantal = 3
+    aantal = 3,
+    persistence=0.6,
+    lacunarity=16.0,
+    octaves=2,
+    scaleX=200,
+    scaleY=200,
+    grenswaarde=0.5
 )

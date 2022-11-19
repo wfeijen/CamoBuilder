@@ -10,12 +10,13 @@ import random
 import os
 
 # Parameters
-bepaalDominanteKleurenDir = '/media/willem/KleineSSD/machineLearningPictures/camoBuilder/bepaalDominanteKleuren/lenteOostvaardersplassen_1.0/'
+bepaalDominanteKleurenDir = '/media/willem/KleineSSD/machineLearningPictures/camoBuilder/bepaalDominanteKleuren/Almere nazomer/'
 kleurParametersDir = '/home/willem/PycharmProjects/CamoBuilder/kleurParameters/'
-name = 'lenteOostvaardersplassen_1.3.jpg'
+name = 'Almere nazomer1.jpg'
 sampleSizeTest = 1000
 sampleSize = 1000000
-percentage_afsplitsen = 0.05
+percentage_afsplitsen = 0.01
+aantal_kleuren = 9
 aantal_grijsgroepen = 3
 ontwikkel = False
 
@@ -60,7 +61,7 @@ df_licht['groep'] = -1
 # Split moet rond de 0.5 zijn
 print('verhouding RG rood is :', df['RG'].mean()/255, ' zou rond de 0.5 moeten zijn')
 
-kmeans = KMeans(n_clusters=2*aantal_grijsgroepen)
+kmeans = KMeans(n_clusters= aantal_kleuren)
 kmeans.fit(df[['R', 'G', 'B', 'RG']])
 np_kleurenCenters = kmeans.cluster_centers_.astype(int)
 kleurenCenters = pd.DataFrame(np_kleurenCenters, columns=['R', 'G', 'B', 'RG'])
@@ -117,9 +118,11 @@ tellingen = df.groupby('groep').size().reset_index(name='counts')
 kleurenCenters = kleurenCenters.merge(tellingen, how='inner', on='groep', suffixes=('', ''))
 
 # Toevoegen grijsgroepen
+grijsgroep_nummers = [int((x - 1) * aantal_grijsgroepen / aantal_kleuren) + 1 for x in range(1, len(kleurenCenters.index) - 1)]
+grijsgroep_nummers.insert(0,0)
+grijsgroep_nummers.append(grijsgroep_nummers[-1] + 1)
 
-kleurenCenters['grijsgroep'] = [int(x/2) for x in range(1, len(kleurenCenters.index) + 1)]
-
+kleurenCenters['grijsgroep'] = grijsgroep_nummers
 # plot a Pie Chart for Registration Price column with label Car column
 plt.pie(kleurenCenters["counts"], labels = kleurenCenters["grijswaarde"], colors=kleurenCenters['hex'])
 plt.show()

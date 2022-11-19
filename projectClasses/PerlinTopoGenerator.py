@@ -5,6 +5,7 @@ import pandas as pd
 from PIL import Image, ImageShow
 from projectClasses.PerlinBlotter import PerlinBlotter
 from projectClasses.Utilities import replace_with_dict
+import re
 
 
 class PerlinTopoGeneratator:
@@ -14,9 +15,14 @@ class PerlinTopoGeneratator:
                  kleur_verhoudingen,
                  versie,
                  naam_basis,
-                 richtingGenerator):
+                 richtingGenerator,
+                 kleur_samentrekking):
         self.h = hoogte
         self.w = breedte
+        kleur_verhoudingen.iloc[:, 0:3] -= 128
+        kleur_verhoudingen.iloc[:, 0:3] = (kleur_verhoudingen.iloc[:, 0:3] * kleur_samentrekking).astype(int)
+        kleur_verhoudingen.iloc[:, 0:3] += 128
+
         self.kleur_verhoudingen = kleur_verhoudingen.rename(columns={'aantal': 'wenselijk_aantal'})
         aantal_kleurmetingen = self.kleur_verhoudingen['wenselijk_aantal'].sum()
         self.kleur_verhoudingen['verhouding'] = self.kleur_verhoudingen['wenselijk_aantal'] / aantal_kleurmetingen
@@ -26,7 +32,7 @@ class PerlinTopoGeneratator:
         self.kleurgroepen_globaal = self.kleur_verhoudingen.groupby(['verdeling_in_M'])[
             'verhouding'].sum().reset_index()
         aantal_pixels = self.w * self.h
-        self.kleurgroepen_globaal['wenselijk_aantal'] = self.kleurgroepen_globaal['verhouding'] * aantal_pixels
+        self.kleurgroepen_globaal['wenselijk_aantal'] = (self.kleurgroepen_globaal['verhouding'] * aantal_pixels).astype(int)
         self.kleurgroepen_globaal['aantal'] = np. \
             where(self.kleurgroepen_globaal['verhouding'] == self.kleurgroepen_globaal['verhouding'].min(),
                   aantal_pixels, 0)
@@ -37,29 +43,38 @@ class PerlinTopoGeneratator:
         min_kleur_nummer = int(kleurnummers_zonder_licht_en_donker.loc[kleurnummers_zonder_licht_en_donker['wenselijk_aantal'].idxmin()]['verdeling_in_M'])
 
         self.canvas_globaal = np.full((self.w, self.h), min_kleur_nummer)
-        self.naam = naam_basis + "b" + str(breedte) + "h" + str(hoogte)
+        self.naam = naam_basis + ",breedte," + str(breedte) + ",hoogte," + str(hoogte) + ",klSamentr," + str(kleur_samentrekking)
         self.verdeling_in_N_naar_kleur = dict(zip(self.kleur_verhoudingen.verdeling_in_N, zip(self.kleur_verhoudingen.R,
                                                                                               self.kleur_verhoudingen.G,
                                                                                               self.kleur_verhoudingen.B)))
         self.richtingGenerator = richtingGenerator
+        print(self.naam)
 
     def afmetingen(self):
         return "_W" + str(self.w) + \
                "_H" + str(self.h)
 
     def generate_globale_topo(self,
+                              Id,
                               aantal,
                               blot_grootte_factor,
+                              min_blotgrootte,
+                              max_blotgrootte,
                               octaves,
                               persistence,
                               lacunarity,
                               scaleX,
                               scaleY,
+                              afplatting,
                               grenswaarde):
         blotter = PerlinBlotter(persistence, lacunarity, octaves, scaleX, scaleY, self.versie, grenswaarde)
-        self.naam = self.naam + "_glob_a" + str(aantal) + "bg" + str(blot_grootte_factor) + blotter.naam
+        self.naam = self.naam + ",globaal,aant," + str(aantal) + ",blotGroottefact," + str(blot_grootte_factor) + \
+                    ",minBlotGrootte,"  + str(min_blotgrootte) + ",maxBlotGrootte," + str(max_blotgrootte) + ",afplatting," + str(afplatting) + blotter.naam
+        print(self.naam)
         indexWit = len(self.kleurgroepen_globaal.index) - 1
         indexZwart = 0
+        som_blotgrootte_gevraagd = 1
+        som_blotgrootte_geleverd = 1
         for i in range(aantal):
             # Boekhouding op orde
             for j in self.kleurgroepen_globaal['verdeling_in_M']:
@@ -70,32 +85,42 @@ class PerlinTopoGeneratator:
             self.kleurgroepen_globaal['delta_aantal'] = self.kleurgroepen_globaal['wenselijk_aantal'] - \
                                                         self.kleurgroepen_globaal['aantal']
             max_delta = self.kleurgroepen_globaal.iloc[indexZwart+1:indexWit]['delta_aantal'].max()
+            min_delta = self.kleurgroepen_globaal.iloc[indexZwart+1:indexWit]['delta_aantal'].min()
 
             max_delta_kleurgroep = self.kleurgroepen_globaal[self.kleurgroepen_globaal['delta_aantal'] == max_delta][
                 'verdeling_in_M'].max()
             # We maken een blot met oppervlakte gelijk aan delta wenselijk aantal en werkelijk aantal
             # eerst vierkant later kan dat mooier gemaakt
             #blotDiameter = int(max(sqrt(max_delta) * 2, (sqrt(aantal) * 10) // (i + 1)))
-            blotDiameter = int(sqrt(max(10, max_delta + aantal - i)) * blot_grootte_factor)
-            blot = blotter.blot(blotDiameter, blotDiameter)
-            print("blotdiameter", blotDiameter)
-            # plaatsen van de blot op canvas
+            blotDiameter = int(sqrt(max(10, -min_delta)) * blot_grootte_factor)
+
+            if blotDiameter > max_blotgrootte: blotDiameterX = random.randint(max_blotgrootte, blotDiameter)
+            if blotDiameter < min_blotgrootte: blotDiameterX = random.randint(blotDiameter, min_blotgrootte)
+            # Aanpassen op het feit dat de blotter altijd een kleinere blot geeft
+            blotDiameter = int(blotDiameter * som_blotgrootte_gevraagd / som_blotgrootte_geleverd)
+            blotDiameterY = max(int(blotDiameter * afplatting), 5 * blot_grootte_factor)
+            blotDiameterX = max(int(blotDiameter / afplatting), 5 * blot_grootte_factor)
+            blot = blotter.blot(blotDiameterX, blotDiameterY)
+            blotDiameterX, blotDiameterY = blot.shape
+
+            som_blotgrootte_geleverd += blotDiameterX * blotDiameterY
+            som_blotgrootte_gevraagd += blotDiameter ** 2
+
+            # plaatsen van de blot op canvas. We weten nu het relevante deel van de blot
             # we werken vanaf linksboven
             # We doen dit 3 keer. Eerst licht met negatieve extra vershuiving. Dan donker met extra verschuiving. Dan kleur zonder extra verschuiving.
-            x_verschuiving = np.random.randint(blotDiameter + self.w) - blotDiameter // 2
-            y_verschuiving = np.random.randint(blotDiameter + self.h) - blotDiameter // 2
-
-            if blotDiameter <= 10:
-                break
+            x_verschuiving = np.random.randint(blotDiameterX + self.w) - blotDiameterX // 2
+            y_verschuiving = np.random.randint(blotDiameterY + self.h) - blotDiameterY // 2
 
             # Eerst wit
             deltaX, deltaY = self.richtingGenerator.geef_richting(max_afstand=int(self.kleurgroepen_globaal.iloc[indexWit]['delta_aantal']))
             xStart = max(0, x_verschuiving + deltaX)
             yStart = max(0, y_verschuiving + deltaY)
-            xEind = min(x_verschuiving + blotDiameter + deltaX, self.w)
-            yEind = min(y_verschuiving + blotDiameter + deltaY, self.h)
+            xEind = min(x_verschuiving + blotDiameterX + deltaX, self.w)
+            yEind = min(y_verschuiving + blotDiameterY + deltaY, self.h)
             for x in range(xStart, xEind):
                 for y in range(yStart, yEind):
+                    # print(str(x) + " " + str(y))
                     if blot[x - x_verschuiving - deltaX, y - y_verschuiving - deltaY] == 1:
                         self.canvas_globaal[x, y] = indexWit
 
@@ -103,31 +128,33 @@ class PerlinTopoGeneratator:
             deltaX, deltaY = self.richtingGenerator.geef_richting(max_afstand=int(self.kleurgroepen_globaal.iloc[indexZwart]['delta_aantal']))
             xStart = max(0, x_verschuiving - deltaX)
             yStart = max(0, y_verschuiving - deltaY)
-            xEind = min(x_verschuiving + blotDiameter - deltaX, self.w)
-            yEind = min(y_verschuiving + blotDiameter - deltaY, self.h)
+            xEind = min(x_verschuiving + blotDiameterX - deltaX, self.w)
+            yEind = min(y_verschuiving + blotDiameterY - deltaY, self.h)
             for x in range(xStart, xEind):
                 for y in range(yStart, yEind):
                     if blot[x - x_verschuiving + deltaX, y - y_verschuiving + deltaY] == 1:
                         self.canvas_globaal[x, y] = indexZwart
 
             # Nu de reguliere kleur
-            xEind = min(x_verschuiving + blotDiameter, self.w)
-            yEind = min(y_verschuiving + blotDiameter, self.h)
             xStart = max(0, x_verschuiving)
             yStart = max(0, y_verschuiving)
-
-            print("")
-            print(self.kleurgroepen_globaal)
-            print('i', i, ' globaal')
-            print('kleur', max_delta_kleurgroep)
-            print('blotDiam', blotDiameter)
-            print('x ', xStart, '-', xEind, 'displacementX', x_verschuiving)
-            print('y ', yStart, '-', yEind, 'displacementY', y_verschuiving)
-
+            xEind = min(x_verschuiving + blotDiameterX, self.w)
+            yEind = min(y_verschuiving + blotDiameterY, self.h)
             for x in range(xStart, xEind):
                 for y in range(yStart, yEind):
                     if blot[x - x_verschuiving, y - y_verschuiving] == 1:
                         self.canvas_globaal[x, y] = max_delta_kleurgroep
+
+            print(Id + "   i:" + str(i) + " blotsizefact:" + str(round(som_blotgrootte_gevraagd / som_blotgrootte_geleverd, 2)) + "   " +
+                    " xStart:" + str( xStart) +
+                    " xEind:" + str(xEind) +
+                    " yStart:" + str(yStart) +
+                    " yEind:" + str(yEind) +
+                  " kleinste:" + str(min_delta) +
+                  re.sub(r"(\n)?([0-9]{1,2}) +", r"  \2:", ''.join(str(self.kleurgroepen_globaal['delta_aantal']))).replace("\nName: delta_aantal, dtype: int64", "   ") +
+                  "blotdiameter x", blotDiameterX, "blotdiameter y", blotDiameterY)
+
+    def bereid_lokale_topos_voor(self):
         # In gereedheid brengen voor locale topo
         aantal_per_M = self.kleurgroepen_globaal[['verdeling_in_M', 'aantal']]
         self.kleurgroepen_detail = self.kleurgroepen_globaal.drop(
@@ -145,7 +172,7 @@ class PerlinTopoGeneratator:
             'verdeling_in_M'].min()
         self.kleurgroepen_detail.loc[
             ~self.kleurgroepen_detail['wenselijk_aantal'].isin(minKleurAantallen), 'aantal'] = 0
-        self.kleurgroepen_detail['wenselijk_aantal'] = self.kleurgroepen_detail['verhouding'] * self.w * self.h
+        self.kleurgroepen_detail['wenselijk_aantal'] = (self.kleurgroepen_detail['verhouding'] * self.w * self.h).astype(int)
         self.kleurgroepen_detail['delta_aantal'] = self.kleurgroepen_detail['wenselijk_aantal'] - \
                                                    self.kleurgroepen_detail['aantal']
         # Nu invullen canvaslocaal met echte kleurnummers
@@ -155,17 +182,24 @@ class PerlinTopoGeneratator:
         i = 1
 
     def generate_locale_topo(self,
+                             Id,
                              aantal,
                              blot_grootte_factor,
+                             min_blotgrootte,
+                             max_blotgrootte,
                              octaves,
                              persistence,
                              lacunarity,
                              scaleX,
                              scaleY,
+                             afplatting,
                              grenswaarde):
         blotter = PerlinBlotter(persistence, lacunarity, octaves, scaleX, scaleY, self.versie, grenswaarde)
-        self.naam = self.naam + "_det_a" + str("{:02d}".format(aantal)) + "bg" + str(blot_grootte_factor) + blotter.naam + "v" + str("{:02d}".format(self.versie))
-
+        self.naam = self.naam + ",detail,aantal," + str("{:02d}".format(aantal)) + ",blotGr," + str(blot_grootte_factor) + \
+                    ",minBlotGrootte,"  + str(min_blotgrootte) + ",maxBlotGrootte," + str(max_blotgrootte) + ",afplatting," + str(afplatting) + blotter.naam
+        print(self.naam)
+        som_blotgrootte_gevraagd = 1
+        som_blotgrootte_geleverd = 1
         # Eerst van hoofdkl
         for i in range(aantal):
             # Boekhouding op orde
@@ -178,6 +212,7 @@ class PerlinTopoGeneratator:
                                                        self.kleurgroepen_detail['aantal']
 
             max_deltas = self.kleurgroepen_detail.groupby(['verdeling_in_M'])['delta_aantal'].max()
+
             # transities per groep bepalen
             dummy = self.kleurgroepen_detail[self.kleurgroepen_detail['delta_aantal'].\
                 isin(max_deltas)].\
@@ -190,27 +225,34 @@ class PerlinTopoGeneratator:
             # We maken een blot met oppervlakte gelijk aan delta wenselijk aantal en werkelijk aantal
             # eerst vierkant later kan dat mooier gemaakt
             #blotDiameter = int(max(sqrt(max_deltas.max()) * blot_grootte_factor, (sqrt(aantal) * 10) // (i + 1)))
-            blotDiameter = int(sqrt(max(4, max_deltas.max() + aantal - i)) * blot_grootte_factor)
-            blot = blotter.blot(blotDiameter, blotDiameter)
+            blotDiameter = int(sqrt(max(4, max_deltas.max())) * blot_grootte_factor)
+
+            if blotDiameter > max_blotgrootte: blotDiameter = random.randint(max_blotgrootte, blotDiameter)
+            elif blotDiameter < min_blotgrootte: blotDiameter = random.randint(blotDiameter, min_blotgrootte)
+            # Aanpassen op het feit dat de blotter altijd een kleinere blot geeft
+            blotDiameter = int(blotDiameter * som_blotgrootte_gevraagd / som_blotgrootte_geleverd)
+            blotDiameterY = int(blotDiameter * afplatting)
+            blotDiameterX = int(blotDiameter / afplatting)
+            blot = blotter.blot(blotDiameterX, blotDiameterY)
+            blotDiameterX, blotDiameterY = blot.shape
+
+            som_blotgrootte_geleverd += blotDiameterX * blotDiameterY
+            som_blotgrootte_gevraagd += blotDiameter ** 2
             # plaatsen van de blot op canvas
             # we werken vanaf linksboven
-            x_verschuiving = np.random.randint(blotDiameter + self.w) - (blotDiameter // 2)
-            xEind = min(x_verschuiving + blotDiameter, self.w)
+            x_verschuiving = np.random.randint(blotDiameterX + self.w) - (blotDiameterX // 2)
+            xEind = min(x_verschuiving + blotDiameterX, self.w)
             xStart = max(0, x_verschuiving)
-            y_verschuiving = np.random.randint(blotDiameter + self.h) - (blotDiameter // 2)
-            yEind = min(y_verschuiving + blotDiameter, self.h)
+            y_verschuiving = np.random.randint(blotDiameterY + self.h) - (blotDiameterY // 2)
+            yEind = min(y_verschuiving + blotDiameterY, self.h)
             yStart = max(0, y_verschuiving)
 
-            print('i', i, ' detail')
-            print(self.kleurgroepen_detail)
-            print(doel_kleurnummers)
-            print('x ', xStart, '-', xEind, 'displacementX', x_verschuiving)
-            print('y ', yStart, '-', yEind, 'displacementY', y_verschuiving)
-            print("blotdiameter", blotDiameter)
-            print("")
 
-            if blotDiameter <= 10:
-                break
+
+            print(Id + "   i:" + str(i) + " blotsizefact:" + str(round(som_blotgrootte_gevraagd / som_blotgrootte_geleverd, 2)) + "   " +
+                  " kleinste:" + str(self.kleurgroepen_detail['delta_aantal'].min()) +
+                  re.sub(r"(\n)?([0-9]{1,2}) +", r"  \2:", ''.join(str(self.kleurgroepen_detail['delta_aantal']))).replace("\nName: delta_aantal, dtype: int64", "   ") +
+                  "blotdiameter x", blotDiameterX, "blotdiameter y", blotDiameterY)
 
             for x in range(xStart, xEind):
                 for y in range(yStart, yEind):
