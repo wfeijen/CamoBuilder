@@ -73,8 +73,7 @@ class PerlinTopoGeneratator:
         print(self.naam)
         indexWit = len(self.kleurgroepen_globaal.index) - 1
         indexZwart = 0
-        som_blotgrootte_gevraagd = 1
-        som_blotgrootte_geleverd = 1
+        blot_vraag_antwoord_verhouding = 1
         for i in range(aantal):
             # Boekhouding op orde
             for j in self.kleurgroepen_globaal['verdeling_in_M']:
@@ -97,14 +96,13 @@ class PerlinTopoGeneratator:
             if blotDiameter > max_blotgrootte: blotDiameterX = random.randint(max_blotgrootte, blotDiameter)
             if blotDiameter < min_blotgrootte: blotDiameterX = random.randint(blotDiameter, min_blotgrootte)
             # Aanpassen op het feit dat de blotter altijd een kleinere blot geeft
-            blotDiameter = int(blotDiameter * som_blotgrootte_gevraagd / som_blotgrootte_geleverd)
+            blotDiameter = int(blotDiameter * blot_vraag_antwoord_verhouding)
             blotDiameterY = max(int(blotDiameter * afplatting), 5 * blot_grootte_factor)
             blotDiameterX = max(int(blotDiameter / afplatting), 5 * blot_grootte_factor)
             blot = blotter.blot(blotDiameterX, blotDiameterY)
             blotDiameterX, blotDiameterY = blot.shape
 
-            som_blotgrootte_geleverd += blotDiameterX * blotDiameterY
-            som_blotgrootte_gevraagd += blotDiameter ** 2
+            blot_vraag_antwoord_verhouding = min(((blot_vraag_antwoord_verhouding * 9) + (blotDiameter ** 2 / (blotDiameterX * blotDiameterY + 1))) / 10, 10)
 
             # plaatsen van de blot op canvas. We weten nu het relevante deel van de blot
             # we werken vanaf linksboven
@@ -145,7 +143,7 @@ class PerlinTopoGeneratator:
                     if blot[x - x_verschuiving, y - y_verschuiving] == 1:
                         self.canvas_globaal[x, y] = max_delta_kleurgroep
 
-            print(Id + "   i:" + str(i) + " blotsizefact:" + str(round(som_blotgrootte_gevraagd / som_blotgrootte_geleverd, 2)) + "   " +
+            print(Id + "   i:" + str(i) + " blotsizefact:" + str(round(blot_vraag_antwoord_verhouding, 2)) + "   " +
                     " xStart:" + str( xStart) +
                     " xEind:" + str(xEind) +
                     " yStart:" + str(yStart) +
@@ -198,8 +196,7 @@ class PerlinTopoGeneratator:
         self.naam = self.naam + ",detail,aantal," + str("{:02d}".format(aantal)) + ",blotGr," + str(blot_grootte_factor) + \
                     ",minBlotGrootte,"  + str(min_blotgrootte) + ",maxBlotGrootte," + str(max_blotgrootte) + ",afplatting," + str(afplatting) + blotter.naam
         print(self.naam)
-        som_blotgrootte_gevraagd = 1
-        som_blotgrootte_geleverd = 1
+        blot_vraag_antwoord_verhouding = 1
         # Eerst van hoofdkl
         for i in range(aantal):
             # Boekhouding op orde
@@ -230,14 +227,13 @@ class PerlinTopoGeneratator:
             if blotDiameter > max_blotgrootte: blotDiameter = random.randint(max_blotgrootte, blotDiameter)
             elif blotDiameter < min_blotgrootte: blotDiameter = random.randint(blotDiameter, min_blotgrootte)
             # Aanpassen op het feit dat de blotter altijd een kleinere blot geeft
-            blotDiameter = int(blotDiameter * som_blotgrootte_gevraagd / som_blotgrootte_geleverd)
+            blotDiameter = int(blotDiameter * blot_vraag_antwoord_verhouding)
             blotDiameterY = int(blotDiameter * afplatting)
             blotDiameterX = int(blotDiameter / afplatting)
             blot = blotter.blot(blotDiameterX, blotDiameterY)
             blotDiameterX, blotDiameterY = blot.shape
 
-            som_blotgrootte_geleverd += blotDiameterX * blotDiameterY
-            som_blotgrootte_gevraagd += blotDiameter ** 2
+            blot_vraag_antwoord_verhouding = min(((blot_vraag_antwoord_verhouding * 9) + (blotDiameter ** 2 / (blotDiameterX * blotDiameterY + 1))) / 10, 10)
             # plaatsen van de blot op canvas
             # we werken vanaf linksboven
             x_verschuiving = np.random.randint(blotDiameterX + self.w) - (blotDiameterX // 2)
@@ -249,7 +245,7 @@ class PerlinTopoGeneratator:
 
 
 
-            print(Id + "   i:" + str(i) + " blotsizefact:" + str(round(som_blotgrootte_gevraagd / som_blotgrootte_geleverd, 2)) + "   " +
+            print(Id + "   i:" + str(i) + " blotsizefact:" + str(round(blot_vraag_antwoord_verhouding, 2)) + "   " +
                   " kleinste:" + str(self.kleurgroepen_detail['delta_aantal'].min()) +
                   re.sub(r"(\n)?([0-9]{1,2}) +", r"  \2:", ''.join(str(self.kleurgroepen_detail['delta_aantal']))).replace("\nName: delta_aantal, dtype: int64", "   ") +
                   "blotdiameter x", blotDiameterX, "blotdiameter y", blotDiameterY)

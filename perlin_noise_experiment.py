@@ -25,7 +25,7 @@ def voer_experiment_uit(
 ):
     base = 2
     max_value_rond = 750
-    size = 750
+    size = 1500
     for i in range(aantal):
         world_vlak = np.zeros((size - i, size - i))
         base = base + 1
@@ -71,10 +71,10 @@ def show_world(world, grens):
 
 voer_experiment_uit(
     aantal = 3,
-    persistence=0.6,
-    lacunarity=16.0,
-    octaves=2,
+    persistence=0.3,
+    lacunarity=3.0,
+    octaves=8,
     scaleX=200,
-    scaleY=200,
-    grenswaarde=0.5
+    scaleY=400,
+    grenswaarde=0.4
 )

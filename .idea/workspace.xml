@@ -4,20 +4,10 @@
     <bookmark url="file://$PROJECT_DIR$/Experimenten met Pixels2.py" line="48" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="voor herhalen globale plotter mogelijk maken">
-      <change afterPath="$PROJECT_DIR$/Fibonatchi.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/Almere nazomer1.jpg20221112 162520.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/Almere nazomer1.jpg20221117 081959.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/Almere nazomer1.jpg20221117 082917.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/Almere nazomer1.jpg20221117 140524.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/Almere nazomer1.jpg20221118 134755.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/lenteOostvaardersplassen_1.3.jpg20221106 131638.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/lenteOostvaardersplassen_1.3.jpg20221106 134914.csv" afterDir="false" />
+    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="voor afscheiden streepjes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BepaalDominanteKleurenSplitKNN.py" beforeDir="false" afterPath="$PROJECT_DIR$/BepaalDominanteKleurenSplitKNN.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/perlin_camo.py" beforeDir="false" afterPath="$PROJECT_DIR$/perlin_camo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/perlin_noise_experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/perlin_noise_experiment.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClasses/PerlinBlotter.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/PerlinBlotter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -506,26 +496,6 @@
           <url>file://$PROJECT_DIR$/Fibonatchi.py</url>
           <line>22</line>
           <option name="timeStamp" value="169" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py</url>
-          <line>111</line>
-          <option name="timeStamp" value="171" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py</url>
-          <line>89</line>
-          <option name="timeStamp" value="173" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py</url>
-          <line>96</line>
-          <option name="timeStamp" value="174" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py</url>
-          <line>75</line>
-          <option name="timeStamp" value="175" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/BepaalDominanteKleurenSplitKNN.py</url>
