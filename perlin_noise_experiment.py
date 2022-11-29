@@ -71,10 +71,10 @@ def show_world(world, grens):
 
 voer_experiment_uit(
     aantal = 3,
-    persistence=0.3,
-    lacunarity=3.0,
-    octaves=8,
-    scaleX=200,
+    persistence=0.2,
+    lacunarity=1.0,
+    octaves=1,
+    scaleX=400,
     scaleY=400,
-    grenswaarde=0.4
+    grenswaarde=0.30
 )

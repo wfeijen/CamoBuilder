@@ -3,8 +3,8 @@ from projectClasses.fileHandling import give_list_of_images
 
 import pandas as pd
 import numpy as np
-
-base_dir = '/media/willem/KleineSSD/machineLearningPictures/camoBuilder'
+#/media/willem/KleindSSD/machineLearningPictures/camoBuilder/teVergelijkenCamos
+base_dir = '/media/willem/KleindSSD/machineLearningPictures/camoBuilder'
 schenes_sub_dir = 'scenesVoorTest'
 camos_sub_dir = 'teVergelijkenCamos'
 boekhouding_file = base_dir + '/camovergelijking_resultaten.csv'

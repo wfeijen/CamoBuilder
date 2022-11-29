@@ -1,13 +1,11 @@
-import numpy
-from PIL import Image, ImageCms
+from PIL import Image
 import datetime
 import numpy as np
 import pandas as pd
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
-from matplotlib.colors import to_hex
 import random
-import os
+
 
 # Parameters
 bepaalDominanteKleurenDir = '/media/willem/KleineSSD/machineLearningPictures/camoBuilder/bepaalDominanteKleuren/Almere nazomer/'
@@ -16,7 +14,7 @@ name = 'Almere nazomer1.jpg'
 sampleSizeTest = 1000
 sampleSize = 1000000
 percentage_afsplitsen = 0.01
-aantal_kleuren = 9
+aantal_kleuren = 13
 aantal_grijsgroepen = 3
 ontwikkel = False
 

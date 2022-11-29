@@ -17,7 +17,7 @@ class RichtingGenerator:
         elif dobbelsteen_gooi < self.cum_richting_kansen[5]: richting = (1, -1)
         elif dobbelsteen_gooi < self.cum_richting_kansen[6]: richting = (1, 0)
         else: richting = (1, 1)
-        afstand = max(0, (min(max_afstand, self.overall_max)))
+        afstand = max(0, (min(int(max_afstand), self.overall_max)))
         richting = tuple(random.randint(0, afstand) * x for x in richting)
 
         return richting

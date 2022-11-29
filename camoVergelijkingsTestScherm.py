@@ -24,7 +24,7 @@ def leerImageEnBereidVoor(img_file, doel_grootte):
 class CamoVergelijkingsTestScherm:
     def __init__(self, scene_en_camos,
                  boekhouding_file,
-                 scene_grootte=(1920, 1150),
+                 scene_grootte=(2560, 1390),
                  camo_grootte=(150, 150)):
 
         self.boekhouding_file = boekhouding_file
@@ -60,7 +60,7 @@ class CamoVergelijkingsTestScherm:
             self.camo1_file_name = ''
             self.camo2_file_name = ''
             self.root = Tk()
-            self.root.geometry('1920x1200')
+            self.root.geometry('2560x1440')
             try:
                 self.root.title("Vergelijken")
                 self.wisselScherm()

@@ -4,11 +4,16 @@
     <bookmark url="file://$PROJECT_DIR$/Experimenten met Pixels2.py" line="48" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="voor afscheiden streepjes">
+    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="afscheiden streepjes niet gedaan. Voor minimaliseren max ipv min">
+      <change afterPath="$PROJECT_DIR$/kleurParameters/Almere nazomer1.jpg20221127 182223.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BepaalDominanteKleurenSplitKNN.py" beforeDir="false" afterPath="$PROJECT_DIR$/BepaalDominanteKleurenSplitKNN.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/camoVergelijkingControler.py" beforeDir="false" afterPath="$PROJECT_DIR$/camoVergelijkingControler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/camoVergelijkingsTestScherm.py" beforeDir="false" afterPath="$PROJECT_DIR$/camoVergelijkingsTestScherm.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/perlin_camo.py" beforeDir="false" afterPath="$PROJECT_DIR$/perlin_camo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/perlin_noise_experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/perlin_noise_experiment.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectClasses/RichtingGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/RichtingGenerator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,27 +115,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Fibonatchi" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Camo builder" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Fibonatchi.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="PerlinTopoGenerator" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Camo builder" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -144,6 +128,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="camoVergelijkingControler" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Camo builder" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/camoVergelijkingControler.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -195,7 +200,7 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.Fibonatchi" />
+      <item itemvalue="Python.camoVergelijkingControler" />
       <item itemvalue="Python.BepaalDominanteKleurenSplitKNN" />
       <item itemvalue="Python.perlin_noise_experiment" />
       <item itemvalue="Python.PerlinTopoGenerator" />
@@ -204,10 +209,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.perlin_camo" />
-        <item itemvalue="Python.perlin_noise_experiment" />
+        <item itemvalue="Python.camoVergelijkingControler" />
         <item itemvalue="Python.BepaalDominanteKleurenSplitKNN" />
+        <item itemvalue="Python.perlin_noise_experiment" />
         <item itemvalue="Python.PerlinTopoGenerator" />
-        <item itemvalue="Python.Fibonatchi" />
       </list>
     </recent_temporary>
   </component>
@@ -356,7 +361,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667923346272</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="afscheiden streepjes niet gedaan. Voor minimaliseren max ipv min">
+      <created>1669150666472</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1669150666472</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TodoView">
@@ -432,7 +444,8 @@
     <MESSAGE value="Klaar voor toevoegen schaduw en lichtstreepjes" />
     <MESSAGE value="lichtstreepjes werken" />
     <MESSAGE value="voor herhalen globale plotter mogelijk maken" />
-    <option name="LAST_COMMIT_MESSAGE" value="voor herhalen globale plotter mogelijk maken" />
+    <MESSAGE value="afscheiden streepjes niet gedaan. Voor minimaliseren max ipv min" />
+    <option name="LAST_COMMIT_MESSAGE" value="afscheiden streepjes niet gedaan. Voor minimaliseren max ipv min" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -488,19 +501,19 @@
           <option name="timeStamp" value="118" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/BepaalDominanteKleurenSplitKNN.py</url>
-          <line>133</line>
-          <option name="timeStamp" value="166" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/Fibonatchi.py</url>
           <line>22</line>
           <option name="timeStamp" value="169" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/BepaalDominanteKleurenSplitKNN.py</url>
-          <line>126</line>
-          <option name="timeStamp" value="177" />
+          <url>file://$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py</url>
+          <line>156</line>
+          <option name="timeStamp" value="171" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/camoVergelijkingControler.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="172" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
