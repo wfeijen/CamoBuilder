@@ -8,11 +8,12 @@ import random
 
 
 # Parameters
-bepaalDominanteKleurenDir = '/media/willem/KleindSSD/machineLearningPictures/camoBuilder/bepaalDominanteKleuren/broncompilaties/'
+bepaalDominanteKleurenDir = '/media/willem/KleineSSD/machineLearningPictures/camoBuilder/bepaalDominanteKleuren/Almere nazomer/'
 kleurParametersDir = '/home/willem/PycharmProjects/CamoBuilder/kleurParameters/'
-name = 'c1_1.jpg'
+name = 'Almere nazomer1.jpg'
 sampleSizeTest = 1000
 sampleSize = 1000000
+percentage_afsplitsen = 0.01
 aantal_kleuren = 13
 aantal_grijsgroepen = 3
 ontwikkel = False
@@ -42,8 +43,18 @@ print('verhouding GB is :', np.where(df['G']>df['B'], 255, 0).mean()/255, ' zou 
 
 # Afsplitsen licht en donker
 totaal_aantal = len(df.index)
+aantal_afsplitsen_per_kant = int(percentage_afsplitsen * totaal_aantal / 2)
 df['grijswaarde'] = df[['R', 'G', 'B']].sum(axis=1)
 df = df.sort_values(by = 'grijswaarde')
+donker_grenswaarde = df['grijswaarde'].loc[df.index[aantal_afsplitsen_per_kant]]
+licht_grenswaarde = df['grijswaarde'].loc[df.index[totaal_aantal - aantal_afsplitsen_per_kant]]
+df_donker = df.loc[df['grijswaarde'] <= donker_grenswaarde].copy(deep=True)
+df_licht = df.loc[df['grijswaarde'] >= licht_grenswaarde].copy(deep=True)
+df.drop(df_donker.index,inplace=True)
+df.drop(df_licht.index,inplace=True)
+# Kolommen toevoegen om straks samen te kunnen voegen met df
+df_donker['groep'] = -2
+df_licht['groep'] = -1
 
 # Split moet rond de 0.5 zijn
 print('verhouding RG rood is :', df['RG'].mean()/255, ' zou rond de 0.5 moeten zijn')
@@ -52,12 +63,16 @@ kmeans = KMeans(n_clusters= aantal_kleuren)
 kmeans.fit(df[['R', 'G', 'B', 'RG']])
 np_kleurenCenters = kmeans.cluster_centers_.astype(int)
 kleurenCenters = pd.DataFrame(np_kleurenCenters, columns=['R', 'G', 'B', 'RG'])
+kleurenCenters.loc[-1] = df_licht.mean().astype(int)
+kleurenCenters.loc[-2] = df_donker.mean().astype(int)
 kleurenCenters['grijswaarde'] = kleurenCenters['R'] + kleurenCenters['G'] + kleurenCenters['B']
 kleurenCenters = kleurenCenters.sort_values(by = 'grijswaarde')
 kleurenCenters['groep'] = kleurenCenters.index
 
 # Aantallen tellen
 df['groep'] = kmeans.predict(df[['R', 'G', 'B', 'RG']])
+# Nu donker en licht er weer aan plakken
+df = pd.concat([df_donker, df, df_licht], axis=0).copy(deep=True).sort_index()
 
 # Joinen met kleurenCenters zodat we een vertaaltabel krijgen
 df = df.merge(kleurenCenters, how='inner', on='groep', suffixes=('', '_vervangen'))
@@ -101,7 +116,9 @@ tellingen = df.groupby('groep').size().reset_index(name='counts')
 kleurenCenters = kleurenCenters.merge(tellingen, how='inner', on='groep', suffixes=('', ''))
 
 # Toevoegen grijsgroepen
-grijsgroep_nummers = [int((x) * aantal_grijsgroepen / aantal_kleuren) + 1 for x in range(len(kleurenCenters.index))]
+grijsgroep_nummers = [int((x - 1) * aantal_grijsgroepen / aantal_kleuren) + 1 for x in range(1, len(kleurenCenters.index) - 1)]
+grijsgroep_nummers.insert(0,0)
+grijsgroep_nummers.append(grijsgroep_nummers[-1] + 1)
 
 kleurenCenters['grijsgroep'] = grijsgroep_nummers
 # plot a Pie Chart for Registration Price column with label Car column

@@ -1,4 +1,5 @@
 import noise
+import numpy
 import numpy as np
 from PIL import Image
 
@@ -69,6 +70,31 @@ class PerlinBlotter:
 
         self.base = self.base + np.random.randint(1, 2)
         return canvas
+
+    def blotVierkant(self, blot_sizeX, blot_sizeY):
+        aantalPuntjes = 0
+        canvas = np.zeros((blot_sizeX, blot_sizeY), dtype=numpy.int8)
+        noiseWaardes = np.zeros((blot_sizeX, blot_sizeY))
+        for x in range(0, blot_sizeX):
+            for y in range(0, blot_sizeY):
+                noiseWaardes[x, y] = noise.pnoise2( x / self.scaleX,
+                                             y / self.scaleY,
+                                             octaves=self.octaves,
+                                             persistence=self.persistence,
+                                             lacunarity=self.lacunarity,
+                                             repeatx=blot_sizeX / self.scaleX,
+                                             repeaty=blot_sizeY / self.scaleY,
+                                             base=self.base)
+        noiseWaardes = (noiseWaardes - np.amin(noiseWaardes)) / (np.amax(noiseWaardes) - np.amin(noiseWaardes))
+        for x in range(0, blot_sizeX):
+            for y in range(0, blot_sizeY):
+                if noiseWaardes[x, y] > self.grenswaarde:
+                    canvas[x, y] = 1
+                    aantalPuntjes += 1
+                else:
+                    canvas[x, y] = 0
+        self.base = self.base + np.random.randint(2, 4)
+        return canvas, aantalPuntjes
 
     def line_blot(self, blot_sizeX, blot_sizeY, dikte, richtingGenerator):
         deltaX, deltaY = self.richtingGenerator.geef_richting(dikte)

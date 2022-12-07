@@ -4,7 +4,7 @@ from projectClasses.Camo_picture import CamoPicture
 from projectClasses.RichtingGenerator import RichtingGenerator
 from datetime import datetime
 
-kleuren_naam = 'c1_1.jpg20221205 210123.csv'
+kleuren_naam = 'Almere nazomer1.jpg20221127 182223.csv'
 # kleuren_naam = 'graslandZomer3.jpg20220108 134624.csv'
 
 root_dir = '/media/willem/KleindSSD/machineLearningPictures/camoBuilder/camoOutput/'
@@ -19,25 +19,49 @@ ptg = PerlinTopoGeneratator(
     kleur_verhoudingen=kleurInfo,
     versie=3,
     naam_basis=kleuren_naam,
+    richtingGenerator = RichtingGenerator([1,2,1,
+                                           0,  0,
+                                           1, 2, 1],
+                        overall_max = 3),
     contrast=1,
-    belichting=0.8)
+    belichting=0.9)
 
-ptg.generate_globale_topo_canvas(
+ptg.generate_globale_topo_blots(
     Id = "Glob1",
-    aantal=30,
+    aantal=50,
+    blot_grootte_factor=0.6,
+    min_blotgrootte= 1000,
+    max_blotgrootte= 10000,
+    afplatting= 3,
     octaves=8,
     persistence=0.4,
     lacunarity=3.0,
-    scaleX=150,
-    scaleY=300,
-    grenswaarde_factor=0.60
+    scaleX=80,
+    scaleY=200,
+    grenswaarde=0.60
+)
+
+ptg.generate_globale_topo_blots(
+    Id = "Glob2",
+    aantal=400,
+    blot_grootte_factor=0.5,
+    min_blotgrootte= 0,
+    max_blotgrootte= 10000,
+    afplatting= 3,
+    max_waarde_stopconditie=200,
+    octaves=8,
+    persistence=0.4,
+    lacunarity=3.0,
+    scaleX=80,
+    scaleY=200,
+    grenswaarde=0.60
 )
 
 ptg.bereid_lokale_topos_voor()
 
 ptg.generate_locale_topo(
     Id="Det1",
-    aantal=1,
+    aantal=2000,
     blot_grootte_factor=0.7,
     min_blotgrootte= 10,
     max_blotgrootte= 2000,
@@ -45,10 +69,24 @@ ptg.generate_locale_topo(
     octaves=8,
     persistence=0.3,
     lacunarity=5.0,
-    scaleX=25,
-    scaleY=100,
+    scaleX=50,
+    scaleY=200,
     grenswaarde=0.5)
 
+ptg.generate_locale_topo(
+    Id="Det2",
+    aantal=2000,
+    blot_grootte_factor=0.5,
+    min_blotgrootte= 10,
+    max_blotgrootte= 200,
+    afplatting=1.5,
+    max_waarde_stopconditie=200,
+    octaves=8,
+    persistence=0.3,
+    lacunarity=5.0,
+    scaleX=50,
+    scaleY=200,
+    grenswaarde=0.5)
 
 fileNaam = str(datetime.now()) + ".jpg"
 print(ptg.naam)

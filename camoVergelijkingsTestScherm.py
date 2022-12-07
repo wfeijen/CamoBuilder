@@ -87,8 +87,10 @@ class CamoVergelijkingsTestScherm:
                 self.label.place(relx=0.5, rely=0.5, anchor=CENTER)
                 # self.label.configure(image=img_scene)
                 # self.label.image = self.scenesImageList[self.index]
-                self.afbrekenBtn = Button(self.root, text="AFBREKEN", command=self.afbreken, height=8, width=13)
-                self.afbrekenBtn.place(x=self.camo_plaatsingsruimte[0] / 2, y=self.camo_plaatsingsruimte[1] / 2)
+                self.afbrekenBtn = Button(self.root, text="AFBREKEN", command=self.afbreken, height=4, width=13)
+                self.afbrekenBtn.place(x=self.camo_plaatsingsruimte[0] / 2, y=self.camo_plaatsingsruimte[1] / 2 + 30)
+                self.remiseBtn = Button(self.root, text="Remise", command=self.remise, height=4, width=13)
+                self.remiseBtn.place(x=self.camo_plaatsingsruimte[0] / 2, y=self.camo_plaatsingsruimte[1] / 2 - 30)
                 # Ophalen van twee camo's
                 x1, y1, x2, y2 = self.two_random_locations()
                 img_camo1 = leerImageEnBereidVoor(self.scene_en_camos.iloc[self.index, 1], self.camo_grootte)
@@ -154,6 +156,17 @@ class CamoVergelijkingsTestScherm:
     def afbreken(self):
         self.schrijf_boekhouding_weg()
         self.root.destroy()
+
+    def remise(self):
+        self.click_tijd1 = datetime.now() - self.click_tijd_start
+        self.click_tijd2 = self.click_tijd1
+        self.registreer_score()
+        self.index = self.index + 1
+        if self.index < self.aantal_actief:
+            self.wisselScherm()
+        else:
+            print('We zijn klaar')
+            self.afbreken()
 
     def schrijf_boekhouding_weg(self):
         # Kolommen weggooien
