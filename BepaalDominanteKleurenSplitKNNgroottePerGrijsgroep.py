@@ -8,13 +8,14 @@ import random
 
 
 # Parameters
-bepaalDominanteKleurenDir = '/media/willem/KleindSSD/machineLearningPictures/camoBuilder/bepaalDominanteKleuren/broncompilaties/'
+bepaalDominanteKleurenDir = '/home/willem/Pictures/Camouflage/broncompilaties/'
 kleurParametersDir = '/home/willem/PycharmProjects/CamoBuilder/kleurParameters/'
-name = 'graslandZomer.jpg'
+name = 'nazomerWinter2.jpg'
 sampleSizeTest = 1000
 sampleSize = 1000000
-aantal_kleuren = 13
-aantal_grijsgroepen = 3
+groottePerGrijsGroep = [3, 3, 3, 3, 3]
+aantal_kleuren = sum(groottePerGrijsGroep)
+#aantal_grijsgroepen = 3
 ontwikkel = False
 
 # Inlezen en naar data omzetten
@@ -101,11 +102,22 @@ tellingen = df.groupby('groep').size().reset_index(name='counts')
 kleurenCenters = kleurenCenters.merge(tellingen, how='inner', on='groep', suffixes=('', ''))
 
 # Toevoegen grijsgroepen
-grijsgroep_nummers = [int((x) * aantal_grijsgroepen / aantal_kleuren) + 1 for x in range(len(kleurenCenters.index))]
+grijsgroep_nummers = []
+grijsGroep = 0
+for grootteGrijsGroep in groottePerGrijsGroep:
+    for i in range(grootteGrijsGroep):
+        grijsgroep_nummers.append(grijsGroep)
+    grijsGroep += 1
+
 
 kleurenCenters['grijsgroep'] = grijsgroep_nummers
+kleurenPerGrijswaarde = kleurenCenters.loc[:,['R', 'G', 'B', 'grijsgroep']].groupby('grijsgroep').mean().astype(int)
+kleurenPerGrijswaarde['hex'] = kleurenPerGrijswaarde.loc[:,['R', 'G', 'B']].apply(lambda r: rgb_to_hex(*r), axis=1)
+aantallenPerGrijswaarde = kleurenCenters.loc[:,['counts', 'grijsgroep']].groupby('grijsgroep').sum()
+
 # plot a Pie Chart for Registration Price column with label Car column
 plt.pie(kleurenCenters["counts"], labels = kleurenCenters["grijswaarde"], colors=kleurenCenters['hex'])
+plt.pie(aantallenPerGrijswaarde["counts"], radius = 0.7, colors=kleurenPerGrijswaarde['hex'])
 plt.show()
 
 # Aanpassen aan ontvangend programma met andere naamgeving

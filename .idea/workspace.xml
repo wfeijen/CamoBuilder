@@ -7,19 +7,24 @@
     <bookmark url="file://$PROJECT_DIR$/Experimenten met Pixels2.py" line="48" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="alles werkt variaties kunnen beginnen">
-      <change afterPath="$PROJECT_DIR$/BepaalDominanteKleurenSplitKNNMetLichtEnDonker.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/camoVergelijkingEvaluatie.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/Almere nazomer1.jpg20221201 094943.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/c1_1.jpg20221205 210123.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/perlin_camo_met_licht_en_donker.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/perlin_noise_experiment_vierkant.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projectClasses/PerlinTopoGeneratorMetLichtEnDonker.py" afterDir="false" />
+    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="area blot werkt soort van. Nog erg instabiel.">
+      <change afterPath="$PROJECT_DIR$/51.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BepaalDominanteKleurenSplitKNNgroottePerGrijsgroep.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kleurParameters/graslandZomer.jpg20230101 112425.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kleurParameters/graslandZomer.jpg20230101 121516.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kleurParameters/graslandZomer.jpg20230103 081038.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nltk_experiment.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/openaiCamouflage.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sweetviz.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/voronoiImageUpscalen.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/voronoiVanImage.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BepaalDominanteKleurenSplitKNN.py" beforeDir="false" afterPath="$PROJECT_DIR$/BepaalDominanteKleurenSplitKNN.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/camoVergelijkingControler.py" beforeDir="false" afterPath="$PROJECT_DIR$/camoVergelijkingControler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/camoVergelijkingEvaluatie.py" beforeDir="false" afterPath="$PROJECT_DIR$/camoVergelijkingEvaluatie.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/camoVergelijkingsTestScherm.py" beforeDir="false" afterPath="$PROJECT_DIR$/camoVergelijkingsTestScherm.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/perlin_camo.py" beforeDir="false" afterPath="$PROJECT_DIR$/perlin_camo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/perlin_noise_experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/perlin_noise_experiment_rond.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/perlin_noise_experiment_rond.py" beforeDir="false" afterPath="$PROJECT_DIR$/perlin_noise_experiment_rond.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projectClasses/PerlinBlotter.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/PerlinBlotter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py" afterDir="false" />
     </list>
@@ -101,70 +106,7 @@
       <recent name="$PROJECT_DIR$/camoOutput" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.perlin_camo">
-    <configuration name="BepaalDominanteKleurenSplitKNN" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Camo builder" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/BepaalDominanteKleurenSplitKNN.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="camoVergelijkingControler" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Camo builder" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/camoVergelijkingControler.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="camoVergelijkingEvaluatie" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Camo builder" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/camoVergelijkingEvaluatie.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.voronoiImageUpscalen">
     <configuration name="perlin_camo" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Camo builder" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -173,7 +115,7 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/projectClasses" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -186,7 +128,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="perlin_noise_experiment_vierkant" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="vonoroiChatOpenAI" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Camo builder" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -198,7 +140,70 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/perlin_noise_experiment_vierkant.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/vonoroiChatOpenAI.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="voronoi experiment" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Camo builder" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/voronoi experiment.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="voronoiImageUpscalen" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Camo builder" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/voronoiImageUpscalen.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="voronoiVanImage" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Camo builder" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/voronoiVanImage.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -208,19 +213,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.perlin_noise_experiment_vierkant" />
-      <item itemvalue="Python.camoVergelijkingEvaluatie" />
-      <item itemvalue="Python.camoVergelijkingControler" />
-      <item itemvalue="Python.BepaalDominanteKleurenSplitKNN" />
+      <item itemvalue="Python.voronoiImageUpscalen" />
+      <item itemvalue="Python.voronoiVanImage" />
+      <item itemvalue="Python.vonoroiChatOpenAI" />
+      <item itemvalue="Python.voronoi experiment" />
       <item itemvalue="Python.perlin_camo" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.voronoiImageUpscalen" />
+        <item itemvalue="Python.voronoi experiment" />
+        <item itemvalue="Python.voronoiVanImage" />
         <item itemvalue="Python.perlin_camo" />
-        <item itemvalue="Python.perlin_noise_experiment_vierkant" />
-        <item itemvalue="Python.BepaalDominanteKleurenSplitKNN" />
-        <item itemvalue="Python.camoVergelijkingEvaluatie" />
-        <item itemvalue="Python.camoVergelijkingControler" />
+        <item itemvalue="Python.vonoroiChatOpenAI" />
       </list>
     </recent_temporary>
   </component>
@@ -383,7 +388,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669755027093</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="area blot werkt soort van. Nog erg instabiel.">
+      <created>1670408618952</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1670408618952</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TodoView">
@@ -461,7 +473,8 @@
     <MESSAGE value="voor herhalen globale plotter mogelijk maken" />
     <MESSAGE value="afscheiden streepjes niet gedaan. Voor minimaliseren max ipv min" />
     <MESSAGE value="alles werkt variaties kunnen beginnen" />
-    <option name="LAST_COMMIT_MESSAGE" value="alles werkt variaties kunnen beginnen" />
+    <MESSAGE value="area blot werkt soort van. Nog erg instabiel." />
+    <option name="LAST_COMMIT_MESSAGE" value="area blot werkt soort van. Nog erg instabiel." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -522,24 +535,59 @@
           <option name="timeStamp" value="169" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/camoVergelijkingControler.py</url>
-          <line>11</line>
-          <option name="timeStamp" value="172" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/camoVergelijkingEvaluatie.py</url>
-          <line>52</line>
-          <option name="timeStamp" value="173" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py</url>
           <line>77</line>
           <option name="timeStamp" value="175" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/projectClasses/PerlinBlotter.py</url>
-          <line>76</line>
-          <option name="timeStamp" value="181" />
+          <url>file://$PROJECT_DIR$/camoVergelijkingEvaluatie.py</url>
+          <line>42</line>
+          <option name="timeStamp" value="176" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/camoVergelijkingsTestScherm.py</url>
+          <line>95</line>
+          <option name="timeStamp" value="178" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/camoVergelijkingsTestScherm.py</url>
+          <line>18</line>
+          <option name="timeStamp" value="179" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/camoVergelijkingsTestScherm.py</url>
+          <line>56</line>
+          <option name="timeStamp" value="180" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/voronoiVanImage.py</url>
+          <line>153</line>
+          <option name="timeStamp" value="196" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/perlin_camo.py</url>
+          <line>16</line>
+          <option name="timeStamp" value="197" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/perlin_camo.py</url>
+          <line>13</line>
+          <option name="timeStamp" value="198" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/voronoiImageUpscalen.py</url>
+          <line>101</line>
+          <option name="timeStamp" value="202" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/voronoiImageUpscalen.py</url>
+          <line>99</line>
+          <option name="timeStamp" value="203" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/voronoiImageUpscalen.py</url>
+          <line>88</line>
+          <option name="timeStamp" value="204" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

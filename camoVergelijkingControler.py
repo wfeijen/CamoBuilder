@@ -26,7 +26,6 @@ eerdere_resultaten = pd.read_csv(boekhouding_file, index_col=False)
 totale_set = pd.merge(eerdere_resultaten, combinaties, how='outer', left_on=['scenes', 'camo1', 'camo2'],
                       right_on=['scenes', 'camo1', 'camo2'], indicator=True)
 # De volgorde van de kolommen wordt verstoord dus die zetten we opnieuw
-# totale_set = totale_set.loc[['scenes', 'camo1', 'camo2', 'tijd1', 'tijd2', 'actief', 'merge']]
 totale_set = totale_set.loc[:, ['scenes', 'camo1', 'camo2', 'tijd1', 'tijd2', 'actief', '_merge']]
 # combinaties met zelfde camo verwijderen
 totale_set = totale_set.query("(camo1 != camo2) and (actief == True)")

@@ -145,11 +145,11 @@ class PerlinTopoGeneratator:
                                      lacunarity,
                                      scaleX,
                                      scaleY,
-                                     grenswaarde_factor,
+                                     percentage_max_px,
                                      max_waarde_stopconditie = -100000):
         grenswaarde = 0.5
         blotter = PerlinBlotter(persistence, lacunarity, octaves, scaleX, scaleY, self.versie, grenswaarde)
-        self.naam = self.naam + ",globaal_canvas,aant," + str(aantal) + ",grenswaarde_factor," + str(grenswaarde_factor) +\
+        self.naam = self.naam + ",globaal_canvas,aant," + str(aantal) + ",percentage_max_px," + str(percentage_max_px) +\
                     ",stopconditie," + str(max_waarde_stopconditie) + blotter.naam
         print(self.naam)
         max_delta, max_delta_kleurgroep = self.globale_boekhouding_op_orde()
@@ -161,17 +161,52 @@ class PerlinTopoGeneratator:
 
             # Nieuwe blotter met aangepaste grenswaarde
             # verandering wordt afgevlakt om te grote sprongen te voorkomen
-            grenswaarde = (grenswaarde *  aantal_puntjes * 0.1) / ((max_delta + 1) * grenswaarde_factor)  + grenswaarde * 0.9
-            blotter.grenswaarde = grenswaarde
             # We maken een blot met oppervlakte gelijk canvas
-            blot, aantal_puntjes = blotter.blotVierkant(blot_sizeX=self.w, blot_sizeY=self.h)
+            blot, aantal_puntjes = blotter.blotVierkant(blot_sizeX=self.w, blot_sizeY=self.h,
+                                                        doel_aantal_punten = max_delta * percentage_max_px)
             # plaatsen van de blot op canvas.
             for x in range(0, self.w):
                 for y in range(0, self.h):
                     if blot[x, y] == 1:
                         self.canvas_globaal[x, y] = max_delta_kleurgroep
 
-            print(f"{Id} i:{i: 4d} md{max_delta: 7d} ap{aantal_puntjes: 7d} grenswaarde:{round(grenswaarde, 2): 2.2f} "+
+            print(f"{Id} i:{i: 4d} md{max_delta: 7d} ap{aantal_puntjes: 7d} grenswaarde:{round(blotter.grenswaarde, 2): 2.2f} "+
+                  re.sub(r"(\n)?([0-9]{1,2}) +", r"  \2:", ''.join(str(self.kleurgroepen_globaal['delta_aantal']))).replace("\nName: delta_aantal, dtype: int64", "   "))
+
+    def generate_globale_topo_ringen_canvas(self,
+                                     Id,
+                                     aantal,
+                                     octaves,
+                                     persistence,
+                                     lacunarity,
+                                     scaleX,
+                                     scaleY,
+                                     percentage_max_px,
+                                     max_waarde_stopconditie = -100000):
+        grenswaarde = 0.5
+        blotter = PerlinBlotter(persistence, lacunarity, octaves, scaleX, scaleY, self.versie, grenswaarde)
+        self.naam = self.naam + ",globaal_canvas_ring,aant," + str(aantal) + ",percentage_max_px," + str(percentage_max_px) +\
+                    ",stopconditie," + str(max_waarde_stopconditie) + blotter.naam
+        print(self.naam)
+        max_delta, max_delta_kleurgroep = self.globale_boekhouding_op_orde()
+        aantal_puntjes = max_delta
+        for i in range(aantal):
+            max_delta, max_delta_kleurgroep = self.globale_boekhouding_op_orde()
+            if max_delta < max_waarde_stopconditie:
+                break
+
+            # Nieuwe blotter met aangepaste grenswaarde
+            # verandering wordt afgevlakt om te grote sprongen te voorkomen
+            # We maken een blot met oppervlakte gelijk canvas
+            blot, aantal_puntjes = blotter.blotVierkantRingen(blot_sizeX=self.w, blot_sizeY=self.h,
+                                                        doel_aantal_punten = max_delta * percentage_max_px)
+            # plaatsen van de blot op canvas.
+            for x in range(0, self.w):
+                for y in range(0, self.h):
+                    if blot[x, y] == 1:
+                        self.canvas_globaal[x, y] = max_delta_kleurgroep
+
+            print(f"{Id} i:{i: 4d} md{max_delta: 7d} ap{aantal_puntjes: 7d} grenswaarde:{round(blotter.grenswaarde, 2): 2.2f} "+
                   re.sub(r"(\n)?([0-9]{1,2}) +", r"  \2:", ''.join(str(self.kleurgroepen_globaal['delta_aantal']))).replace("\nName: delta_aantal, dtype: int64", "   "))
 
     def bereid_lokale_topos_voor(self):

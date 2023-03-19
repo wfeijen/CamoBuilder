@@ -20,7 +20,8 @@ def voer_experiment_uit(
         octaves,
         scaleX,
         scaleY,
-        grenswaarde,
+        bovenGrenswaarde,
+        onderGrenswaarde,
         aantal = 1
 ):
     base = 2
@@ -57,24 +58,25 @@ def voer_experiment_uit(
 
         # show_world(world_vlak, binaryLevel)
 
-        show_world(world_rond, grens=grenswaarde)
+        show_world(world_rond, bovenGrens=bovenGrenswaarde, onderGrens = onderGrenswaarde)
 
-def show_world(world, grens):
+def show_world(world, bovenGrens, onderGrens):
     min = np.amin(world)
     print(min)
     print(np.amax(world))
     # factor = 255 / (np.amax(world) - min)
     # world_wolk = (world - min) * factor
     # Image.fromarray(np.uint8(world_wolk)).show()
-    world_grens = np.where(world > grens, 255, 0)
+    world_grens = np.where(world < bovenGrens, 1, 0) * np.where(world > onderGrens, 1, 0) * 255
     Image.fromarray(np.uint8(world_grens)).show()
 
 voer_experiment_uit(
     aantal = 3,
-    persistence=0.2,
-    lacunarity=1.0,
-    octaves=1,
+    persistence=0.4,
+    lacunarity=4.0,
+    octaves=4,
     scaleX=400,
     scaleY=400,
-    grenswaarde=0.30
+    bovenGrenswaarde=0.25,
+    onderGrenswaarde = 0.10
 )

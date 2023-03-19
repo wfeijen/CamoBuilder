@@ -42,7 +42,7 @@ class CamoVergelijkingsTestScherm:
             scene_en_camos['willekeurig'] = np.random.randint(
                 10000000,
                 size=scene_en_camos.shape[0])
-
+            # Actief betekent dat er nog tijd achter moet komen
             scene_en_camos.loc[pd.notna(scene_en_camos['tijd1']) | scene_en_camos['actief'].isnull(), "actief"] = False
             scene_en_camos = scene_en_camos.sort_values(by=['actief', 'willekeurig'], ascending=[False, False],
                                                         na_position='last')

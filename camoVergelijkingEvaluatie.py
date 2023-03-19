@@ -38,7 +38,8 @@ print("Sorting rows by Science:\n \n", rangorde)
 rangoredePerSchene = pd.crosstab(index=resultatenLong['scenes'],
                                  columns=resultatenLong['camo'],
                                  values=resultatenLong['winnaar_ongenuanceerd'],
-                                 aggfunc='mean')  #resultatenLong.groupby(['camo', 'scenes']).mean()
+                                 aggfunc='mean',
+                                 dropna=True)  #resultatenLong.groupby(['camo', 'scenes']).mean()
 print(rangoredePerSchene)
 rangoredePerSchene.style.background_gradient(cmap ='viridis').set_properties(**{'font-size': '20px'})
 plt.imshow(rangoredePerSchene, cmap ="RdYlBu")

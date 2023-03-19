@@ -4,43 +4,78 @@ from projectClasses.Camo_picture import CamoPicture
 from projectClasses.RichtingGenerator import RichtingGenerator
 from datetime import datetime
 
-kleuren_naam = 'c1_1.jpg20221205 210123.csv'
+kleuren_naam = 'graslandZomer.jpg20230103 081900.csv'
 # kleuren_naam = 'graslandZomer3.jpg20220108 134624.csv'
 
-root_dir = '/media/willem/KleindSSD/machineLearningPictures/camoBuilder/camoOutput/'
-kleurenPad = '../kleurParameters/' + kleuren_naam
+root_dir = '/media/willem/KleindSSD/machineLearningPictures/camoBuilder/'
+plaatjes_dir = root_dir + 'camoOutput/'
+kleurenPad = './kleurParameters/' + kleuren_naam
 
 kleurInfo = pd.read_csv(kleurenPad, index_col=0)
 
 
 ptg = PerlinTopoGeneratator(
-    breedte=1500,
-    hoogte=1500,
+    breedte=750,
+    hoogte=750,
     kleur_verhoudingen=kleurInfo,
-    versie=3,
+    versie=2,
     naam_basis=kleuren_naam,
-    contrast=1,
+    contrast=0.9,
     belichting=0.8)
 
-ptg.generate_globale_topo_canvas(
+ptg.generate_globale_topo_ringen_canvas(
     Id = "Glob1",
-    aantal=30,
+    aantal=200,
+    max_waarde_stopconditie = 400,
+    octaves=8,
+    persistence=0.4,
+    lacunarity=3.0,
+    scaleX=3000,
+    scaleY=6000,
+    percentage_max_px=0.60
+)
+
+
+ptg.generate_globale_topo_blots(
+    Id="Glob2",
+    aantal=400,
+    max_waarde_stopconditie=25,
+    blot_grootte_factor=0.5,
+    min_blotgrootte= 0,
+    max_blotgrootte= 100,
+    afplatting=3,
     octaves=8,
     persistence=0.4,
     lacunarity=3.0,
     scaleX=150,
     scaleY=300,
-    grenswaarde_factor=0.60
+    grenswaarde=0.60
 )
 
 ptg.bereid_lokale_topos_voor()
 
 ptg.generate_locale_topo(
     Id="Det1",
-    aantal=1,
+    aantal=200,
     blot_grootte_factor=0.7,
-    min_blotgrootte= 10,
-    max_blotgrootte= 2000,
+    min_blotgrootte= 5,
+    max_blotgrootte= 1000,
+    #max_waarde_stopconditie = 200,
+    afplatting=1.5,
+    octaves=8,
+    persistence=0.3,
+    lacunarity=5.0,
+    scaleX=25,
+    scaleY=100,
+    grenswaarde=0.5)
+
+ptg.generate_locale_topo(
+    Id="Det2",
+    aantal=200,
+    blot_grootte_factor=0.6,
+    min_blotgrootte= 5,
+    max_blotgrootte= 1000,
+    max_waarde_stopconditie = 5,
     afplatting=1.5,
     octaves=8,
     persistence=0.3,
@@ -58,7 +93,7 @@ f.write(fileNaam +  ","  + ptg.naam + "\n")
 f.close()
 picture = CamoPicture(ptg.canvas_detail, ptg.verdeling_in_N_naar_kleur)
 # picture.show()
-picture.save(root_dir, fileNaam)
+picture.save(plaatjes_dir, fileNaam)
 
 i = 1
 
