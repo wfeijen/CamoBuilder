@@ -1,13 +1,6 @@
-class TestClass:
-    data = bytearray(1)
-    integers = list()
+import random
+import numpy as np
 
-a = TestClass()
-a.data[0] = 1
-a.integers.append(1)
-b = TestClass()
-b.data[0] = 2
-b.integers.append(2)
-print( a.data[0] , a.integers[0])
-print( b.data[0] , a.integers[0])
-print( TestClass.data[0] )
+afplattingen=[*np.arange (1., 3., 0.3), .5]
+
+print(afplattingen)

@@ -1,10 +1,14 @@
+import random
+
 import pandas as pd
 from projectClasses.PerlinTopoGenerator import PerlinTopoGeneratator
 from projectClasses.Camo_picture import CamoPicture
-from projectClasses.RichtingGenerator import RichtingGenerator
 from datetime import datetime
+import numpy as np
 
-kleuren_naam = 'graslandZomer.jpg20230103 081900.csv'
+kleuren_naam = 'graslandZomer.jpg20230322 095001.csv'
+# kleuren_naam = 'graslandZomer.jpg20230103 081900.csv'
+# kleuren_naam = 'nazomerWinter2.jpg20230320 105239.csv'
 # kleuren_naam = 'graslandZomer3.jpg20220108 134624.csv'
 
 root_dir = '/media/willem/KleindSSD/machineLearningPictures/camoBuilder/'
@@ -13,40 +17,53 @@ kleurenPad = './kleurParameters/' + kleuren_naam
 
 kleurInfo = pd.read_csv(kleurenPad, index_col=0)
 
-
 ptg = PerlinTopoGeneratator(
-    breedte=750,
-    hoogte=750,
+    breedte=200,
+    hoogte=200,
     kleur_verhoudingen=kleurInfo,
-    versie=2,
+    versie=1,
     naam_basis=kleuren_naam,
     contrast=0.9,
     belichting=0.8)
 
 ptg.generate_globale_topo_ringen_canvas(
-    Id = "Glob1",
+    Id="Glob1",
     aantal=200,
-    max_waarde_stopconditie = 400,
+    max_waarde_stopconditie=400,
     octaves=8,
     persistence=0.4,
-    lacunarity=3.0,
-    scaleX=3000,
-    scaleY=6000,
+    lacunarity=4,
+    scaleX=300,
+    scaleY=600,
     percentage_max_px=0.60
 )
-
 
 ptg.generate_globale_topo_blots(
     Id="Glob2",
     aantal=400,
-    max_waarde_stopconditie=25,
     blot_grootte_factor=0.5,
-    min_blotgrootte= 0,
-    max_blotgrootte= 100,
-    afplatting=3,
+    min_blotgrootte=0,
+    max_blotgrootte=200,
+    afplattingen=[*np.arange(1., 3., 0.3), .5],
     octaves=8,
     persistence=0.4,
-    lacunarity=3.0,
+    lacunarity=4.0,
+    scaleX=150,
+    scaleY=300,
+    grenswaarde=0.60
+)
+
+ptg.generate_globale_topo_blots(
+    Id="Glob3",
+    aantal=400,
+    max_waarde_stopconditie=25,
+    blot_grootte_factor=0.5,
+    min_blotgrootte=0,
+    max_blotgrootte=200,
+    afplattingen=[*np.arange(1., 3., 0.3), .5],
+    octaves=8,
+    persistence=0.4,
+    lacunarity=4.0,
     scaleX=150,
     scaleY=300,
     grenswaarde=0.60
@@ -56,12 +73,12 @@ ptg.bereid_lokale_topos_voor()
 
 ptg.generate_locale_topo(
     Id="Det1",
-    aantal=200,
+    aantal=800,
     blot_grootte_factor=0.7,
-    min_blotgrootte= 5,
-    max_blotgrootte= 1000,
-    #max_waarde_stopconditie = 200,
-    afplatting=1.5,
+    min_blotgrootte=100,
+    max_blotgrootte=200,
+    # max_waarde_stopconditie = 200,
+    afplattingen=[*np.arange(1., 2., 0.3), .5],
     octaves=8,
     persistence=0.3,
     lacunarity=5.0,
@@ -71,12 +88,12 @@ ptg.generate_locale_topo(
 
 ptg.generate_locale_topo(
     Id="Det2",
-    aantal=200,
+    aantal=400,
     blot_grootte_factor=0.6,
-    min_blotgrootte= 5,
-    max_blotgrootte= 1000,
-    max_waarde_stopconditie = 5,
-    afplatting=1.5,
+    min_blotgrootte=5,
+    max_blotgrootte=500,
+    max_waarde_stopconditie=5,
+    afplattingen=[*np.arange(1., 2., 0.3), .5],
     octaves=8,
     persistence=0.3,
     lacunarity=5.0,
@@ -84,140 +101,20 @@ ptg.generate_locale_topo(
     scaleY=100,
     grenswaarde=0.5)
 
-
 fileNaam = str(datetime.now()) + ".jpg"
-print(ptg.naam)
 
-f=open(root_dir + "boekhouding.csv", "a")
-f.write(fileNaam +  ","  + ptg.naam + "\n")
-f.close()
+
 picture = CamoPicture(ptg.canvas_detail, ptg.verdeling_in_N_naar_kleur)
+# picture.create_bolletjes()
+picture.create_vonoroi(schaal_X=30, schaal_Y=30, randomfactor_X=3, randomfactor_Y=3)
+#
 # picture.show()
 picture.save(plaatjes_dir, fileNaam)
 
-i = 1
+info = ptg.info + picture.info
+print(info)
+f = open(root_dir + "boekhouding.csv", "a")
+f.write(fileNaam + "," + info + "\n")
+f.close()
 
-# ptg = PerlinTopoGeneratator(
-#     breedte=1500,
-#     hoogte=1500,
-#     kleur_verhoudingen=kleurInfo,
-#     versie=3,
-#     naam_basis=kleuren_naam,
-#     richtingGenerator = RichtingGenerator([1,2,1,
-#                                            0,  0,
-#                                            1, 2, 1],
-#                         overall_max = 1),
-#     contrast=1,
-#     belichting=0.9)
-#
-# ptg.generate_globale_topo(
-#     Id = "Glob1",
-#     aantal=50,
-#     blot_grootte_factor=0.6,
-#     min_blotgrootte= 1000,
-#     max_blotgrootte= 10000,
-#     afplatting= 2,
-#     octaves=4,
-#     persistence=0.5,
-#     lacunarity=6.0,
-#     scaleX=101,
-#     scaleY=101,
-#     grenswaarde=0.40
-# )
-#
-#
-# ptg.generate_globale_topo(
-#     Id="Glob2",
-#     aantal=25,
-#     blot_grootte_factor=0.6,
-#     min_blotgrootte= 400,
-#     max_blotgrootte= 2000,
-#     afplatting=0.5,
-#     octaves=4,
-#     persistence=0.5,
-#     lacunarity=6.0,
-#     scaleX=101,
-#     scaleY=101,
-#     grenswaarde=0.40
-# )
-#
-# ptg.richtingGenerator.overall_max = 10
-#
-# ptg.generate_globale_topo(
-#     Id="Glob3",
-#     aantal=50,
-#     blot_grootte_factor=0.6,
-#     min_blotgrootte= 400,
-#     max_blotgrootte= 2000,
-#     afplatting=2,
-#     max_waarde_stopconditie=-100000,
-#     octaves=4,
-#     persistence=0.5,
-#     lacunarity=6.0,
-#     scaleX=101,
-#     scaleY=101,
-#     grenswaarde=0.40
-# )
-# # #
-# #
-# ptg.generate_globale_topo(
-#     Id="Glob4",
-#     aantal=150,
-#     blot_grootte_factor=0.6,
-#     min_blotgrootte= 200,
-#     max_blotgrootte= 2000,
-#     afplatting=3,
-#     octaves=2,
-#     persistence=0.6,
-#     lacunarity=16.0,
-#     scaleX=200,
-#     scaleY=200,
-#     grenswaarde=0.5)
-#
-# ptg.richtingGenerator.overall_max = 20
-#
-# ptg.generate_globale_topo(
-#     Id="Glob5",
-#     aantal=200,
-#     blot_grootte_factor=0.4,
-#     min_blotgrootte= 10,
-#     max_blotgrootte= 2000,
-#     afplatting=3,
-#     max_waarde_stopconditie=200,
-#     octaves=2,
-#     persistence=0.4,
-#     lacunarity=4.0,
-#     scaleX=200,
-#     scaleY=200,
-#     grenswaarde=0.5)
-#
-# ptg.bereid_lokale_topos_voor()
-#
-# ptg.generate_locale_topo(
-#     Id="Det1",
-#     aantal=3000,
-#     blot_grootte_factor=0.7,
-#     min_blotgrootte= 10,
-#     max_blotgrootte= 2000,
-#     afplatting=1.5,
-#     octaves=8,
-#     persistence=0.3,
-#     lacunarity=5.0,
-#     scaleX=50,
-#     scaleY=200,
-#     grenswaarde=0.5)
-#
-# ptg.generate_locale_topo(
-#     Id="Det2",
-#     aantal=3000,
-#     blot_grootte_factor=0.5,
-#     min_blotgrootte= 10,
-#     max_blotgrootte= 200,
-#     afplatting=1.5,
-#     max_waarde_stopconditie=200,
-#     octaves=8,
-#     persistence=0.3,
-#     lacunarity=5.0,
-#     scaleX=50,
-#     scaleY=200,
-#     grenswaarde=0.5)
+i = 1

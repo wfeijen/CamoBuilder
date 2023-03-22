@@ -10,10 +10,10 @@ import random
 # Parameters
 bepaalDominanteKleurenDir = '/home/willem/Pictures/Camouflage/broncompilaties/'
 kleurParametersDir = '/home/willem/PycharmProjects/CamoBuilder/kleurParameters/'
-name = 'nazomerWinter2.jpg'
+name = 'graslandZomer.jpg'
 sampleSizeTest = 1000
 sampleSize = 1000000
-groottePerGrijsGroep = [3, 3, 3, 3, 3]
+groottePerGrijsGroep = [3, 3, 3]
 aantal_kleuren = sum(groottePerGrijsGroep)
 #aantal_grijsgroepen = 3
 ontwikkel = False

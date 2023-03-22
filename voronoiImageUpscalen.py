@@ -7,42 +7,10 @@ from datetime import datetime
 from optparse import OptionParser
 import random
 
-img_path = '/media/willem/KleindSSD/machineLearningPictures/camoBuilder/camoOutput/2023-03-18 14:23:22.596954.jpg.jpg' #2023-03-18 14:34:35.572138.jpg.jpg'
+img_path = './20220327_13-54-00_0659_A-11.0_E-800_I-400_d7500.jpg' #2023-03-18 14:34:35.572138.jpg.jpg'
 schaal = 10
 randomFactorX = 1
 randomFactorY = 1
-
-
-# parser = OptionParser()
-# parser.add_option("-i", "--image", type="string", dest="imagename",
-#                   metavar="FILE", help="Name of Image")
-# parser.add_option("-c", "--count", type="string", dest="count",
-#                   default=0, help="amount of voronoi-points")
-# parser.add_option("-r", "--randomcolor", action="store_true", dest="randomcolor",
-#                   default=False, help="random color in picture")
-#
-# (options, args) = parser.parse_args()
-# img_path = options.imagename
-# if (img_path is None):
-#     print("No image file given")
-#     quit()
-# num_cells = int(options.count)
-# if (num_cells is None):
-#     print("No amount of cells given")
-#     quit()
-# randomcolor = bool(options.randomcolor)
-
-def scale_points(points, width, height):
-    """
-    scale the points to the size of the image
-    """
-    scaled_points = []
-    for x, y in points:
-        x = int(x * width)
-        y = int(y * height)
-        scaled_points.append([x, y])
-    return scaled_points
-
 
 def generate_voronoi_diagram(num_cells, width, height, vergrotingsfactor, factorX, factorY):
     """
@@ -80,7 +48,7 @@ def generate_voronoi_diagram(num_cells, width, height, vergrotingsfactor, factor
     return vor, points
 
 
-def get_color_of_point(point, rgb_im, width, height):
+def get_color_of_point(self, point, rgb_im, width, height):
     """
     get the color of specific point
     """

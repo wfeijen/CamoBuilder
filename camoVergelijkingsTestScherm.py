@@ -175,8 +175,9 @@ class CamoVergelijkingsTestScherm:
         move(self.boekhouding_file, self.boekhouding_file + '.back')
         try:
             os.remove(self.boekhouding_file)
+            print('File was blijven staan maar is nu weg')
         except FileNotFoundError as e:
-            print('File was al weg')
+            i = 1
         antwoord.to_csv(self.boekhouding_file, index=False)
 
 

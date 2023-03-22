@@ -32,7 +32,7 @@ ptg.generate_globale_topo_blots(
     blot_grootte_factor=0.6,
     min_blotgrootte= 1000,
     max_blotgrootte= 10000,
-    afplatting= 3,
+    afplattingen= 3,
     octaves=8,
     persistence=0.4,
     lacunarity=3.0,
@@ -47,7 +47,7 @@ ptg.generate_globale_topo_blots(
     blot_grootte_factor=0.5,
     min_blotgrootte= 0,
     max_blotgrootte= 10000,
-    afplatting= 3,
+    afplattingen= 3,
     max_waarde_stopconditie=200,
     octaves=8,
     persistence=0.4,
@@ -65,7 +65,7 @@ ptg.generate_locale_topo(
     blot_grootte_factor=0.7,
     min_blotgrootte= 10,
     max_blotgrootte= 2000,
-    afplatting=1.5,
+    afplattingen=1.5,
     octaves=8,
     persistence=0.3,
     lacunarity=5.0,
@@ -79,7 +79,7 @@ ptg.generate_locale_topo(
     blot_grootte_factor=0.5,
     min_blotgrootte= 10,
     max_blotgrootte= 200,
-    afplatting=1.5,
+    afplattingen=1.5,
     max_waarde_stopconditie=200,
     octaves=8,
     persistence=0.3,
@@ -89,10 +89,10 @@ ptg.generate_locale_topo(
     grenswaarde=0.5)
 
 fileNaam = str(datetime.now()) + ".jpg"
-print(ptg.naam)
+print(ptg.info)
 
 f=open(root_dir + "boekhouding.csv", "a")
-f.write(fileNaam +  ","  + ptg.naam + "\n")
+f.write(fileNaam +  "," + ptg.info + "\n")
 f.close()
 picture = CamoPicture(ptg.canvas_detail, ptg.verdeling_in_N_naar_kleur)
 # picture.show()

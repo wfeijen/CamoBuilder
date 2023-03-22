@@ -1,3 +1,4 @@
+import random
 from math import sqrt
 import numpy as np
 from projectClasses.PerlinBlotter import PerlinBlotter
@@ -40,13 +41,13 @@ class PerlinTopoGeneratator:
         min_kleur_nummer = int(self.kleurgroepen_globaal.loc[self.kleurgroepen_globaal['wenselijk_aantal'].idxmin()]['verdeling_in_M'])
 
         self.canvas_globaal = np.full((self.w, self.h), min_kleur_nummer)
-        self.naam = naam_basis + ",breedte," + str(breedte) + ",hoogte," + str(hoogte) + \
+        self.info = naam_basis + ",breedte," + str(breedte) + ",hoogte," + str(hoogte) + \
                     ",contrast," + str(contrast) + ",belichting," + str(belichting)
         self.verdeling_in_N_naar_kleur = dict(zip(self.kleur_verhoudingen.verdeling_in_N,
-                                                  zip(self.kleur_verhoudingen.R,
-                                                      self.kleur_verhoudingen.G,
-                                                      self.kleur_verhoudingen.B)))
-        print(self.naam)
+                                                  zip(self.kleur_verhoudingen.R.astype(int),
+                                                      self.kleur_verhoudingen.G.astype(int),
+                                                      self.kleur_verhoudingen.B.astype(int))))
+        print(self.info)
 
 
     def afmetingen(self):
@@ -64,14 +65,14 @@ class PerlinTopoGeneratator:
                                     lacunarity,
                                     scaleX,
                                     scaleY,
-                                    afplatting,
+                                    afplattingen,
                                     grenswaarde,
                                     max_waarde_stopconditie = -100000):
         blotter = PerlinBlotter(persistence, lacunarity, octaves, scaleX, scaleY, self.versie, grenswaarde)
-        self.naam = self.naam + ",globaal,aant," + str(aantal) + ",blotGroottefact," + str(blot_grootte_factor) + \
-                    ",minBlotGrootte,"  + str(min_blotgrootte) + ",maxBlotGrootte," + str(max_blotgrootte) + ",afplatting," + str(afplatting) + \
+        self.info = self.info + ",globaal,aant," + str(aantal) + ",blotGroottefact," + str(blot_grootte_factor) + \
+                    ",minBlotGrootte," + str(min_blotgrootte) + ",maxBlotGrootte," + str(max_blotgrootte) + ",afplatting," + str(afplattingen) + \
                     ",stopconditie," + str(max_waarde_stopconditie) + blotter.naam
-        print(self.naam)
+        print(self.info)
         blot_vraag_antwoord_verhouding = 1
         for i in range(aantal):
             # Boekhouding op orde
@@ -96,6 +97,7 @@ class PerlinTopoGeneratator:
             if blotDiameter < min_blotgrootte: blotDiameter = (blotDiameter + min_blotgrootte) // 2
             # Aanpassen op het feit dat de blotter altijd een kleinere blot geeft
             blotDiameter = max(int(blotDiameter * blot_vraag_antwoord_verhouding), 10)
+            afplatting = random.choice(afplattingen)
             blotDiameterY = max(int(blotDiameter * afplatting), 5 * blot_grootte_factor)
             blotDiameterX = max(int(blotDiameter / afplatting), 5 * blot_grootte_factor)
             blot = blotter.blot(blotDiameterX, blotDiameterY)
@@ -149,9 +151,9 @@ class PerlinTopoGeneratator:
                                      max_waarde_stopconditie = -100000):
         grenswaarde = 0.5
         blotter = PerlinBlotter(persistence, lacunarity, octaves, scaleX, scaleY, self.versie, grenswaarde)
-        self.naam = self.naam + ",globaal_canvas,aant," + str(aantal) + ",percentage_max_px," + str(percentage_max_px) +\
+        self.info = self.info + ",globaal_canvas,aant," + str(aantal) + ",percentage_max_px," + str(percentage_max_px) +\
                     ",stopconditie," + str(max_waarde_stopconditie) + blotter.naam
-        print(self.naam)
+        print(self.info)
         max_delta, max_delta_kleurgroep = self.globale_boekhouding_op_orde()
         aantal_puntjes = max_delta
         for i in range(aantal):
@@ -185,9 +187,9 @@ class PerlinTopoGeneratator:
                                      max_waarde_stopconditie = -100000):
         grenswaarde = 0.5
         blotter = PerlinBlotter(persistence, lacunarity, octaves, scaleX, scaleY, self.versie, grenswaarde)
-        self.naam = self.naam + ",globaal_canvas_ring,aant," + str(aantal) + ",percentage_max_px," + str(percentage_max_px) +\
+        self.info = self.info + ",globaal_canvas_ring,aant," + str(aantal) + ",percentage_max_px," + str(percentage_max_px) +\
                     ",stopconditie," + str(max_waarde_stopconditie) + blotter.naam
-        print(self.naam)
+        print(self.info)
         max_delta, max_delta_kleurgroep = self.globale_boekhouding_op_orde()
         aantal_puntjes = max_delta
         for i in range(aantal):
@@ -236,6 +238,7 @@ class PerlinTopoGeneratator:
         self.canvas_detail = replace_with_dict(self.canvas_globaal, vertaalTabel)
         i = 1
 
+    #def boekhouding_locale_topo(self):
     def generate_locale_topo(self,
                              Id,
                              aantal,
@@ -247,14 +250,14 @@ class PerlinTopoGeneratator:
                              lacunarity,
                              scaleX,
                              scaleY,
-                             afplatting,
+                             afplattingen,
                              grenswaarde,
                              max_waarde_stopconditie = -100000):
         blotter = PerlinBlotter(persistence, lacunarity, octaves, scaleX, scaleY, self.versie, grenswaarde)
-        self.naam = self.naam + ",detail,aantal," + str("{:02d}".format(aantal)) + ",blotGr," + str(blot_grootte_factor) + \
-                    ",minBlotGrootte,"  + str(min_blotgrootte) + ",maxBlotGrootte," + str(max_blotgrootte) + \
-                    ",afplatting," + str(afplatting) + ",stopconditie," + str(max_waarde_stopconditie) + blotter.naam
-        print(self.naam)
+        self.info = self.info + ",detail,aantal," + str("{:02d}".format(aantal)) + ",blotGr," + str(blot_grootte_factor) + \
+                    ",minBlotGrootte," + str(min_blotgrootte) + ",maxBlotGrootte," + str(max_blotgrootte) + \
+                    ",afplatting," + str(afplattingen) + ",stopconditie," + str(max_waarde_stopconditie) + blotter.naam
+        print(self.info)
         blot_vraag_antwoord_verhouding = 1
         # Eerst van hoofdkl
         for i in range(aantal):
@@ -287,6 +290,7 @@ class PerlinTopoGeneratator:
             elif blotDiameter < min_blotgrootte: blotDiameter = (blotDiameter + min_blotgrootte) // 2
             # Aanpassen op het feit dat de blotter altijd een kleinere blot geeft
             blotDiameter = int(blotDiameter * blot_vraag_antwoord_verhouding)
+            afplatting = random.choice(afplattingen)
             blotDiameterY = int(blotDiameter * afplatting)
             blotDiameterX = int(blotDiameter / afplatting)
             blot = blotter.blot(blotDiameterX, blotDiameterY)
@@ -318,5 +322,3 @@ class PerlinTopoGeneratator:
                         self.canvas_detail[x, y] = doel_kleurnummers.get(self.canvas_detail[x, y])
             if max_deltas.max() < max_waarde_stopconditie:
                 break
-
-
