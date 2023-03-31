@@ -71,8 +71,7 @@ class PerlinBlotter:
         self.base += 1
         return canvas
 
-    def blotVierkant(self, blot_sizeX, blot_sizeY, doel_aantal_punten):
-        canvas = np.zeros((blot_sizeX, blot_sizeY), dtype=numpy.int8)
+    def blotVierkant_genormaliseerde_waarden(self, blot_sizeX, blot_sizeY):
         noiseWaardes = np.zeros((blot_sizeX, blot_sizeY))
         for x in range(0, blot_sizeX):
             for y in range(0, blot_sizeY):
@@ -85,6 +84,11 @@ class PerlinBlotter:
                                              repeaty=blot_sizeY / self.scaleY,
                                              base=self.base)
         noiseWaardes = (noiseWaardes - np.amin(noiseWaardes)) / (np.amax(noiseWaardes) - np.amin(noiseWaardes))
+        return noiseWaardes
+
+    def blotVierkant_01(self, blot_sizeX, blot_sizeY, doel_aantal_punten):
+        canvas = np.zeros((blot_sizeX, blot_sizeY), dtype=numpy.int8)
+        noiseWaardes = self.blotVierkant_genormaliseerde_waarden(blot_sizeX, blot_sizeY)
         max_grens = 1.0
         min_grens = 0.0
         for i in range(0, 8):
