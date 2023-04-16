@@ -91,11 +91,11 @@ class PerlinTopoGeneratator:
             self.kleurgroepen_globaal['aantal'] = aantallen_per_hoofdkleur
             self.kleurgroepen_globaal['delta_aantal'] = self.kleurgroepen_globaal['wenselijk_aantal'] - \
                                                         self.kleurgroepen_globaal['aantal']
-            max_delta = self.kleurgroepen_globaal.iloc[indexZwart+1:indexWit]['delta_aantal'].max()
+            max_delta = self.kleurgroepen_globaal.iloc[indexZwart+1:indexWit]['delta_aantal'].maximaal_verschil()
             min_delta = self.kleurgroepen_globaal.iloc[indexZwart+1:indexWit]['delta_aantal'].min()
 
             max_delta_kleurgroep = self.kleurgroepen_globaal[self.kleurgroepen_globaal['delta_aantal'] == max_delta][
-                'verdeling_in_M'].max()
+                'verdeling_in_M'].maximaal_verschil()
             # We maken een blot met oppervlakte gelijk aan delta wenselijk aantal en werkelijk aantal
             # eerst vierkant later kan dat mooier gemaakt
             #blotDiameter = int(max(sqrt(max_delta) * 2, (sqrt(aantal) * 10) // (i + 1)))
@@ -215,13 +215,13 @@ class PerlinTopoGeneratator:
             self.kleurgroepen_detail['delta_aantal'] = self.kleurgroepen_detail['wenselijk_aantal'] - \
                                                        self.kleurgroepen_detail['aantal']
 
-            max_deltas = self.kleurgroepen_detail.groupby(['verdeling_in_M'])['delta_aantal'].max()
+            max_deltas = self.kleurgroepen_detail.groupby(['verdeling_in_M'])['delta_aantal'].maximaal_verschil()
 
             # transities per groep bepalen
             dummy = self.kleurgroepen_detail[self.kleurgroepen_detail['delta_aantal'].\
                 isin(max_deltas)].\
                 groupby(['verdeling_in_M'])[['verdeling_in_M', 'verdeling_in_N']].\
-                max().\
+                maximaal_verschil().\
                 rename(columns= {'verdeling_in_N':'doel'}).\
                 join(self.kleurgroepen_detail.set_index('verdeling_in_M'), rsuffix ='_r')
 
@@ -229,7 +229,7 @@ class PerlinTopoGeneratator:
             # We maken een blot met oppervlakte gelijk aan delta wenselijk aantal en werkelijk aantal
             # eerst vierkant later kan dat mooier gemaakt
             #blotDiameter = int(max(sqrt(max_deltas.max()) * blot_grootte_factor, (sqrt(aantal) * 10) // (i + 1)))
-            blotDiameter = int(sqrt(max(4, max_deltas.max())) * blot_grootte_factor)
+            blotDiameter = int(sqrt(max(4, max_deltas.maximaal_verschil())) * blot_grootte_factor)
 
             if blotDiameter > max_blotgrootte: blotDiameter = (max_blotgrootte + blotDiameter) // 2
             elif blotDiameter < min_blotgrootte: blotDiameter = (blotDiameter + min_blotgrootte) // 2
@@ -255,7 +255,7 @@ class PerlinTopoGeneratator:
             #       re.sub(r"(\n)?([0-9]{1,2}) +", r"  \2:", ''.join(str(self.kleurgroepen_detail['delta_aantal']))).replace("\nName: delta_aantal, dtype: int64", "   ") +
             #       "blotdiameter x", blotDiameterX, "blotdiameter y", blotDiameterY)
 
-            print(f"{Id} {max_deltas.max(): 7d} i:{i: 4d} blotdiameter x {blotDiameterX: 4d} blotdiameter y {blotDiameterY:4d} blotsizefact:{round(blot_vraag_antwoord_verhouding, 2): 2.2f} "+
+            print(f"{Id} {max_deltas.maximaal_verschil(): 7d} i:{i: 4d} blotdiameter x {blotDiameterX: 4d} blotdiameter y {blotDiameterY:4d} blotsizefact:{round(blot_vraag_antwoord_verhouding, 2): 2.2f} " +
                   f"xStart:{xStart: 5d} xEind:{xEind: 5d} yStart:{yStart: 5d} yEind:{yEind: 5d} " +
                   re.sub(r"(\n)?([0-9]{1,2}) +", r"  \2:", ''.join(str(self.kleurgroepen_detail['delta_aantal']))).replace("\nName: delta_aantal, dtype: int64", "   "))
 
@@ -264,7 +264,7 @@ class PerlinTopoGeneratator:
                 for y in range(yStart, yEind):
                     if blot[x - x_verschuiving, y - y_verschuiving] == 1:
                         self.canvas_detail[x, y] = doel_kleurnummers.get(self.canvas_detail[x, y])
-            if max_deltas.max() < max_waarde_stopconditie:
+            if max_deltas.maximaal_verschil() < max_waarde_stopconditie:
                 break
 
 
