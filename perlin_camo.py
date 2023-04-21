@@ -1,4 +1,4 @@
-import random
+import itertools
 
 import pandas as pd
 from projectClasses.PerlinTopoGenerator import PerlinTopoGeneratator
@@ -6,7 +6,7 @@ from projectClasses.Camo_picture import CamoPicture
 from datetime import datetime
 import numpy as np
 
-kleuren_naam = 'graslandZomer.jpg20230331 134303.csv'
+kleuren_naam = 'c1_1.jpgkleurSchaduwMedian20230416 175421.csv'
 # kleuren_naam = 'graslandZomer.jpg20230322 095001.csv'
 # kleuren_naam = 'graslandZomer.jpg20230103 081900.csv'
 # kleuren_naam = 'nazomerWinter2.jpg20230320 105239.csv'
@@ -25,57 +25,37 @@ ptg = PerlinTopoGeneratator(
     versie=1,
     naam_basis=kleuren_naam,
     contrast=0.9,
-    belichting=0.8)
-
+    belichting=0.8,
+    start_volgorde="grijsGroep") #hoofdKleur, grijsGroep
 
 ptg.generate_globale_topo_canvas_hoogtelijnen(
     Id = "Glob1",
-    noise_type = "perlin",
-    octaves = 8,
-    persistence = 0.6,
-    lacunarity = 8,
-    scaleX = 19,
-    scaleY = 33
+    noise_type = "simplex",
+    octaves = 6,
+    persistence = 0.4,
+    lacunarity = 2,
+    scaleX = 20,
+    scaleY = 40
 )
 
 ptg.bereid_lokale_topos_voor()
 
-ptg.generate_locale_topo(
-    Id="Det1",
-    noise_type = "perlin",
-    aantal=400,
-    blot_grootte_factor=0.6,
-    min_blotgrootte=5,
-    max_blotgrootte=500,
-    max_waarde_stopconditie=500,
-    afplattingen=[*np.arange(1., 2., 0.3), .5],
-    octaves=8,
-    persistence=0.3,
-    lacunarity=3.0,
-    scaleX=25,
-    scaleY=100,
-    grenswaarde=0.5)
-
-ptg.generate_locale_topo_ringen_canvas(
-    Id="Det2",
-    noise_type = "perlin",
-    aantal=200,
-    max_waarde_stopconditie = 50,
-    octaves=8,
-    persistence=0.4,
-    lacunarity=3.0,
-    scaleX=300,
-    scaleY=600,
-    percentage_max_px=0.60)
-
-
+ptg.generate_locale_topo_canvas_hoogtelijnen(
+    Id = "Lok1",
+    noise_type = "simplex",
+    octaves = 4,
+    persistence = 0,
+    lacunarity = 0,
+    scaleX = 20,
+    scaleY = 20
+)
 
 fileNaam = str(datetime.now()) + ".jpg"
 
 
 picture = CamoPicture(ptg.canvas_detail, ptg.verdeling_in_N_naar_kleur)
 # picture.create_bolletjes()
-picture.create_vonoroi(schaal_X=30, schaal_Y=30, randomfactor_X=1, randomfactor_Y=1)
+picture.create_vonoroi(schaal_X=30, schaal_Y=30, randomfactor_X=0, randomfactor_Y=0)
 #
 # picture.show()
 picture.save(plaatjes_dir, fileNaam)

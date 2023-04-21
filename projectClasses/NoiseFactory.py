@@ -25,5 +25,6 @@ class NoiseFactory:
                                   repeaty=repeaty,
                                   base=base))
         else:
+            raise ValueError(f'Kies noise uit "perlin" of "simplex", {self.noise_type} bestaat niet')
             print(f"{self.noise_type} bestaat niet")
 
