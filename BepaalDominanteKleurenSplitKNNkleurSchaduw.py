@@ -10,11 +10,12 @@ import random
 # Parameters
 bepaalDominanteKleurenDir = '/home/willem/Pictures/Camouflage/broncompilaties/'
 kleurParametersDir = '/home/willem/PycharmProjects/CamoBuilder/kleurParameters/'
-name = 'graslandZomer.jpg'
+name = 'c1_1.jpg'
 sampleSizeTest = 1000
 sampleSize = 1000000
-aantal_hoofdlkeuren = 3
+aantal_hoofdlkeuren = 5
 aantal_grijswaarden = 4
+kleurboost = 0.2
 aantal_kleuren = aantal_hoofdlkeuren * aantal_grijswaarden
 ontwikkel = False
 
@@ -38,17 +39,20 @@ df['grijswaarde'] = df[['R', 'G', 'B']].sum(axis=1).replace(0, 1)
 df['Rr'] = df['R'] / df['grijswaarde']
 df['Gr'] = df['G'] / df['grijswaarde']
 df['Br'] = df['B'] / df['grijswaarde']
+df['Rp'] = ((df['Rr'] > df['Gr']) & (df['Rr'] > df['Br'])).astype('Int8') * kleurboost + df['Rr']
+df['Gp'] = ((df['Gr'] > df['Rr']) & (df['Gr'] > df['Br'])).astype('Int8') * kleurboost + df['Gr']
+df['Bp'] = ((df['Br'] > df['Gr']) & (df['Br'] > df['Rr'])).astype('Int8') * kleurboost + df['Br']
 
 
 # Eerste opdeling in hoofdkleuren
 kmeans = KMeans(n_clusters= aantal_hoofdlkeuren)
-kmeans.fit(df[['Rr', 'Gr', 'Br']])
+kmeans.fit(df[['Rp', 'Gp', 'Bp']])
 df['hoofdKleur'] = kmeans.labels_
 
 # Nu per hoofdkleur in grijsgroepen
 def k_means(row, aant_groepen):
     clustering=KMeans(n_clusters=aant_groepen)
-    model = clustering.fit(row[['grijswaarde']])
+    model = clustering.fit(row[['R', 'G', 'B']])
     row['grijsGroep'] = model.labels_
     return row
 
@@ -135,9 +139,9 @@ if not ontwikkel:
     print(kleurParametersDir + name + "kleurSchaduwMedian" + now + '.csv')
     medians.to_csv(kleurParametersDir + name + "kleurSchaduwMedian" + now + '.csv')
 
-if not ontwikkel:
-    print(kleurParametersDir + name + "kleurSchaduwMean" + now + '.csv')
-    means.to_csv(kleurParametersDir + name + "kleurSchaduwMean" + now + '.csv')
+# if not ontwikkel:
+#     print(kleurParametersDir + name + "kleurSchaduwMean" + now + '.csv')
+#     means.to_csv(kleurParametersDir + name + "kleurSchaduwMean" + now + '.csv')
 
 
 

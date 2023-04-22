@@ -7,7 +7,7 @@
     <bookmark url="file://$PROJECT_DIR$/Experimenten met Pixels2.py" line="48" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="generatie van kleuren aangepast">
+    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="Klaar voor verwijderen overbodige topogeneratorfuncties">
       <change afterPath="$PROJECT_DIR$/kleurParameters/c1_1.jpgkleurSchaduwMean20230416 175421.csv" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/kleurParameters/c1_1.jpgkleurSchaduwMean20230419 132109.csv" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/kleurParameters/c1_1.jpgkleurSchaduwMean20230419 132844.csv" afterDir="false" />
@@ -28,6 +28,7 @@
       <change afterPath="$PROJECT_DIR$/kleurParameters/c1_1.jpgkleurSchaduwMedian20230419 133802.csv" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/kleurParameters/c1_1.jpgkleurSchaduwMedian20230419 133911.csv" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/kleurParameters/c1_1.jpgkleurSchaduwMedian20230419 134011.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kleurParameters/c1_1.jpgkleurSchaduwMedian20230421 211330.csv" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/kleurParameters/graslandZomer.jpg20230416 145651.csv" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/kleurParameters/graslandZomer.jpgkleurSchaduwMean20230416 140011.csv" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/kleurParameters/graslandZomer.jpgkleurSchaduwMean20230416 141751.csv" afterDir="false" />
@@ -47,14 +48,16 @@
       <change afterPath="$PROJECT_DIR$/kleurParameters/nazomerWinter2.jpgkleurSchaduwMedian20230416 141829.csv" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/kleurParameters/nazomerWinter2.jpgkleurSchaduwMedian20230416 141918.csv" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/kleurParameters/nazomerWinter2.jpgkleurSchaduwMedian20230416 174921.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/multicore.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/perlin_camo_iter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projectClasses/tst.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BepaalDominanteKleurenSplitKNNkleurSchaduw.py" beforeDir="false" afterPath="$PROJECT_DIR$/BepaalDominanteKleurenSplitKNNkleurSchaduw.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Fibonatchi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hoogtelijnenExperiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/hoogtelijnenExperiment.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/perlin_camo.py" beforeDir="false" afterPath="$PROJECT_DIR$/perlin_camo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClasses/NoiseFactory.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/NoiseFactory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectClasses/PerlinBlotter.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/Blotter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectClasses/PerlinTopoGeneratorMetLichtEnDonker.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/PerlinTopoGeneratorMetLichtEnDonker.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -121,7 +124,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/willem/PycharmProjects/CamoBuilder&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.completion&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -139,7 +142,7 @@
       <recent name="$PROJECT_DIR$/camoOutput" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.perlin_camo_iter">
+  <component name="RunManager" selected="Python.perlin_camo">
     <configuration name="BepaalDominanteKleurenSplitKNNkleurSchaduw" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Camo builder" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -182,7 +185,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="camoVergelijkingsTestScherm" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="multicore" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Camo builder" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -194,7 +197,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/camoVergelijkingsTestScherm.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/multicore.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -246,19 +249,19 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Python.multicore" />
       <item itemvalue="Python.perlin_camo_iter" />
       <item itemvalue="Python.BepaalDominanteKleurenSplitKNNkleurSchaduw" />
       <item itemvalue="Python.camoVergelijkingControler" />
-      <item itemvalue="Python.camoVergelijkingsTestScherm" />
       <item itemvalue="Python.perlin_camo" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.perlin_camo_iter" />
         <item itemvalue="Python.perlin_camo" />
+        <item itemvalue="Python.perlin_camo_iter" />
         <item itemvalue="Python.BepaalDominanteKleurenSplitKNNkleurSchaduw" />
+        <item itemvalue="Python.multicore" />
         <item itemvalue="Python.camoVergelijkingControler" />
-        <item itemvalue="Python.camoVergelijkingsTestScherm" />
       </list>
     </recent_temporary>
   </component>
@@ -456,7 +459,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681646280699</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Klaar voor verwijderen overbodige topogeneratorfuncties">
+      <created>1682075039125</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1682075039125</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TodoView">
@@ -540,7 +550,8 @@
     <MESSAGE value="vonoroi werkt klaar voor ringen detail" />
     <MESSAGE value="aangepast voor globale hoogtelijnen. Nu nog testen." />
     <MESSAGE value="generatie van kleuren aangepast" />
-    <option name="LAST_COMMIT_MESSAGE" value="generatie van kleuren aangepast" />
+    <MESSAGE value="Klaar voor verwijderen overbodige topogeneratorfuncties" />
+    <option name="LAST_COMMIT_MESSAGE" value="Klaar voor verwijderen overbodige topogeneratorfuncties" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -606,16 +617,6 @@
           <option name="timeStamp" value="212" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py</url>
-          <line>193</line>
-          <option name="timeStamp" value="214" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py</url>
-          <line>273</line>
-          <option name="timeStamp" value="215" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/perlin_noise_experiment_vierkant.py</url>
           <line>39</line>
           <option name="timeStamp" value="235" />
@@ -634,6 +635,26 @@
           <url>file://$PROJECT_DIR$/BepaalDominanteKleurenSplitKNNgroottePerGrijsgroep.py</url>
           <line>128</line>
           <option name="timeStamp" value="269" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/multicore.py</url>
+          <line>14</line>
+          <option name="timeStamp" value="302" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py</url>
+          <line>110</line>
+          <option name="timeStamp" value="311" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py</url>
+          <line>198</line>
+          <option name="timeStamp" value="312" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py</url>
+          <line>55</line>
+          <option name="timeStamp" value="313" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

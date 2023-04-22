@@ -3,7 +3,7 @@ from math import sqrt
 import numpy as np
 import pandas as pd
 from PIL import Image, ImageShow
-from projectClasses.PerlinBlotter import PerlinBlotter
+from projectClasses.Blotter import Blotter
 from projectClasses.Utilities import replace_with_dict
 import re
 
@@ -74,10 +74,10 @@ class PerlinTopoGeneratator:
                               afplatting,
                               grenswaarde,
                               max_waarde_stopconditie = -100000):
-        blotter = PerlinBlotter(persistence, lacunarity, octaves, scaleX, scaleY, self.versie, grenswaarde)
+        blotter = Blotter(persistence, lacunarity, octaves, scaleX, scaleY, self.versie, grenswaarde)
         self.naam = self.naam + ",globaal,aant," + str(aantal) + ",blotGroottefact," + str(blot_grootte_factor) + \
                     ",minBlotGrootte,"  + str(min_blotgrootte) + ",maxBlotGrootte," + str(max_blotgrootte) + ",afplatting," + str(afplatting) + \
-                    ",stopconditie," + str(max_waarde_stopconditie) + blotter.naam
+                    ",stopconditie," + str(max_waarde_stopconditie) + blotter.info
         print(self.naam)
         indexWit = len(self.kleurgroepen_globaal.index) - 1
         indexZwart = 0
@@ -198,10 +198,10 @@ class PerlinTopoGeneratator:
                              afplatting,
                              grenswaarde,
                              max_waarde_stopconditie = -100000):
-        blotter = PerlinBlotter(persistence, lacunarity, octaves, scaleX, scaleY, self.versie, grenswaarde)
+        blotter = Blotter(persistence, lacunarity, octaves, scaleX, scaleY, self.versie, grenswaarde)
         self.naam = self.naam + ",detail,aantal," + str("{:02d}".format(aantal)) + ",blotGr," + str(blot_grootte_factor) + \
                     ",minBlotGrootte,"  + str(min_blotgrootte) + ",maxBlotGrootte," + str(max_blotgrootte) + \
-                    ",afplatting," + str(afplatting) + ",stopconditie," + str(max_waarde_stopconditie) + blotter.naam
+                    ",afplatting," + str(afplatting) + ",stopconditie," + str(max_waarde_stopconditie) + blotter.info
         print(self.naam)
         blot_vraag_antwoord_verhouding = 1
         # Eerst van hoofdkl
