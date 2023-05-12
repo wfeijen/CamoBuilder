@@ -2,12 +2,12 @@ import random
 from math import sqrt
 import numpy as np
 import pandas as pd
-from projectClasses.Blotter import Blotter
+from projectClasses.TopoGenerator import TopoGenerator
 from projectClasses.Utilities import replace_with_dict
 import re
 
 # TODO hor en vertikale structuren mogelijk maken
-class PerlinTopoGeneratator:
+class CanvasGeneratator:
     def __init__(self,
                  breedte,
                  hoogte,
@@ -18,8 +18,8 @@ class PerlinTopoGeneratator:
                  belichting,
                  start_volgorde,
                  kleur_manipulatie = "licht_donker_licht"):# licht_donker_licht, oplopend
-        self.h = hoogte
-        self.w = breedte
+        self.hoogte = hoogte
+        self.breedte = breedte
         totaalAantal = kleur_verhoudingen['aantal'].sum()
         Rmean = (kleur_verhoudingen['R'] * kleur_verhoudingen['aantal']).sum() / totaalAantal
         Gmean = (kleur_verhoudingen['G'] * kleur_verhoudingen['aantal']).sum() / totaalAantal
@@ -58,7 +58,7 @@ class PerlinTopoGeneratator:
         # We gaan nu eerst de tellingen per kleurgroep op orde maken en canvas uitvullen met het meest voorkomende kleurgroep nummer
         self.kleurgroepen_globaal = self.kleur_verhoudingen.groupby(['verdeling_in_M'])[
             'verhouding'].sum().reset_index()
-        aantal_pixels = self.w * self.h
+        aantal_pixels = self.breedte * self.hoogte
         self.kleurgroepen_globaal['wenselijk_aantal'] = (
                     self.kleurgroepen_globaal['verhouding'] * aantal_pixels).astype(int)
         self.kleurgroepen_globaal['aantal'] = np. \
@@ -69,19 +69,12 @@ class PerlinTopoGeneratator:
         min_kleur_nummer = int(
             self.kleurgroepen_globaal.loc[self.kleurgroepen_globaal['wenselijk_aantal'].idxmin()]['verdeling_in_M'])
 
-        self.canvas_globaal = np.full((self.w, self.h), min_kleur_nummer)
+        self.canvas_globaal = np.full((self.breedte, self.hoogte), min_kleur_nummer)
         self.info = f'{naam_basis},breedte,{str(breedte)},hoogte,{str(hoogte)},contrast,{str(contrast)},belichting,{str(belichting)},start_volgorde,{start_volgorde},kleurmanipulatie,{str(kleur_manipulatie)}'
         self.verdeling_in_N_naar_kleur = dict(zip(self.kleur_verhoudingen.verdeling_in_N,
                                                   zip(self.kleur_verhoudingen.R.astype(int),
                                                       self.kleur_verhoudingen.G.astype(int),
                                                       self.kleur_verhoudingen.B.astype(int))))
-
-
-    def afmetingen(self):
-        return "_W" + str(self.w) + \
-            "_H" + str(self.h)
-
-
     def globale_boekhouding_op_orde(self):
         for j in self.kleurgroepen_globaal['verdeling_in_M']:
             self.canvas_globaal[0, j] = j
@@ -95,21 +88,11 @@ class PerlinTopoGeneratator:
             'verdeling_in_M'].max()
         return max_delta, max_delta_kleurgroep
 
-    def generate_globale_topo(self,
-                              Id,
-                              noise_type,
-                              octaves,
-                              persistence,
-                              lacunarity,
-                              scaleX,
-                              scaleY):
-        blotter = Blotter(persistence, lacunarity, octaves, scaleX, scaleY, self.versie, 0, noise_type)
-        self.info = self.info + ",globaal" + blotter.info
-        print(self.info)
-        # bepalen grenzen
-        blot = blotter.blotCanvas(blot_sizeX=self.w, blot_sizeY=self.h)
-        self.versie += 1
-        hist = np.histogram(blot, bins=1000)
+
+
+    def maakGlobaalCanvas(self,
+                          topo):
+        hist = np.histogram(topo, bins=1000)
         hist = pd.DataFrame({'aantal': hist[0], 'bin_grens': hist[1][0:1000]})
         hist['aantal_cumulatief'] = np.cumsum(hist['aantal'])
         self.kleurgroepen_globaal['wenselijk_aantal_cum'] = np.cumsum(self.kleurgroepen_globaal['wenselijk_aantal'])
@@ -117,24 +100,21 @@ class PerlinTopoGeneratator:
                         self.kleurgroepen_globaal['wenselijk_aantal_cum']]
         aantal_te_testen_grenswaarden = len(grenswaarden) - 1
         # plaatsen van de blot op canvas.
-        for x in range(0, self.w):
-            for y in range(0, self.h):
+        for x in range(0, self.breedte):
+            for y in range(0, self.hoogte):
                 self.canvas_globaal[x, y] = aantal_te_testen_grenswaarden  # Default de laatste
                 for i in range(aantal_te_testen_grenswaarden):
-                    if blot[x, y] < grenswaarden[i]:
+                    if topo[x, y] < grenswaarden[i]:
                         self.canvas_globaal[x, y] = i
                         break
 
         max_delta, max_delta_kleurgroep = self.globale_boekhouding_op_orde()
         aantal_puntjes = max_delta
         print(
-            f"{Id} i:{i: 4d} md{max_delta: 7d} ap{aantal_puntjes: 7d} " +
+            f"i:{i: 4d} md{max_delta: 7d} ap{aantal_puntjes: 7d} " +
             re.sub(r"(\n)?([0-9]{1,2}) +", r"  \2:", ''.join(str(self.kleurgroepen_globaal['delta_aantal']))).replace(
                 "\nName: delta_aantal, dtype: int64", "   "))
-
-    def bereid_lokale_topos_voor(self):
         # In gereedheid brengen voor locale topo
-        aantal_per_M = self.kleurgroepen_globaal[['verdeling_in_M', 'aantal']]
         self.kleurgroepen_detail = self.kleurgroepen_globaal.drop(
             columns=['verhouding', 'wenselijk_aantal', 'delta_aantal'])
         self.kleurgroepen_detail = self.kleur_verhoudingen. \
@@ -151,7 +131,7 @@ class PerlinTopoGeneratator:
         self.kleurgroepen_detail.loc[
             ~self.kleurgroepen_detail['wenselijk_aantal'].isin(minKleurAantallen), 'aantal'] = 0
         self.kleurgroepen_detail['wenselijk_aantal'] = (
-                    self.kleurgroepen_detail['verhouding'] * self.w * self.h).astype(int)
+                self.kleurgroepen_detail['verhouding'] * self.breedte * self.hoogte).astype(int)
         self.kleurgroepen_detail['delta_aantal'] = self.kleurgroepen_detail['wenselijk_aantal'] - \
                                                    self.kleurgroepen_detail['aantal']
         # Nu invullen canvaslocaal met echte kleurnummers
@@ -183,47 +163,35 @@ class PerlinTopoGeneratator:
         return doel_kleurnummers, max_deltas.max()
 
     def generate_locale_topo(self,
-                             Id,
-                             noise_type,
-                             octaves,
-                             persistence,
-                             lacunarity,
-                             scaleX,
-                             scaleY,
-                             verspringende_detailtekening = True):
-        blotter = Blotter(persistence, lacunarity, octaves, scaleX, scaleY, self.versie, 0, noise_type)
-        self.info = self.info + ",lokaal" + blotter.info
+                             topo):
         self.kleurgroepen_detail['wenselijk_aantal_cum'] = self.kleurgroepen_detail.groupby(['verdeling_in_M'])['wenselijk_aantal'].cumsum()
         for globale_kleur in range(len(self.kleurgroepen_globaal.index)):
-            blotter = Blotter(persistence, lacunarity, octaves, scaleX, scaleY, self.versie, 0, noise_type)
-            self.versie += 1
 
             deze_kleurgroepen_detail = self.kleurgroepen_detail.loc[self.kleurgroepen_detail['verdeling_in_M'] == globale_kleur].reset_index(drop=True)
 
             # bepalen grenzen
-            blot = blotter.blotCanvas(blot_sizeX=self.w, blot_sizeY=self.h)
-            relevant = blot[globale_kleur == self.canvas_globaal]
+            relevant = topo[globale_kleur == self.canvas_globaal]
             hist = np.histogram(relevant, bins=1000)
             hist = pd.DataFrame({'aantal': hist[0], 'bin_grens': hist[1][0:1000]})
             hist['aantal_cumulatief'] = np.cumsum(hist['aantal'])
             grenswaarden = [hist.iloc[(hist['aantal_cumulatief'] - x).abs().argsort()[:1]]['bin_grens'].iloc[0] for x in
                             deze_kleurgroepen_detail['wenselijk_aantal_cum']]
             aantal_te_testen_grenswaarden = len(grenswaarden) - 1
-        # plaatsen van de blot op canvas.
+            # plaatsen van de topo op canvas.
             default_waarde = deze_kleurgroepen_detail.iloc[aantal_te_testen_grenswaarden]['verdeling_in_N']
-            for x in range(0, self.w):
-                for y in range(0, self.h):
+            for x in range(0, self.breedte):
+                for y in range(0, self.hoogte):
                     if self.canvas_globaal[x, y] == globale_kleur:
                         self.canvas_detail[x, y] = default_waarde  # Default de laatste
                         for i in range(aantal_te_testen_grenswaarden):
-                            if blot[x, y] < grenswaarden[i]:
+                            if topo[x, y] < grenswaarden[i]:
                                 self.canvas_detail[x, y] = deze_kleurgroepen_detail.iloc[i]['verdeling_in_N']
                                 break
 
         doel_kleurnummers, max_delta = self.boekhouding_locale_topo()
         aantal_puntjes = max_delta
         print(
-            f"{Id} i:{i: 4d} md{max_delta: 7d} ap{aantal_puntjes: 7d} " +
+            f"i:{i: 4d} md{max_delta: 7d} ap{aantal_puntjes: 7d} " +
             re.sub(r"(\n)?([0-9]{1,2}) +", r"  \2:",
                    ''.join(str(self.kleurgroepen_detail['delta_aantal']))).replace(
                 "\nName: delta_aantal, dtype: int64", "   "))

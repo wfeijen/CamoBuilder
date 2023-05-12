@@ -2,7 +2,7 @@ import random
 from math import sqrt
 import numpy as np
 import pandas as pd
-from projectClasses.Blotter import Blotter
+from projectClasses.TopoGenerator import TopoGenerator
 from projectClasses.Utilities import replace_with_dict
 import re
 
@@ -36,8 +36,8 @@ kleurgroepen_globaal['wenselijk_aantal'] = (kleurgroepen_globaal['verhouding'] *
 
 
 
-blotter = Blotter(persistence, lacunarity, octaves, scaleX, scaleY, versie, 0)
-blot = blotter.blotCanvas(blot_sizeX=breedte, blot_sizeY=hoogte)
+blotter = TopoGenerator(persistence, lacunarity, octaves, scaleX, scaleY, versie, 0)
+blot = blotter.genereer(blot_sizeX=breedte, blot_sizeY=hoogte)
 hist = np.histogram(blot, bins = 1000)
 hist = pd.DataFrame({'aantal': hist[0], 'bin_grens': hist[1][0:1000]})
 hist['aantal_cumulatief'] = np.cumsum(hist['aantal'])

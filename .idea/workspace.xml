@@ -7,10 +7,16 @@
     <bookmark url="file://$PROJECT_DIR$/Experimenten met Pixels2.py" line="48" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="gereduceerd en vertaling multi single werkt">
+    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="We gaan combinatie van topos mogelijk maken">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hoogtelijnenExperiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/hoogtelijnenExperiment.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/perlin_camo.py" beforeDir="false" afterPath="$PROJECT_DIR$/perlin_camo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/perlin_camo_iter.py" beforeDir="false" afterPath="$PROJECT_DIR$/perlin_camo_iter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/perlin_camo_met_licht_en_donker.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectClasses/Blotter.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/TopoGenerator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/CanvasGenerator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectClasses/PerlinTopoGeneratorMetLichtEnDonker.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectClasses/RichtingGenerator.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,15 +77,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/willem/PycharmProjects/CamoBuilder&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.completion&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "TODO_SCOPE": "All Places",
+    "last_opened_file_path": "/home/willem/PycharmProjects/CamoBuilder",
+    "settings.editor.selected.configurable": "editor.preferences.completion"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -95,7 +102,7 @@
       <recent name="$PROJECT_DIR$/camoOutput" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.camoVergelijkingControler">
+  <component name="RunManager" selected="Python.perlin_camo">
     <configuration name="BepaalDominanteKleurenSplitKNNkleurSchaduw" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Camo builder" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -210,8 +217,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.camoVergelijkingControler" />
         <item itemvalue="Python.perlin_camo" />
+        <item itemvalue="Python.camoVergelijkingControler" />
         <item itemvalue="Python.perlin_camo_iter" />
         <item itemvalue="Python.BepaalDominanteKleurenSplitKNNkleurSchaduw" />
         <item itemvalue="Python.multicore" />
@@ -426,7 +433,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682153425609</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="We gaan combinatie van topos mogelijk maken">
+      <created>1683875284865</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1683875284865</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TodoView">
@@ -486,7 +500,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Eerste werkende versie bepaal kleuren" />
     <MESSAGE value="Kleurbepaling is nu in hoofd en subcategorien uitgevoerd&#10;Pattern voor hoofdstructuren werkt" />
     <MESSAGE value="RGBdualTopColoring is nu verdeeld in classes en werkt weer" />
     <MESSAGE value="RGBdualTopColoring goede resultaten" />
@@ -511,7 +524,8 @@
     <MESSAGE value="generatie van kleuren aangepast" />
     <MESSAGE value="Klaar voor verwijderen overbodige topogeneratorfuncties" />
     <MESSAGE value="gereduceerd en vertaling multi single werkt" />
-    <option name="LAST_COMMIT_MESSAGE" value="gereduceerd en vertaling multi single werkt" />
+    <MESSAGE value="We gaan combinatie van topos mogelijk maken" />
+    <option name="LAST_COMMIT_MESSAGE" value="We gaan combinatie van topos mogelijk maken" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -602,19 +616,14 @@
           <option name="timeStamp" value="302" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py</url>
-          <line>110</line>
+          <url>file://$PROJECT_DIR$/projectClasses/CanvasGenerator.py</url>
+          <line>109</line>
           <option name="timeStamp" value="311" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py</url>
-          <line>198</line>
-          <option name="timeStamp" value="312" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py</url>
-          <line>55</line>
-          <option name="timeStamp" value="313" />
+          <url>file://$PROJECT_DIR$/perlin_camo.py</url>
+          <line>103</line>
+          <option name="timeStamp" value="315" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

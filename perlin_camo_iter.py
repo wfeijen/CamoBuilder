@@ -1,7 +1,7 @@
 import itertools
 
 import pandas as pd
-from projectClasses.PerlinTopoGenerator import PerlinTopoGeneratator
+from projectClasses.CanvasGenerator import CanvasGeneratator
 from projectClasses.Camo_picture import CamoPicture
 from datetime import datetime
 import numpy as np
@@ -35,7 +35,7 @@ print(f'aantal plaatjes: {x}')
 
 def doeIteratie(glob_noise_type, glob_octaves, glob_persistence, glob_lacunarity, glob_scale, det_noise_type, det_octaves, det_persistence, det_lacunarity, det_scale):
     kleurInfo = kleurInfoOorspr.copy(deep=True)
-    ptg = PerlinTopoGeneratator(
+    ptg = CanvasGeneratator(
         breedte=400,
         hoogte=400,
         kleur_verhoudingen=kleurInfo,
