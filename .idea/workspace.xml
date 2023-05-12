@@ -7,57 +7,10 @@
     <bookmark url="file://$PROJECT_DIR$/Experimenten met Pixels2.py" line="48" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="Klaar voor verwijderen overbodige topogeneratorfuncties">
-      <change afterPath="$PROJECT_DIR$/kleurParameters/c1_1.jpgkleurSchaduwMean20230416 175421.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/c1_1.jpgkleurSchaduwMean20230419 132109.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/c1_1.jpgkleurSchaduwMean20230419 132844.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/c1_1.jpgkleurSchaduwMean20230419 133125.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/c1_1.jpgkleurSchaduwMean20230419 133254.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/c1_1.jpgkleurSchaduwMean20230419 133337.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/c1_1.jpgkleurSchaduwMean20230419 133414.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/c1_1.jpgkleurSchaduwMean20230419 133802.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/c1_1.jpgkleurSchaduwMean20230419 133911.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/c1_1.jpgkleurSchaduwMean20230419 134011.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/c1_1.jpgkleurSchaduwMedian20230416 175421.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/c1_1.jpgkleurSchaduwMedian20230419 132109.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/c1_1.jpgkleurSchaduwMedian20230419 132844.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/c1_1.jpgkleurSchaduwMedian20230419 133125.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/c1_1.jpgkleurSchaduwMedian20230419 133254.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/c1_1.jpgkleurSchaduwMedian20230419 133337.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/c1_1.jpgkleurSchaduwMedian20230419 133414.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/c1_1.jpgkleurSchaduwMedian20230419 133802.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/c1_1.jpgkleurSchaduwMedian20230419 133911.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/c1_1.jpgkleurSchaduwMedian20230419 134011.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/c1_1.jpgkleurSchaduwMedian20230421 211330.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/graslandZomer.jpg20230416 145651.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/graslandZomer.jpgkleurSchaduwMean20230416 140011.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/graslandZomer.jpgkleurSchaduwMean20230416 141751.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/graslandZomer.jpgkleurSchaduwMean20230416 142044.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/graslandZomer.jpgkleurSchaduwMean20230416 142305.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/graslandZomer.jpgkleurSchaduwMean20230416 150251.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/graslandZomer.jpgkleurSchaduwMean20230416 150421.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/graslandZomer.jpgkleurSchaduwMedian20230416 140011.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/graslandZomer.jpgkleurSchaduwMedian20230416 141751.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/graslandZomer.jpgkleurSchaduwMedian20230416 142044.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/graslandZomer.jpgkleurSchaduwMedian20230416 142305.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/graslandZomer.jpgkleurSchaduwMedian20230416 150251.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/graslandZomer.jpgkleurSchaduwMedian20230416 150421.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/nazomerWinter2.jpgkleurSchaduwMean20230416 141829.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/nazomerWinter2.jpgkleurSchaduwMean20230416 141918.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/nazomerWinter2.jpgkleurSchaduwMean20230416 174921.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/nazomerWinter2.jpgkleurSchaduwMedian20230416 141829.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/nazomerWinter2.jpgkleurSchaduwMedian20230416 141918.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/nazomerWinter2.jpgkleurSchaduwMedian20230416 174921.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/multicore.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/perlin_camo_iter.py" afterDir="false" />
+    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="gereduceerd en vertaling multi single werkt">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BepaalDominanteKleurenSplitKNNkleurSchaduw.py" beforeDir="false" afterPath="$PROJECT_DIR$/BepaalDominanteKleurenSplitKNNkleurSchaduw.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Fibonatchi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/hoogtelijnenExperiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/hoogtelijnenExperiment.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/perlin_camo.py" beforeDir="false" afterPath="$PROJECT_DIR$/perlin_camo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClasses/PerlinBlotter.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/Blotter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/PerlinTopoGenerator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClasses/PerlinTopoGeneratorMetLichtEnDonker.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/PerlinTopoGeneratorMetLichtEnDonker.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +95,7 @@
       <recent name="$PROJECT_DIR$/camoOutput" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.perlin_camo">
+  <component name="RunManager" selected="Python.camoVergelijkingControler">
     <configuration name="BepaalDominanteKleurenSplitKNNkleurSchaduw" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Camo builder" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -257,11 +210,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.camoVergelijkingControler" />
         <item itemvalue="Python.perlin_camo" />
         <item itemvalue="Python.perlin_camo_iter" />
         <item itemvalue="Python.BepaalDominanteKleurenSplitKNNkleurSchaduw" />
         <item itemvalue="Python.multicore" />
-        <item itemvalue="Python.camoVergelijkingControler" />
       </list>
     </recent_temporary>
   </component>
@@ -466,7 +419,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682075039125</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="gereduceerd en vertaling multi single werkt">
+      <created>1682153425609</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1682153425609</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TodoView">
@@ -526,7 +486,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="gitignore aangepast" />
     <MESSAGE value="Eerste werkende versie bepaal kleuren" />
     <MESSAGE value="Kleurbepaling is nu in hoofd en subcategorien uitgevoerd&#10;Pattern voor hoofdstructuren werkt" />
     <MESSAGE value="RGBdualTopColoring is nu verdeeld in classes en werkt weer" />
@@ -551,7 +510,8 @@
     <MESSAGE value="aangepast voor globale hoogtelijnen. Nu nog testen." />
     <MESSAGE value="generatie van kleuren aangepast" />
     <MESSAGE value="Klaar voor verwijderen overbodige topogeneratorfuncties" />
-    <option name="LAST_COMMIT_MESSAGE" value="Klaar voor verwijderen overbodige topogeneratorfuncties" />
+    <MESSAGE value="gereduceerd en vertaling multi single werkt" />
+    <option name="LAST_COMMIT_MESSAGE" value="gereduceerd en vertaling multi single werkt" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

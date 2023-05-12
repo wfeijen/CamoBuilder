@@ -6,7 +6,7 @@ from projectClasses.Blotter import Blotter
 from projectClasses.Utilities import replace_with_dict
 import re
 
-
+# TODO hor en vertikale structuren mogelijk maken
 class PerlinTopoGeneratator:
     def __init__(self,
                  breedte,
