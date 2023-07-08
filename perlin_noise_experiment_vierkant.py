@@ -46,8 +46,8 @@ for i in [2, 4, 8, 16, 32]:
     voer_experiment_uit(
         persistence=0.4,
         lacunarity=0,
-        octaves=i,
-        scaleX=19,
-        scaleY=21,
+        octaves=1,
+        scaleX=32,
+        scaleY=i,
         grenswaarde=0.5
     )

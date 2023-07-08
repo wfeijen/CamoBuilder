@@ -1,7 +1,7 @@
 import noise
 import numpy as np
 from PIL import Image
-
+from sklearn.preprocessing import normalize
 
 # base = 2
 # max_value_rond = 10000
@@ -33,6 +33,8 @@ def voer_experiment_uit(
                                              repeatx=size / scaleX + 1,
                                              repeaty=size / scaleY + 1,
                                              base=base)
+    world_vlak = normalize(world_vlak)
+    world_vlak = np.power(world_vlak, 2)
     world_vlak = (world_vlak - np.amin(world_vlak)) * 255 / (np.amax(world_vlak) - np.amin(world_vlak))
     # world_vlak = np.where(world_vlak > grenswaarde, 255, 0)
     im = Image.fromarray(np.uint8(world_vlak))
@@ -64,5 +66,5 @@ for i in [1]:
         lacunarity=4,
         octaves=i,
         scaleX=100,
-        scaleY=100
+        scaleY=400
     )

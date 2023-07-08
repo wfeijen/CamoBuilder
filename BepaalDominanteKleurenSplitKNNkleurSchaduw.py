@@ -10,12 +10,12 @@ import random
 # Parameters
 bepaalDominanteKleurenDir = '/home/willem/Pictures/Camouflage/broncompilaties/'
 kleurParametersDir = '/home/willem/PycharmProjects/CamoBuilder/kleurParameters/'
-name = 'c1_1.jpg'
+name = 'groen_buin_beige_l.jpg'
 sampleSizeTest = 1000
 sampleSize = 1000000
-aantal_hoofdlkeuren = 5
-aantal_grijswaarden = 4
-kleurboost = 0.2
+aantal_hoofdlkeuren = 3
+aantal_grijswaarden = 17
+kleurboost = 0.06
 aantal_kleuren = aantal_hoofdlkeuren * aantal_grijswaarden
 ontwikkel = False
 
@@ -91,33 +91,33 @@ verschil['hex'] = verschil.loc[:,['R', 'G', 'B']].apply(lambda r: rgb_to_hex(*r)
 
 
 
-if sampleSizeTest > df['R'].size:
-    sampleSizeTest = pdImage['R'].size
-selectie = random.sample(list(range(0, df['R'].size)), sampleSizeTest)
-R = df.iloc[selectie, 0]
-G = df.iloc[selectie, 1]
-B = df.iloc[selectie, 2]
-C = df.iloc[selectie, 5]
-fig, ax = plt.subplots()
-ax.scatter(R, G, c=C, s=50, cmap='viridis')
-ax.set_xlabel('R')
-ax.set_ylabel('G')
-ax.scatter(medians.loc[:, 'R'], medians.loc[:, 'G'], c=medians.loc[:, 'hex'], s=200, alpha=1)
-plt.show()
-
-fig, ax = plt.subplots()
-ax.scatter(R, B, c=C, s=50, cmap='viridis')
-ax.set_xlabel('R')
-ax.set_ylabel('B')
-ax.scatter(medians.loc[:, 'R'], medians.loc[:, 'B'], c=medians.loc[:, 'hex'], s=200, alpha=1)
-plt.show()
-
-fig, ax = plt.subplots()
-ax.scatter(G, B, c=C, s=50, cmap='viridis')
-ax.set_xlabel('G')
-ax.set_ylabel('B')
-ax.scatter(medians.loc[:, 'G'], medians.loc[:, 'B'], c=medians.loc[:, 'hex'], s=200, alpha=1)
-plt.show()
+# if sampleSizeTest > df['R'].size:
+#     sampleSizeTest = pdImage['R'].size
+# selectie = random.sample(list(range(0, df['R'].size)), sampleSizeTest)
+# R = df.iloc[selectie, 0]
+# G = df.iloc[selectie, 1]
+# B = df.iloc[selectie, 2]
+# C = df.iloc[selectie, 5]
+# fig, ax = plt.subplots()
+# ax.scatter(R, G, c=C, s=50, cmap='viridis')
+# ax.set_xlabel('R')
+# ax.set_ylabel('G')
+# ax.scatter(medians.loc[:, 'R'], medians.loc[:, 'G'], c=medians.loc[:, 'hex'], s=200, alpha=1)
+# plt.show()
+#
+# fig, ax = plt.subplots()
+# ax.scatter(R, B, c=C, s=50, cmap='viridis')
+# ax.set_xlabel('R')
+# ax.set_ylabel('B')
+# ax.scatter(medians.loc[:, 'R'], medians.loc[:, 'B'], c=medians.loc[:, 'hex'], s=200, alpha=1)
+# plt.show()
+#
+# fig, ax = plt.subplots()
+# ax.scatter(G, B, c=C, s=50, cmap='viridis')
+# ax.set_xlabel('G')
+# ax.set_ylabel('B')
+# ax.scatter(medians.loc[:, 'G'], medians.loc[:, 'B'], c=medians.loc[:, 'hex'], s=200, alpha=1)
+# plt.show()
 
 # Pie charts
 fig, (ax1, ax2, ax3) = plt.subplots(1, 3)
@@ -127,7 +127,7 @@ ax2.pie(means["aantal"], labels = means["hoofdKleur"], colors=medians['hex'])
 ax2.set_xlabel('means')
 ax3.pie(verschil["aantal"], labels = verschil["hoofdKleur"], colors=verschil['hex'])
 ax3.set_xlabel(f'verschil is maximaal {maximaal_verschil}')
-plt.show()
+
 
 # Aanpassen aan ontvangend programma met andere naamgeving
 # ,R,G,B,RG,grijswaarde,groep,hex,counts
@@ -138,7 +138,8 @@ now = datetime.datetime.now().strftime('%Y%m%d %H%M%S')
 if not ontwikkel:
     print(kleurParametersDir + name + "kleurSchaduwMedian" + now + '.csv')
     medians.to_csv(kleurParametersDir + name + "kleurSchaduwMedian" + now + '.csv')
-
+    plt.savefig(bepaalDominanteKleurenDir + name + "kleurSchaduwMedian" + now + '.jpg')
+plt.show()
 # if not ontwikkel:
 #     print(kleurParametersDir + name + "kleurSchaduwMean" + now + '.csv')
 #     means.to_csv(kleurParametersDir + name + "kleurSchaduwMean" + now + '.csv')

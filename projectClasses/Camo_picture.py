@@ -1,4 +1,4 @@
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageCms
 import numpy as np
 from scipy.spatial import Voronoi, voronoi_plot_2d
 from projectClasses.Utilities import replace_with_dict
@@ -70,14 +70,13 @@ class CamoPicture:
         points = np.zeros((self.width * self.height, 2)).astype(int)
         for x in range(self.width):
             for y in range(self.height):
-                points[x + y * self.width, 0] = y
-                points[x + y * self.width, 1] = x
+                points[x + y * self.width, 0] = x
+                points[x + y * self.width, 1] = y
 
         # plot
         voronoi_plot_2d(vor)
 
         return vor, points
-
 
     def get_color_of_point(self, point):
         x = point[0]
@@ -124,14 +123,18 @@ class CamoPicture:
 
         num_cells = self.width * self.height
 
+
         self.img = Image.new("RGB", (self.width * self.schaal_X, self.height * self.schaal_y))
         draw = ImageDraw.Draw(self.img)
-
         self.makeup_polygons(draw)
+        # een pill image = hoogte x breedte en we willen naar breedte x hoogte. We kantelen de image dus.
+        # self.img = self.img.rotate(90, expand=True)
+
         self.info = ",vor_sx," + str(self.schaal_X) + ",vor_sy," + str(self.schaal_y) + ",_rx," + str(self.randomfactor_X) + ",_ry," + str(self.randomfactor_Y)
 
     def show(self):
         self.img.show()
 
     def save(self, rootDir, name):
-        self.img.save(rootDir + name + ".jpg")
+        profile = ImageCms.createProfile("sRGB")
+        self.img.save(rootDir + name + ".jpg", icc_profile=ImageCms.ImageCmsProfile(profile).tobytes())

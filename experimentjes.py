@@ -1,9 +1,8 @@
-import math
-import numpy as np
-import pandas as pd
-import random
+from PIL import Image, ImageDraw
 
-x = np.random.choice(2 * 3 , 3 * 5)- 3
-y = x.reshape(3, 5)
-a = y[2,2]
-print(x)
+# creating image object which is of specific color
+im = Image.new(mode="RGB", size=(300, 200),
+                   color=(153, 153, 255))
+
+# this will show image in any image viewer
+im.show()

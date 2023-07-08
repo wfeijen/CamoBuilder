@@ -1,8 +1,5 @@
-import random
-from math import sqrt
 import numpy as np
 import pandas as pd
-from projectClasses.TopoGenerator import TopoGenerator
 from projectClasses.Utilities import replace_with_dict
 import re
 
@@ -12,15 +9,21 @@ class CanvasGeneratator:
                  breedte,
                  hoogte,
                  kleur_verhoudingen,
-                 versie,
                  naam_basis,
                  contrast,
+                 saturation,
                  belichting,
                  start_volgorde,
-                 kleur_manipulatie = "licht_donker_licht"):# licht_donker_licht, oplopend
+                 kleur_manipulatie = "licht_donker_licht",
+                 hist_bins = 100000):# licht_donker_licht, oplopend
         self.hoogte = hoogte
         self.breedte = breedte
+        self.hist_bins = hist_bins
         totaalAantal = kleur_verhoudingen['aantal'].sum()
+        kleur_verhoudingen['gem_grijswaarde'] = kleur_verhoudingen['grijswaarde'] / 3
+        kleur_verhoudingen['R'] = kleur_verhoudingen['R'] * saturation + kleur_verhoudingen['gem_grijswaarde'] * (1 - saturation)
+        kleur_verhoudingen['G'] = kleur_verhoudingen['G'] * saturation + kleur_verhoudingen['gem_grijswaarde'] * (1 - saturation)
+        kleur_verhoudingen['B'] = kleur_verhoudingen['B'] * saturation + kleur_verhoudingen['gem_grijswaarde'] * (1 - saturation)
         Rmean = (kleur_verhoudingen['R'] * kleur_verhoudingen['aantal']).sum() / totaalAantal
         Gmean = (kleur_verhoudingen['G'] * kleur_verhoudingen['aantal']).sum() / totaalAantal
         Bmean = (kleur_verhoudingen['B'] * kleur_verhoudingen['aantal']).sum() / totaalAantal
@@ -28,6 +31,7 @@ class CanvasGeneratator:
         kleur_verhoudingen.loc[:, ['R', 'G', 'B']] = (kleur_verhoudingen.loc[:, ['R', 'G', 'B']] * contrast)
         kleur_verhoudingen.loc[:, ['R', 'G', 'B']] += [Rmean, Gmean, Bmean]
         kleur_verhoudingen.loc[:, ['R', 'G', 'B']] = (kleur_verhoudingen.loc[:, ['R', 'G', 'B']] * belichting)
+
         kleur_verhoudingen.loc[:, ['R', 'G', 'B']].clip(lower=0, upper=255).astype(int)
         if start_volgorde=="hoofdKleur":
             kleur_verhoudingen = kleur_verhoudingen.rename(columns={'hoofdKleur': 'verdeling_in_M', 'grijsGroep': 'verdeling_in_N'})
@@ -53,7 +57,7 @@ class CanvasGeneratator:
 
         aantal_kleurmetingen = self.kleur_verhoudingen['wenselijk_aantal'].sum()
         self.kleur_verhoudingen['verhouding'] = self.kleur_verhoudingen['wenselijk_aantal'] / aantal_kleurmetingen
-        self.versie = versie
+
 
         # We gaan nu eerst de tellingen per kleurgroep op orde maken en canvas uitvullen met het meest voorkomende kleurgroep nummer
         self.kleurgroepen_globaal = self.kleur_verhoudingen.groupby(['verdeling_in_M'])[
@@ -70,11 +74,13 @@ class CanvasGeneratator:
             self.kleurgroepen_globaal.loc[self.kleurgroepen_globaal['wenselijk_aantal'].idxmin()]['verdeling_in_M'])
 
         self.canvas_globaal = np.full((self.breedte, self.hoogte), min_kleur_nummer)
-        self.info = f'{naam_basis},breedte,{str(breedte)},hoogte,{str(hoogte)},contrast,{str(contrast)},belichting,{str(belichting)},start_volgorde,{start_volgorde},kleurmanipulatie,{str(kleur_manipulatie)}'
+        self.info = f'{naam_basis},breedte,{str(breedte)},hoogte,{str(hoogte)},contrast,{str(contrast)},saturation,{str(saturation)},belichting,{str(belichting)},start_volgorde,{start_volgorde},kleurmanipulatie,{str(kleur_manipulatie)}'
         self.verdeling_in_N_naar_kleur = dict(zip(self.kleur_verhoudingen.verdeling_in_N,
                                                   zip(self.kleur_verhoudingen.R.astype(int),
                                                       self.kleur_verhoudingen.G.astype(int),
                                                       self.kleur_verhoudingen.B.astype(int))))
+        self.aantal_globale_kleurgroepen = len(self.kleurgroepen_globaal.index)
+
     def globale_boekhouding_op_orde(self):
         for j in self.kleurgroepen_globaal['verdeling_in_M']:
             self.canvas_globaal[0, j] = j
@@ -92,8 +98,8 @@ class CanvasGeneratator:
 
     def maakGlobaalCanvas(self,
                           topo):
-        hist = np.histogram(topo, bins=1000)
-        hist = pd.DataFrame({'aantal': hist[0], 'bin_grens': hist[1][0:1000]})
+        hist = np.histogram(topo, bins=self.hist_bins)
+        hist = pd.DataFrame({'aantal': hist[0], 'bin_grens': hist[1][0:self.hist_bins]})
         hist['aantal_cumulatief'] = np.cumsum(hist['aantal'])
         self.kleurgroepen_globaal['wenselijk_aantal_cum'] = np.cumsum(self.kleurgroepen_globaal['wenselijk_aantal'])
         grenswaarden = [hist.iloc[(hist['aantal_cumulatief'] - x).abs().argsort()[:1]]['bin_grens'].iloc[0] for x in
@@ -104,7 +110,7 @@ class CanvasGeneratator:
             for y in range(0, self.hoogte):
                 self.canvas_globaal[x, y] = aantal_te_testen_grenswaarden  # Default de laatste
                 for i in range(aantal_te_testen_grenswaarden):
-                    if topo[x, y] < grenswaarden[i]:
+                    if topo[x, y] <= grenswaarden[i]:
                         self.canvas_globaal[x, y] = i
                         break
 
@@ -163,16 +169,15 @@ class CanvasGeneratator:
         return doel_kleurnummers, max_deltas.max()
 
     def generate_locale_topo(self,
-                             topo):
+                             topo_per_globale_kleur):
         self.kleurgroepen_detail['wenselijk_aantal_cum'] = self.kleurgroepen_detail.groupby(['verdeling_in_M'])['wenselijk_aantal'].cumsum()
-        for globale_kleur in range(len(self.kleurgroepen_globaal.index)):
-
+        for globale_kleur in range(self.aantal_globale_kleurgroepen):
+            topo = topo_per_globale_kleur[globale_kleur]
             deze_kleurgroepen_detail = self.kleurgroepen_detail.loc[self.kleurgroepen_detail['verdeling_in_M'] == globale_kleur].reset_index(drop=True)
-
             # bepalen grenzen
             relevant = topo[globale_kleur == self.canvas_globaal]
-            hist = np.histogram(relevant, bins=1000)
-            hist = pd.DataFrame({'aantal': hist[0], 'bin_grens': hist[1][0:1000]})
+            hist = np.histogram(relevant, bins=self.hist_bins)
+            hist = pd.DataFrame({'aantal': hist[0], 'bin_grens': hist[1][0:self.hist_bins]})
             hist['aantal_cumulatief'] = np.cumsum(hist['aantal'])
             grenswaarden = [hist.iloc[(hist['aantal_cumulatief'] - x).abs().argsort()[:1]]['bin_grens'].iloc[0] for x in
                             deze_kleurgroepen_detail['wenselijk_aantal_cum']]
