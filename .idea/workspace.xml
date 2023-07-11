@@ -7,107 +7,18 @@
     <bookmark url="file://$PROJECT_DIR$/Experimenten met Pixels2.py" line="48" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="combinaties van topos nu mogelijk">
-      <change afterPath="$PROJECT_DIR$/colorCard.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/WIJMF 20120409 193501 900.jpgkleurSchaduwMedian20230517 230223.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/WIJMF 20120409 193501 900.jpgkleurSchaduwMedian20230517 230259.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/WIJMF 20120409 193501 900.jpgkleurSchaduwMedian20230517 230334.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruin_groen_contrast_230518a.jpgkleurSchaduwMedian20230518 133233.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruin_groen_contrast_230518a.jpgkleurSchaduwMedian20230518 133256.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruin_groen_contrast_230518a.jpgkleurSchaduwMedian20230518 133329.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruin_groen_contrast_230518b.jpgkleurSchaduwMedian20230518 134615.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruin_groen_contrast_230518c.jpgkleurSchaduwMedian20230518 162728.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruin_groen_contrast_230518d.jpgkleurSchaduwMedian20230518 163045.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruin_groen_contrast_230518e.jpgkleurSchaduwMedian20230518 175815.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruin_groen_contrast_230518e.jpgkleurSchaduwMedian20230519 174346.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruin_groen_contrast_230518e.jpgkleurSchaduwMedian20230519 192210.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruin_groen_contrast_230518e.jpgkleurSchaduwMedian20230519 192238.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruin_groen_contrast_230518e.jpgkleurSchaduwMedian20230519 192320.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruin_groen_contrast_230518e.jpgkleurSchaduwMedian20230525 115158.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruin_groen_contrast_230518e.jpgkleurSchaduwMedian20230530 222422.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruin_groen_contrast_230518e.jpgkleurSchaduwMedian20230531 080110.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruin_groen_contrast_230518e.jpgkleurSchaduwMedian20230531 080732.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruin_groen_contrast_230518e.jpgkleurSchaduwMedian20230531 083410.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruin_groen_contrast_230518e.jpgkleurSchaduwMedian20230531 090321.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruin_groen_contrast_230518e.jpgkleurSchaduwMedian20230531 090400.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruin_groen_contrast_230518e.jpgkleurSchaduwMedian20230608 111253.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruin_groen_contrast_230518e.jpgkleurSchaduwMedian20230608 111335.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruin_groen_contrast_230518e.jpgkleurSchaduwMedian20230608 111404.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruin_groen_contrast_230518e.jpgkleurSchaduwMedian20230608 111429.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruin_groen_contrast_230518e.jpgkleurSchaduwMedian20230608 111525.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruinen_contrast_230514.jpgkleurSchaduwMedian20230514 101148.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruinen_contrast_230514b.jpgkleurSchaduwMedian20230514 101438.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruinen_contrast_230514c.jpgkleurSchaduwMedian20230514 105203.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruinen_contrast_230514c.jpgkleurSchaduwMedian20230514 213527.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruinen_contrast_230514c.jpgkleurSchaduwMedian20230514 213721.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruinen_contrast_230514c.jpgkleurSchaduwMedian20230514 213814.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruinen_contrast_230514c.jpgkleurSchaduwMedian20230514 214608.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruinen_contrast_230514c.jpgkleurSchaduwMedian20230514 215415.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruinen_contrast_230514c.jpgkleurSchaduwMedian20230517 093632.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruinen_contrast_230514c.jpgkleurSchaduwMedian20230517 093707.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/bruinen_contrast_230514d.jpgkleurSchaduwMedian20230514 215525.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/groen_buin_beige_a.jpgkleurSchaduwMedian20230701 101523.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/groen_buin_beige_b.jpgkleurSchaduwMedian20230701 102059.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/groen_buin_beige_c.jpgkleurSchaduwMedian20230701 102213.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/groen_buin_beige_d.jpgkleurSchaduwMedian20230701 102804.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/groen_buin_beige_d.jpgkleurSchaduwMedian20230701 103133.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/groen_buin_beige_d.jpgkleurSchaduwMedian20230701 103412.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/groen_buin_beige_d.jpgkleurSchaduwMedian20230701 103558.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/groen_buin_beige_e.jpgkleurSchaduwMedian20230701 104444.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/groen_buin_beige_f.jpgkleurSchaduwMedian20230701 104755.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/groen_buin_beige_g.jpgkleurSchaduwMedian20230701 105045.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/groen_buin_beige_h.jpgkleurSchaduwMedian20230701 105345.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/groen_buin_beige_i.jpgkleurSchaduwMedian20230701 105700.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/groen_buin_beige_j.jpgkleurSchaduwMedian20230701 105944.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/groen_buin_beige_k.jpgkleurSchaduwMedian20230701 110252.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/groen_buin_beige_l.jpgkleurSchaduwMedian20230701 110550.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/testscenes230512c.jpgkleurSchaduwMedian20230512 211309.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/winter.jpgkleurSchaduwMedian20230623 155550.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/winter.jpgkleurSchaduwMedian20230623 155637.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/zee1.jpgkleurSchaduwMedian20230625 134143.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/zee1.jpgkleurSchaduwMedian20230625 134247.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/zee2.jpgkleurSchaduwMedian20230625 135344.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/zonsondergangEnZwartZee.jpgkleurSchaduwMedian20230625 140012.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/projectClasses/x.py" afterDir="false" />
+    <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="alles werkt nog steeds. comibnaties van kleuren in tkinter">
+      <change afterPath="$PROJECT_DIR$/colorCardrb.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kleurParameters/blauw_en_veel_wit.jpgkleurSchaduwMedian20230708 150722.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kleurParameters/blauw_en_veel_wit.jpgkleurSchaduwMedian20230708 150749.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kleurParameters/colorCard_zonder_tekst.jpgkleurSchaduwMedian20230708 141714.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kleurParameters/regenboog_rb_wit_1_8.jpgkleurSchaduwMedian20230708 144834.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kleurParameters/regenboog_wit_1_8.jpgkleurSchaduwMedian20230708 142636.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kleurParameters/regenboog_wit_1_8.jpgkleurSchaduwMedian20230708 142730.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/51.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BepaalDominanteKleurenSplitKNN.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BepaalDominanteKleurenSplitKNNMetLichtEnDonker.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BepaalDominanteKleurenSplitKNNgroottePerGrijsgroep.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/BepaalDominanteKleurenSplitKNNkleurSchaduw.py" beforeDir="false" afterPath="$PROJECT_DIR$/BepaalDominanteKleurenSplitKNNkleurSchaduw.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/camoVergelijkingControler.py" beforeDir="false" afterPath="$PROJECT_DIR$/camoVergelijkingControler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dump/BepaalDominanteKleuren.ipynb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dump/Eerste test met RGB topo coloring zonder schaduw.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dump/Experimenten met Pixels2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dump/bepaalDominanteKleuren.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dump/bepaalDominanteKleuren2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dump/bepaalDominanteKleuren2py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dump/bepaalDominanteKleuren3.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dump/bepaalDominanteKleuren4.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dump/bepaalDominanteKleuren5.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dump/bepaalDominanteKleuren6.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dump/bepaalDominanteKleurenKNN.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dump/bepaalDominanteKleurenKNNRGB.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dump/bepaalDominanteKleurenKNNdubbeleGroepering.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dump/experimentWithPixels.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dump/graphics.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/experimentjes.py" beforeDir="false" afterPath="$PROJECT_DIR$/experimentjes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hoogtelijnenExperiment.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/kleur_verdeling.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/multicore.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nltk_experiment.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/openaiCamouflage.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/perlin_camo.py" beforeDir="false" afterPath="$PROJECT_DIR$/topografische_camo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/perlin_camo_iter.py" beforeDir="false" afterPath="$PROJECT_DIR$/topografische_camo_batch.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/perlin_noise_experiment_vierkant.py" beforeDir="false" afterPath="$PROJECT_DIR$/perlin_noise_experiment_vierkant.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClasses/Camo_picture.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/Camo_picture.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClasses/CanvasGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/CanvasGenerator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/projectClasses/TopoGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/TopoGenerator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rommel.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/simplex_noise_experiment_vierkant.py" beforeDir="false" afterPath="$PROJECT_DIR$/simplex_noise_experiment_vierkant.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stats" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sweetviz.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/voronoiImageUpscalen.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/colorCard.py" beforeDir="false" afterPath="$PROJECT_DIR$/colorCard.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/topografische_camo.py" beforeDir="false" afterPath="$PROJECT_DIR$/topografische_camo.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +104,7 @@
       <recent name="$PROJECT_DIR$/camoOutput" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.colorCard">
+  <component name="RunManager" selected="Python.topografische_camo">
     <configuration name="BepaalDominanteKleurenSplitKNNkleurSchaduw" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Camo builder" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -257,6 +168,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="colorCardrb" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Camo builder" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/colorCardrb.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="topografische_camo" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Camo builder" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -278,41 +210,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="x" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Camo builder" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/projectClasses" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/projectClasses/x.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Python.colorCard" />
-      <item itemvalue="Python.x" />
+      <item itemvalue="Python.colorCardrb" />
       <item itemvalue="Python.camoVergelijkingControler" />
       <item itemvalue="Python.topografische_camo" />
       <item itemvalue="Python.BepaalDominanteKleurenSplitKNNkleurSchaduw" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.colorCard" />
-        <item itemvalue="Python.camoVergelijkingControler" />
         <item itemvalue="Python.topografische_camo" />
         <item itemvalue="Python.BepaalDominanteKleurenSplitKNNkleurSchaduw" />
-        <item itemvalue="Python.x" />
+        <item itemvalue="Python.colorCardrb" />
+        <item itemvalue="Python.colorCard" />
+        <item itemvalue="Python.camoVergelijkingControler" />
       </list>
     </recent_temporary>
   </component>
@@ -538,7 +449,15 @@
       <option name="project" value="LOCAL" />
       <updated>1683879276900</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="alles werkt nog steeds. comibnaties van kleuren in tkinter">
+      <option name="closed" value="true" />
+      <created>1688812806194</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1688812806194</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TodoView">
@@ -598,7 +517,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="RGBdualTopColoring is nu verdeeld in classes en werkt weer" />
     <MESSAGE value="RGBdualTopColoring goede resultaten" />
     <MESSAGE value="voor experiment met randomizatie van volgorde punten" />
     <MESSAGE value="voor verwijderen overbodige files" />
@@ -623,7 +541,8 @@
     <MESSAGE value="gereduceerd en vertaling multi single werkt" />
     <MESSAGE value="We gaan combinatie van topos mogelijk maken" />
     <MESSAGE value="combinaties van topos nu mogelijk" />
-    <option name="LAST_COMMIT_MESSAGE" value="combinaties van topos nu mogelijk" />
+    <MESSAGE value="alles werkt nog steeds. comibnaties van kleuren in tkinter" />
+    <option name="LAST_COMMIT_MESSAGE" value="alles werkt nog steeds. comibnaties van kleuren in tkinter" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -690,8 +609,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/colorCard.py</url>
-          <line>21</line>
-          <option name="timeStamp" value="322" />
+          <line>28</line>
+          <option name="timeStamp" value="327" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/colorCardrb.py</url>
+          <line>47</line>
+          <option name="timeStamp" value="328" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/colorCardrb.py</url>
+          <line>37</line>
+          <option name="timeStamp" value="329" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

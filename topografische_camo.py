@@ -5,7 +5,7 @@ from projectClasses.TopoGenerator import TopoGenerator
 from projectClasses.Camo_picture import CamoPicture
 from datetime import datetime
 
-kleuren_filenaam = 'groen_buin_beige_l.jpgkleurSchaduwMedian20230701 110550.csv'
+kleuren_filenaam = 'blauw_en_veel_wit.jpgkleurSchaduwMedian20230708 150749.csv'
 
 root_dir = '/home/willem/Pictures/Camouflage/camoBuilder/'
 plaatjes_dir = root_dir + 'camoOutput/'
@@ -21,12 +21,12 @@ canvasGenerator = CanvasGeneratator(
     kleur_verhoudingen=kleurInfo,
     naam_basis=kleuren_filenaam,
     contrast= 1,
-    saturation = 0.7,
-    belichting=0.9,
+    saturation = 0.99,
+    belichting=0.99,
     start_volgorde="hoofdKleur",#hoofdKleur, grijsGroep
     kleur_manipulatie="oplopend") #licht_donker_licht, oplopend
 
-topoGenerator = TopoGenerator(versie=3,
+topoGenerator = TopoGenerator(versie=9,
                               breedte=canvasGenerator.breedte,
                               hoogte=canvasGenerator.hoogte)
 

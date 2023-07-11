@@ -10,7 +10,7 @@ import random
 # Parameters
 bepaalDominanteKleurenDir = '/home/willem/Pictures/Camouflage/broncompilaties/'
 kleurParametersDir = '/home/willem/PycharmProjects/CamoBuilder/kleurParameters/'
-name = 'groen_buin_beige_l.jpg'
+name = 'blauw_en_veel_wit.jpg'
 sampleSizeTest = 1000
 sampleSize = 1000000
 aantal_hoofdlkeuren = 3
@@ -143,6 +143,7 @@ plt.show()
 # if not ontwikkel:
 #     print(kleurParametersDir + name + "kleurSchaduwMean" + now + '.csv')
 #     means.to_csv(kleurParametersDir + name + "kleurSchaduwMean" + now + '.csv')
+
 
 
 
