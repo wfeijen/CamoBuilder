@@ -1,3 +1,4 @@
+#%%
 import pandas as pd
 import numpy as np
 from projectClasses.CanvasGenerator import CanvasGeneratator
@@ -133,5 +134,7 @@ print(info)
 f = open(root_dir + "boekhouding.csv", "a")
 f.write(fileNaam + "," + info + "\n")
 f.close()
-
+print(fileNaam)
 i = 1
+
+# %%
