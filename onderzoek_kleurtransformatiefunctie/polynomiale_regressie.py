@@ -1,7 +1,8 @@
 import pickle
 from sklearn.linear_model import LinearRegression, Lasso
 import numpy as np
-from functies_voor_onderzoek import vergelijk_kleuren_per_vakje, scatterPlotColors, scatterPlotColor
+from functies_voor_onderzoek import vergelijk_plaatje_met_kleuren_range, scatterPlotColors, scatterPlotColor
+from sklearn.preprocessing import PolynomialFeatures
 
 matrix_size = 27  # 27x27 matrix
 tussenruimte = 50
@@ -24,15 +25,16 @@ x = np.sort(tshirt, axis=0)
 testwaarden = np.concatenate(([x[0]], [np.median(x, axis=0)], [x[-1]]), axis=0)
 alpha = 0.1
 
+polynoom = 8
+tshirt_ = PolynomialFeatures(degree=polynoom, include_bias=False).fit_transform(tshirt)
+tshirt_naar_origineel_polynoom = LinearRegression().fit(tshirt_, origineel)
+tshirt_naar_origineel_polynoom_r_sq = tshirt_naar_origineel_polynoom.score(tshirt_, origineel)
+print(f"coefficient of determination polynoom 2: {tshirt_naar_origineel_polynoom_r_sq}")
+print(f"predicted response:\n{tshirt_naar_origineel_polynoom.predict(PolynomialFeatures(degree=polynoom, include_bias=False).fit_transform(testwaarden))}")
+print(tshirt_naar_origineel_polynoom.coef_)
+print(tshirt_naar_origineel_polynoom.intercept_)
 
-tshirt_naar_origineel_lineair = LinearRegression().fit(tshirt, origineel)
-tshirt_naar_origineel_lineair_r_sq = tshirt_naar_origineel_lineair.score(tshirt, origineel)
-print(f"coefficient of determination: {tshirt_naar_origineel_lineair_r_sq}")
-print(f"predicted response:\n{tshirt_naar_origineel_lineair.predict(testwaarden)}")
-print(tshirt_naar_origineel_lineair.coef_)
-print(tshirt_naar_origineel_lineair.intercept_)
-pred_tshirt = tshirt_naar_origineel_lineair.predict(tshirt)
-# scatterPlotColors(tshirt, pred_tshirt, alpha, 0)
+pred_tshirt = tshirt_naar_origineel_polynoom.predict(tshirt_)
 
-vergelijk_kleuren_per_vakje(origineel_pad, pred_tshirt, matrix_size, tussenruimte)
+vergelijk_plaatje_met_kleuren_range(origineel_pad, pred_tshirt, matrix_size, tussenruimte)
 x=1

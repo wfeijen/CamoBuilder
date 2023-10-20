@@ -6,18 +6,8 @@ tussenruimte = 30
 directory = "/home/willem/Pictures/Camouflage/ColorCard/converted/"
 
 origineel = directory + "colorCard_zonder_tekst.jpg"
-tshirt = directory + "tshirt_20230922_095048_000721A-8.0_E-80_I-400_D7500.jpg"
+tshirt = directory + "tshirt_zon_20230930_105940_000046A-8.0_E-1600_I-400_D7500.jpg"
 lexmark = directory + "Lexmark_20230922_094924_000717A-8.0_E-50_I-400_D7500.jpg"
-
-  # Size of each dot in pixels
-
-def calculate_average_color(im, x, y, dot_size):
-    # Define the region of interest
-    region = im.crop((x * dot_size, y * dot_size, (x + 1) * dot_size, (y + 1) * dot_size))
-
-    # Calculate the average RGB value in the region
-    average_color = tuple(map(int, region.resize((1, 1), Image.ANTIALIAS).getpixel((0, 0))))
-    return average_color
 
 def haal_kleuren_per_vakje(pad, matrix_size, tussenruimte):
     im = Image.open(pad)
@@ -48,6 +38,3 @@ with open('tshirt_kleuren.pkl', 'wb') as file:
     pickle.dump(tshirt_kleuren, file)
 with open('lexmark_kleuren.pkl', 'wb') as file:
     pickle.dump(lexmark_kleuren, file)
-
-# Nu kunnen we gaan kijken of we een functie kunnen maken om de kleuren om te rekenen
-x=1

@@ -1,3 +1,4 @@
+#%%
 from PIL import Image
 import datetime
 import numpy as np
@@ -64,6 +65,7 @@ def rgb_to_hex(red, green, blue):
     """Return color as #rrggbb for the given color values."""
     return '#%02x%02x%02x' % (red, green, blue)
 # Nu kunnen we mean of mediaan berekenen per groep
+df.reset_index(drop = True, inplace = True)
 medians = df.groupby(['hoofdKleur', 'grijsGroep'])[['R', 'G', 'B', 'grijswaarde']].median().astype({'R':'int', 'G':'int', 'B':'int'})
 medians['aantal'] = df.groupby(['hoofdKleur', 'grijsGroep']).size()
 medians = medians.sort_values(['grijswaarde']).reset_index()
@@ -118,7 +120,7 @@ verschil['hex'] = verschil.loc[:,['R', 'G', 'B']].apply(lambda r: rgb_to_hex(*r)
 # ax.set_ylabel('B')
 # ax.scatter(medians.loc[:, 'G'], medians.loc[:, 'B'], c=medians.loc[:, 'hex'], s=200, alpha=1)
 # plt.show()
-
+#%%
 # Pie charts
 fig, (ax1, ax2, ax3) = plt.subplots(1, 3)
 ax1.pie(medians["aantal"], labels = medians["hoofdKleur"], colors=medians['hex'])
@@ -128,7 +130,7 @@ ax2.set_xlabel('means')
 ax3.pie(verschil["aantal"], labels = verschil["hoofdKleur"], colors=verschil['hex'])
 ax3.set_xlabel(f'verschil is maximaal {maximaal_verschil}')
 
-
+#%%
 # Aanpassen aan ontvangend programma met andere naamgeving
 # ,R,G,B,RG,grijswaarde,groep,hex,counts
 # ,R,G,B,aantal,verdeling_in_N,verdeling_in_M
@@ -147,3 +149,5 @@ plt.show()
 
 
 
+
+# %%

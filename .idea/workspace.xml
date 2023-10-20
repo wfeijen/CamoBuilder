@@ -8,17 +8,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83280920-02e3-4395-b3e2-e4ba98218cd6" name="Default Changelist" comment="alles werkt nog steeds. comibnaties van kleuren in tkinter">
-      <change afterPath="$PROJECT_DIR$/colorCardrb.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/blauw_en_veel_wit.jpgkleurSchaduwMedian20230708 150722.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/blauw_en_veel_wit.jpgkleurSchaduwMedian20230708 150749.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/colorCard_zonder_tekst.jpgkleurSchaduwMedian20230708 141714.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/regenboog_rb_wit_1_8.jpgkleurSchaduwMedian20230708 144834.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/regenboog_wit_1_8.jpgkleurSchaduwMedian20230708 142636.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kleurParameters/regenboog_wit_1_8.jpgkleurSchaduwMedian20230708 142730.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kleuren_uit_matrixplaatjes_halen.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/onderzoek_kleurtransformatiefunctie/berekenen_kleur_transformatie_functies.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/onderzoek_kleurtransformatiefunctie/decision_tree_regressie.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/onderzoek_kleurtransformatiefunctie/functies_voor_onderzoek.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/onderzoek_kleurtransformatiefunctie/lasso_regressie.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/onderzoek_kleurtransformatiefunctie/lineaire_regressie.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/onderzoek_kleurtransformatiefunctie/onderzoek_functie_eigenschappen.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/onderzoek_kleurtransformatiefunctie/polynomiale_regressie.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/onderzoek_kleurtransformatiefunctie/support_GAM_regressie.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/onderzoek_kleurtransformatiefunctie/support_vector_machine_regressie.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BepaalDominanteKleurenSplitKNNkleurSchaduw.py" beforeDir="false" afterPath="$PROJECT_DIR$/BepaalDominanteKleurenSplitKNNkleurSchaduw.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/colorCard.py" beforeDir="false" afterPath="$PROJECT_DIR$/colorCard.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/topografische_camo.py" beforeDir="false" afterPath="$PROJECT_DIR$/topografische_camo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/colorCardrb.py" beforeDir="false" afterPath="$PROJECT_DIR$/colorCard_rood_blauw.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectClasses/Camo_picture.py" beforeDir="false" afterPath="$PROJECT_DIR$/projectClasses/Camo_picture.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +64,9 @@
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="953" />
     <option name="width" value="974" />
@@ -85,27 +92,28 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/willem/PycharmProjects/CamoBuilder&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.completion&quot;
+    &quot;last_opened_file_path&quot;: &quot;/home/willem/PycharmProjects/CamoBuilder/onderzoek_kleurtransformatiefunctie&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/onderzoek_kleurtransformatiefunctie" />
+      <recent name="$PROJECT_DIR$/functies_voor_onderzoek" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/projectClasses" />
-      <recent name="$PROJECT_DIR$/kleurParameters" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/onderzoek" />
       <recent name="$PROJECT_DIR$/kleurParameters/Oud" />
       <recent name="$PROJECT_DIR$/dump" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/projectClasses" />
-      <recent name="$PROJECT_DIR$/camoOutput" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.topografische_camo">
-    <configuration name="BepaalDominanteKleurenSplitKNNkleurSchaduw" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.onderzoek_functie_eigenschappen">
+    <configuration name="functies_voor_onderzoek" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Camo builder" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -113,11 +121,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/onderzoek_kleurtransformatiefunctie" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/BepaalDominanteKleurenSplitKNNkleurSchaduw.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/onderzoek_kleurtransformatiefunctie/functies_voor_onderzoek.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -126,7 +134,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="camoVergelijkingControler" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="kleuren_uit_matrixplaatjes_halen" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Camo builder" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -138,7 +146,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/camoVergelijkingControler.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/kleuren_uit_matrixplaatjes_halen.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -147,7 +155,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="colorCard" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="onderzoek_functie_eigenschappen" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Camo builder" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -155,11 +163,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/onderzoek_kleurtransformatiefunctie" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/colorCard.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/onderzoek_kleurtransformatiefunctie/onderzoek_functie_eigenschappen.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -168,7 +176,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="colorCardrb" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="support_GAM_regressie" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Camo builder" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -176,11 +184,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/onderzoek_kleurtransformatiefunctie" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/colorCardrb.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/onderzoek_kleurtransformatiefunctie/support_GAM_regressie.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -189,7 +197,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="topografische_camo" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="support_vector_machine_regressie" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Camo builder" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -197,11 +205,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/onderzoek_kleurtransformatiefunctie" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/topografische_camo.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/onderzoek_kleurtransformatiefunctie/support_vector_machine_regressie.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -211,19 +219,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.colorCard" />
-      <item itemvalue="Python.colorCardrb" />
-      <item itemvalue="Python.camoVergelijkingControler" />
-      <item itemvalue="Python.topografische_camo" />
-      <item itemvalue="Python.BepaalDominanteKleurenSplitKNNkleurSchaduw" />
+      <item itemvalue="Python.functies_voor_onderzoek" />
+      <item itemvalue="Python.onderzoek_functie_eigenschappen" />
+      <item itemvalue="Python.kleuren_uit_matrixplaatjes_halen" />
+      <item itemvalue="Python.support_GAM_regressie" />
+      <item itemvalue="Python.support_vector_machine_regressie" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.topografische_camo" />
-        <item itemvalue="Python.BepaalDominanteKleurenSplitKNNkleurSchaduw" />
-        <item itemvalue="Python.colorCardrb" />
-        <item itemvalue="Python.colorCard" />
-        <item itemvalue="Python.camoVergelijkingControler" />
+        <item itemvalue="Python.onderzoek_functie_eigenschappen" />
+        <item itemvalue="Python.functies_voor_onderzoek" />
+        <item itemvalue="Python.support_GAM_regressie" />
+        <item itemvalue="Python.kleuren_uit_matrixplaatjes_halen" />
+        <item itemvalue="Python.support_vector_machine_regressie" />
       </list>
     </recent_temporary>
   </component>
@@ -608,19 +616,54 @@
           <option name="timeStamp" value="321" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/colorCard.py</url>
-          <line>28</line>
-          <option name="timeStamp" value="327" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/colorCardrb.py</url>
+          <url>file://$PROJECT_DIR$/colorCard_rood_blauw.py</url>
           <line>47</line>
           <option name="timeStamp" value="328" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/colorCardrb.py</url>
-          <line>37</line>
-          <option name="timeStamp" value="329" />
+          <url>file://$PROJECT_DIR$/colorCard.py</url>
+          <line>47</line>
+          <option name="timeStamp" value="332" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/onderzoek_kleurtransformatiefunctie/berekenen_kleur_transformatie_functies.py</url>
+          <line>94</line>
+          <option name="timeStamp" value="335" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/onderzoek_kleurtransformatiefunctie/berekenen_kleur_transformatie_functies.py</url>
+          <line>34</line>
+          <option name="timeStamp" value="341" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/onderzoek_kleurtransformatiefunctie/lineaire_regressie.py</url>
+          <line>26</line>
+          <option name="timeStamp" value="343" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/onderzoek_kleurtransformatiefunctie/support_vector_machine_regressie.py</url>
+          <line>40</line>
+          <option name="timeStamp" value="346" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/onderzoek_kleurtransformatiefunctie/support_GAM_regressie.py</url>
+          <line>45</line>
+          <option name="timeStamp" value="347" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/onderzoek_kleurtransformatiefunctie/support_GAM_regressie.py</url>
+          <line>28</line>
+          <option name="timeStamp" value="348" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/onderzoek_kleurtransformatiefunctie/functies_voor_onderzoek.py</url>
+          <line>19</line>
+          <option name="timeStamp" value="349" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/onderzoek_kleurtransformatiefunctie/onderzoek_functie_eigenschappen.py</url>
+          <line>32</line>
+          <option name="timeStamp" value="350" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

@@ -7,8 +7,8 @@ from datetime import datetime
 from optparse import OptionParser
 import random
 
-img_path = '/media/willem/KleindSSD/machineLearningPictures/camoBuilder/camoOutput/2023-03-18 14:34:35.572138.jpg.jpg'
-num_cells = 80000
+img_path = '/home/willem/Pictures/PictureStore/2006/20060103_112545_005756A-4.5_E-60_I-200.jpg'
+num_cells = 800
 
 # parser = OptionParser()
 # parser.add_option("-i", "--image", type="string", dest="imagename",

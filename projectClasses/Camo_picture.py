@@ -14,7 +14,7 @@ class CamoPicture:
         ybase = y * 3
         xbase = x * 4
         if (y % 2) == 0:
-            xbase = xbase + 2
+            xbase = xbase + 2 
 
         canvas[xbase, ybase + 1] = kleur_waarde
         canvas[xbase, ybase + 2] = kleur_waarde
@@ -57,6 +57,7 @@ class CamoPicture:
         geschaalde_points[self.width - 1 + (self.height - 1) * self.width, 0] = self.width - 1
         geschaalde_points[self.width - 1 + (self.height - 1) * self.width, 1] = self.height - 1
         return geschaalde_points.astype(int)
+    
     def generate_voronoi_diagram(self):
         """
         generate voronoi diagramm as polygons
@@ -123,12 +124,9 @@ class CamoPicture:
 
         num_cells = self.width * self.height
 
-
         self.img = Image.new("RGB", (self.width * self.schaal_X, self.height * self.schaal_y))
         draw = ImageDraw.Draw(self.img)
         self.makeup_polygons(draw)
-        # een pill image = hoogte x breedte en we willen naar breedte x hoogte. We kantelen de image dus.
-        # self.img = self.img.rotate(90, expand=True)
 
         self.info = ",vor_sx," + str(self.schaal_X) + ",vor_sy," + str(self.schaal_y) + ",_rx," + str(self.randomfactor_X) + ",_ry," + str(self.randomfactor_Y)
 
@@ -138,3 +136,4 @@ class CamoPicture:
     def save(self, rootDir, name):
         profile = ImageCms.createProfile("sRGB")
         self.img.save(rootDir + name + ".jpg", icc_profile=ImageCms.ImageCmsProfile(profile).tobytes())
+# %%

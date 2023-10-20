@@ -10,11 +10,11 @@ import plotly.express as px
 from sklearn.model_selection import train_test_split
 
 
-with open('origineel_kleuren.pkl', 'rb') as file:
+with open('../origineel_kleuren.pkl', 'rb') as file:
     origineel_kleuren = pickle.load(file)
-with open('tshirt_kleuren.pkl', 'rb') as file:
+with open('../tshirt_kleuren.pkl', 'rb') as file:
     tshirt_kleuren = pickle.load(file)
-with open('lexmark_kleuren.pkl', 'rb') as file:
+with open('../lexmark_kleuren.pkl', 'rb') as file:
     lexmark_kleuren = pickle.load(file)
 
 tshirt = np.array(tshirt_kleuren)

@@ -1,6 +1,7 @@
 import pickle
 from pygam import LinearGAM, s, f
 import numpy as np
+import pandas as pd
 from functies_voor_onderzoek import vergelijk_plaatje_met_kleuren_range, scatterPlotColors, scatterPlotColor, vergelijk_2_kleurenranges, vergelijk_3_kleurenranges
 import matplotlib.pyplot as plt
 
@@ -20,9 +21,28 @@ with open('../tshirt_kleuren.pkl', 'rb') as file:
 with open('../lexmark_kleuren.pkl', 'rb') as file:
     lexmark_kleuren = pickle.load(file)
 
+origineel_pd = pd.DataFrame(origineel_kleuren, columns = ("Ro", "Go", "Bo"))
+tshirt_pd = pd.DataFrame(tshirt_kleuren, columns = ("Rt", "Gt", "Bt"))
+
+dataset_pd = origineel_pd.reset_index(drop=True).join(tshirt_pd)
+dataset_pd['Rd'] = dataset_pd['Ro'] - dataset_pd['Rt']
+dataset_pd['Gd'] = dataset_pd['Go'] - dataset_pd['Gt']
+dataset_pd['Bd'] = dataset_pd['Bo'] - dataset_pd['Bt']
+
+
 tshirt = np.array(tshirt_kleuren)
 origineel = np.array(origineel_kleuren)
 lexmark = np.array(lexmark_kleuren)
+
+
+
+
+
+
+
+
+
+
 #testwaarden = np.array([[20,20,20], [128, 128, 128], [200, 200, 200]])
 vergelijk_plaatje_met_kleuren_range(tshirt_pad, tshirt, matrix_size=hokjes_per_rij, tussenruimte=tussenruimte)
 

@@ -1,7 +1,7 @@
 import pickle
 from sklearn.linear_model import LinearRegression, Lasso
 import numpy as np
-from functies_voor_onderzoek import vergelijk_kleuren_per_vakje, scatterPlotColors, scatterPlotColor
+from functies_voor_onderzoek import vergelijk_plaatje_met_kleuren_range, scatterPlotColors, scatterPlotColor
 
 matrix_size = 27  # 27x27 matrix
 tussenruimte = 50
@@ -22,16 +22,21 @@ lexmark = np.array(lexmark_kleuren)
 #testwaarden = np.array([[20,20,20], [128, 128, 128], [200, 200, 200]])
 x = np.sort(tshirt, axis=0)
 testwaarden = np.concatenate(([x[0]], [np.median(x, axis=0)], [x[-1]]), axis=0)
-alpha = 0.01
 
-tshirt_naar_origineel_lasso = Lasso().fit(tshirt, origineel)
-tshirt_naar_origineel_lasso_r_sq = tshirt_naar_origineel_lasso.score(tshirt, origineel)
-print(f"coefficient of determination lasso: {tshirt_naar_origineel_lasso_r_sq}")
-print(f"predicted response lasso:\n{tshirt_naar_origineel_lasso.predict(testwaarden)}")
-print(tshirt_naar_origineel_lasso.coef_)
-print(tshirt_naar_origineel_lasso.intercept_)
-pred_tshirt = tshirt_naar_origineel_lasso.predict(tshirt)
+# Support Vector Machines
+from sklearn.svm import SVR
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+
+tshirt_naar_origineel_svn = make_pipeline(StandardScaler(), SVR(C=100.0, epsilon=0.5))
+tshirt_naar_origineel_svn.fit(tshirt, origineel[:,0])
+pred_tshirt_R = np.atleast_2d(tshirt_naar_origineel_svn.predict(tshirt)).T
+tshirt_naar_origineel_svn.fit(tshirt, origineel[:,1])
+pred_tshirt_G = np.atleast_2d(tshirt_naar_origineel_svn.predict(tshirt)).T
+tshirt_naar_origineel_svn.fit(tshirt, origineel[:,2])
+pred_tshirt_B = np.atleast_2d(tshirt_naar_origineel_svn.predict(tshirt)).T
 # scatterPlotColors(tshirt, pred_tshirt, alpha, 0)
+pred_tshirt = np.hstack((pred_tshirt_R, pred_tshirt_G, pred_tshirt_B))
 
-vergelijk_kleuren_per_vakje(origineel_pad, pred_tshirt, matrix_size, tussenruimte)
+vergelijk_plaatje_met_kleuren_range(origineel_pad, pred_tshirt, matrix_size, tussenruimte)
 x=1

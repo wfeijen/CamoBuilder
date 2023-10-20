@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-base_dir = '/media/willem/KleindSSD/machineLearningPictures/camoBuilder'
+base_dir = '/home/willem/Pictures/Camouflage/camoBuilder'
 boekhouding_file = base_dir + '/camovergelijking_resultaten.csv'
 
 resultaten = pd.read_csv(boekhouding_file, index_col=False)

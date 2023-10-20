@@ -1,7 +1,8 @@
-# import tkinter as tk
+#%%
 from math import sqrt, ceil
 from PIL import Image, ImageDraw, ImageCms, ImageFont
-import glob
+
+#%%
 
 file_name_met_tekst = '/home/willem/Pictures/Camouflage/camoBuilder/camoOutput/colorCard_tekst.jpg'
 file_name_zonder_tekst = '/home/willem/Pictures/Camouflage/camoBuilder/camoOutput/colorCard_zonder_tekst.jpg'
@@ -42,10 +43,11 @@ def maak_color_card(N, square_size, font_size, tekst=False):
                     draw.text((x1 + 80, y1 + 50), decimal_code, fill=calculate_text_color(color), font=font, align="center")
     return image
 
-# image.show()
+
 profile = ImageCms.createProfile("sRGB")
 
 image = maak_color_card(N=N, square_size=square_size, font_size=font_size,tekst=True)
+image.show()
 image.save(file_name_met_tekst, icc_profile=ImageCms.ImageCmsProfile(profile).tobytes())
 image = maak_color_card(N=N, square_size=square_size, font_size=font_size,tekst=False)
 image.save(file_name_zonder_tekst, icc_profile=ImageCms.ImageCmsProfile(profile).tobytes())
