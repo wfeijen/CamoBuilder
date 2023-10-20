@@ -3,17 +3,19 @@ from sklearn.linear_model import LinearRegression, Lasso
 import numpy as np
 from functies_voor_onderzoek import vergelijk_plaatje_met_kleuren_range, scatterPlotColors, scatterPlotColor
 
+# unset GTK_PATH
+
 matrix_size = 27  # 27x27 matrix
-tussenruimte = 50
+tussenruimte = 30
 directory = "/home/willem/Pictures/Camouflage/ColorCard/converted/"
 origineel_pad = directory + "colorCard_zonder_tekst.jpg"
 
 
-with open('../origineel_kleuren.pkl', 'rb') as file:
+with open('origineel_kleuren.pkl', 'rb') as file:
     origineel_kleuren = pickle.load(file)
-with open('../tshirt_kleuren.pkl', 'rb') as file:
+with open('tshirt_kleuren.pkl', 'rb') as file:
     tshirt_kleuren = pickle.load(file)
-with open('../lexmark_kleuren.pkl', 'rb') as file:
+with open('lexmark_kleuren.pkl', 'rb') as file:
     lexmark_kleuren = pickle.load(file)
 
 tshirt = np.array(tshirt_kleuren)

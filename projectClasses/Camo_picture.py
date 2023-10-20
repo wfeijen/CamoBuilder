@@ -5,8 +5,9 @@ from projectClasses.Utilities import replace_with_dict
 
 
 class CamoPicture:
-    def __init__(self, canvas, getal_naar_kleur):
+    def __init__(self, canvas, punt_delta, getal_naar_kleur):
         self.canvas_in = canvas
+        self.punt_delta = punt_delta
         self.width, self.height = self.canvas_in.shape
         self.getal_naar_kleur = getal_naar_kleur
 
@@ -39,14 +40,15 @@ class CamoPicture:
         self.info = ",bol"
 
     def maak_geschaalde_punten(self):
-        pointsDelta = np.random.rand(self.width, self.height, 2)
+
+        # pointsDelta = np.random.rand(self.width, self.height, 2)
         geschaalde_points = np.zeros((self.width * self.height, 2))
         for x in range(self.width):
             for y in range(self.height):
                 geschaalde_points[x + y * self.width, 0] = max(0, min(self.width - 1,
-                                                                      x + self.randomfactor_X * pointsDelta[x, y, 0])) * self.schaal_X
+                                                                      x + self.randomfactor_X * self.punt_delta[x, y, 0])) * self.schaal_X
                 geschaalde_points[x + y * self.width, 1] = max(0, min(self.height - 1,
-                                                                      y + self.randomfactor_Y * pointsDelta[x, y, 1])) * self.schaal_y
+                                                                      y + self.randomfactor_Y * self.punt_delta[x, y, 1])) * self.schaal_y
         # Hoekjes willen we geen random factor
         geschaalde_points[0, 0] = 0
         geschaalde_points[0, 1] = 0
