@@ -4,6 +4,7 @@ import numpy as np
 from projectClasses.CanvasGenerator import CanvasGeneratator
 from projectClasses.TopoGenerator import TopoGenerator
 from projectClasses.Camo_picture import CamoPicture
+from projectClasses.Utilities import corrigeer_kleuren
 from datetime import datetime
 
 kleuren_filenaam = 'groen_buin_beige_l.jpgkleurSchaduwMedian20230701 110550.csv'
@@ -13,6 +14,10 @@ plaatjes_dir = root_dir + 'camoOutput/'
 kleurenPad = './kleurParameters/' + kleuren_filenaam
 
 kleurInfo = pd.read_csv(kleurenPad, index_col=0)
+
+# kleurInfo[['R', 'G', 'B']] = corrigeer_kleuren(van_schema_filenaam='lexmark_kleuren.pkl',
+#                                 naar_schema_filenaam='origineel_kleuren.pkl',
+#                                 kleurinfo_in=kleurInfo)
 
 # 2023-06-10 15:22:05.587923.jpg	bruin_groen_contrast_230518e.jpgkleurSchaduwMedian20230608 111525.csv	breedte	260	hoogte	300	contrast	1	saturation	0.8	belichting	0.9	start_volgorde	hoofdKleur	kleurmanipulatie	oplopend
 # 2023-07-01 11:18:35.517134.jpg	groen_buin_beige_l.jpgkleurSchaduwMedian20230701 110550.csv	breedte	300	hoogte	300	contrast	1	saturation	0.7	belichting	0.9	start_volgorde	hoofdKleur	kleurmanipulatie	oplopend
