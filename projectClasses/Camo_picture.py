@@ -2,6 +2,7 @@ from PIL import Image, ImageDraw, ImageCms
 import numpy as np
 from scipy.spatial import Voronoi, voronoi_plot_2d
 from projectClasses.Utilities import replace_with_dict
+import random
 
 
 class CamoPicture:
@@ -46,9 +47,9 @@ class CamoPicture:
         for x in range(self.width):
             for y in range(self.height):
                 geschaalde_points[x + y * self.width, 0] = max(0, min(self.width - 1,
-                                                                      x + self.randomfactor_X * self.punt_delta[x, y, 0])) * self.schaal_X
+                                                                      x + (self.randomfactor_X * (random.random() - 0.5) + self.punt_delta[x, y, 0]))) * self.schaal_X
                 geschaalde_points[x + y * self.width, 1] = max(0, min(self.height - 1,
-                                                                      y + self.randomfactor_Y * self.punt_delta[x, y, 1])) * self.schaal_y
+                                                                      y + (self.randomfactor_Y * (random.random() - 0.5) + self.punt_delta[x, y, 1]))) * self.schaal_y
         # Hoekjes willen we geen random factor
         geschaalde_points[0, 0] = 0
         geschaalde_points[0, 1] = 0

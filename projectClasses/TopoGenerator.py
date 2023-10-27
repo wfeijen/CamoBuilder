@@ -3,9 +3,9 @@ from sklearn.preprocessing import normalize
 import numpy as np
 
 
-def schaalNaarMin1Tot1(arr):
+def schaal_naar_bereik(arr, bereik=1):
     min = np.min(arr)
-    return ((arr - min) * 2 / (np.max(arr) - min)) - 1
+    return (((arr - min) * 2 / (np.max(arr) - min)) - 1) * bereik
 
 
 class TopoGenerator:
@@ -18,14 +18,13 @@ class TopoGenerator:
         self.hoogte = hoogte
         self.info = ""
 
-    def genereer(self,
+    def genereer_noise(self,
                  persistence,
                  lacunarity,
                  octaves,
                  scaleX,
                  scaleY,
                  noise_type,
-                 macht,
                  bereik,
                  ):
         noiseMachine = NoiseFactory(noise_type)
@@ -42,14 +41,10 @@ class TopoGenerator:
                                                        base=self.versie)
         self.versie += 1
         # topografie = normalize(topografie)
-        topografie = schaalNaarMin1Tot1(topografie)
-        if macht != 1:
-            topografie = np.power(topografie, macht)
-        if bereik != 1:
-            topografie = topografie * bereik
+        topografie = schaal_naar_bereik(topografie, bereik)
         return topografie
 
-    def genereer_1(self,
+    def genereer_1_noise(self,
                    Id,
                    persistence,
                    lacunarity,
@@ -57,21 +52,19 @@ class TopoGenerator:
                    scaleX,
                    scaleY,
                    noise_type,
-                   macht=1,
                    bereik=1
                    ):
-        self.info = f'{self.info},Id,{Id},noise,{noise_type},o,{str(octaves)},per,{str(persistence)},lan,{str(lacunarity)},scaleX,{str(scaleX)},scaleY,{str(scaleY)},versie,{str(self.versie)},macht,{str(macht)},bereik,{bereik}'
-        return self.genereer(persistence,
+        self.info = f'{self.info},Id,{Id},noise,{noise_type},o,{str(octaves)},per,{str(persistence)},lan,{str(lacunarity)},scaleX,{str(scaleX)},scaleY,{str(scaleY)},versie,{str(self.versie)},bereik,{str(bereik)}'
+        return self.genereer_noise(persistence,
                              lacunarity,
                              octaves,
                              scaleX,
                              scaleY,
                              noise_type,
-                             macht,
                              bereik
                              )
 
-    def genereer_N(self,
+    def genereer_N_noise(self,
                    N,
                    Id,
                    persistence,
@@ -80,74 +73,57 @@ class TopoGenerator:
                    scaleX,
                    scaleY,
                    noise_type,
-                   macht=1,
                    bereik=1
                    ):
-        self.info = f'{self.info},Id,{Id},noise,{noise_type},o,{str(octaves)},per,{str(persistence)},lan,{str(lacunarity)},scaleX,{str(scaleX)},scaleY,{str(scaleY)},versie,{str(self.versie)},macht,{str(macht)},bereik,{bereik}'
+        self.info = f'{self.info},Id,{Id},noise,{noise_type},o,{str(octaves)},per,{str(persistence)},lan,{str(lacunarity)},scaleX,{str(scaleX)},scaleY,{str(scaleY)},versie,{str(self.versie)},bereik,{str(bereik)}'
 
         antwoord = []
         for i in range(N):
-            antwoord.append(self.genereer(persistence,
+            antwoord.append(self.genereer_noise(persistence,
                                           lacunarity,
                                           octaves,
                                           scaleX,
                                           scaleY,
                                           noise_type,
-                                          macht,
                                           bereik))
 
         return np.stack(antwoord)
 
-    def binair_1(self,
+    def binair(self,
                  Id,
-                 persistence,
-                 lacunarity,
-                 octaves,
-                 scaleX,
-                 scaleY,
-                 noise_type,
-                 bovengrens,
-                 ondergrens
+                 topo_in,
+                 grens,
+                 bereik
                  ):
-        self.info = f'{self.info},InverseId,{Id},bovengrens,{bovengrens},ondergrens,{ondergrens}'
-        topo = self.genereer_1(
-            Id,
-            persistence,
-            lacunarity,
-            octaves,
-            scaleX,
-            scaleY,
-            noise_type
-        )
-        topo = np.where(topo < bovengrens, 1, -1) * np.where(topo > ondergrens, 1, -1)
+        self.info = f'{self.info},BinairId,{Id},grens,{grens},bereik.{bereik}'
+        topo = np.copy(topo_in)
+        topo = np.where(topo < grens, bereik, -bereik)
         return topo
-
-    # Maakt 1 binaire topo -1 en 1 die over alle N kanalen herhaald wordt. De bedoeling is namelijk om hier inversies mee te maken in licht en donker
-    def binair_1_n(self,
-                   N,
-                   Id,
-                   persistence,
-                   lacunarity,
-                   octaves,
-                   scaleX,
-                   scaleY,
-                   noise_type,
-                   bovengrens,
-                   ondergrens
-                   ):
-        self.info = f'{self.info},InverseId,{Id},bovengrens,{bovengrens},ondergrens,{ondergrens}'
-        topo = self.genereer_1(
-            Id,
-            persistence,
-            lacunarity,
-            octaves,
-            scaleX,
-            scaleY,
-            noise_type
-        )
-        topo = np.where(topo < bovengrens, 1, -1) * np.where(topo > ondergrens, 1, -1)
-        antwoord = []
-        for i in range(N):
-            antwoord.append(topo)
-        return np.stack(antwoord)
+    
+    def vouw_over_grens_en_schaal(self,
+                Id,
+                topo_in,
+                grens,
+                bereik
+                ):
+        self.info = f'{self.info},VouwId,{Id},grens,{grens},bereik,{bereik}'
+        topo = np.copy(topo_in)
+        topo = np.where(topo < grens, topo - grens, grens - topo) 
+        topo = schaal_naar_bereik(topo, bereik)
+        return topo
+    
+    def verhef_tot_macht(self,
+                Id,
+                topo_in,
+                macht,
+                bereik
+                ):
+        self.info = f'{self.info},MachtId,{Id},macht,{macht},bereik,{bereik}'
+        topo = np.copy(topo_in)
+        if macht != 1:
+            topo = schaal_naar_bereik(topo)
+            topo = np.power(topo, macht)
+        if bereik != 1:
+            topo = schaal_naar_bereik(topo)
+        return topo
 

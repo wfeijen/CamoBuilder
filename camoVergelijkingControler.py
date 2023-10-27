@@ -7,7 +7,7 @@ import numpy as np
 base_dir = '/home/willem/Pictures/Camouflage/camoBuilder/'
 schenes_sub_dir = 'scenesVoorTest'
 camos_sub_dir = 'teVergelijkenCamos'
-boekhouding_file = base_dir + '/camovergelijking_resultaten.csv'
+boekhouding_file = base_dir + 'camovergelijking_resultaten.csv'
 
 scenes_lijst = give_list_of_images(baseDir=base_dir, subdirName=schenes_sub_dir)
 camos_lijst = give_list_of_images(baseDir=base_dir, subdirName=camos_sub_dir)
