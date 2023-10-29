@@ -15,14 +15,24 @@ def rgb_naar_hex(rgb):
     return "#%02x%02x%02x" % rgb
 
 
-def leerImageEnBereidVoor(img_file, doel_grootte, close):
+def bereid_schene_image_voor(img_file, doel_grootte):
     img = Image.open(img_file)
+    img = img.resize(doel_grootte, Image.BICUBIC)
+    return ImageTk.PhotoImage(img)
+
+def bereid_camo_image_voor(img_file, doel_grootte, close, veiligheidsmarge = 100):
+    img = Image.open(img_file)
+    imagebreedte, imagehoogte = img.size
+    veilige_breedte = imagebreedte - veiligheidsmarge * 2
+    veilige_hoogte = imagehoogte - veiligheidsmarge * 2
 
     if close:
-        b, h = img.size
-        b = random.randint(0, b - 1500)
-        h = random.randint(0, h - 1500)        
-        img = img.crop((b ,h ,b + 1500, h + 1500))
+        square_size = min(veilige_breedte, veilige_hoogte, 1500)
+    else:
+        square_size = min(veilige_breedte, veilige_hoogte, 6000)
+    nieuwe_imagebreedte = random.randint(veiligheidsmarge, imagebreedte - veiligheidsmarge - square_size)
+    nieuwe_imagehoogte = random.randint(veiligheidsmarge, imagehoogte - veiligheidsmarge - square_size)        
+    img = img.crop((nieuwe_imagebreedte ,nieuwe_imagehoogte ,nieuwe_imagebreedte + square_size, nieuwe_imagehoogte + square_size))
     img = img.resize(doel_grootte, Image.BICUBIC)
     return ImageTk.PhotoImage(img)
 
@@ -80,6 +90,7 @@ class CamoVergelijkingsTestScherm:
 
     def wisselScherm(self):
         if self.index < self.aantal_actief:
+            self.root.title(f'{self.index} van {self.aantal_actief}')
             self.click_tijd1 = None
             self.click_tijd2 = None
             self.counter += 1
@@ -89,9 +100,8 @@ class CamoVergelijkingsTestScherm:
             try:
                 file_naam_schene = self.scene_en_camos.iloc[self.index, 0]
                 close = os.path.basename(file_naam_schene)[0] == 'c'
-                img_scene = leerImageEnBereidVoor(file_naam_schene,
-                                                  doel_grootte=self.scene_grootte,
-                                                  close=False)
+                img_scene = bereid_schene_image_voor(file_naam_schene,
+                                                  doel_grootte=self.scene_grootte)
                 self.label = ttk.Label(self.root, image=img_scene)
                 self.label.place(relx=0.5, rely=0.5, anchor=CENTER)
                 # self.label.configure(image=img_scene)
@@ -102,11 +112,11 @@ class CamoVergelijkingsTestScherm:
                 self.remiseBtn.place(x=self.camo_plaatsingsruimte[0] / 2, y=self.camo_plaatsingsruimte[1] / 2 - 30)
                 # Ophalen van twee camo's
                 x1, y1, x2, y2 = self.two_random_locations()
-                img_camo1 = leerImageEnBereidVoor(self.scene_en_camos.iloc[self.index, 1], self.camo_grootte, close)
+                img_camo1 = bereid_camo_image_voor(self.scene_en_camos.iloc[self.index, 1], self.camo_grootte, close)
                 self.camo1_label = ttk.Label(self.root, image=img_camo1, relief="flat", borderwidth=0)
                 self.camo1_label.place(x=x1, y=y1)
                 self.camo1_label.bind('<Button>', self.camo1_click)
-                img_camo2 = leerImageEnBereidVoor(self.scene_en_camos.iloc[self.index, 2], self.camo_grootte, close)
+                img_camo2 = bereid_camo_image_voor(self.scene_en_camos.iloc[self.index, 2], self.camo_grootte, close)
                 self.camo2_label = ttk.Label(self.root, image=img_camo2, relief="flat", borderwidth=0)
                 self.camo2_label.place(x=x2, y=y2)
                 self.camo2_label.bind('<Button>', self.camo2_click)

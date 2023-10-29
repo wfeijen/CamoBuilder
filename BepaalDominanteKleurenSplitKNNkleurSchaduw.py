@@ -9,9 +9,13 @@ import random
 
 
 # Parameters
-bepaalDominanteKleurenDir = '/home/willem/Pictures/Camouflage/broncompilaties/'
-kleurParametersDir = '/home/willem/PycharmProjects/CamoBuilder/kleurParameters/'
-name = 'blauw_en_veel_wit.jpg'
+kleuren_filenaam = 'genuanceerd_groen_bruin6.jpg'
+
+root_dir = '/home/willem/Pictures/Camouflage/'
+plaatjes_dir = root_dir + 'camoBuilder/camoOutput/'
+broncompilaties_dir = root_dir + 'broncompilaties/'
+kleurParametersDir = './kleurParameters/'
+
 sampleSizeTest = 1000
 sampleSize = 1000000
 aantal_hoofdlkeuren = 3
@@ -21,7 +25,7 @@ aantal_kleuren = aantal_hoofdlkeuren * aantal_grijswaarden
 ontwikkel = False
 
 # Inlezen en naar data omzetten
-im = Image.open(bepaalDominanteKleurenDir + name)
+im = Image.open(broncompilaties_dir + kleuren_filenaam)
 if im.mode != "RGB":
     im = im.convert("RGB")
 
@@ -138,12 +142,12 @@ ax3.set_xlabel(f'verschil is maximaal {maximaal_verschil}')
 now = datetime.datetime.now().strftime('%Y%m%d %H%M%S')
 
 if not ontwikkel:
-    print(kleurParametersDir + name + "kleurSchaduwMedian" + now + '.csv')
-    medians.to_csv(kleurParametersDir + name + "kleurSchaduwMedian" + now + '.csv')
-    plt.savefig(bepaalDominanteKleurenDir + name + "kleurSchaduwMedian" + now + '.jpg')
+    print(kleurParametersDir + kleuren_filenaam + "kleurSchaduwMedian" + now + '.csv')
+    medians.to_csv(kleurParametersDir + kleuren_filenaam + "kleurSchaduwMedian" + now + '.csv')
+    plt.savefig(broncompilaties_dir + kleuren_filenaam + "kleurSchaduwMedian" + now + '.jpg')
 plt.show()
 # if not ontwikkel:
-#     print(kleurParametersDir + name + "kleurSchaduwMean" + now + '.csv')
+#     print(name + "kleurSchaduwMean" + now + '.csv')
 #     means.to_csv(kleurParametersDir + name + "kleurSchaduwMean" + now + '.csv')
 
 

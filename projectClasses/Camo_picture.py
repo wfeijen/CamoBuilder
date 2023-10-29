@@ -47,9 +47,11 @@ class CamoPicture:
         for x in range(self.width):
             for y in range(self.height):
                 geschaalde_points[x + y * self.width, 0] = max(0, min(self.width - 1,
-                                                                      x + (self.randomfactor_X * (random.random() - 0.5) + self.punt_delta[x, y, 0]))) * self.schaal_X
+                                                                      self.randomfactor_X * (random.random() - 0.5) + 
+                                                                      x + self.punt_delta[x, y, 0])) * self.schaal_X
                 geschaalde_points[x + y * self.width, 1] = max(0, min(self.height - 1,
-                                                                      y + (self.randomfactor_Y * (random.random() - 0.5) + self.punt_delta[x, y, 1]))) * self.schaal_y
+                                                                      self.randomfactor_Y * (random.random() - 0.5) + 
+                                                                      y + self.punt_delta[x, y, 1])) * self.schaal_Y
         # Hoekjes willen we geen random factor
         geschaalde_points[0, 0] = 0
         geschaalde_points[0, 1] = 0
@@ -121,17 +123,17 @@ class CamoPicture:
 
     def create_vonoroi(self, schaal_X, schaal_Y, randomfactor_X, randomfactor_Y):
         self.schaal_X = schaal_X
-        self.schaal_y = schaal_Y
+        self.schaal_Y = schaal_Y
         self.randomfactor_X = randomfactor_X
         self.randomfactor_Y = randomfactor_Y
 
         num_cells = self.width * self.height
 
-        self.img = Image.new("RGB", (self.width * self.schaal_X, self.height * self.schaal_y))
+        self.img = Image.new("RGB", (self.width * self.schaal_X, self.height * self.schaal_Y))
         draw = ImageDraw.Draw(self.img)
         self.makeup_polygons(draw)
 
-        self.info = ",vor_sx," + str(self.schaal_X) + ",vor_sy," + str(self.schaal_y) + ",_rx," + str(self.randomfactor_X) + ",_ry," + str(self.randomfactor_Y)
+        self.info = ",vor_sx," + str(self.schaal_X) + ",vor_sy," + str(self.schaal_Y) + ",_rx," + str(self.randomfactor_X) + ",_ry," + str(self.randomfactor_Y)
 
     def show(self):
         self.img.show()

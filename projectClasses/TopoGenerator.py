@@ -12,10 +12,12 @@ class TopoGenerator:
     def __init__(self,
                  versie,
                  breedte,
-                 hoogte):
+                 hoogte,
+                 N):
         self.versie = versie
         self.breedte = breedte
         self.hoogte = hoogte
+        self.N = N
         self.info = ""
 
     def genereer_noise(self,
@@ -54,7 +56,7 @@ class TopoGenerator:
                    noise_type,
                    bereik=1
                    ):
-        self.info = f'{self.info},Id,{Id},noise,{noise_type},o,{str(octaves)},per,{str(persistence)},lan,{str(lacunarity)},scaleX,{str(scaleX)},scaleY,{str(scaleY)},versie,{str(self.versie)},bereik,{str(bereik)}'
+        self.info = f'{self.info},Id,{Id},noise,{noise_type},o,{octaves},per,{persistence},lan,{lacunarity},scaleX,{scaleX},scaleY,{scaleY},versie,{self.versie},bereik,{bereik}'
         return self.genereer_noise(persistence,
                              lacunarity,
                              octaves,
@@ -65,7 +67,6 @@ class TopoGenerator:
                              )
 
     def genereer_N_noise(self,
-                   N,
                    Id,
                    persistence,
                    lacunarity,
@@ -75,10 +76,10 @@ class TopoGenerator:
                    noise_type,
                    bereik=1
                    ):
-        self.info = f'{self.info},Id,{Id},noise,{noise_type},o,{str(octaves)},per,{str(persistence)},lan,{str(lacunarity)},scaleX,{str(scaleX)},scaleY,{str(scaleY)},versie,{str(self.versie)},bereik,{str(bereik)}'
+        self.info = f'{self.info},Id,{Id},noise,{noise_type},o,{octaves},per,{persistence},lan,{lacunarity},scaleX,{scaleX},scaleY,{scaleY},versie,{self.versie},bereik,{bereik}'
 
         antwoord = []
-        for i in range(N):
+        for i in range(self.N):
             antwoord.append(self.genereer_noise(persistence,
                                           lacunarity,
                                           octaves,
@@ -119,11 +120,25 @@ class TopoGenerator:
                 bereik
                 ):
         self.info = f'{self.info},MachtId,{Id},macht,{macht},bereik,{bereik}'
-        topo = np.copy(topo_in)
-        if macht != 1:
-            topo = schaal_naar_bereik(topo)
-            topo = np.power(topo, macht)
-        if bereik != 1:
-            topo = schaal_naar_bereik(topo)
+        topo = np.power(topo_in, macht)
+        topo = schaal_naar_bereik(topo)
         return topo
+    
+    def negate(self,
+                Id,
+                topo_in
+                ):
+        self.info = f'{self.info},NegateId,{Id}'
+        topo = -np.copy(topo_in)
+        return topo
+    
+    def breidt_1_uit_naar_N(self,
+                Id,
+                topo_in):
+        self.info = f'{self.info},uitbreidingId,{Id}'
+        antwoord = []
+        for i in range(self.N):
+            antwoord.append(topo_in)
+        return antwoord
+
 
