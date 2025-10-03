@@ -16,7 +16,7 @@ camos_lijst = give_list_of_images(baseDir=base_dir, subdirName=camos_sub_dir)
 scenes_df = pd.DataFrame(scenes_lijst, columns=['scenes'])
 camos1_df = pd.DataFrame({'camo1': camos_lijst, 'key': 1})
 camos2_df = pd.DataFrame({'camo2': camos_lijst, 'key': 1})
-combinaties = scenes_df.assign(key=1).merge(camos1_df).merge(camos2_df).drop('key', 1)
+combinaties = scenes_df.assign(key=1).merge(camos1_df).merge(camos2_df).drop('key', axis=1)
 # We hebben nu de actieve combinaties. Die vullen we aan met de benodigde colommen
 # combinaties['tijd1'] = np.NaN
 # combinaties['tijd2'] = np.NaN

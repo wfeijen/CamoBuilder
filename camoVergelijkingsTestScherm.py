@@ -27,9 +27,9 @@ def bereid_camo_image_voor(img_file, doel_grootte, close, veiligheidsmarge = 100
     veilige_hoogte = imagehoogte - veiligheidsmarge * 2
 
     if close:
-        square_size = min(veilige_breedte, veilige_hoogte, 1500)
+        square_size = min(veilige_breedte, veilige_hoogte, 400)
     else:
-        square_size = min(veilige_breedte, veilige_hoogte, 6000)
+        square_size = min(veilige_breedte, veilige_hoogte, 2000)
     nieuwe_imagebreedte = random.randint(veiligheidsmarge, imagebreedte - veiligheidsmarge - square_size)
     nieuwe_imagehoogte = random.randint(veiligheidsmarge, imagehoogte - veiligheidsmarge - square_size)        
     img = img.crop((nieuwe_imagebreedte ,nieuwe_imagehoogte ,nieuwe_imagebreedte + square_size, nieuwe_imagehoogte + square_size))

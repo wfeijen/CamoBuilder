@@ -1,13 +1,13 @@
+#%%
 from PIL import Image, ImageDraw
 import pickle
 
-matrix_size = 27  # 27x27 matrix
+matrix_size = 11  # 27x27 matrix
 tussenruimte = 30
 directory = "/home/willem/Pictures/Camouflage/ColorCard/converted/"
 
-origineel = directory + "colorCard_zonder_tekst.jpg"
-tshirt = directory + "tshirt_zon_20230930_105940_000046A-8.0_E-1600_I-400_D7500.jpg"
-lexmark = directory + "Lexmark_20230922_094924_000717A-8.0_E-50_I-400_D7500.jpg"
+origineel = directory + "kleuren_computer_2.jpg"
+tshirt = directory + "kleuren_shirt_2.jpg"
 
 def haal_kleuren_per_vakje(pad, matrix_size, tussenruimte):
     im = Image.open(pad)
@@ -30,11 +30,25 @@ def haal_kleuren_per_vakje(pad, matrix_size, tussenruimte):
 
 origineel_kleuren = haal_kleuren_per_vakje(origineel, matrix_size, tussenruimte)
 tshirt_kleuren = haal_kleuren_per_vakje(tshirt, matrix_size, tussenruimte)
-lexmark_kleuren = haal_kleuren_per_vakje(lexmark, matrix_size, tussenruimte)
 
-with open('origineel_kleuren.pkl', 'wb') as file:
+#%%
+with open('computer_kleuren_2.pkl', 'wb') as file:
     pickle.dump(origineel_kleuren, file)
-with open('tshirt_kleuren.pkl', 'wb') as file:
+with open('tshirt_kleuren_2.pkl', 'wb') as file:
     pickle.dump(tshirt_kleuren, file)
-with open('lexmark_kleuren.pkl', 'wb') as file:
-    pickle.dump(lexmark_kleuren, file)
+
+#%% Toevoegen aan totaal file
+with open('origineel_kleuren_verzamel.pkl', 'rb') as f:
+    origineel_kleuren_verzamel = pickle.load(f)
+with open('tshirt_kleuren_verzamel.pkl', 'rb') as f:
+    tshirt_kleuren_verzamel = pickle.load(f)
+#%%
+origineel_kleuren_verzamel_nieuw = origineel_kleuren_verzamel + tshirt_kleuren
+tshirt_kleuren_verzamel_nieuw = tshirt_kleuren_verzamel + tshirt_kleuren
+
+# %%
+with open('origineel_kleuren_verzamel.pkl', 'wb') as file:
+    pickle.dump(origineel_kleuren_verzamel_nieuw, file)
+with open('tshirt_kleuren_verzamel.pkl', 'wb') as file:
+    pickle.dump(tshirt_kleuren_verzamel_nieuw, file)
+# %%

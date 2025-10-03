@@ -4,8 +4,9 @@ import numpy as np
 from projectClasses.CanvasGenerator import CanvasGeneratator
 from projectClasses.TopoGenerator import TopoGenerator
 from projectClasses.Camo_picture import CamoPicture
-from projectClasses.Utilities import corrigeer_kleuren
+from projectClasses.kleurbeheer import maak_color_card_op_basis_van_lijst_met_kleuren, corrigeer_kleuren, pas_kleuren_aan_met_parameters
 from datetime import datetime
+from PIL import ImageCms
 
 kleuren_filenaam = 'genuanceerd_groen_bruin6.jpgkleurSchaduwMedian20231029 162405.csv'
 
@@ -13,23 +14,38 @@ root_dir = '/home/willem/Pictures/Camouflage/camoBuilder/'
 plaatjes_dir = root_dir + 'camoOutput/'
 kleurenPad = './kleurParameters/' + kleuren_filenaam
 
-kleurInfo = pd.read_csv(kleurenPad, index_col=0)
+kleuren = pd.read_csv(kleurenPad, index_col=0)
+
+kleuren, info_voor_boekhouding = pas_kleuren_aan_met_parameters(
+    kleuren_in=kleuren,
+    contrast= 0.7,
+    saturation = 0.8,
+    belichting=0.93,
+    gewicht_extremen=,
+    macht_kleur=1.0)
+
+kleuren_kleurenkaart = kleuren.copy(deep=True)
 
 
-kleurInfo[['R', 'G', 'B']] = corrigeer_kleuren(van_schema_filenaam='lexmark_kleuren.pkl',
+# kleuren[['R', 'G', 'B']] = corrigeer_kleuren(van_schema_filenaam='lexmark_kleuren.pkl',
+#                                 naar_schema_filenaam='origineel_kleuren.pkl',
+#                                 kleurinfo_in=kleuren)
+ #%%
+
+kleuren[['R', 'G', 'B']] = corrigeer_kleuren(van_schema_filenaam='tshirt_kleuren.pkl',
                                 naar_schema_filenaam='origineel_kleuren.pkl',
-                                kleurinfo_in=kleurInfo)
+                                kleurinfo_in=kleuren)
+kleuren_kleurenkaart = pd.concat([kleuren_kleurenkaart, kleuren])
+kleurenkaart = maak_color_card_op_basis_van_lijst_met_kleuren(kleuren_kleurenkaart, square_size=100)
 
 # 22023-10-27 20:04:10.992090.jpg	bruin_groen_contrast_230518e.jpgkleurSchaduwMedian20230608 111525.csv	breedte	300	hoogte	300	contrast	1	saturation	0.8	belichting	0.9	start_volgorde	hoofdKleur	kleurmanipulatie	oplopend	Id	
 
 canvasGenerator = CanvasGeneratator(
     breedte=300,
     hoogte=300,
-    kleur_verhoudingen=kleurInfo,
+    kleur_verhoudingen=kleuren,
     naam_basis=kleuren_filenaam,
-    contrast= 0.7,
-    saturation = 0.8,
-    belichting=0.9,
+    kleur_info_voor_boekhouding=info_voor_boekhouding,
     start_volgorde="hoofdKleur",#hoofdKleur, grijsGroep
     kleur_manipulatie="oplopend") #licht_donker_licht, oplopend
 
@@ -41,29 +57,41 @@ topoGenerator = TopoGenerator(versie=1,
 
 
 # PX	noise	simplex	o	3	per	2	lan	3	scaleX	100	scaleY	35	versie	1	bereik	5	Id	
-punt_randomisatie_X = topoGenerator.genereer_1_noise(
+punt_randomisatie_verschuiving_X = topoGenerator.genereer_1_noise(
     Id = "PX",
     noise_type="simplex",
-    octaves=3,
-    persistence=2,
-    lacunarity=3,
-    scaleX=100,
-    scaleY=35,
-    bereik=5
+    octaves=2,
+    persistence=1,
+    lacunarity=2,
+    scaleX=200,
+    scaleY=50,
+    bereik=10
 )
 # PY	noise	simplex	o	3	per	2	lan	3	scaleX	100	scaleY	35	versie	2	bereik	5	
-punt_randomisatie_Y = topoGenerator.genereer_1_noise(
+punt_randomisatie_verschuiving_Y = topoGenerator.genereer_1_noise(
     Id = "PY",
     noise_type="simplex",
-    octaves=3,
-    persistence=2,
-    lacunarity=3,
-    scaleX=100,
-    scaleY=35,
-    bereik=5
+    octaves=2,
+    persistence=1,
+    lacunarity=2,
+    scaleX=200,
+    scaleY=50,
+    bereik=10
 )
 
-pointsDelta = np.vstack(([punt_randomisatie_X.T], [punt_randomisatie_Y.T])).T
+punt_randomisatie_X_delta = np.hstack((np.diff(punt_randomisatie_verschuiving_X, axis=1), np.zeros((topoGenerator.hoogte, 1), dtype=punt_randomisatie_verschuiving_X.dtype)))
+punt_randomisatie_Y_delta = np.vstack((np.diff(punt_randomisatie_verschuiving_X, axis=0), np.zeros((1, topoGenerator.hoogte), dtype=punt_randomisatie_verschuiving_X.dtype)))
+punt_randomisatie_delta = punt_randomisatie_X_delta * punt_randomisatie_Y_delta
+
+punt_randomisatie_delta_binair = topoGenerator.binair(Id='punt',topo_in=punt_randomisatie_delta, grens=0, bereik=1)
+punt_randomisatie_delta_binair = topoGenerator.breidt_1_uit_naar_N(Id='punt',
+                                                topo_in=punt_randomisatie_delta_binair)
+
+#@Gebruik pointsDelta voor inversielijnen (binairx x binair y zorgt voor omkeringen op de nulpunten
+                                          
+
+punt_randomizatie = np.vstack(([punt_randomisatie_verschuiving_X.T], [punt_randomisatie_verschuiving_Y.T])).T
+
 
 # Id	Glob1	noise	simplex	o	4	per	1.2	lan	4	scaleX	100	scaleY	30	versie	3	bereik	1	
 topografieGlobaal = topoGenerator.genereer_1_noise(
@@ -115,15 +143,17 @@ topografieLokaal2 = topoGenerator.verhef_tot_macht(Id = "Lok2",
 
 topografieLokaal += topografieLokaal2
 
+topografieLokaal = topografieLokaal * punt_randomisatie_delta_binair
+
 canvasGenerator.maakGlobaalCanvas(topografieGlobaal)
 canvasGenerator.generate_locale_topo(topografieLokaal)
 
-fileNaam = str(datetime.now()) + ".jpg"
+fileNaam = str(datetime.now())
 
 
-picture = CamoPicture(canvasGenerator.canvas_detail, pointsDelta, canvasGenerator.verdeling_in_N_naar_kleur)
+picture = CamoPicture(canvasGenerator.canvas_detail, punt_randomizatie, canvasGenerator.verdeling_in_N_naar_kleur)
 #vor_sy	40	_rx	0	_ry	0
-picture.create_vonoroi(schaal_X=40, schaal_Y=40, randomfactor_X=3, randomfactor_Y=3)
+picture.create_vonoroi(schaal_X=40, schaal_Y=40, randomfactor_X=2, randomfactor_Y=2)
 
 # picture.show()
 picture.save(plaatjes_dir, fileNaam)
@@ -131,9 +161,16 @@ picture.save(plaatjes_dir, fileNaam)
 info = canvasGenerator.info + topoGenerator.info + picture.info
 print(info)
 f = open(root_dir + "boekhouding.csv", "a")
-f.write(fileNaam + "," + info + "\n")
+f.write(fileNaam + ".jpg," + info + "\n")
 f.close()
 print(fileNaam)
 i = 1
+
+fileNaam = str(datetime.now()) + "_xpalet"
+
+profile = ImageCms.createProfile("sRGB")
+kleurenkaart.save(plaatjes_dir + fileNaam + ".jpg", icc_profile=ImageCms.ImageCmsProfile(profile).tobytes())
+
+
 
 # %%

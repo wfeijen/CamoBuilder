@@ -10,29 +10,13 @@ class CanvasGeneratator:
                  hoogte,
                  kleur_verhoudingen,
                  naam_basis,
-                 contrast,
-                 saturation,
-                 belichting,
                  start_volgorde,
+                 kleur_info_voor_boekhouding,
                  kleur_manipulatie = "licht_donker_licht",
                  hist_bins = 100000):# licht_donker_licht, oplopend
         self.hoogte = hoogte
         self.breedte = breedte
         self.hist_bins = hist_bins
-        totaalAantal = kleur_verhoudingen['aantal'].sum()
-        kleur_verhoudingen['gem_grijswaarde'] = kleur_verhoudingen['grijswaarde'] / 3
-        kleur_verhoudingen['R'] = kleur_verhoudingen['R'] * saturation + kleur_verhoudingen['gem_grijswaarde'] * (1 - saturation)
-        kleur_verhoudingen['G'] = kleur_verhoudingen['G'] * saturation + kleur_verhoudingen['gem_grijswaarde'] * (1 - saturation)
-        kleur_verhoudingen['B'] = kleur_verhoudingen['B'] * saturation + kleur_verhoudingen['gem_grijswaarde'] * (1 - saturation)
-        Rmean = (kleur_verhoudingen['R'] * kleur_verhoudingen['aantal']).sum() / totaalAantal
-        Gmean = (kleur_verhoudingen['G'] * kleur_verhoudingen['aantal']).sum() / totaalAantal
-        Bmean = (kleur_verhoudingen['B'] * kleur_verhoudingen['aantal']).sum() / totaalAantal
-        kleur_verhoudingen.loc[:, ['R', 'G', 'B']] -= [Rmean, Gmean, Bmean]
-        kleur_verhoudingen.loc[:, ['R', 'G', 'B']] = (kleur_verhoudingen.loc[:, ['R', 'G', 'B']] * contrast)
-        kleur_verhoudingen.loc[:, ['R', 'G', 'B']] += [Rmean, Gmean, Bmean]
-        kleur_verhoudingen.loc[:, ['R', 'G', 'B']] = (kleur_verhoudingen.loc[:, ['R', 'G', 'B']] * belichting)
-
-        kleur_verhoudingen.loc[:, ['R', 'G', 'B']].clip(lower=0, upper=255).astype(int)
         if start_volgorde=="hoofdKleur":
             kleur_verhoudingen = kleur_verhoudingen.rename(columns={'hoofdKleur': 'verdeling_in_M', 'grijsGroep': 'verdeling_in_N'})
         elif start_volgorde== "grijsGroep":
@@ -74,7 +58,7 @@ class CanvasGeneratator:
             self.kleurgroepen_globaal.loc[self.kleurgroepen_globaal['wenselijk_aantal'].idxmin()]['verdeling_in_M'])
 
         self.canvas_globaal = np.full((self.breedte, self.hoogte), min_kleur_nummer)
-        self.info = f'{naam_basis},breedte,{str(breedte)},hoogte,{str(hoogte)},contrast,{str(contrast)},saturation,{str(saturation)},belichting,{str(belichting)},start_volgorde,{start_volgorde},kleurmanipulatie,{str(kleur_manipulatie)}'
+        self.info = f'{naam_basis},{kleur_info_voor_boekhouding},breedte,{str(breedte)},hoogte,{str(hoogte)},start_volgorde,{start_volgorde},kleurmanipulatie,{str(kleur_manipulatie)}'
         self.verdeling_in_N_naar_kleur = dict(zip(self.kleur_verhoudingen.verdeling_in_N,
                                                   zip(self.kleur_verhoudingen.R.astype(int),
                                                       self.kleur_verhoudingen.G.astype(int),
@@ -136,6 +120,7 @@ class CanvasGeneratator:
             'verdeling_in_M'].min()
         self.kleurgroepen_detail.loc[
             ~self.kleurgroepen_detail['wenselijk_aantal'].isin(minKleurAantallen), 'aantal'] = 0
+        x = self.kleurgroepen_detail.isna()
         self.kleurgroepen_detail['wenselijk_aantal'] = (
                 self.kleurgroepen_detail['verhouding'] * self.breedte * self.hoogte).astype(int)
         self.kleurgroepen_detail['delta_aantal'] = self.kleurgroepen_detail['wenselijk_aantal'] - \

@@ -62,9 +62,9 @@ def voer_experiment_uit(
 for i in [1]:
     print(i)
     voer_experiment_uit(
-        persistence=0.4,
-        lacunarity=4,
+        persistence=0,
+        lacunarity=1,
         octaves=i,
-        scaleX=100,
-        scaleY=400
+        scaleX=200,
+        scaleY=200
     )

@@ -1,8 +1,13 @@
-from PIL import Image, ImageDraw
+#%%
 
-# creating image object which is of specific color
-im = Image.new(mode="RGB", size=(300, 200),
-                   color=(153, 153, 255))
+from typing import List
 
-# this will show image in any image viewer
-im.show()
+def func(ls: List[str] = []) -> List[str]:
+    ls.append('pie')
+    return ls
+
+print(func())  # ['pie']
+print(func())  # ['pie', 'pie']
+print(func())  # ['pie', 'pie', 'pie']
+
+# %%

@@ -9,7 +9,7 @@ file_name_zonder_tekst = '/home/willem/Pictures/Camouflage/camoBuilder/camoOutpu
 N = 9
 square_size = 200
 font_size = 28
-def calculate_text_color(color):
+def maak_contrasterende_tekstkleur(color):
     r, g, b = color
     brightness = sqrt(0.299 * r**2 + 0.587 * g**2 + 0.114 * b**2)
     text_color = "#000000" if brightness > 128 else "#FFFFFF"
@@ -40,7 +40,7 @@ def maak_color_card(N, square_size, font_size, tekst=False):
                 y2 = y1 + square_size
                 draw.rectangle([(x1, y1), (x2, y2)], fill=color)
                 if tekst:
-                    draw.text((x1 + 80, y1 + 50), decimal_code, fill=calculate_text_color(color), font=font, align="center")
+                    draw.text((x1 + 80, y1 + 50), decimal_code, fill=maak_contrasterende_tekstkleur(color), font=font, align="center")
     return image
 
 

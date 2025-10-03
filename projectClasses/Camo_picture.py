@@ -63,6 +63,7 @@ class CamoPicture:
         geschaalde_points[self.width - 1 + (self.height - 1) * self.width, 1] = self.height - 1
         return geschaalde_points.astype(int)
     
+    
     def generate_voronoi_diagram(self):
         """
         generate voronoi diagramm as polygons

@@ -5,11 +5,12 @@ import numpy as np
 import pandas as pd
 from sklearn.cluster import KMeans
 import matplotlib.pyplot as plt
-import random
 
 
 # Parameters
-kleuren_filenaam = 'genuanceerd_groen_bruin6.jpg'
+kleuren_filenaam = 'nfp_groen_en_tan_50_50.jpg'
+gewicht_factor = 1
+
 
 root_dir = '/home/willem/Pictures/Camouflage/'
 plaatjes_dir = root_dir + 'camoBuilder/camoOutput/'
@@ -18,11 +19,10 @@ kleurParametersDir = './kleurParameters/'
 
 sampleSizeTest = 1000
 sampleSize = 1000000
-aantal_hoofdlkeuren = 3
-aantal_grijswaarden = 17
+aantal_hoofdlkeuren = 4
+aantal_grijswaarden = 12
 kleurboost = 0.06
 aantal_kleuren = aantal_hoofdlkeuren * aantal_grijswaarden
-ontwikkel = False
 
 # Inlezen en naar data omzetten
 im = Image.open(broncompilaties_dir + kleuren_filenaam)
@@ -33,38 +33,53 @@ w, h = im.size
 npImageOrig = np.array(im)
 npImage = npImageOrig.reshape(w * h, 3)
 pdImage = pd.DataFrame(npImage, columns=['R', 'G', 'B'])
+
+
+
+#%%
 df = pdImage.copy(deep=True)
 
-if ontwikkel:
-    sampleSize = sampleSizeTest
+if sampleSize<df.size:
+    df = df.sample(sampleSize)
 
-df = df.sample(sampleSize)
 # Toevoegen schakering en hoofdkleur
-df['grijswaarde'] = df[['R', 'G', 'B']].sum(axis=1).replace(0, 1)
-df['Rr'] = df['R'] / df['grijswaarde']
-df['Gr'] = df['G'] / df['grijswaarde']
-df['Br'] = df['B'] / df['grijswaarde']
+df['grijswaarde'] = (0.2989 * df['R']) + (0.5870 * df['G']) + (0.1140 * df['B'])
+#%%
+df['Rr'] = df['R'] / df['grijswaarde'].replace(0, 0.001)
+df['Gr'] = df['G'] / df['grijswaarde'].replace(0, 0.001)
+df['Br'] = df['B'] / df['grijswaarde'].replace(0, 0.001)
 df['Rp'] = ((df['Rr'] > df['Gr']) & (df['Rr'] > df['Br'])).astype('Int8') * kleurboost + df['Rr']
 df['Gp'] = ((df['Gr'] > df['Rr']) & (df['Gr'] > df['Br'])).astype('Int8') * kleurboost + df['Gr']
 df['Bp'] = ((df['Br'] > df['Gr']) & (df['Br'] > df['Rr'])).astype('Int8') * kleurboost + df['Br']
 
-
+#%%
+df['gewicht_kleur'] = (df[['R', 'G', 'B']] - df[['grijswaarde', 'grijswaarde', 'grijswaarde']].to_numpy()).pow(2).sum(axis=1) * gewicht_factor + 1
+#%%
+gemiddelde_grijswaarde = df[['grijswaarde']].mean()
+#%%
+df['gewicht_grijs'] = (df[['grijswaarde']] - gemiddelde_grijswaarde.to_numpy()).pow(2) * gewicht_factor + 1
+#%%
 # Eerste opdeling in hoofdkleuren
 kmeans = KMeans(n_clusters= aantal_hoofdlkeuren)
-kmeans.fit(df[['Rp', 'Gp', 'Bp']])
+kmeans.fit(df[['Rp', 'Gp', 'Bp']], sample_weight=df['gewicht_kleur'])
 df['hoofdKleur'] = kmeans.labels_
 
+#%%
 # Nu per hoofdkleur in grijsgroepen
-def k_means(row, aant_groepen):
+def k_means_per_grijsgroep(df_grijsgroep, aant_groepen):
     clustering=KMeans(n_clusters=aant_groepen)
-    model = clustering.fit(row[['R', 'G', 'B']])
-    row['grijsGroep'] = model.labels_
-    return row
+    model = clustering.fit(df_grijsgroep[['R', 'G', 'B']])
+    df_grijsgroep['grijsGroep'] = model.labels_
+    centers = pd.DataFrame(clustering.cluster_centers_, columns=['cR', 'cG', 'cB'])
+    df_grijsgroep = df_grijsgroep.join(centers, on=('grijsGroep'))
+    return df_grijsgroep
 
+#%%
 df = df.sort_values(by = ['hoofdKleur', 'grijswaarde'])
-df = df.groupby('hoofdKleur').apply(k_means, aantal_grijswaarden)
+#%%
+df = df.groupby('hoofdKleur', group_keys=False).apply(k_means_per_grijsgroep, aantal_grijswaarden)
 
-
+#%%
 def rgb_to_hex(red, green, blue):
     """Return color as #rrggbb for the given color values."""
     return '#%02x%02x%02x' % (red, green, blue)
@@ -85,18 +100,24 @@ means['grijsGroep'] = means.groupby(['hoofdKleur']).cumcount()
 means['hex'] = means.loc[:,['R', 'G', 'B']].apply(lambda r: rgb_to_hex(*r), axis=1)
 means = means.sort_values(['hoofdKleur', 'grijsGroep']).reset_index()
 
+#%%
+centroids = df.groupby(['hoofdKleur', 'grijsGroep'])[['cR', 'cG', 'cB', 'grijswaarde']].mean().astype({'cR':'int', 'cG':'int', 'cB':'int'}).rename(columns={'cR':'R', 'cG':'G', 'cB':'B'})
+#%%
+centroids['aantal'] = df.groupby(['hoofdKleur', 'grijsGroep']).size()
+centroids = centroids.sort_values(['grijswaarde']).reset_index()
+centroids['grijsGroep'] = centroids.groupby(['hoofdKleur']).cumcount()
+centroids['hex'] = centroids.loc[:,['R', 'G', 'B']].apply(lambda r: rgb_to_hex(*r), axis=1)
+centroids = centroids.sort_values(['hoofdKleur', 'grijsGroep']).reset_index()
+#%%
 verschil = medians.copy(deep=True)
-verschil['R'] = (means['R'] - medians['R']).abs()
-verschil['G'] = (means['G'] - medians['G']).abs()
-verschil['B'] = (means['B'] - medians['B']).abs()
+verschil['R'] = (centroids['R'] - medians['R']).abs()
+verschil['G'] = (centroids['G'] - medians['G']).abs()
+verschil['B'] = (centroids['B'] - medians['B']).abs()
 maximaal_verschil = verschil[['R', 'G', 'B']].max().max()
 verschil['R'] = (verschil['R'] * 255 / maximaal_verschil).astype('int')
 verschil['G'] = (verschil['G'] * 255 / maximaal_verschil).astype('int')
 verschil['B'] = (verschil['B'] * 255 / maximaal_verschil).astype('int')
 verschil['hex'] = verschil.loc[:,['R', 'G', 'B']].apply(lambda r: rgb_to_hex(*r), axis=1)
-
-
-
 # if sampleSizeTest > df['R'].size:
 #     sampleSizeTest = pdImage['R'].size
 # selectie = random.sample(list(range(0, df['R'].size)), sampleSizeTest)
@@ -126,25 +147,28 @@ verschil['hex'] = verschil.loc[:,['R', 'G', 'B']].apply(lambda r: rgb_to_hex(*r)
 # plt.show()
 #%%
 # Pie charts
-fig, (ax1, ax2, ax3) = plt.subplots(1, 3)
+fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2,2)
 ax1.pie(medians["aantal"], labels = medians["hoofdKleur"], colors=medians['hex'])
 ax1.set_xlabel('medianen')
-ax2.pie(means["aantal"], labels = means["hoofdKleur"], colors=medians['hex'])
+ax2.pie(means["aantal"], labels = means["hoofdKleur"], colors=means['hex'])
 ax2.set_xlabel('means')
-ax3.pie(verschil["aantal"], labels = verschil["hoofdKleur"], colors=verschil['hex'])
-ax3.set_xlabel(f'verschil is maximaal {maximaal_verschil}')
+ax3.pie(centroids["aantal"], labels = centroids["hoofdKleur"], colors=centroids['hex'])
+ax3.set_xlabel('centroids')
+ax4.pie(verschil["aantal"], labels = verschil["hoofdKleur"], colors=verschil['hex'])
+ax4.set_xlabel(f'verschil is maximaal {maximaal_verschil}')
 
 #%%
 # Aanpassen aan ontvangend programma met andere naamgeving
 # ,R,G,B,RG,grijswaarde,groep,hex,counts
 # ,R,G,B,aantal,verdeling_in_N,verdeling_in_M
 # Wegschrijven
-now = datetime.datetime.now().strftime('%Y%m%d %H%M%S')
+extra_info = f"{datetime.datetime.now().strftime('%Y%m%d %H%M%S')}_{str(aantal_hoofdlkeuren)}x{str(aantal_grijswaarden)}"
 
-if not ontwikkel:
-    print(kleurParametersDir + kleuren_filenaam + "kleurSchaduwMedian" + now + '.csv')
-    medians.to_csv(kleurParametersDir + kleuren_filenaam + "kleurSchaduwMedian" + now + '.csv')
-    plt.savefig(broncompilaties_dir + kleuren_filenaam + "kleurSchaduwMedian" + now + '.jpg')
+print(kleurParametersDir + kleuren_filenaam + "kleurSchaduwMedian" + extra_info + '.csv')
+medians.to_csv(kleurParametersDir + kleuren_filenaam + "kleurSchaduwMedian" + extra_info + '.csv')
+print(kleurParametersDir + kleuren_filenaam + "kleurSchaduwCentroid:" + str(gewicht_factor) + "_"  + extra_info + '.csv')
+centroids.to_csv(kleurParametersDir + kleuren_filenaam + "kleurSchaduwCentroid:" + str(gewicht_factor) + "_" + extra_info + '.csv')
+plt.savefig(broncompilaties_dir + kleuren_filenaam + "kleurSchaduwMedian" + extra_info + '.jpg', dpi = 300)
 plt.show()
 # if not ontwikkel:
 #     print(name + "kleurSchaduwMean" + now + '.csv')
